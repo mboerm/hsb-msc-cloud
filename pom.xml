@@ -41,7 +41,7 @@
                     <release>${maven.compiler.release}</release>
                     <jlinkImageName>cloud</jlinkImageName>
                     <launcher>launcher</launcher>
-                    <mainClass>cloud/hsb.msc.App</mainClass>
+                    <mainClass>cloud/hsb.msc.CloudApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
