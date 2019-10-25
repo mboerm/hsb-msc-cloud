@@ -1,4 +1,4 @@
-package hsb;
+package hsb.msc;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

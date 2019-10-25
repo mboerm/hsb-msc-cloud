@@ -1,4 +1,7 @@
-module hsb {
+module cloud {
     requires javafx.controls;
-    exports hsb;
+    requires javafx.fxml;
+
+    opens hsb.msc to javafx.fxml;
+    exports hsb.msc;
 }

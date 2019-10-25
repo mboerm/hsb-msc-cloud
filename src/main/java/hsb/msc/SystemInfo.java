@@ -1,4 +1,4 @@
-package hsb;
+package hsb.msc;
 
 public class SystemInfo {
 
