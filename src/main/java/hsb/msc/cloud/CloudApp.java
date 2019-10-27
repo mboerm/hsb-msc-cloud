@@ -17,10 +17,13 @@ public class CloudApp extends Application {
         root = new BorderPane();
 
         root.setTop(getMenuBar());
-        root.setCenter(getTabPane());
+        root.setCenter(getPane());
+        root.setBottom(getTaskLabel());
 
         Scene scene = new Scene(root, 800, 600);
 
+        stage.setMinHeight(600);
+        stage.setMinWidth(800);
         stage.setTitle("Cloud Architecture Optimizer");
         stage.setScene(scene);
         stage.show();
@@ -55,17 +58,16 @@ public class CloudApp extends Application {
         return menuBar;
     }
 
-    private TabPane getTabPane() {
-        TabPane tabPane = new TabPane();
-        Tab tabConfig = new Tab("Configurations");
-        tabConfig.setClosable(false);
-        Tab tabArch = new Tab("Architecture");
-        tabArch.setClosable(false);
+    private GridPane getPane() {
+        GridPane grid = new GridPane();
 
-        tabPane.getTabs().add(tabConfig);
-        tabPane.getTabs().add(tabArch);
+        return grid;
+    }
 
-        return tabPane;
+    private Label getTaskLabel() {
+        Label taskLbl = new Label();
+
+        return taskLbl;
     }
 
     public static void main(String[] args) {
