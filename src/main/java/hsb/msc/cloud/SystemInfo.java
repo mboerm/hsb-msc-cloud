@@ -1,4 +1,4 @@
-package hsb.msc;
+package hsb.msc.cloud;
 
 public class SystemInfo {
 
