@@ -2,6 +2,6 @@ module cloud {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens hsb.msc.cloud to javafx.fxml;
-    exports hsb.msc.cloud;
+    opens cloud.main to javafx.fxml;
+    exports cloud.main;
 }

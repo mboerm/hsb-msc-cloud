@@ -1,4 +1,4 @@
-package hsb.msc.cloud;
+package cloud.main;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
