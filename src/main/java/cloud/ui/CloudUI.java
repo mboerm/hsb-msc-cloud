@@ -25,15 +25,12 @@ public class CloudUI {
 
     public CloudUI() {
         rootPane = new BorderPane();
+
+        rootPane.setTop(initMenuBar());
+        rootPane.setRight(initDesignPane());
+        rootPane.setBottom(initTaskBar());
+
         scene = new Scene(rootPane, 800, 600);
-
-        initMenuBar();
-        initTaskBar();
-        initDesignPane();
-
-//        rootPane.setTop(getMenuBar());
-//        rootPane.setRight(getDesignPane());
-        rootPane.setBottom(getTaskBar());
     }
 
     public void show(Stage stage) {
@@ -44,7 +41,7 @@ public class CloudUI {
         stage.show();
     }
 
-    private void initMenuBar() {
+    private MenuBar initMenuBar() {
         menuBar = new MenuBar();
 
         Menu menuFile = new Menu("File");
@@ -83,30 +80,27 @@ public class CloudUI {
         menuBar.getMenus().add(menuDesign);
         menuBar.getMenus().add(menuServices);
         menuBar.getMenus().add(menuHelp);
-    }
 
-    private void initDesignPane() {
-        designPane = new DesignPane();
-    }
-
-    private void initTaskBar() {
-        taskBox = new HBox();
-        taskBox.setPadding(new Insets(5, 5, 5, 5));
-        taskLbl = new Label("Init");
-        taskLbl.setTextAlignment(TextAlignment.RIGHT);
-        taskBox.getChildren().add(taskLbl);
-    }
-
-    private MenuBar getMenuBar() {
         return menuBar;
     }
 
-    private HBox getTaskBar() {
-        return taskBox;
+    private DesignPane initDesignPane() {
+        designPane = new DesignPane();
+        return designPane;
     }
 
-    private DesignPane getDesignPane() {
-        return designPane;
+    private HBox initTaskBar() {
+        taskBox = new HBox();
+        taskBox.setPadding(new Insets(5, 5, 5, 5));
+
+        taskLbl = new Label("Init");
+        taskLbl.setTextAlignment(TextAlignment.RIGHT);
+        taskLbl.setWrapText(true);
+
+        taskBox.setAlignment(Pos.CENTER_RIGHT);
+        taskBox.getChildren().add(taskLbl);
+
+        return taskBox;
     }
 
     private void callAboutDialog() {

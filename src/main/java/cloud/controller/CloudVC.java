@@ -1,21 +1,18 @@
 package cloud.controller;
 
-import cloud.model.DataBean;
 import cloud.ui.CloudUI;
+import javafx.stage.Stage;
 
 public class CloudVC {
-    // Model
-    private DataBean dataBean;
-
-    // UI
+    private Stage primaryStage = null;
     private CloudUI ui;
 
-    public CloudVC(DataBean dataBean) {
-        this.dataBean = dataBean;
+    public CloudVC(Stage primaryStage) {
+        this.primaryStage = primaryStage;
         this.ui = new CloudUI();
     }
 
     public void show(){
-        ui.show(dataBean.getPrimaryStage());
+        ui.show(primaryStage);
     }
 }
