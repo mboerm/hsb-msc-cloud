@@ -8,23 +8,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class CloudUI {
 
     private Scene scene;
-    private BorderPane rootPane;
-
-    private MenuBar menuBar;
-    private HBox taskBox;
-    private Label taskLbl;
-
-    private DesignPane designPane;
 
     public CloudUI() {
-        rootPane = new BorderPane();
+        BorderPane rootPane = new BorderPane();
 
         rootPane.setTop(initMenuBar());
         rootPane.setRight(initDesignPane());
@@ -42,7 +34,7 @@ public class CloudUI {
     }
 
     private MenuBar initMenuBar() {
-        menuBar = new MenuBar();
+        MenuBar menuBar = new MenuBar();
 
         Menu menuFile = new Menu("File");
         MenuItem menuItemNew = new MenuItem("New Session");
@@ -71,7 +63,6 @@ public class CloudUI {
             }
         });
 
-
         menuHelp.getItems().add(menuItemAbout);
 
         menuBar.getMenus().add(menuFile);
@@ -85,15 +76,14 @@ public class CloudUI {
     }
 
     private DesignPane initDesignPane() {
-        designPane = new DesignPane();
-        return designPane;
+        return new DesignPane();
     }
 
     private HBox initTaskBar() {
-        taskBox = new HBox();
+        HBox taskBox = new HBox();
         taskBox.setPadding(new Insets(5, 5, 5, 5));
 
-        taskLbl = new Label("Init");
+        Label taskLbl = new Label("Init");
         taskLbl.setTextAlignment(TextAlignment.RIGHT);
         taskLbl.setWrapText(true);
 
