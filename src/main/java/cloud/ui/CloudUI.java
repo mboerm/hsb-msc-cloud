@@ -19,10 +19,12 @@ public class CloudUI {
         BorderPane rootPane = new BorderPane();
 
         rootPane.setTop(initMenuBar());
-        rootPane.setRight(initDesignPane());
+        rootPane.setLeft(initDesignProperties());
+        rootPane.setCenter(initDesignPane());
+        rootPane.setRight(initDesignComponents());
         rootPane.setBottom(initTaskBar());
 
-        scene = new Scene(rootPane, 800, 600);
+        scene = new Scene(rootPane, 1024, 768);
     }
 
     public void show(Stage stage) {
@@ -58,7 +60,8 @@ public class CloudUI {
 
         MenuItem menuItemAbout = new MenuItem("About");
         menuItemAbout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 callAboutDialog();
             }
         });
@@ -75,8 +78,16 @@ public class CloudUI {
         return menuBar;
     }
 
+    private DesignProperties initDesignProperties() {
+        return new DesignProperties();
+    }
+
     private DesignPane initDesignPane() {
         return new DesignPane();
+    }
+
+    private DesignComponents initDesignComponents() {
+        return new DesignComponents();
     }
 
     private HBox initTaskBar() {
