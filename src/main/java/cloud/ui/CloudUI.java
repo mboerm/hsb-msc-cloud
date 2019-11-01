@@ -3,32 +3,37 @@ package cloud.ui;
 import cloud.constants.Consts;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class CloudUI {
 
     private Scene scene;
-    private BorderPane root;
+    private BorderPane rootPane;
 
     private MenuBar menuBar;
-    private GridPane grid;
+    private HBox taskBox;
     private Label taskLbl;
 
-    public CloudUI() {
-        root = new BorderPane();
-        grid = new GridPane();
+    private DesignPane designPane;
 
-        taskLbl = new Label();
+    public CloudUI() {
+        rootPane = new BorderPane();
+        scene = new Scene(rootPane, 800, 600);
 
         initMenuBar();
+        initTaskBar();
+        initDesignPane();
 
-        root.setTop(getMenuBar());
-        root.setCenter(getPane());
-        root.setBottom(getTaskLabel());
-        scene = new Scene(root, 800, 600);
+//        rootPane.setTop(getMenuBar());
+//        rootPane.setRight(getDesignPane());
+        rootPane.setBottom(getTaskBar());
     }
 
     public void show(Stage stage) {
@@ -58,7 +63,8 @@ public class CloudUI {
 
         Menu menuEdit = new Menu("Edit");
         Menu menuView = new Menu("View");
-
+        Menu menuDesign = new Menu("Design");
+        Menu menuServices = new Menu("Services");
         Menu menuHelp = new Menu("Help");
 
         MenuItem menuItemAbout = new MenuItem("About");
@@ -74,19 +80,33 @@ public class CloudUI {
         menuBar.getMenus().add(menuFile);
         menuBar.getMenus().add(menuEdit);
         menuBar.getMenus().add(menuView);
+        menuBar.getMenus().add(menuDesign);
+        menuBar.getMenus().add(menuServices);
         menuBar.getMenus().add(menuHelp);
+    }
+
+    private void initDesignPane() {
+        designPane = new DesignPane();
+    }
+
+    private void initTaskBar() {
+        taskBox = new HBox();
+        taskBox.setPadding(new Insets(5, 5, 5, 5));
+        taskLbl = new Label("Init");
+        taskLbl.setTextAlignment(TextAlignment.RIGHT);
+        taskBox.getChildren().add(taskLbl);
     }
 
     private MenuBar getMenuBar() {
         return menuBar;
     }
 
-    private GridPane getPane() {
-        return grid;
+    private HBox getTaskBar() {
+        return taskBox;
     }
 
-    private Label getTaskLabel() {
-        return taskLbl;
+    private DesignPane getDesignPane() {
+        return designPane;
     }
 
     private void callAboutDialog() {
