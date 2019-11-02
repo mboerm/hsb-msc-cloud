@@ -50,6 +50,11 @@ public class CloudUI {
         MenuItem menuDesignReset = new MenuItem("Reset Design");
 
         Menu menuServices = new Menu("Services");
+        MenuItem menuServicesAmazon = new MenuItem("Amazon Web Services");
+        MenuItem menuServicesWindows = new MenuItem("Windows Azure");
+        MenuItem menuServicesGoogle = new MenuItem("Google Cloud Platform");
+        menuServicesWindows.setDisable(true);
+        menuServicesGoogle.setDisable(true);
 
         Menu menuHelp = new Menu("Help");
         MenuItem menuHelpAbout = new MenuItem("About");
@@ -62,6 +67,7 @@ public class CloudUI {
         menuBar.getMenus().add(menuHelp);
         menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
         menuDesign.getItems().addAll(menuDesignReset);
+        menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
         menuHelp.getItems().addAll(menuHelpAbout);
 
         menuHelpAbout.setOnAction(new EventHandler<ActionEvent>() {
