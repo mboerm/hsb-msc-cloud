@@ -1,5 +1,8 @@
 package cloud.ui;
 
+import cloud.components.Database;
+import cloud.components.Storage;
+import cloud.components.VirtualMachine;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -28,6 +31,21 @@ class DesignControls extends VBox {
             public void handle(ActionEvent actionEvent) {
                 DialogAddComponent dialogAdd = new DialogAddComponent();
                 dialogAdd.showAndWait();
+
+                String result = dialogAdd.getResult().toString();
+                switch (result) {
+                    case "Virtual Machine":
+                        new VirtualMachine();
+                        break;
+
+                    case "Storage":
+                        new Storage();
+                        break;
+
+                    case "Database":
+                        new Database();
+                        break;
+                }
             }
         });
 
