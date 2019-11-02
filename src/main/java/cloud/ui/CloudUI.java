@@ -12,7 +12,6 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class CloudUI {
-
     private Scene scene;
 
     public CloudUI() {
@@ -20,17 +19,17 @@ public class CloudUI {
 
         rootPane.setTop(initMenuBar());
         rootPane.setLeft(initDesignProperties());
-        rootPane.setCenter(initDesignPane());
-        rootPane.setRight(initDesignComponents());
+        rootPane.setCenter(initDesignArea());
+        rootPane.setRight(initDesignControls());
         rootPane.setBottom(initTaskBar());
 
-        scene = new Scene(rootPane, 1024, 768);
+        scene = new Scene(rootPane, Consts.WINDOW_DEFAULT_WIDTH, Consts.WINDOW_DEFAULT_HEIGHT);
     }
 
     public void show(Stage stage) {
-        stage.setMinHeight(600);
-        stage.setMinWidth(800);
-        stage.setTitle(Consts.TITLE);
+        stage.setMinHeight(Consts.WINDOW_MIN_HEIGHT);
+        stage.setMinWidth(Consts.WINDOW_MIN_WIDTH);
+        stage.setTitle(Consts.APP_TITLE);
         stage.setScene(scene);
         stage.show();
     }
@@ -39,34 +38,21 @@ public class CloudUI {
         MenuBar menuBar = new MenuBar();
 
         Menu menuFile = new Menu("File");
-        MenuItem menuItemNew = new MenuItem("New Session");
-        MenuItem menuItemOpen = new MenuItem("Open Session");
-        MenuItem menuItemSave = new MenuItem("Save Session");
-        MenuItem menuItemExit = new MenuItem("Exit");
-
-        menuItemExit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-
-        menuFile.getItems().addAll(menuItemNew, menuItemOpen, menuItemSave, new SeparatorMenuItem(), menuItemExit);
+        MenuItem menuFileNew = new MenuItem("New Session");
+        MenuItem menuFileOpen = new MenuItem("Open Session");
+        MenuItem menuFileSave = new MenuItem("Save Session");
+        MenuItem menuFileExit = new MenuItem("Exit");
 
         Menu menuEdit = new Menu("Edit");
         Menu menuView = new Menu("View");
+
         Menu menuDesign = new Menu("Design");
+        MenuItem menuDesignReset = new MenuItem("Reset Design");
+
         Menu menuServices = new Menu("Services");
+
         Menu menuHelp = new Menu("Help");
-
-        MenuItem menuItemAbout = new MenuItem("About");
-        menuItemAbout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                callAboutDialog();
-            }
-        });
-
-        menuHelp.getItems().add(menuItemAbout);
+        MenuItem menuHelpAbout = new MenuItem("About");
 
         menuBar.getMenus().add(menuFile);
         menuBar.getMenus().add(menuEdit);
@@ -74,6 +60,22 @@ public class CloudUI {
         menuBar.getMenus().add(menuDesign);
         menuBar.getMenus().add(menuServices);
         menuBar.getMenus().add(menuHelp);
+        menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
+        menuDesign.getItems().addAll(menuDesignReset);
+        menuHelp.getItems().addAll(menuHelpAbout);
+
+        menuHelpAbout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                callAboutDialog();
+            }
+        });
+
+        menuFileExit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
         return menuBar;
     }
@@ -82,12 +84,12 @@ public class CloudUI {
         return new DesignProperties();
     }
 
-    private DesignPane initDesignPane() {
-        return new DesignPane();
+    private DesignArea initDesignArea() {
+        return new DesignArea();
     }
 
-    private DesignComponents initDesignComponents() {
-        return new DesignComponents();
+    private DesignControls initDesignControls() {
+        return new DesignControls();
     }
 
     private HBox initTaskBar() {
@@ -106,9 +108,9 @@ public class CloudUI {
 
     private void callAboutDialog() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("About " + Consts.TITLE);
+        alert.setTitle("About " + Consts.APP_TITLE);
         alert.setHeaderText(null);
-        alert.setContentText(Consts.ABOUT);
+        alert.setContentText(Consts.ABOUT_TEXT);
 
         alert.showAndWait();
     }
