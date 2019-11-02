@@ -11,18 +11,14 @@ class DialogAddComponent extends Dialog {
     private final String[] arrayData = {
             "Virtual Machine",
             "Storage",
-            "Database",
-            "Network",
-            "Management",
-            "Integration",
-            "Analytics"
+            "Database"
             };
 
     DialogAddComponent() {
         setTitle("Add Component to Design");
         setHeaderText("Select component to add to design");
 
-        ComboBox choiceBox = new ComboBox(FXCollections.observableArrayList(arrayData));
+        ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableArrayList(arrayData));
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(5, 5, 5, 5));
@@ -30,7 +26,7 @@ class DialogAddComponent extends Dialog {
         grid.add(choiceBox, 0, 0);
         getDialogPane().setContent(grid);
 
-        SingleSelectionModel model = choiceBox.getSelectionModel();
+        SingleSelectionModel<String> model = choiceBox.getSelectionModel();
 
         getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL, ButtonType.OK);
         Button okButton = (Button)getDialogPane().lookupButton(ButtonType.OK);
@@ -38,7 +34,7 @@ class DialogAddComponent extends Dialog {
 
         setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
-                return model.getSelectedItem();
+                return model.getSelectedItem().toString();
             }
             return "cancelled.";
         });
