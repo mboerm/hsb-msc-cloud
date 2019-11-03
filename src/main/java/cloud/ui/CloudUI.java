@@ -1,17 +1,19 @@
 package cloud.ui;
 
 import cloud.constants.Consts;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class CloudUI {
+    private Stage stage;
     private Scene scene;
 
     public CloudUI() {
@@ -27,6 +29,7 @@ public class CloudUI {
     }
 
     public void show(Stage stage) {
+        this.stage = stage;
         stage.setMinHeight(Consts.WINDOW_MIN_HEIGHT);
         stage.setMinWidth(Consts.WINDOW_MIN_WIDTH);
         stage.setTitle(Consts.APP_TITLE);
@@ -65,23 +68,28 @@ public class CloudUI {
         menuBar.getMenus().add(menuDesign);
         menuBar.getMenus().add(menuServices);
         menuBar.getMenus().add(menuHelp);
+
         menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
         menuDesign.getItems().addAll(menuDesignReset);
         menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
         menuHelp.getItems().addAll(menuHelpAbout);
 
-        menuHelpAbout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                callAboutDialog();
-            }
+        menuFileNew.setOnAction(actionEvent -> {
+
         });
 
-        menuFileExit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                System.exit(0);
-            }
+        menuFileOpen.setOnAction(actionEvent -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showOpenDialog(stage);
         });
+
+        menuFileSave.setOnAction(actionEvent -> {
+
+        });
+
+        menuFileExit.setOnAction(actionEvent -> System.exit(0));
+
+        menuHelpAbout.setOnAction(actionEvent -> callAboutDialog());
 
         return menuBar;
     }
