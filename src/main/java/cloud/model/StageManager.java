@@ -12,7 +12,7 @@ public class StageManager {
     }
 
     /**
-     * Statische Methode 'getInstance()Ä liefert die einzige Instanz der Klasse zurück.
+     * Statische Methode 'getInstance()' liefert die einzige Instanz der Klasse zurück.
      * Ist synchronisiert und somit thread-sicher.
      */
     public synchronized static StageManager getInstance() {
