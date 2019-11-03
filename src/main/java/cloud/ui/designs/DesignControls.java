@@ -1,15 +1,13 @@
-package cloud.ui;
+package cloud.ui.designs;
 
-import cloud.components.Database;
-import cloud.components.Storage;
-import cloud.components.VirtualMachine;
+import cloud.ui.dialogs.DialogAddComponent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-class DesignControls extends VBox {
+public class DesignControls extends VBox {
 
-    DesignControls() {
+    public DesignControls() {
         Button controlAdd = new Button("Add");
         Button controlRemove = new Button("Remove");
         Button controlEdit = new Button("Edit");
@@ -22,19 +20,6 @@ class DesignControls extends VBox {
 
         controlAdd.setOnAction(actionEvent -> {
             DialogAddComponent dialogAdd = new DialogAddComponent();
-            switch (dialogAdd.getItem()) {
-                case "Virtual Machine":
-                    new VirtualMachine();
-                    break;
-                case "Storage":
-                    new Storage();
-                    break;
-                case "Database":
-                    new Database();
-                    break;
-                default:
-                    break;
-            }
         });
 
         controlRemove.setOnAction(actionEvent -> {

@@ -1,6 +1,9 @@
 package cloud.ui;
 
 import cloud.constants.Consts;
+import cloud.ui.designs.DesignArea;
+import cloud.ui.designs.DesignControls;
+import cloud.ui.designs.DesignProperties;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

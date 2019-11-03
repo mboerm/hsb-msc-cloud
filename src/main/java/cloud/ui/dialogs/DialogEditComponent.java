@@ -1,4 +1,4 @@
-package cloud.ui;
+package cloud.ui.dialogs;
 
 public class DialogEditComponent {
 }
