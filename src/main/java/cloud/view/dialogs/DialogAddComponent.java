@@ -71,7 +71,7 @@ public class DialogAddComponent extends Dialog {
         Optional result = showAndWait();
 
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            setComponent("done");
+
         } else {
             setComponent("cancelled!");
         }
