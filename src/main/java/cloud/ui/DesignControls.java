@@ -3,15 +3,9 @@ package cloud.ui;
 import cloud.components.Database;
 import cloud.components.Storage;
 import cloud.components.VirtualMachine;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceDialog;
 import javafx.scene.layout.VBox;
-
-import java.util.Arrays;
-import java.util.List;
 
 class DesignControls extends VBox {
 
@@ -26,41 +20,30 @@ class DesignControls extends VBox {
         setMargin(controlEdit, new Insets(5, 5, 5, 5));
         getChildren().addAll(controlAdd, controlRemove, controlEdit);
 
-        controlAdd.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DialogAddComponent dialogAdd = new DialogAddComponent();
-                dialogAdd.showAndWait();
-
-                String result = dialogAdd.getResult().toString();
-                switch (result) {
-                    case "Virtual Machine":
-                        new VirtualMachine();
-                        break;
-
-                    case "Storage":
-                        new Storage();
-                        break;
-
-                    case "Database":
-                        new Database();
-                        break;
-                }
+        controlAdd.setOnAction(actionEvent -> {
+            DialogAddComponent dialogAdd = new DialogAddComponent();
+            System.out.println(dialogAdd.getItem());
+            switch (dialogAdd.getItem()) {
+                case "Virtual Machine":
+                    new VirtualMachine();
+                    break;
+                case "Storage":
+                    new Storage();
+                    break;
+                case "Database":
+                    new Database();
+                    break;
+                default:
+                    break;
             }
         });
 
-        controlRemove.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
+        controlRemove.setOnAction(actionEvent -> {
 
-            }
         });
 
-        controlEdit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
+        controlEdit.setOnAction(actionEvent -> {
 
-            }
         });
     }
 }
