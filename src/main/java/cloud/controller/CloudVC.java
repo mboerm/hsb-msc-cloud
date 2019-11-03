@@ -1,6 +1,7 @@
 package cloud.controller;
 
 import cloud.model.DataBean;
+import cloud.model.StageManager;
 import cloud.view.CloudView;
 
 public class CloudVC {
@@ -17,6 +18,6 @@ public class CloudVC {
     }
 
     public void show() {
-        view.show(dataBean.getPrimaryStage());
+        view.show(StageManager.getInstance().getPrimaryStage());
     }
 }
