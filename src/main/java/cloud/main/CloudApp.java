@@ -1,6 +1,7 @@
 package cloud.main;
 
-import cloud.ui.CloudUI;
+import cloud.controller.CloudVC;
+import cloud.model.DataBean;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -15,7 +16,12 @@ public class CloudApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Locale.setDefault(new Locale("en"));
-        CloudUI ui = new CloudUI();
-        ui.show(primaryStage);
+
+        // session scope /application scope Beans initialisieren!
+        // muss von Controller zu Controller weitergegeben werden
+        DataBean dataBean = new DataBean(primaryStage);
+
+        CloudVC vc = new CloudVC(dataBean);
+        vc.show();
     }
 }
