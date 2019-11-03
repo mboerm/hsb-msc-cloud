@@ -1,5 +1,6 @@
 package cloud.ui;
 
+import cloud.constants.Consts;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,13 +17,7 @@ class DialogAddComponent extends Dialog {
         setTitle("Add Component to Design");
         setHeaderText("Select component to add to design");
 
-        String[] arrayData = {
-                "Virtual Machine",
-                "Storage",
-                "Database"
-        };
-
-        ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableArrayList(arrayData));
+        ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableArrayList(Consts.COMPONENTS));
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(5, 5, 5, 5));
