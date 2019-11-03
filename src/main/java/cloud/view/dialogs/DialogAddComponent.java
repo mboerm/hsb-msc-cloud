@@ -1,13 +1,14 @@
-package cloud.ui.dialogs;
+package cloud.view.dialogs;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.util.Optional;
 
@@ -18,6 +19,13 @@ public class DialogAddComponent extends Dialog {
     public DialogAddComponent() {
         setTitle("Add Component to Design");
         setHeaderText("Select component type and define properties");
+        setResizable(true);
+
+        final Window window = getDialogPane().getScene().getWindow();
+        Stage stage = (Stage) window;
+
+        stage.setMinHeight(400);
+        stage.setMinWidth(300);
 
         Label componentsLabel = new Label("Component Type: ");
         String[] componentsArray = {"Virtual Machine", "Storage", "Database"};
@@ -25,12 +33,12 @@ public class DialogAddComponent extends Dialog {
         ChoiceBox<String> componentsBox = new ChoiceBox<>(FXCollections.observableArrayList(componentsArray));
 
         HBox boxPane = new HBox();
-        boxPane.setPadding(new Insets(5, 5, 5, 5));
-//        boxPane.setAlignment(Pos.CENTER);
+        boxPane.setSpacing(10);
+        boxPane.setPadding(new Insets(10, 10, 10, 10));
         boxPane.getChildren().addAll(componentsLabel, componentsBox);
 
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(5, 5, 5, 5));
+        pane.setPadding(new Insets(10, 10, 10, 10));
         pane.setTop(boxPane);
         pane.setCenter(new PaneComponent());
         getDialogPane().setContent(pane);
