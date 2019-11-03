@@ -1,6 +1,6 @@
 package cloud.main;
 
-import cloud.controller.CloudVC;
+import cloud.ui.CloudUI;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -15,7 +15,7 @@ public class CloudApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Locale.setDefault(new Locale("en"));
-        CloudVC cloudVC = new CloudVC(primaryStage);
-        cloudVC.show();
+        CloudUI ui = new CloudUI();
+        ui.show(primaryStage);
     }
 }
