@@ -1,14 +1,14 @@
-package cloud.design;
+package cloud.model;
 
 import cloud.components.Component;
 
 import java.util.ArrayList;
 
-public class DesignSession {
+public class Session {
 
     private ArrayList<Component> components;
 
-    DesignSession() {
+    Session() {
 
     }
 
