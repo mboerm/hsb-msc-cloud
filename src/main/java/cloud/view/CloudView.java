@@ -1,6 +1,8 @@
 package cloud.view;
 
 import cloud.constants.Consts;
+import cloud.model.Session;
+import cloud.model.StageManager;
 import cloud.view.designs.DesignArea;
 import cloud.view.designs.DesignControls;
 import cloud.view.designs.DesignProperties;
@@ -16,23 +18,27 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class CloudView {
-    private Stage stage;
     private Scene scene;
+
+    private Menu menuFile;
+    private Menu menuEdit;
+    private Menu menuView;
+    private Menu menuDesign;
+    private Menu menuServices;
+    private Menu menuHelp;
+    private Label taskLbl;
 
     public CloudView() {
         BorderPane rootPane = new BorderPane();
-
         rootPane.setTop(initMenuBar());
         rootPane.setLeft(initDesignProperties());
         rootPane.setCenter(initDesignArea());
         rootPane.setRight(initDesignControls());
         rootPane.setBottom(initTaskBar());
-
         scene = new Scene(rootPane, Consts.WINDOW_DEFAULT_WIDTH, Consts.WINDOW_DEFAULT_HEIGHT);
     }
 
     public void show(Stage stage) {
-        this.stage = stage;
         stage.setMinHeight(Consts.WINDOW_MIN_HEIGHT);
         stage.setMinWidth(Consts.WINDOW_MIN_WIDTH);
         stage.setTitle(Consts.APP_TITLE);
@@ -48,74 +54,61 @@ public class CloudView {
         menuBar.getMenus().add(initMenuView());
         menuBar.getMenus().add(initMenuServices());
         menuBar.getMenus().add(initMenuHelp());
+
         return menuBar;
     }
 
     private Menu initMenuFile() {
-        Menu menuFile = new Menu("File");
+        menuFile = new Menu("File");
         MenuItem menuFileNew = new MenuItem("New Session");
         MenuItem menuFileOpen = new MenuItem("Open Session");
         MenuItem menuFileSave = new MenuItem("Save Session");
         MenuItem menuFileExit = new MenuItem("Exit");
-
         menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
-
-        menuFileNew.setOnAction(actionEvent -> {
-
-        });
-
-        menuFileOpen.setOnAction(actionEvent -> {
-            FileChooser fileChooser = new FileChooser();
-            File selectedFile = fileChooser.showOpenDialog(stage);
-        });
-
-        menuFileSave.setOnAction(actionEvent -> {
-
-        });
-
-        menuFileExit.setOnAction(actionEvent -> System.exit(0));
 
         return menuFile;
     }
 
     private Menu initMenuEdit() {
-        Menu menuEdit = new Menu("Edit");
+        menuEdit = new Menu("Edit");
 
         return menuEdit;
     }
 
     private Menu initMenuView() {
-        Menu menuView = new Menu("View");
+        menuView = new Menu("View");
 
         return menuView;
     }
 
     private Menu initMenuDesign() {
-        Menu menuDesign = new Menu("Design");
+        menuDesign = new Menu("Design");
         MenuItem menuDesignAnalyse = new MenuItem("Analyse Design");
         MenuItem menuDesignOptimize = new MenuItem("Optimize Design");
         MenuItem menuDesignReset = new MenuItem("Reset Design");
-
         menuDesign.getItems().addAll(menuDesignAnalyse, menuDesignOptimize, menuDesignReset);
+
+        menuDesignReset.setOnAction(actionEvent -> {
+
+        });
 
         return menuDesign;
     }
 
     private Menu initMenuServices() {
-        Menu menuServices = new Menu("Services");
+        menuServices = new Menu("Services");
         MenuItem menuServicesAmazon = new MenuItem("Amazon Web Services");
         MenuItem menuServicesWindows = new MenuItem("Windows Azure");
         MenuItem menuServicesGoogle = new MenuItem("Google Cloud Platform");
         menuServicesWindows.setDisable(true);
         menuServicesGoogle.setDisable(true);
-
         menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
 
         return menuServices;
     }
 
     private Menu initMenuHelp() {
-        Menu menuHelp = new Menu("Help");
+        menuHelp = new Menu("Help");
         MenuItem menuHelpAbout = new MenuItem("About");
         menuHelp.getItems().addAll(menuHelpAbout);
 
@@ -124,7 +117,6 @@ public class CloudView {
             alert.setTitle("About " + Consts.APP_TITLE);
             alert.setHeaderText(null);
             alert.setContentText(Consts.ABOUT_TEXT);
-
             alert.showAndWait();
         });
 
@@ -146,14 +138,39 @@ public class CloudView {
     private HBox initTaskBar() {
         HBox taskBox = new HBox();
         taskBox.setPadding(new Insets(5, 5, 5, 5));
-
-        Label taskLbl = new Label("Init");
+        taskLbl = new Label("Init");
         taskLbl.setTextAlignment(TextAlignment.RIGHT);
         taskLbl.setWrapText(true);
-
         taskBox.setAlignment(Pos.CENTER_RIGHT);
         taskBox.getChildren().add(taskLbl);
-
         return taskBox;
+    }
+
+    public Menu getMenuFile() {
+        return this.menuFile;
+    }
+
+    public Menu getMenuEdit() {
+        return this.menuEdit;
+    }
+
+    public Menu getMenuView() {
+        return this.menuView;
+    }
+
+    public Menu getMenuDesign() {
+        return this.menuDesign;
+    }
+
+    public Menu getMenuServices() {
+        return this.menuServices;
+    }
+
+    public Menu getMenuHelp() {
+        return this.menuHelp;
+    }
+
+    public Label getTaskBar() {
+        return this.taskLbl;
     }
 }
