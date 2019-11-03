@@ -1,6 +1,6 @@
 package cloud.components;
 
-class Component {
+public class Component {
 
     private String name;
     private componentCategory category;
