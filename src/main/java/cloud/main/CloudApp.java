@@ -1,7 +1,7 @@
 package cloud.main;
 
 import cloud.controller.CloudVC;
-import cloud.model.DataBean;
+import cloud.model.Session;
 import cloud.model.StageManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -20,9 +20,9 @@ public class CloudApp extends Application {
 
         StageManager.getInstance().setPrimaryStage(primaryStage);
 
-        DataBean dataBean = new DataBean();
+        Session session = new Session();
 
-        CloudVC vc = new CloudVC(dataBean);
+        CloudVC vc = new CloudVC(session);
         vc.show();
     }
 }
