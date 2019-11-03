@@ -8,12 +8,6 @@ public final class Consts {
     public static final int WINDOW_MIN_WIDTH = 800;
     public static final int WINDOW_MIN_HEIGHT = 600;
 
-    public static final String[] COMPONENTS = new String[]{
-            "Virtual Machine",
-            "Storage",
-            "Database"
-    };
-
     public static final String ABOUT_TEXT =
             "This tool is the result of the master thesis.";
 
