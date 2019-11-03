@@ -39,40 +39,23 @@ public class CloudUI {
 
     private MenuBar initMenuBar() {
         MenuBar menuBar = new MenuBar();
+        menuBar.getMenus().add(initMenuFile());
+        menuBar.getMenus().add(initMenuEdit());
+        menuBar.getMenus().add(initMenuDesign());
+        menuBar.getMenus().add(initMenuView());
+        menuBar.getMenus().add(initMenuServices());
+        menuBar.getMenus().add(initMenuHelp());
+        return menuBar;
+    }
 
+    private Menu initMenuFile() {
         Menu menuFile = new Menu("File");
         MenuItem menuFileNew = new MenuItem("New Session");
         MenuItem menuFileOpen = new MenuItem("Open Session");
         MenuItem menuFileSave = new MenuItem("Save Session");
         MenuItem menuFileExit = new MenuItem("Exit");
 
-        Menu menuEdit = new Menu("Edit");
-        Menu menuView = new Menu("View");
-
-        Menu menuDesign = new Menu("Design");
-        MenuItem menuDesignReset = new MenuItem("Reset Design");
-
-        Menu menuServices = new Menu("Services");
-        MenuItem menuServicesAmazon = new MenuItem("Amazon Web Services");
-        MenuItem menuServicesWindows = new MenuItem("Windows Azure");
-        MenuItem menuServicesGoogle = new MenuItem("Google Cloud Platform");
-        menuServicesWindows.setDisable(true);
-        menuServicesGoogle.setDisable(true);
-
-        Menu menuHelp = new Menu("Help");
-        MenuItem menuHelpAbout = new MenuItem("About");
-
-        menuBar.getMenus().add(menuFile);
-        menuBar.getMenus().add(menuEdit);
-        menuBar.getMenus().add(menuView);
-        menuBar.getMenus().add(menuDesign);
-        menuBar.getMenus().add(menuServices);
-        menuBar.getMenus().add(menuHelp);
-
         menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
-        menuDesign.getItems().addAll(menuDesignReset);
-        menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
-        menuHelp.getItems().addAll(menuHelpAbout);
 
         menuFileNew.setOnAction(actionEvent -> {
 
@@ -89,9 +72,60 @@ public class CloudUI {
 
         menuFileExit.setOnAction(actionEvent -> System.exit(0));
 
-        menuHelpAbout.setOnAction(actionEvent -> callAboutDialog());
+        return menuFile;
+    }
 
-        return menuBar;
+    private Menu initMenuEdit() {
+        Menu menuEdit = new Menu("Edit");
+
+        return menuEdit;
+    }
+
+    private Menu initMenuView() {
+        Menu menuView = new Menu("View");
+
+        return menuView;
+    }
+
+    private Menu initMenuDesign() {
+        Menu menuDesign = new Menu("Design");
+        MenuItem menuDesignAnalyse = new MenuItem("Analyse Design");
+        MenuItem menuDesignOptimize = new MenuItem("Optimize Design");
+        MenuItem menuDesignReset = new MenuItem("Reset Design");
+
+        menuDesign.getItems().addAll(menuDesignAnalyse, menuDesignOptimize, menuDesignReset);
+
+        return menuDesign;
+    }
+
+    private Menu initMenuServices() {
+        Menu menuServices = new Menu("Services");
+        MenuItem menuServicesAmazon = new MenuItem("Amazon Web Services");
+        MenuItem menuServicesWindows = new MenuItem("Windows Azure");
+        MenuItem menuServicesGoogle = new MenuItem("Google Cloud Platform");
+        menuServicesWindows.setDisable(true);
+        menuServicesGoogle.setDisable(true);
+
+        menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
+
+        return menuServices;
+    }
+
+    private Menu initMenuHelp() {
+        Menu menuHelp = new Menu("Help");
+        MenuItem menuHelpAbout = new MenuItem("About");
+        menuHelp.getItems().addAll(menuHelpAbout);
+
+        menuHelpAbout.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("About " + Consts.APP_TITLE);
+            alert.setHeaderText(null);
+            alert.setContentText(Consts.ABOUT_TEXT);
+
+            alert.showAndWait();
+        });
+
+        return menuHelp;
     }
 
     private DesignProperties initDesignProperties() {
@@ -118,14 +152,5 @@ public class CloudUI {
         taskBox.getChildren().add(taskLbl);
 
         return taskBox;
-    }
-
-    private void callAboutDialog() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("About " + Consts.APP_TITLE);
-        alert.setHeaderText(null);
-        alert.setContentText(Consts.ABOUT_TEXT);
-
-        alert.showAndWait();
     }
 }
