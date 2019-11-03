@@ -8,6 +8,7 @@ public class Database extends Component {
     private dbType db;
 
     public Database() {
+        setName("DB");
         setCategory(componentCategory.DATABASE);
         setDBType(db.DEFAULT);
     }
