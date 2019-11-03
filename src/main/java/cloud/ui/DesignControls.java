@@ -22,7 +22,6 @@ class DesignControls extends VBox {
 
         controlAdd.setOnAction(actionEvent -> {
             DialogAddComponent dialogAdd = new DialogAddComponent();
-            System.out.println(dialogAdd.getItem());
             switch (dialogAdd.getItem()) {
                 case "Virtual Machine":
                     new VirtualMachine();
