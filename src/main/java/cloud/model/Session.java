@@ -1,15 +1,13 @@
 package cloud.model;
 
-import cloud.components.Component;
-
 import java.util.ArrayList;
 
 public class Session {
 
     private ArrayList<Component> components;
 
-    Session() {
-
+    public Session() {
+        components = new ArrayList<>();
     }
 
     public void addComponent(Component comp) {
@@ -22,6 +20,10 @@ public class Session {
 
     public void clearComponents() {
         this.components.clear();
+    }
+
+    public void openSession() {
+        // TODO: open session from file
     }
 
     public void saveSession() {
