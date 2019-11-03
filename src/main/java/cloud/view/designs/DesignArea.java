@@ -1,4 +1,4 @@
-package cloud.ui.designs;
+package cloud.view.designs;
 
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;

@@ -1,6 +1,6 @@
-package cloud.ui.designs;
+package cloud.view.designs;
 
-import cloud.ui.dialogs.DialogAddComponent;
+import cloud.view.dialogs.DialogAddComponent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;

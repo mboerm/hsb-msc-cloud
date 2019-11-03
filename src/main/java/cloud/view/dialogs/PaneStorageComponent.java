@@ -1,4 +1,4 @@
-package cloud.ui.dialogs;
+package cloud.view.dialogs;
 
 import javafx.scene.control.Label;
 
