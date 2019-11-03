@@ -8,6 +8,10 @@ public final class Consts {
     public static final int WINDOW_MIN_WIDTH = 800;
     public static final int WINDOW_MIN_HEIGHT = 600;
 
+    public enum COMPONENT_CATEGORIES {DEFAULT, VM, STORAGE, DATABASE};
+    public enum INSTANCE_TYPES {NORMAL, SPOT, RESERVED};
+    public enum DATABASE_TYPES {SQL, MySQL, NoSQL, Document};
+
     public static final String ABOUT_TEXT =
             "This tool is the result of the master thesis.";
 

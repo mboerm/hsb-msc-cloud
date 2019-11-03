@@ -1,21 +1,22 @@
 package cloud.components;
 
+import static cloud.constants.Consts.*;
+
 public class VirtualMachine extends Component {
 
     // TODO: Parameter für VMs hinzufügen
 
-    private enum instanceType {NORMAL, SPOT, RESERVED};
-    private instanceType instance;
+    private INSTANCE_TYPES instance;
 
     public VirtualMachine() {
-        setCategory(componentCategory.VM);
-        setInstanceType(instanceType.NORMAL);
+        setCategory(COMPONENT_CATEGORIES.VM);
+        setInstanceType(INSTANCE_TYPES.NORMAL);
     }
 
-    public instanceType getInstanceType() {
+    public INSTANCE_TYPES getInstanceType() {
         return this.instance;
     }
-    public void setInstanceType(instanceType instance) {
+    public void setInstanceType(INSTANCE_TYPES instance) {
         this.instance = instance;
     }
 }

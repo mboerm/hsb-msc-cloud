@@ -1,22 +1,23 @@
 package cloud.components;
 
+import static cloud.constants.Consts.*;
+
 public class Database extends Component {
 
     // TODO: Parameter für Datenbanken hinzufügen
 
-    private enum dbType {DEFAULT, SQL, MySQL, NoSQL, Document};
-    private dbType db;
+    private DATABASE_TYPES db;
 
     public Database() {
         setName("DB");
-        setCategory(componentCategory.DATABASE);
-        setDBType(db.DEFAULT);
+        setCategory(COMPONENT_CATEGORIES.DATABASE);
+        setDBType(db.SQL);
     }
 
-    public dbType getDBType() {
+    public DATABASE_TYPES getDBType() {
         return this.db;
     }
-    public void setDBType(dbType db) {
+    public void setDBType(DATABASE_TYPES db) {
         this.db = db;
     }
 }
