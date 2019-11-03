@@ -1,14 +1,15 @@
 package cloud.components;
 
+import static cloud.constants.Consts.*;
+
 public class Component {
 
     private String name;
-    private componentCategory category;
-    protected enum componentCategory {DEFAULT, VM, STORAGE, DATABASE};
+    private COMPONENT_CATEGORIES category;
 
     Component() {
         name = "Default";
-        category = componentCategory.DEFAULT;
+        category = COMPONENT_CATEGORIES.DEFAULT;
     }
 
     public String getName() {
@@ -18,10 +19,10 @@ public class Component {
         this.name = name;
     }
 
-    public componentCategory getCategory() {
+    public COMPONENT_CATEGORIES getCategory() {
         return this.category;
     }
-    public void setCategory(componentCategory category) {
+    public void setCategory(COMPONENT_CATEGORIES category) {
         this.category = category;
     }
 }
