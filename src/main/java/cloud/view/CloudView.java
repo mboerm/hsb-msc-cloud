@@ -1,9 +1,9 @@
-package cloud.ui;
+package cloud.view;
 
 import cloud.constants.Consts;
-import cloud.ui.designs.DesignArea;
-import cloud.ui.designs.DesignControls;
-import cloud.ui.designs.DesignProperties;
+import cloud.view.designs.DesignArea;
+import cloud.view.designs.DesignControls;
+import cloud.view.designs.DesignProperties;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,11 +15,11 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-public class CloudUI {
+public class CloudView {
     private Stage stage;
     private Scene scene;
 
-    public CloudUI() {
+    public CloudView() {
         BorderPane rootPane = new BorderPane();
 
         rootPane.setTop(initMenuBar());
