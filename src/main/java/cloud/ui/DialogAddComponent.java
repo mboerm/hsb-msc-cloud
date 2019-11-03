@@ -6,17 +6,21 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
+import java.util.Optional;
+
 class DialogAddComponent extends Dialog {
 
-    private final String[] arrayData = {
-            "Virtual Machine",
-            "Storage",
-            "Database"
-            };
+    private String item;
 
     DialogAddComponent() {
         setTitle("Add Component to Design");
         setHeaderText("Select component to add to design");
+
+        String[] arrayData = {
+                "Virtual Machine",
+                "Storage",
+                "Database"
+        };
 
         ComboBox<String> choiceBox = new ComboBox<>(FXCollections.observableArrayList(arrayData));
 
@@ -32,11 +36,19 @@ class DialogAddComponent extends Dialog {
         Button okButton = (Button)getDialogPane().lookupButton(ButtonType.OK);
         okButton.setText("Add");
 
-        setResultConverter(dialogButton -> {
-            if (dialogButton == ButtonType.OK) {
-                return model.getSelectedItem().toString();
-            }
-            return "cancelled.";
-        });
+        Optional result = showAndWait();
+
+        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+            setItem(model.getSelectedItem());
+        } else {
+            setItem("cancelled!");
+        }
+    }
+
+    private void setItem(String item) {
+        this.item = item;
+    }
+    String getItem() {
+        return this.item;
     }
 }
