@@ -1,12 +1,14 @@
-package cloud.components;
+package cloud.model;
+
+import cloud.model.Component;
 
 import static cloud.constants.Consts.*;
 
-public class Storage extends Component {
+public class StorageComponent extends Component {
 
     // TODO: Parameter für Storage hinzufügen
 
-    public Storage() {
+    public StorageComponent() {
         setCategory(COMPONENT_CATEGORIES.STORAGE);
     }
 }

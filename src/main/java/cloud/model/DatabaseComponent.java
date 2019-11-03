@@ -1,14 +1,16 @@
-package cloud.components;
+package cloud.model;
+
+import cloud.model.Component;
 
 import static cloud.constants.Consts.*;
 
-public class Database extends Component {
+public class DatabaseComponent extends Component {
 
     // TODO: Parameter für Datenbanken hinzufügen
 
     private DATABASE_TYPES db;
 
-    public Database() {
+    public DatabaseComponent() {
         setName("DB");
         setCategory(COMPONENT_CATEGORIES.DATABASE);
         setDBType(db.SQL);

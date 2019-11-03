@@ -1,4 +1,4 @@
-package cloud.components;
+package cloud.model;
 
 import static cloud.constants.Consts.*;
 

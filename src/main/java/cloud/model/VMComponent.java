@@ -1,14 +1,16 @@
-package cloud.components;
+package cloud.model;
+
+import cloud.model.Component;
 
 import static cloud.constants.Consts.*;
 
-public class VirtualMachine extends Component {
+public class VMComponent extends Component {
 
     // TODO: Parameter für VMs hinzufügen
 
     private INSTANCE_TYPES instance;
 
-    public VirtualMachine() {
+    public VMComponent() {
         setCategory(COMPONENT_CATEGORIES.VM);
         setInstanceType(INSTANCE_TYPES.NORMAL);
     }
