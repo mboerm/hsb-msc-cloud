@@ -1,9 +1,12 @@
 package cloud.controller;
 
+import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
 import cloud.model.Session;
 import cloud.model.StageManager;
 import cloud.view.CloudView;
-import javafx.stage.FileChooser;
+
+import static cloud.constants.Consts.*;
 
 import java.io.File;
 
@@ -18,7 +21,10 @@ public class CloudVC {
     public CloudVC(Session session) {
         this.session = session;
         this.view = new CloudView();
+        initViewHandler();
+    }
 
+    private void initViewHandler() {
         view.getMenuFile().getItems().get(0).setOnAction(actionEvent -> {
         });
 
@@ -33,13 +39,27 @@ public class CloudVC {
         });
 
         view.getMenuFile().getItems().get(3).setOnAction(actionEvent -> System.exit(0));
+
+        view.getMenuDesign().getItems().get(2).setOnAction(actionEvent -> {
+
+        });
+
+        view.getMenuHelp().getItems().get(0).setOnAction(actionEvent -> showAboutDialog());
     }
 
-    public void newSession() {
+    private void newSession() {
         this.session = new Session();
     }
-    public Session getSession() {
+    private Session getSession() {
         return this.session;
+    }
+
+    private void showAboutDialog() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About " + APP_TITLE);
+        alert.setHeaderText(null);
+        alert.setContentText(ABOUT_TEXT);
+        alert.showAndWait();
     }
 
     public void show() {
