@@ -2,7 +2,7 @@ package cloud.provider;
 
 public class ProviderFactory {
 
-    public Provider createProvider(String provider) {
+    public Provider getProvider(String provider) {
         if (provider.equals("Amazon")) {
             return new Amazon();
         }
