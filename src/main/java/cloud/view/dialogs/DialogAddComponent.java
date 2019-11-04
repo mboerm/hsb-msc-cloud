@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class DialogAddComponent extends Dialog {
 
-    private String component;
+    private PaneComponent paneComponent;
 
     public DialogAddComponent() {
         setTitle("Add Component to Design");
@@ -54,25 +54,25 @@ public class DialogAddComponent extends Dialog {
                 okButton.setDisable(false);
                 switch (newItem) {
                     case "Virtual Machine":
-                        pane.setCenter(new PaneComputeComponent());
+                        paneComponent = new PaneComputeComponent();
                         break;
                     case "Database":
-                        pane.setCenter(new PaneDatabaseComponent());
+                        paneComponent = new PaneDatabaseComponent();
                         break;
                     case "Storage":
-                        pane.setCenter(new PaneStorageComponent());
+                        paneComponent = new PaneStorageComponent();
                         break;
                     default:
                         break;
                 }
+                pane.setCenter(paneComponent);
             }
         });
 
         Optional result = showAndWait();
-
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-
-        } else {
+            // TODO: Inhalte aus paneComponent zurückgeben
+            System.out.println("pressed add button");
         }
     }
 }
