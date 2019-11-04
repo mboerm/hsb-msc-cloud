@@ -73,14 +73,6 @@ public class DialogAddComponent extends Dialog {
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
 
         } else {
-            setComponent("cancelled!");
         }
-    }
-
-    private void setComponent(String component) {
-        this.component = component;
-    }
-    public String getComponent() {
-        return this.component;
     }
 }
