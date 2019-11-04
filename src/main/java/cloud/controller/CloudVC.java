@@ -1,6 +1,7 @@
 package cloud.controller;
 
 import cloud.provider.ProviderFactory;
+import cloud.view.dialogs.DialogAddComponent;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import cloud.model.Session;
@@ -49,6 +50,12 @@ public class CloudVC {
         view.getMenuServicesGoogle().setOnAction(actionEvent -> providerFactory.getProvider("Google"));
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
+
+        view.getDesignControls().getControlAdd().setOnAction(actionEvent -> {
+            DialogAddComponent dialogAdd = new DialogAddComponent();
+        });
+        view.getDesignControls().getControlRemove().setOnAction(actionEvent -> {});
+        view.getDesignControls().getControlEdit().setOnAction(actionEvent -> {});
     }
 
     private void newSession() {
