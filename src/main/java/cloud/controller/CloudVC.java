@@ -1,5 +1,6 @@
 package cloud.controller;
 
+import cloud.provider.ProviderFactory;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import cloud.model.Session;
@@ -14,37 +15,40 @@ public class CloudVC {
 
     // Model
     private Session session = null;
+    private ProviderFactory providerFactory = null;
 
     // View
     private CloudView view;
 
     public CloudVC(Session session) {
         this.session = session;
+        this.providerFactory = new ProviderFactory();
         this.view = new CloudView();
         initViewHandler();
     }
 
     private void initViewHandler() {
-        view.getMenuFile().getItems().get(0).setOnAction(actionEvent -> {
-        });
+        view.getMenuFileNew().setOnAction(actionEvent -> newSession());
 
-        view.getMenuFile().getItems().get(1).setOnAction(actionEvent -> {
+        view.getMenuFileOpen().setOnAction(actionEvent -> {
             FileChooser fileChooser = new FileChooser();
             File selectedFile = fileChooser.showOpenDialog(StageManager.getInstance().getPrimaryStage());
         });
 
-        view.getMenuFile().getItems().get(2).setOnAction(actionEvent -> {
+        view.getMenuFileSave().setOnAction(actionEvent -> {
             FileChooser fileChooser = new FileChooser();
             File savedFile = fileChooser.showSaveDialog(StageManager.getInstance().getPrimaryStage());
         });
 
-        view.getMenuFile().getItems().get(3).setOnAction(actionEvent -> System.exit(0));
+        view.getMenuFileExit().setOnAction(actionEvent -> System.exit(0));
 
-        view.getMenuDesign().getItems().get(2).setOnAction(actionEvent -> {
+        view.getMenuDesignReset().setOnAction(actionEvent -> {});
 
-        });
+        view.getMenuServicesAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
+        view.getMenuServicesWindows().setOnAction(actionEvent -> providerFactory.getProvider("Windows"));
+        view.getMenuServicesGoogle().setOnAction(actionEvent -> providerFactory.getProvider("Google"));
 
-        view.getMenuHelp().getItems().get(0).setOnAction(actionEvent -> showAboutDialog());
+        view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
     }
 
     private void newSession() {
