@@ -1,15 +1,9 @@
 package cloud.provider;
 
-public class Windows {
+class Windows extends Provider {
 
-    private String name = "Windows";
-    private String serviceName = "Windows Azure";
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String getServiceName() {
-        return this.serviceName;
+    Windows() {
+        setName("Windows");
+        setServiceName("Windows Azure");
     }
 }
