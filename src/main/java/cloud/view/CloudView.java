@@ -1,6 +1,5 @@
 package cloud.view;
 
-import cloud.constants.Consts;
 import cloud.view.designs.DesignArea;
 import cloud.view.designs.DesignControls;
 import cloud.view.designs.DesignProperties;
@@ -11,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+
+import static cloud.constants.Consts.*;
 
 public class CloudView {
     private Scene scene;
@@ -28,6 +29,10 @@ public class CloudView {
     private MenuItem menuHelpAbout;
     private Label taskLbl;
 
+    private DesignProperties designProperties;
+    private DesignArea designArea;
+    private DesignControls designControls;
+
     public CloudView() {
         BorderPane rootPane = new BorderPane();
         rootPane.setTop(initMenuBar());
@@ -35,13 +40,13 @@ public class CloudView {
         rootPane.setCenter(initDesignArea());
         rootPane.setRight(initDesignControls());
         rootPane.setBottom(initTaskBar());
-        scene = new Scene(rootPane, Consts.WINDOW_DEFAULT_WIDTH, Consts.WINDOW_DEFAULT_HEIGHT);
+        scene = new Scene(rootPane, WINDOW_DEFAULT_WIDTH, WINDOW_DEFAULT_HEIGHT);
     }
 
     public void show(Stage stage) {
-        stage.setMinHeight(Consts.WINDOW_MIN_HEIGHT);
-        stage.setMinWidth(Consts.WINDOW_MIN_WIDTH);
-        stage.setTitle(Consts.APP_TITLE);
+        stage.setMinHeight(WINDOW_MIN_HEIGHT);
+        stage.setMinWidth(WINDOW_MIN_WIDTH);
+        stage.setTitle(APP_TITLE);
         stage.setScene(scene);
         stage.show();
     }
@@ -105,15 +110,18 @@ public class CloudView {
     }
 
     private DesignProperties initDesignProperties() {
-        return new DesignProperties();
+        designProperties = new DesignProperties();
+        return designProperties;
     }
 
     private DesignArea initDesignArea() {
-        return new DesignArea();
+        designArea = new DesignArea();
+        return designArea;
     }
 
     private DesignControls initDesignControls() {
-        return new DesignControls();
+        designControls = new DesignControls();
+        return designControls;
     }
 
     private HBox initTaskBar() {
@@ -139,7 +147,6 @@ public class CloudView {
     public MenuItem getMenuFileExit() {
         return this.menuFileExit;
     }
-
     public MenuItem getMenuDesignAnalyse() {
         return this.menuDesignAnalyse;
     }
@@ -149,7 +156,6 @@ public class CloudView {
     public MenuItem getMenuDesignReset() {
         return this.menuDesignReset;
     }
-
     public MenuItem getMenuServicesAmazon() {
         return this.menuServicesAmazon;
     }
@@ -159,12 +165,24 @@ public class CloudView {
     public MenuItem getMenuServicesGoogle() {
         return this.menuServicesGoogle;
     }
-
     public MenuItem getMenuHelpAbout() {
         return this.menuHelpAbout;
     }
 
-    public Label getTaskBar() {
+    public void setTaskLbl(String msg) {
+        this.taskLbl.setText(msg);
+    }
+    public Label getTaskLbl() {
         return this.taskLbl;
+    }
+
+    public DesignProperties getDesignProperties() {
+        return this.designProperties;
+    }
+    public DesignArea getDesignArea() {
+        return this.designArea;
+    }
+    public DesignControls getDesignControls() {
+        return this.designControls;
     }
 }
