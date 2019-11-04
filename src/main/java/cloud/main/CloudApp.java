@@ -18,10 +18,13 @@ public class CloudApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         Locale.setDefault(new Locale("en"));
 
+        // set primarystage in stage manager
         StageManager.getInstance().setPrimaryStage(primaryStage);
 
+        // create new tool session to save data
         Session session = new Session();
 
+        // create view controller and show ui
         CloudVC vc = new CloudVC(session);
         vc.show();
     }
