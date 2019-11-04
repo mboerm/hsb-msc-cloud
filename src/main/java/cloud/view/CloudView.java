@@ -1,8 +1,6 @@
 package cloud.view;
 
 import cloud.constants.Consts;
-import cloud.model.Session;
-import cloud.model.StageManager;
 import cloud.view.designs.DesignArea;
 import cloud.view.designs.DesignControls;
 import cloud.view.designs.DesignProperties;
@@ -12,10 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 public class CloudView {
     private Scene scene;
@@ -54,7 +49,6 @@ public class CloudView {
         menuBar.getMenus().add(initMenuView());
         menuBar.getMenus().add(initMenuServices());
         menuBar.getMenus().add(initMenuHelp());
-
         return menuBar;
     }
 
@@ -65,19 +59,16 @@ public class CloudView {
         MenuItem menuFileSave = new MenuItem("Save Session");
         MenuItem menuFileExit = new MenuItem("Exit");
         menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
-
         return menuFile;
     }
 
     private Menu initMenuEdit() {
         menuEdit = new Menu("Edit");
-
         return menuEdit;
     }
 
     private Menu initMenuView() {
         menuView = new Menu("View");
-
         return menuView;
     }
 
@@ -87,11 +78,6 @@ public class CloudView {
         MenuItem menuDesignOptimize = new MenuItem("Optimize Design");
         MenuItem menuDesignReset = new MenuItem("Reset Design");
         menuDesign.getItems().addAll(menuDesignAnalyse, menuDesignOptimize, menuDesignReset);
-
-        menuDesignReset.setOnAction(actionEvent -> {
-
-        });
-
         return menuDesign;
     }
 
@@ -103,7 +89,6 @@ public class CloudView {
         menuServicesWindows.setDisable(true);
         menuServicesGoogle.setDisable(true);
         menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
-
         return menuServices;
     }
 
@@ -111,15 +96,6 @@ public class CloudView {
         menuHelp = new Menu("Help");
         MenuItem menuHelpAbout = new MenuItem("About");
         menuHelp.getItems().addAll(menuHelpAbout);
-
-        menuHelpAbout.setOnAction(actionEvent -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("About " + Consts.APP_TITLE);
-            alert.setHeaderText(null);
-            alert.setContentText(Consts.ABOUT_TEXT);
-            alert.showAndWait();
-        });
-
         return menuHelp;
     }
 
