@@ -15,12 +15,17 @@ import javafx.stage.Stage;
 public class CloudView {
     private Scene scene;
 
-    private Menu menuFile;
-    private Menu menuEdit;
-    private Menu menuView;
-    private Menu menuDesign;
-    private Menu menuServices;
-    private Menu menuHelp;
+    private MenuItem menuFileNew;
+    private MenuItem menuFileOpen;
+    private MenuItem menuFileSave;
+    private MenuItem menuFileExit;
+    private MenuItem menuDesignAnalyse;
+    private MenuItem menuDesignOptimize;
+    private MenuItem menuDesignReset;
+    private MenuItem menuServicesAmazon;
+    private MenuItem menuServicesWindows;
+    private MenuItem menuServicesGoogle;
+    private MenuItem menuHelpAbout;
     private Label taskLbl;
 
     public CloudView() {
@@ -53,39 +58,39 @@ public class CloudView {
     }
 
     private Menu initMenuFile() {
-        menuFile = new Menu("File");
-        MenuItem menuFileNew = new MenuItem("New Session");
-        MenuItem menuFileOpen = new MenuItem("Open Session");
-        MenuItem menuFileSave = new MenuItem("Save Session");
-        MenuItem menuFileExit = new MenuItem("Exit");
+        Menu menuFile = new Menu("File");
+        menuFileNew = new MenuItem("New Session");
+        menuFileOpen = new MenuItem("Open Session");
+        menuFileSave = new MenuItem("Save Session");
+        menuFileExit = new MenuItem("Exit");
         menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
         return menuFile;
     }
 
     private Menu initMenuEdit() {
-        menuEdit = new Menu("Edit");
+        Menu menuEdit = new Menu("Edit");
         return menuEdit;
     }
 
     private Menu initMenuView() {
-        menuView = new Menu("View");
+        Menu menuView = new Menu("View");
         return menuView;
     }
 
     private Menu initMenuDesign() {
-        menuDesign = new Menu("Design");
-        MenuItem menuDesignAnalyse = new MenuItem("Analyse Design");
-        MenuItem menuDesignOptimize = new MenuItem("Optimize Design");
-        MenuItem menuDesignReset = new MenuItem("Reset Design");
+        Menu menuDesign = new Menu("Design");
+        menuDesignAnalyse = new MenuItem("Analyse Design");
+        menuDesignOptimize = new MenuItem("Optimize Design");
+        menuDesignReset = new MenuItem("Reset Design");
         menuDesign.getItems().addAll(menuDesignAnalyse, menuDesignOptimize, menuDesignReset);
         return menuDesign;
     }
 
     private Menu initMenuServices() {
-        menuServices = new Menu("Services");
-        MenuItem menuServicesAmazon = new MenuItem("Amazon Web Services");
-        MenuItem menuServicesWindows = new MenuItem("Windows Azure");
-        MenuItem menuServicesGoogle = new MenuItem("Google Cloud Platform");
+        Menu menuServices = new Menu("Services");
+        menuServicesAmazon = new MenuItem("Amazon Web Services");
+        menuServicesWindows = new MenuItem("Windows Azure");
+        menuServicesGoogle = new MenuItem("Google Cloud Platform");
         menuServicesWindows.setDisable(true);
         menuServicesGoogle.setDisable(true);
         menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
@@ -93,8 +98,8 @@ public class CloudView {
     }
 
     private Menu initMenuHelp() {
-        menuHelp = new Menu("Help");
-        MenuItem menuHelpAbout = new MenuItem("About");
+        Menu menuHelp = new Menu("Help");
+        menuHelpAbout = new MenuItem("About");
         menuHelp.getItems().addAll(menuHelpAbout);
         return menuHelp;
     }
@@ -122,28 +127,41 @@ public class CloudView {
         return taskBox;
     }
 
-    public Menu getMenuFile() {
-        return this.menuFile;
+    public MenuItem getMenuFileNew() {
+        return this.menuFileNew;
+    }
+    public MenuItem getMenuFileOpen() {
+        return this.menuFileOpen;
+    }
+    public MenuItem getMenuFileSave() {
+        return this.menuFileSave;
+    }
+    public MenuItem getMenuFileExit() {
+        return this.menuFileExit;
     }
 
-    public Menu getMenuEdit() {
-        return this.menuEdit;
+    public MenuItem getMenuDesignAnalyse() {
+        return this.menuDesignAnalyse;
+    }
+    public MenuItem getMenuDesignOptimize() {
+        return this.menuDesignOptimize;
+    }
+    public MenuItem getMenuDesignReset() {
+        return this.menuDesignReset;
     }
 
-    public Menu getMenuView() {
-        return this.menuView;
+    public MenuItem getMenuServicesAmazon() {
+        return this.menuServicesAmazon;
+    }
+    public MenuItem getMenuServicesWindows() {
+        return this.menuServicesWindows;
+    }
+    public MenuItem getMenuServicesGoogle() {
+        return this.menuServicesGoogle;
     }
 
-    public Menu getMenuDesign() {
-        return this.menuDesign;
-    }
-
-    public Menu getMenuServices() {
-        return this.menuServices;
-    }
-
-    public Menu getMenuHelp() {
-        return this.menuHelp;
+    public MenuItem getMenuHelpAbout() {
+        return this.menuHelpAbout;
     }
 
     public Label getTaskBar() {
