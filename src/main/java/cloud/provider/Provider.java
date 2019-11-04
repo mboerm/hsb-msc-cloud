@@ -1,9 +1,9 @@
 package cloud.provider;
 
-public class Provider {
+public abstract class Provider {
 
-    private String name = "";
-    private String serviceName = "";
+    private String name;
+    private String serviceName;
 
     void setName(String name) {
         this.name = name;
