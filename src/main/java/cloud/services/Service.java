@@ -6,8 +6,8 @@ public class Service {
     protected enum serviceCategory {DEFAULT, COMPUTE, STORAGE, DATABASE, NETWORK, MANAGEMENT, INTEGRATION, ANALYTICS};
 
     Service() {
-        name = "Default";
-        category = serviceCategory.DEFAULT;
+        setName("Default");
+        setCategory(serviceCategory.DEFAULT);
     }
 
     public String getName() {
