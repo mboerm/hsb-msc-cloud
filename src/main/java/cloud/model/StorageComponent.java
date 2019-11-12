@@ -9,6 +9,6 @@ public class StorageComponent extends Component {
     // TODO: Parameter für Storage hinzufügen
 
     public StorageComponent() {
-        setCategory(COMPONENT_CATEGORIES.STORAGE);
+        setCategory(COMPONENT_CATEGORIES.Storage);
     }
 }

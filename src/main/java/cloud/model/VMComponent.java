@@ -12,7 +12,7 @@ public class VMComponent extends Component {
 
     public VMComponent() {
         setCategory(COMPONENT_CATEGORIES.VM);
-        setInstanceType(INSTANCE_TYPES.NORMAL);
+        setInstanceType(INSTANCE_TYPES.Normal);
     }
 
     public INSTANCE_TYPES getInstanceType() {

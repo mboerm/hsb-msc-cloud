@@ -12,7 +12,7 @@ public class DatabaseComponent extends Component {
 
     public DatabaseComponent() {
         setName("DB");
-        setCategory(COMPONENT_CATEGORIES.DATABASE);
+        setCategory(COMPONENT_CATEGORIES.Database);
         setDBType(db.SQL);
     }
 

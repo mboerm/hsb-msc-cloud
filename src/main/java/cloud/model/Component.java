@@ -9,7 +9,7 @@ public class Component {
 
     Component() {
         name = "Default";
-        category = COMPONENT_CATEGORIES.DEFAULT;
+        category = COMPONENT_CATEGORIES.Default;
     }
 
     public String getName() {
