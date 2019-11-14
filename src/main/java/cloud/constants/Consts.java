@@ -15,6 +15,7 @@ public final class Consts {
     public static final String ABOUT_TEXT =
             "This tool is the result of the master thesis.";
 
+    public static final String CONFIG_FILE = "config.xml";
 
     private Consts(){
         /*
