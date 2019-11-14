@@ -1,15 +1,15 @@
-package cloud.config;
+package cloud.model;
 
 import cloud.log.Logger;
 
-public class AWSServices {
+public class Services {
     private Logger _log = Logger.getInstance();
 
-    private static volatile AWSServices INSTANCE = null;
+    private static volatile Services INSTANCE = null;
 
-    public static AWSServices getInstance() {
+    public static Services getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new AWSServices();
+            INSTANCE = new Services();
         }
         return INSTANCE;
     }
@@ -19,7 +19,7 @@ public class AWSServices {
      * @param serviceName
      * @return values as string
      */
-    private String getAWSService(String serviceName) {
+    private String getService(String serviceName) {
         return "";
     }
 }
