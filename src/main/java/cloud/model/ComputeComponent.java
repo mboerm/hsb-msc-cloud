@@ -4,14 +4,14 @@ import cloud.model.Component;
 
 import static cloud.constants.Consts.*;
 
-public class VMComponent extends Component {
+public class ComputeComponent extends Component {
 
     // TODO: Parameter für VMs hinzufügen
 
     private INSTANCE_TYPES instance;
 
-    public VMComponent() {
-        setCategory(COMPONENT_CATEGORIES.VM);
+    public ComputeComponent() {
+        setCategory(COMPONENT_CATEGORIES.Compute);
         setInstanceType(INSTANCE_TYPES.Normal);
     }
 
