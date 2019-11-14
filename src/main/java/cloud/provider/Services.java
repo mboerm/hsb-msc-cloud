@@ -1,4 +1,4 @@
-package cloud.model;
+package cloud.provider;
 
 import cloud.log.Logger;
 
