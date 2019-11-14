@@ -8,7 +8,7 @@ public final class Consts {
     public static final int WINDOW_MIN_WIDTH = 800;
     public static final int WINDOW_MIN_HEIGHT = 600;
 
-    public enum COMPONENT_CATEGORIES {Default, VM, Storage, Database, Network, Integration};
+    public enum COMPONENT_CATEGORIES {Default, Compute, Storage, Database, Analytics, Network, Integration, Management};
     public enum INSTANCE_TYPES {Normal, Spot, Reserved};
     public enum DATABASE_TYPES {SQL, MySQL, NoSQL, Document};
 
