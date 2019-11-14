@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Service Provider</comment>
+    <entry key="prodiver">Amazon, Windows, Google</entry>
+    <entry key="services">Amazon Web Services, Windows Azure, Google Cloud Platform</entry>
+    <entry key="services-active">Amazon Web Services</entry>
+    
+    <entry key="aws-file">empty</entry>
+</properties>
