@@ -31,22 +31,21 @@ public class CloudView {
 
     private DesignProperties designProperties;
     private DesignArea designArea;
-    private DesignControls designControls;
 
     public CloudView() {
         BorderPane rootPane = new BorderPane();
         rootPane.setTop(initMenuBar());
         rootPane.setLeft(initDesignProperties());
         rootPane.setCenter(initDesignArea());
-        rootPane.setRight(initDesignControls());
         rootPane.setBottom(initTaskBar());
-        scene = new Scene(rootPane, WINDOW_DEFAULT_WIDTH, WINDOW_DEFAULT_HEIGHT);
+        scene = new Scene(rootPane);
     }
 
     public void show(Stage stage) {
         stage.setMinHeight(WINDOW_MIN_HEIGHT);
         stage.setMinWidth(WINDOW_MIN_WIDTH);
         stage.setTitle(APP_TITLE);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -119,11 +118,6 @@ public class CloudView {
         return designArea;
     }
 
-    private DesignControls initDesignControls() {
-        designControls = new DesignControls();
-        return designControls;
-    }
-
     private HBox initTaskBar() {
         HBox taskBox = new HBox();
         taskBox.setPadding(new Insets(5, 5, 5, 5));
@@ -181,8 +175,5 @@ public class CloudView {
     }
     public DesignArea getDesignArea() {
         return this.designArea;
-    }
-    public DesignControls getDesignControls() {
-        return this.designControls;
     }
 }
