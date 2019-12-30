@@ -43,7 +43,10 @@ public class CloudVC {
 
         view.getMenuFileExit().setOnAction(actionEvent -> System.exit(0));
 
-        view.getMenuDesignReset().setOnAction(actionEvent -> {});
+        view.getMenuDesignReset().setOnAction(actionEvent -> {
+            view.getDesignArea().getComponentsTable().getItems().removeAll();
+            getSession().clearComponents();
+        });
 
         view.getMenuServicesAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
         view.getMenuServicesWindows().setOnAction(actionEvent -> providerFactory.getProvider("Windows"));
@@ -51,11 +54,20 @@ public class CloudVC {
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
 
-        view.getDesignControls().getControlAdd().setOnAction(actionEvent -> {
+        view.getDesignArea().getComponentsTable().getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                getSession().setSelectedComponent(newSelection);
+                view.getDesignArea().getComponentsTable().getSelectionModel().clearSelection();
+            }
+        });
+
+        view.getDesignArea().getControlAdd().setOnAction(actionEvent -> {
             DialogAddComponent dialogAdd = new DialogAddComponent();
         });
-        view.getDesignControls().getControlRemove().setOnAction(actionEvent -> {});
-        view.getDesignControls().getControlEdit().setOnAction(actionEvent -> {});
+        view.getDesignArea().getControlRemove().setOnAction(actionEvent -> {
+            view.getDesignArea().getComponentsTable().getItems().remove(getSession().getSelectedComponent());
+        });
+        view.getDesignArea().getControlEdit().setOnAction(actionEvent -> {});
     }
 
     private void newSession() {
