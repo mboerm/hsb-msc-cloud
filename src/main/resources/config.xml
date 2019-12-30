@@ -2,9 +2,11 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>Service Provider</comment>
-    <entry key="prodiver">Amazon, Windows, Google</entry>
+    <entry key="provider">Amazon, Windows, Google</entry>
     <entry key="services">Amazon Web Services, Windows Azure, Google Cloud Platform</entry>
     <entry key="services-active">Amazon Web Services</entry>
     
     <entry key="aws-file">empty</entry>
+    <entry key="azure-file">empty</entry>
+    <entry key="google-file">empty</entry>
 </properties>
