@@ -11,8 +11,8 @@ public class DesignControls extends VBox {
     private Button controlEdit;
 
     public DesignControls() {
-        controlAdd = new Button("Add");
-        controlRemove = new Button("Remove");
+        controlAdd = new Button("+");
+        controlRemove = new Button("-");
         controlEdit = new Button("Edit");
 
         setSpacing(10);
@@ -22,15 +22,5 @@ public class DesignControls extends VBox {
         getChildren().addAll(controlAdd, controlRemove, controlEdit);
     }
 
-    public Button getControlAdd() {
-        return this.controlAdd;
-    }
 
-    public Button getControlRemove() {
-        return this.controlRemove;
-    }
-
-    public Button getControlEdit() {
-        return this.controlEdit;
-    }
 }
