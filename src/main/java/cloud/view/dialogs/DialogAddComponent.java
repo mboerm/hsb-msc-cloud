@@ -1,5 +1,6 @@
 package cloud.view.dialogs;
 
+import static cloud.constants.Consts.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class DialogAddComponent extends Dialog {
@@ -18,7 +20,7 @@ public class DialogAddComponent extends Dialog {
 
     public DialogAddComponent() {
         setTitle("Add Component to Design");
-        setHeaderText("Select component type and define properties");
+        setHeaderText("Select component category and define properties");
         setResizable(true);
 
         final Window window = getDialogPane().getScene().getWindow();
@@ -27,8 +29,8 @@ public class DialogAddComponent extends Dialog {
         stage.setMinHeight(400);
         stage.setMinWidth(300);
 
-        Label componentsLabel = new Label("Component Type: ");
-        String[] componentsArray = {"Virtual Machine", "Storage", "Database"};
+        Label componentsLabel = new Label("Category: ");
+        String[] componentsArray = new String[]{};
 
         ChoiceBox<String> componentsBox = new ChoiceBox<>(FXCollections.observableArrayList(componentsArray));
 
@@ -53,7 +55,7 @@ public class DialogAddComponent extends Dialog {
             public void changed(ObservableValue<? extends String> observableValue, String oldItem, String newItem) {
                 okButton.setDisable(false);
                 switch (newItem) {
-                    case "Virtual Machine":
+                    case "Compute":
                         paneComponent = new PaneComputeComponent();
                         break;
                     case "Database":
