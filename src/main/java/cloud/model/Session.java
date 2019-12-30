@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Session {
 
     private ArrayList<Component> components;
+    private Component selectedComponent;
 
     public Session() {
         components = new ArrayList<>();
@@ -20,6 +21,13 @@ public class Session {
 
     public void clearComponents() {
         this.components.clear();
+    }
+
+    public Component getSelectedComponent() {
+        return this.selectedComponent;
+    }
+    public void setSelectedComponent(Component comp) {
+        this.selectedComponent = comp;
     }
 
     public void openSession() {
