@@ -12,7 +12,7 @@ public class ComputeComponent extends Component {
 
     public ComputeComponent() {
         setCategory(COMPONENT_CATEGORIES.Compute);
-        setInstanceType(INSTANCE_TYPES.Normal);
+        setInstanceType(INSTANCE_TYPES.OnDemand);
     }
 
     public INSTANCE_TYPES getInstanceType() {
