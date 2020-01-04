@@ -1,25 +1,29 @@
 package cloud.model;
 
-import cloud.model.Component;
-
 import static cloud.constants.Consts.*;
 
 public class DatabaseComponent extends Component {
 
-    // TODO: Parameter für Datenbanken hinzufügen
-
-    private DATABASE_TYPES db;
+    private DATABASE_INSTANCE_TYPE databaseInstanceType;
+    private DATABASE_TYPE dbType;
 
     public DatabaseComponent() {
-        setName("DB");
-        setCategory(COMPONENT_CATEGORIES.Database);
-        setDBType(db.SQL);
+        setCategory(COMPONENT_CATEGORY.Database);
+        setDatabaseInstanceType(DATABASE_INSTANCE_TYPE.Standard);
+        setDatabaseBType(DATABASE_TYPE.SQL);
     }
 
-    public DATABASE_TYPES getDBType() {
-        return this.db;
+    public DATABASE_INSTANCE_TYPE getDatabaseInstanceType() {
+        return databaseInstanceType;
     }
-    public void setDBType(DATABASE_TYPES db) {
-        this.db = db;
+    public void setDatabaseInstanceType(DATABASE_INSTANCE_TYPE databaseInstanceType) {
+        this.databaseInstanceType = databaseInstanceType;
+    }
+
+    public DATABASE_TYPE getDatabaseType() {
+        return this.dbType;
+    }
+    public void setDatabaseBType(DATABASE_TYPE db) {
+        this.dbType = db;
     }
 }
