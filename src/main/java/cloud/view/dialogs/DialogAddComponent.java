@@ -1,6 +1,9 @@
 package cloud.view.dialogs;
 
-import static cloud.constants.Consts.*;
+import cloud.view.panes.PaneComponent;
+import cloud.view.panes.PaneComputeComponent;
+import cloud.view.panes.PaneDatabaseComponent;
+import cloud.view.panes.PaneStorageComponent;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -11,7 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class DialogAddComponent extends Dialog {
