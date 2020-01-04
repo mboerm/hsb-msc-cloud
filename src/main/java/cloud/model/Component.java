@@ -6,14 +6,22 @@ public class Component {
 
     private String name;
     private String service;
-    private COMPONENT_CATEGORIES category;
-    private COMPONENT_USAGE usage;
+    private COMPONENT_CATEGORY category;
+    private COMPONENT_INSTANCE_SIZE size;
+    private COMPONENT_USAGE_TYPE usageType;
+    private COMPONENT_USAGE_PERIOD usagePeriod;
+    private COMPONENT_USAGE_PREPAY usagePrepay;
+    private COMPONENT_OPERATING_MODE opMode;
 
     Component() {
-        name = "Default";
-        service = "Default";
-        category = COMPONENT_CATEGORIES.None;
-        usage = COMPONENT_USAGE.On_Premise;
+        setName("Default");
+        setService("Default");
+        setCategory(COMPONENT_CATEGORY.None);
+        setSize(COMPONENT_INSTANCE_SIZE.Medium);
+        setUsageType(COMPONENT_USAGE_TYPE.On_Demand);
+        setUsagePeriod(COMPONENT_USAGE_PERIOD.Monthly);
+        setUsagePrepay(COMPONENT_USAGE_PREPAY.None);
+        setOpMode(COMPONENT_OPERATING_MODE.On_Premise);
     }
 
     public String getName() {
@@ -30,17 +38,45 @@ public class Component {
         this.service = service;
     }
 
-    public COMPONENT_CATEGORIES getCategory() {
+    public COMPONENT_CATEGORY getCategory() {
         return this.category;
     }
-    public void setCategory(COMPONENT_CATEGORIES category) {
+    public void setCategory(COMPONENT_CATEGORY category) {
         this.category = category;
     }
 
-    public COMPONENT_USAGE getUsage() {
-        return this.usage;
+    public COMPONENT_INSTANCE_SIZE getSize() {
+        return size;
     }
-    public void setUsage(COMPONENT_USAGE usage) {
-        this.usage = usage;
+    public void setSize(COMPONENT_INSTANCE_SIZE size) {
+        this.size = size;
+    }
+
+    public COMPONENT_USAGE_TYPE getUsageType() {
+        return this.usageType;
+    }
+    public void setUsageType(COMPONENT_USAGE_TYPE usage) {
+        this.usageType = usage;
+    }
+
+    public COMPONENT_USAGE_PERIOD getUsagePeriod() {
+        return usagePeriod;
+    }
+    public void setUsagePeriod(COMPONENT_USAGE_PERIOD usagePeriod) {
+        this.usagePeriod = usagePeriod;
+    }
+
+    public COMPONENT_USAGE_PREPAY getUsagePrepay() {
+        return usagePrepay;
+    }
+    public void setUsagePrepay(COMPONENT_USAGE_PREPAY usagePrepay) {
+        this.usagePrepay = usagePrepay;
+    }
+
+    public COMPONENT_OPERATING_MODE getOpMode() {
+        return this.opMode;
+    }
+    public void setOpMode(COMPONENT_OPERATING_MODE mode) {
+        this.opMode = mode;
     }
 }
