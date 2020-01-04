@@ -10,7 +10,7 @@ public class PaneComponent extends GridPane {
 
     private TextField nameField;
 
-    PaneComponent() {
+    public PaneComponent() {
         setHgap(10);
         setVgap(10);
         setPadding(new Insets(10, 10, 10, 10));

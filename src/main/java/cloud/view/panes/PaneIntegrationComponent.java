@@ -4,7 +4,7 @@ import cloud.view.panes.PaneComponent;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
-class PaneIntegrationComponent extends PaneComponent {
+public class PaneIntegrationComponent extends PaneComponent {
 
     PaneIntegrationComponent() {
         RadioButton radioButton1 = new RadioButton("Left");

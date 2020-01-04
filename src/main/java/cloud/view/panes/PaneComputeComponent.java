@@ -7,9 +7,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import static cloud.constants.Consts.*;
 
-class PaneComputeComponent extends PaneComponent {
+public class PaneComputeComponent extends PaneComponent {
 
-    PaneComputeComponent() {
+    public PaneComputeComponent() {
         Label typeLabel = new Label("Instance Type: ");
         ChoiceBox typeBox = new ChoiceBox<>(FXCollections.observableArrayList(COMPONENT_USAGE_TYPE.values()));
 

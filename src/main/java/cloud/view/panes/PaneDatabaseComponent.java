@@ -6,9 +6,9 @@ import javafx.geometry.HPos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-class PaneDatabaseComponent extends PaneComponent {
+public class PaneDatabaseComponent extends PaneComponent {
 
-    PaneDatabaseComponent() {
+    public PaneDatabaseComponent() {
         Label typeLabel = new Label("Database Type: ");
         ChoiceBox typeBox = new ChoiceBox<>(FXCollections.observableArrayList(DATABASE_TYPE.values()));
 
