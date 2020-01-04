@@ -1,9 +1,6 @@
 package cloud.view.dialogs;
 
-import cloud.view.panes.PaneComponent;
-import cloud.view.panes.PaneComputeComponent;
-import cloud.view.panes.PaneDatabaseComponent;
-import cloud.view.panes.PaneStorageComponent;
+import cloud.view.panes.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
