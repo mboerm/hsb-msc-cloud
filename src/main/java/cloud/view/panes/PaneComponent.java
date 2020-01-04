@@ -1,4 +1,4 @@
-package cloud.view.dialogs;
+package cloud.view.panes;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
