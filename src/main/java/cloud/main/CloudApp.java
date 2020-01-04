@@ -1,7 +1,7 @@
 package cloud.main;
 
 import cloud.controller.CloudVC;
-import cloud.model.Session;
+import cloud.model.Design;
 import cloud.model.StageManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -21,11 +21,11 @@ public class CloudApp extends Application {
         // set primarystage in stage manager
         StageManager.getInstance().setPrimaryStage(primaryStage);
 
-        // create new tool session to save data
-        Session session = new Session();
+        // create new design
+        Design design = new Design();
 
         // create view controller and show ui
-        CloudVC vc = new CloudVC(session);
+        CloudVC vc = new CloudVC(design);
         vc.show();
     }
 }

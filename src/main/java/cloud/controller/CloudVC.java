@@ -4,7 +4,7 @@ import cloud.provider.ProviderFactory;
 import cloud.view.dialogs.DialogAddComponent;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
-import cloud.model.Session;
+import cloud.model.Design;
 import cloud.model.StageManager;
 import cloud.view.CloudView;
 
@@ -15,14 +15,14 @@ import java.io.File;
 public class CloudVC {
 
     // Model
-    private Session session = null;
+    private Design design = null;
     private ProviderFactory providerFactory = null;
 
     // View
     private CloudView view;
 
-    public CloudVC(Session session) {
-        this.session = session;
+    public CloudVC(Design design) {
+        this.design = design;
         this.providerFactory = new ProviderFactory();
         this.view = new CloudView();
         initViewHandler();
@@ -44,8 +44,8 @@ public class CloudVC {
         view.getMenuFileExit().setOnAction(actionEvent -> System.exit(0));
 
         view.getMenuDesignReset().setOnAction(actionEvent -> {
-            view.getDesignArea().getComponentsTable().getItems().removeAll();
-            getSession().clearComponents();
+            view.getPaneDesignArea().getComponentsTable().getItems().removeAll();
+            getDesign().clearComponents();
         });
 
         view.getMenuServicesAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
@@ -54,27 +54,27 @@ public class CloudVC {
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
 
-        view.getDesignArea().getComponentsTable().getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        view.getPaneDesignArea().getComponentsTable().getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                getSession().setSelectedComponent(newSelection);
-                view.getDesignArea().getComponentsTable().getSelectionModel().clearSelection();
+                getDesign().setSelectedComponent(newSelection);
+                view.getPaneDesignArea().getComponentsTable().getSelectionModel().clearSelection();
             }
         });
 
-        view.getDesignArea().getControlAdd().setOnAction(actionEvent -> {
+        view.getPaneDesignArea().getControlAdd().setOnAction(actionEvent -> {
             DialogAddComponent dialogAdd = new DialogAddComponent();
         });
-        view.getDesignArea().getControlRemove().setOnAction(actionEvent -> {
-            view.getDesignArea().getComponentsTable().getItems().remove(getSession().getSelectedComponent());
+        view.getPaneDesignArea().getControlRemove().setOnAction(actionEvent -> {
+            view.getPaneDesignArea().getComponentsTable().getItems().remove(getDesign().getSelectedComponent());
         });
-        view.getDesignArea().getControlEdit().setOnAction(actionEvent -> {});
+        view.getPaneDesignArea().getControlEdit().setOnAction(actionEvent -> {});
     }
 
     private void newSession() {
-        this.session = new Session();
+        this.design = new Design();
     }
-    private Session getSession() {
-        return this.session;
+    private Design getDesign() {
+        return this.design;
     }
 
     private void showAboutDialog() {
