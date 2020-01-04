@@ -1,8 +1,7 @@
 package cloud.view;
 
-import cloud.view.designs.DesignArea;
-import cloud.view.designs.DesignControls;
-import cloud.view.designs.DesignProperties;
+import cloud.view.panes.PaneDesignArea;
+import cloud.view.panes.PaneDesignProperties;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,8 +28,8 @@ public class CloudView {
     private MenuItem menuHelpAbout;
     private Label taskLbl;
 
-    private DesignProperties designProperties;
-    private DesignArea designArea;
+    private PaneDesignProperties paneDesignProperties;
+    private PaneDesignArea paneDesignArea;
 
     public CloudView() {
         BorderPane rootPane = new BorderPane();
@@ -108,14 +107,14 @@ public class CloudView {
         return menuHelp;
     }
 
-    private DesignProperties initDesignProperties() {
-        designProperties = new DesignProperties();
-        return designProperties;
+    private PaneDesignProperties initDesignProperties() {
+        paneDesignProperties = new PaneDesignProperties();
+        return paneDesignProperties;
     }
 
-    private DesignArea initDesignArea() {
-        designArea = new DesignArea();
-        return designArea;
+    private PaneDesignArea initDesignArea() {
+        paneDesignArea = new PaneDesignArea();
+        return paneDesignArea;
     }
 
     private HBox initTaskBar() {
@@ -170,10 +169,10 @@ public class CloudView {
         return this.taskLbl;
     }
 
-    public DesignProperties getDesignProperties() {
-        return this.designProperties;
+    public PaneDesignProperties getPaneDesignProperties() {
+        return this.paneDesignProperties;
     }
-    public DesignArea getDesignArea() {
-        return this.designArea;
+    public PaneDesignArea getPaneDesignArea() {
+        return this.paneDesignArea;
     }
 }
