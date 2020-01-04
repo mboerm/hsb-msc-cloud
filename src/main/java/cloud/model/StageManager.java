@@ -7,15 +7,12 @@ public class StageManager {
     private static StageManager instance;
     private static Stage primaryStage;
 
-    /** Konstruktor ist privat, Klasse darf nicht von außen instanziiert werden. */
+    /** Private constructor to prevent class to be instantiated from public */
     private StageManager() {
     }
 
-    /**
-     * Statische Methode 'getInstance()' liefert die einzige Instanz der Klasse zurück.
-     * Ist synchronisiert und somit thread-sicher.
-     */
-    public synchronized static StageManager getInstance() {
+    /** Singleton instance */
+    public static StageManager getInstance() {
         if (instance == null) {
             instance = new StageManager();
         }

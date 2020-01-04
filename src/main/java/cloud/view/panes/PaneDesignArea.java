@@ -1,6 +1,6 @@
 package cloud.view.panes;
 
-import cloud.model.Component;
+import cloud.model.components.Component;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
