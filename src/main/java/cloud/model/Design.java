@@ -1,5 +1,7 @@
 package cloud.model;
 
+import cloud.model.components.Component;
+
 import java.util.ArrayList;
 
 public class Design {
