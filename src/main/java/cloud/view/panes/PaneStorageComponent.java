@@ -1,5 +1,6 @@
-package cloud.view.dialogs;
+package cloud.view.panes;
 
+import cloud.view.panes.PaneComponent;
 import javafx.scene.control.Label;
 
 class PaneStorageComponent extends PaneComponent {

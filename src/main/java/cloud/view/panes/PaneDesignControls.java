@@ -1,16 +1,15 @@
-package cloud.view.designs;
+package cloud.view.panes;
 
-import cloud.view.dialogs.DialogAddComponent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class DesignControls extends VBox {
+public class PaneDesignControls extends VBox {
     private Button controlAdd;
     private Button controlRemove;
     private Button controlEdit;
 
-    public DesignControls() {
+    public PaneDesignControls() {
         controlAdd = new Button("+");
         controlRemove = new Button("-");
         controlEdit = new Button("Edit");

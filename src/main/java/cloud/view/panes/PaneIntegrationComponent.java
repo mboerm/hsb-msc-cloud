@@ -1,13 +1,8 @@
-package cloud.view.dialogs;
+package cloud.view.panes;
 
-import javafx.collections.FXCollections;
-import javafx.geometry.HPos;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import cloud.view.panes.PaneComponent;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-
-import static cloud.constants.Consts.INSTANCE_TYPES;
 
 class PaneIntegrationComponent extends PaneComponent {
 

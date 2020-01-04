@@ -1,5 +1,6 @@
-package cloud.view.dialogs;
+package cloud.view.panes;
 
+import cloud.view.panes.PaneComponent;
 import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.scene.control.ChoiceBox;
@@ -10,7 +11,7 @@ class PaneComputeComponent extends PaneComponent {
 
     PaneComputeComponent() {
         Label typeLabel = new Label("Instance Type: ");
-        ChoiceBox typeBox = new ChoiceBox<>(FXCollections.observableArrayList(INSTANCE_TYPES.values()));
+        ChoiceBox typeBox = new ChoiceBox<>(FXCollections.observableArrayList(COMPONENT_USAGE_TYPE.values()));
 
         add(typeLabel, 0, 1);
         add(typeBox, 1, 1);

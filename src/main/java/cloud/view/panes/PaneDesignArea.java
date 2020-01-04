@@ -1,4 +1,4 @@
-package cloud.view.designs;
+package cloud.view.panes;
 
 import cloud.model.Component;
 import javafx.geometry.Insets;
@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class DesignArea extends HBox {
+public class PaneDesignArea extends HBox {
     private StackPane compPane;
     private TableView<Component> componentsTable;
 
@@ -19,7 +19,7 @@ public class DesignArea extends HBox {
     private Button controlRemove;
     private Button controlEdit;
 
-    public DesignArea() {
+    public PaneDesignArea() {
         initArea();
         initControls();
         getChildren().addAll(compPane, controlBox);
