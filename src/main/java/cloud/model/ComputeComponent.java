@@ -1,24 +1,22 @@
 package cloud.model;
 
-import cloud.model.Component;
-
 import static cloud.constants.Consts.*;
 
 public class ComputeComponent extends Component {
 
-    // TODO: Parameter für VMs hinzufügen
+    // TODO: Parameter für Compute hinzufügen
 
-    private INSTANCE_TYPES instance;
+    private COMPUTE_INSTANCE_TYPE computeInstanceType;
 
     public ComputeComponent() {
-        setCategory(COMPONENT_CATEGORIES.Compute);
-        setInstanceType(INSTANCE_TYPES.OnDemand);
+        setCategory(COMPONENT_CATEGORY.Compute);
+        setComputeInstanceType(COMPUTE_INSTANCE_TYPE.General);
     }
 
-    public INSTANCE_TYPES getInstanceType() {
-        return this.instance;
+    public COMPUTE_INSTANCE_TYPE getComputeInstanceType() {
+        return computeInstanceType;
     }
-    public void setInstanceType(INSTANCE_TYPES instance) {
-        this.instance = instance;
+    public void setComputeInstanceType(COMPUTE_INSTANCE_TYPE computeInstanceType) {
+        this.computeInstanceType = computeInstanceType;
     }
 }
