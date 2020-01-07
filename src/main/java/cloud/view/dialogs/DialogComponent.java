@@ -1,26 +1,28 @@
 package cloud.view.dialogs;
 
+import cloud.config.Config;;
 import cloud.view.panes.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import java.util.Optional;
 
-public class DialogAddComponent extends Dialog {
+public class DialogComponent extends Dialog {
 
     private PaneComponent paneComponent;
+    private ComboBox componentsBox;
 
-    public DialogAddComponent() {
+    public DialogComponent() {
         setTitle("Add Component to Design");
         setHeaderText("Select component category and define properties");
-        setResizable(true);
+        setResizable(false);
 
         final Window window = getDialogPane().getScene().getWindow();
         Stage stage = (Stage) window;
@@ -29,14 +31,16 @@ public class DialogAddComponent extends Dialog {
         stage.setMinWidth(300);
 
         Label componentsLabel = new Label("Category: ");
-        String[] componentsArray = new String[]{};
 
-        ChoiceBox<String> componentsBox = new ChoiceBox<>(FXCollections.observableArrayList(componentsArray));
+        componentsBox = new ComboBox(FXCollections.observableArrayList(
+                Config.getInstance().getConfigValues("component-categories")
+        ));
 
         HBox boxPane = new HBox();
         boxPane.setSpacing(10);
         boxPane.setPadding(new Insets(10, 10, 10, 10));
         boxPane.getChildren().addAll(componentsLabel, componentsBox);
+        boxPane.setAlignment(Pos.CENTER);
 
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(10, 10, 10, 10));
