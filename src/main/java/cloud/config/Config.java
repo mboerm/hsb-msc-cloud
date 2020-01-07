@@ -11,41 +11,49 @@ import static cloud.constants.Consts.*;
  * @author boerm_m
  *
  */
-public class Configuration {
+public class Config {
 	
 	private Logger _log = Logger.getInstance();
 	
-	private static volatile Configuration INSTANCE = null;
-	
-	public static Configuration getInstance() {
+	private static volatile Config INSTANCE = null;
+
+	private Properties configs = null;
+
+	public static Config getInstance() {
     	if (INSTANCE == null) {
-    		INSTANCE = new Configuration();
+    		INSTANCE = new Config();
     	}
     	return INSTANCE;
     }
-	
-	/**
-	 * Get value for configuration
-	 * @param configName
-	 * @return value as string
-	 */
-	private String getConfigValue(String configName) {
-		if (configName == null || configName.length() == 0) {
-			throw new IllegalArgumentException("Invalid configuration name!");
-		}
 
-		String userDir = System.getProperty("user.dir");
-		String configPath = userDir + "/" + CONFIG_FILE;
-		Properties configs = new Properties();
-		String result = null;
-
+    private Config() {
+		configs = new Properties();
 		try {
-			configs.loadFromXML(new FileInputStream(configPath));
-			result = configs.getProperty(configName);
-
+			String respath = CONFIG_FILE;
+			InputStream inStream = this.getClass().getClassLoader().getResourceAsStream(respath);
+			if (inStream == null)
+				throw new Exception("resource not found: " + respath);
+			configs.loadFromXML(inStream);
 		} catch (Exception ex) {
 			_log.error("Error in get configuration value!" + ex);
 		}
-		return result;
+	}
+	
+	/**
+	 * Get value
+	 * @param configName
+	 * @return value as string
+	 */
+	public String[] getConfigValues(String configName) {
+		if (configName == null || configName.length() == 0) {
+			throw new IllegalArgumentException("Invalid configuration name!");
+		}
+		String result = null;
+		try {
+			result = configs.getProperty(configName);
+		} catch (Exception ex) {
+			_log.error("Error in get configuration value!" + ex);
+		}
+		return result.split(STRING_SEPARATOR);
 	}
 }
