@@ -14,7 +14,7 @@
     <entry key="compute-instance-type">General,Compute-optimized,RAM-optimized,Storage-optimized,Burst,GPU</entry>
 
     <entry key="database-instance-type">Standard,Storage-optimized</entry>
-    <entry key="database-type">SQL,MariaDB,NoSQL,Document</entry>
+    <entry key="database-system-type">SQL,MariaDB,NoSQL,Document</entry>
 
     <entry key="services">Amazon Web Services,Windows Azure,Google Cloud Platform</entry>
     <entry key="services-active">Amazon Web Services</entry>

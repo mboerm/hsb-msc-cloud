@@ -1,6 +1,5 @@
 package cloud.view;
 
-import cloud.config.Config;
 import cloud.view.panes.PaneDesignArea;
 import cloud.view.panes.PaneDesignProperties;
 import javafx.geometry.Insets;
@@ -11,7 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import static cloud.constants.Consts.*;
+import static cloud.constants.Constants.*;
 
 public class CloudView {
     private Scene scene;
