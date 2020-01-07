@@ -1,29 +1,29 @@
 package cloud.model.components;
 
-import static cloud.constants.Consts.*;
+import static cloud.constants.Constants.*;
 
 public class DatabaseComponent extends Component {
 
-    private DATABASE_INSTANCE_TYPE databaseInstanceType;
-    private DATABASE_TYPE dbType;
+    private String dbInstanceType;
+    private String dbSystemType;
 
     public DatabaseComponent() {
         setCategory("Database");
-        setDatabaseInstanceType(DATABASE_INSTANCE_TYPE.Standard);
-        setDatabaseBType(DATABASE_TYPE.SQL);
+        setDatabaseInstanceType("Standard");
+        setDatabaseSystemType("SQL");
     }
 
-    public DATABASE_INSTANCE_TYPE getDatabaseInstanceType() {
-        return databaseInstanceType;
+    public String getDatabaseInstanceType() {
+        return dbInstanceType;
     }
-    public void setDatabaseInstanceType(DATABASE_INSTANCE_TYPE databaseInstanceType) {
-        this.databaseInstanceType = databaseInstanceType;
+    public void setDatabaseInstanceType(String instanceType) {
+        this.dbInstanceType = instanceType;
     }
 
-    public DATABASE_TYPE getDatabaseType() {
-        return this.dbType;
+    public String getDatabaseSystemType() {
+        return this.dbSystemType;
     }
-    public void setDatabaseBType(DATABASE_TYPE db) {
-        this.dbType = db;
+    public void setDatabaseSystemType(String systemType) {
+        this.dbSystemType = systemType;
     }
 }
