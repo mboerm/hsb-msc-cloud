@@ -30,10 +30,10 @@ public class PaneDesignArea extends HBox {
         TableColumn<Component, String> compNameCol = new TableColumn<Component, String>("Name");
         TableColumn<Component, String> compServiceCol = new TableColumn<Component, String>("Service");
         TableColumn<Component, String> compCatCol = new TableColumn<Component, String>("Category");
-        TableColumn<Component, String> compUsageCol = new TableColumn<Component, String>("Usage");
+        TableColumn<Component, String> compModeCol = new TableColumn<Component, String>("Mode");
 
         componentsTable = new TableView<Component>();
-        componentsTable.getColumns().addAll(compNameCol, compServiceCol, compCatCol, compUsageCol);
+        componentsTable.getColumns().addAll(compNameCol, compServiceCol, compCatCol, compModeCol);
 
         compPane = new StackPane();
         compPane.getChildren().add(componentsTable);
