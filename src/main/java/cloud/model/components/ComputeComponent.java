@@ -6,17 +6,17 @@ public class ComputeComponent extends Component {
 
     // TODO: Parameter für Compute hinzufügen
 
-    private COMPUTE_INSTANCE_TYPE computeInstanceType;
+    private String computeInstanceType;
 
     public ComputeComponent() {
-        setCategory(COMPONENT_CATEGORY.Compute);
-        setComputeInstanceType(COMPUTE_INSTANCE_TYPE.General);
+        setCategory("Compute");
+        setComputeInstanceType("General");
     }
 
-    public COMPUTE_INSTANCE_TYPE getComputeInstanceType() {
+    public String getComputeInstanceType() {
         return computeInstanceType;
     }
-    public void setComputeInstanceType(COMPUTE_INSTANCE_TYPE computeInstanceType) {
+    public void setComputeInstanceType(String computeInstanceType) {
         this.computeInstanceType = computeInstanceType;
     }
 }

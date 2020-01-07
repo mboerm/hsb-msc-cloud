@@ -6,7 +6,7 @@ public class Component {
 
     private String name;
     private String service;
-    private COMPONENT_CATEGORY category;
+    private String category;
     private COMPONENT_INSTANCE_SIZE size;
     private COMPONENT_USAGE_TYPE usageType;
     private COMPONENT_USAGE_PERIOD usagePeriod;
@@ -16,7 +16,7 @@ public class Component {
     Component() {
         setName("Default");
         setService("Default");
-        setCategory(COMPONENT_CATEGORY.None);
+        setCategory("Default");
         setSize(COMPONENT_INSTANCE_SIZE.Medium);
         setUsageType(COMPONENT_USAGE_TYPE.On_Demand);
         setUsagePeriod(COMPONENT_USAGE_PERIOD.Monthly);
@@ -38,10 +38,10 @@ public class Component {
         this.service = service;
     }
 
-    public COMPONENT_CATEGORY getCategory() {
+    public String getCategory() {
         return this.category;
     }
-    public void setCategory(COMPONENT_CATEGORY category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

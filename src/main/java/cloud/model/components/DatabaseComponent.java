@@ -8,7 +8,7 @@ public class DatabaseComponent extends Component {
     private DATABASE_TYPE dbType;
 
     public DatabaseComponent() {
-        setCategory(COMPONENT_CATEGORY.Database);
+        setCategory("Database");
         setDatabaseInstanceType(DATABASE_INSTANCE_TYPE.Standard);
         setDatabaseBType(DATABASE_TYPE.SQL);
     }
