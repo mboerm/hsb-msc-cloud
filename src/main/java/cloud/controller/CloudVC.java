@@ -2,14 +2,12 @@ package cloud.controller;
 
 import cloud.provider.ProviderFactory;
 import cloud.view.dialogs.DialogAddComponent;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
 import cloud.model.Design;
 import cloud.model.StageManager;
 import cloud.view.CloudView;
 
-import static cloud.constants.Consts.*;
+import static cloud.constants.Constants.*;
 
 public class CloudVC {
 
