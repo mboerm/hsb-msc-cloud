@@ -1,7 +1,7 @@
 package cloud.controller;
 
 import cloud.provider.ProviderFactory;
-import cloud.view.dialogs.DialogAddComponent;
+import cloud.view.dialogs.DialogComponent;
 import javafx.scene.control.Alert;
 import cloud.model.Design;
 import cloud.model.StageManager;
@@ -51,7 +51,7 @@ public class CloudVC {
         });
 
         view.getPaneDesignArea().getControlAdd().setOnAction(actionEvent -> {
-            DialogAddComponent dialogAdd = new DialogAddComponent();
+            DialogComponent dialogAdd = new DialogComponent();
         });
         view.getPaneDesignArea().getControlRemove().setOnAction(actionEvent -> {
             view.getPaneDesignArea().getComponentsTable().getItems().remove(getDesign().getSelectedComponent());
