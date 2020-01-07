@@ -1,20 +1,30 @@
 package cloud.view.panes;
 
-import static cloud.constants.Consts.*;
+import cloud.config.Config;
 import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class PaneDatabaseComponent extends PaneComponent {
 
-    public PaneDatabaseComponent() {
-        Label typeLabel = new Label("Database Type: ");
-        ChoiceBox typeBox = new ChoiceBox<>(FXCollections.observableArrayList(DATABASE_TYPE.values()));
+    private ComboBox databaseSystemTypeBox;
+    private ComboBox databaseInstanceTypeBox;
 
-        add(typeLabel, 0, 1);
-        add(typeBox, 1, 1);
-        setHalignment(typeLabel, HPos.RIGHT);
-        setHalignment(typeBox, HPos.LEFT);
+    public PaneDatabaseComponent() {
+        Label systemTypeLabel = new Label("System type: ");
+        databaseSystemTypeBox = new ComboBox(FXCollections.observableArrayList(
+                Config.getInstance().getConfigValues("database-system-type")
+        ));
+
+        Label instanceTypeLabel = new Label("Instance type: ");
+        databaseInstanceTypeBox = new ComboBox(FXCollections.observableArrayList(
+                Config.getInstance().getConfigValues("database-instance-type")
+        ));
+
+        add(systemTypeLabel, 0, 1);
+        add(databaseSystemTypeBox, 1, 1);
+        add(instanceTypeLabel, 0, 2);
+        add(databaseInstanceTypeBox, 1, 2);
     }
 }

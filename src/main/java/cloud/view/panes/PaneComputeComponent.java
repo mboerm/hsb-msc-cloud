@@ -1,21 +1,23 @@
 package cloud.view.panes;
 
-import cloud.view.panes.PaneComponent;
+import cloud.config.Config;
 import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import static cloud.constants.Consts.*;
+import static cloud.constants.Constants.*;
 
 public class PaneComputeComponent extends PaneComponent {
 
+    private ComboBox typeBox;
+
     public PaneComputeComponent() {
         Label typeLabel = new Label("Instance Type: ");
-        ChoiceBox typeBox = new ChoiceBox<>(FXCollections.observableArrayList(COMPONENT_USAGE_TYPE.values()));
+        typeBox = new ComboBox(FXCollections.observableArrayList(
+                Config.getInstance().getConfigValues("compute-instance-type")
+        ));
 
         add(typeLabel, 0, 1);
         add(typeBox, 1, 1);
-        setHalignment(typeLabel, HPos.RIGHT);
-        setHalignment(typeBox, HPos.LEFT);
     }
 }
