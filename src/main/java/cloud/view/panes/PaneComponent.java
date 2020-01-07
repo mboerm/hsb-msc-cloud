@@ -20,8 +20,6 @@ public class PaneComponent extends GridPane {
 
         add(nameLabel, 0, 0);
         add(nameField, 1, 0);
-        setHalignment(nameLabel, HPos.RIGHT);
-        setHalignment(nameField, HPos.LEFT);
     }
 
     public String getName() {
