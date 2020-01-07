@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import cloud.log.Logger;
-import static cloud.constants.Consts.*;
+import static cloud.constants.Constants.*;
 
 /**
  * Configuration class
