@@ -1,5 +1,6 @@
 package cloud.view;
 
+import cloud.config.Config;
 import cloud.view.panes.PaneDesignArea;
 import cloud.view.panes.PaneDesignProperties;
 import javafx.geometry.Insets;
@@ -15,9 +16,6 @@ import static cloud.constants.Consts.*;
 public class CloudView {
     private Scene scene;
 
-    private MenuItem menuFileNew;
-    private MenuItem menuFileOpen;
-    private MenuItem menuFileSave;
     private MenuItem menuFileExit;
     private MenuItem menuDesignAnalyse;
     private MenuItem menuDesignOptimize;
@@ -44,7 +42,7 @@ public class CloudView {
         stage.setMinHeight(WINDOW_MIN_HEIGHT);
         stage.setMinWidth(WINDOW_MIN_WIDTH);
         stage.setTitle(APP_TITLE);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setScene(scene);
         stage.show();
     }
@@ -62,11 +60,8 @@ public class CloudView {
 
     private Menu initMenuFile() {
         Menu menuFile = new Menu("File");
-        menuFileNew = new MenuItem("New Session");
-        menuFileOpen = new MenuItem("Open Session");
-        menuFileSave = new MenuItem("Save Session");
         menuFileExit = new MenuItem("Exit");
-        menuFile.getItems().addAll(menuFileNew, menuFileOpen, menuFileSave, new SeparatorMenuItem(), menuFileExit);
+        menuFile.getItems().addAll(menuFileExit);
         return menuFile;
     }
 
@@ -128,15 +123,6 @@ public class CloudView {
         return taskBox;
     }
 
-    public MenuItem getMenuFileNew() {
-        return this.menuFileNew;
-    }
-    public MenuItem getMenuFileOpen() {
-        return this.menuFileOpen;
-    }
-    public MenuItem getMenuFileSave() {
-        return this.menuFileSave;
-    }
     public MenuItem getMenuFileExit() {
         return this.menuFileExit;
     }
