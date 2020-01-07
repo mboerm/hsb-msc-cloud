@@ -1,7 +1,5 @@
 package cloud.model.components;
 
-import static cloud.constants.Consts.*;
-
 public class ComputeComponent extends Component {
 
     // TODO: Parameter für Compute hinzufügen
