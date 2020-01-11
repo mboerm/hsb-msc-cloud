@@ -1,7 +1,8 @@
 package cloud.view;
 
-import cloud.view.panes.PaneDesignArea;
-import cloud.view.panes.PaneDesignProperties;
+import cloud.view.design.DesignArea;
+import cloud.view.design.DesignControls;
+import cloud.view.design.DesignProperties;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,7 +11,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import static cloud.constants.Constants.*;
+import static cloud.configuration.Constants.*;
 
 public class CloudView {
     private Scene scene;
@@ -19,20 +20,22 @@ public class CloudView {
     private MenuItem menuDesignAnalyse;
     private MenuItem menuDesignOptimize;
     private MenuItem menuDesignReset;
-    private MenuItem menuServicesAmazon;
-    private MenuItem menuServicesWindows;
-    private MenuItem menuServicesGoogle;
+    private RadioMenuItem menuProviderAmazon;
+    private RadioMenuItem menuProviderWindows;
+    private RadioMenuItem menuProviderGoogle;
     private MenuItem menuHelpAbout;
     private Label taskLbl;
 
-    private PaneDesignProperties paneDesignProperties;
-    private PaneDesignArea paneDesignArea;
+    private DesignProperties paneDesignProperties;
+    private DesignArea paneDesignArea;
+    private DesignControls paneDesignControls;
 
     public CloudView() {
         BorderPane rootPane = new BorderPane();
         rootPane.setTop(initMenuBar());
         rootPane.setLeft(initDesignProperties());
         rootPane.setCenter(initDesignArea());
+        rootPane.setRight(initDesignControls());
         rootPane.setBottom(initTaskBar());
         scene = new Scene(rootPane);
     }
@@ -41,7 +44,7 @@ public class CloudView {
         stage.setMinHeight(WINDOW_MIN_HEIGHT);
         stage.setMinWidth(WINDOW_MIN_WIDTH);
         stage.setTitle(APP_TITLE);
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -52,7 +55,7 @@ public class CloudView {
         menuBar.getMenus().add(initMenuEdit());
         menuBar.getMenus().add(initMenuDesign());
         menuBar.getMenus().add(initMenuView());
-        menuBar.getMenus().add(initMenuServices());
+        menuBar.getMenus().add(initMenuProvider());
         menuBar.getMenus().add(initMenuHelp());
         return menuBar;
     }
@@ -83,15 +86,17 @@ public class CloudView {
         return menuDesign;
     }
 
-    private Menu initMenuServices() {
-        Menu menuServices = new Menu("Services");
-        menuServicesAmazon = new MenuItem("Amazon Web Services");
-        menuServicesWindows = new MenuItem("Windows Azure");
-        menuServicesGoogle = new MenuItem("Google Cloud Platform");
-        menuServicesWindows.setDisable(true);
-        menuServicesGoogle.setDisable(true);
-        menuServices.getItems().addAll(menuServicesAmazon, menuServicesWindows, menuServicesGoogle);
-        return menuServices;
+    private Menu initMenuProvider() {
+        Menu menuProvider = new Menu("Provider");
+        menuProviderAmazon = new RadioMenuItem("Amazon Web Services");
+        menuProviderWindows = new RadioMenuItem("Windows Azure");
+        menuProviderGoogle = new RadioMenuItem("Google Cloud Platform");
+        ToggleGroup toggleGroup = new ToggleGroup();
+        toggleGroup.getToggles().add(menuProviderAmazon);
+        toggleGroup.getToggles().add(menuProviderWindows);
+        toggleGroup.getToggles().add(menuProviderGoogle);
+        menuProvider.getItems().addAll(menuProviderAmazon, menuProviderWindows, menuProviderGoogle);
+        return menuProvider;
     }
 
     private Menu initMenuHelp() {
@@ -101,14 +106,19 @@ public class CloudView {
         return menuHelp;
     }
 
-    private PaneDesignProperties initDesignProperties() {
-        paneDesignProperties = new PaneDesignProperties();
+    private DesignProperties initDesignProperties() {
+        paneDesignProperties = new DesignProperties();
         return paneDesignProperties;
     }
 
-    private PaneDesignArea initDesignArea() {
-        paneDesignArea = new PaneDesignArea();
+    private DesignArea initDesignArea() {
+        paneDesignArea = new DesignArea();
         return paneDesignArea;
+    }
+
+    private DesignControls initDesignControls() {
+        paneDesignControls = new DesignControls();
+        return paneDesignControls;
     }
 
     private HBox initTaskBar() {
@@ -134,30 +144,30 @@ public class CloudView {
     public MenuItem getMenuDesignReset() {
         return this.menuDesignReset;
     }
-    public MenuItem getMenuServicesAmazon() {
-        return this.menuServicesAmazon;
+    public MenuItem getMenuProviderAmazon() {
+        return this.menuProviderAmazon;
     }
-    public MenuItem getMenuServicesWindows() {
-        return this.menuServicesWindows;
+    public MenuItem getMenuProviderWindows() {
+        return this.menuProviderWindows;
     }
-    public MenuItem getMenuServicesGoogle() {
-        return this.menuServicesGoogle;
+    public MenuItem getMenuProviderGoogle() {
+        return this.menuProviderGoogle;
     }
     public MenuItem getMenuHelpAbout() {
         return this.menuHelpAbout;
     }
 
-    public void setTaskLbl(String msg) {
+    public void setTaskBarText(String msg) {
         this.taskLbl.setText(msg);
     }
-    public Label getTaskLbl() {
-        return this.taskLbl;
-    }
 
-    public PaneDesignProperties getPaneDesignProperties() {
+    public DesignProperties getPaneDesignProperties() {
         return this.paneDesignProperties;
     }
-    public PaneDesignArea getPaneDesignArea() {
+    public DesignArea getPaneDesignArea() {
         return this.paneDesignArea;
+    }
+    public DesignControls getPaneDesignControls() {
+        return this.paneDesignControls;
     }
 }

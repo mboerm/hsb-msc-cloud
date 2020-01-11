@@ -1,15 +1,15 @@
-package cloud.controller;
+package cloud.view;
 
-import cloud.provider.ProviderFactory;
-import cloud.view.dialogs.DialogComponent;
+import cloud.configuration.Config;
+import cloud.model.StageManager;
+import cloud.model.provider.ProviderFactory;
+import cloud.view.dialogs.DialogAddComponentC;
 import javafx.scene.control.Alert;
 import cloud.model.Design;
-import cloud.model.StageManager;
-import cloud.view.CloudView;
 
-import static cloud.constants.Constants.*;
+import static cloud.configuration.Constants.*;
 
-public class CloudVC {
+public class CloudViewC {
 
     // Model
     private Design design = null;
@@ -18,16 +18,21 @@ public class CloudVC {
     // View
     private CloudView view;
 
-    public CloudVC(Design design) {
+    public CloudViewC(Design design) {
         this.design = design;
         this.providerFactory = new ProviderFactory();
         this.view = new CloudView();
         initMenuHandler();
+        initDesignPropertyHandler();
         initDesignAreaHandler();
+        initDesignControlsHandler();
+    }
+
+    public void show() {
+        view.show(StageManager.getInstance().getPrimaryStage());
     }
 
     private void initMenuHandler() {
-
         view.getMenuFileExit().setOnAction(actionEvent -> System.exit(0));
 
         view.getMenuDesignReset().setOnAction(actionEvent -> {
@@ -35,28 +40,11 @@ public class CloudVC {
             getDesign().clearComponents();
         });
 
-        view.getMenuServicesAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
-        view.getMenuServicesWindows().setOnAction(actionEvent -> providerFactory.getProvider("Windows"));
-        view.getMenuServicesGoogle().setOnAction(actionEvent -> providerFactory.getProvider("Google"));
+        view.getMenuProviderAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
+        view.getMenuProviderWindows().setOnAction(actionEvent -> providerFactory.getProvider("Windows"));
+        view.getMenuProviderGoogle().setOnAction(actionEvent -> providerFactory.getProvider("Google"));
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
-    }
-
-    private void initDesignAreaHandler() {
-        view.getPaneDesignArea().getComponentsTable().getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                getDesign().setSelectedComponent(newSelection);
-                view.getPaneDesignArea().getComponentsTable().getSelectionModel().clearSelection();
-            }
-        });
-
-        view.getPaneDesignArea().getControlAdd().setOnAction(actionEvent -> {
-            DialogComponent dialogAdd = new DialogComponent();
-        });
-        view.getPaneDesignArea().getControlRemove().setOnAction(actionEvent -> {
-            view.getPaneDesignArea().getComponentsTable().getItems().remove(getDesign().getSelectedComponent());
-        });
-        view.getPaneDesignArea().getControlEdit().setOnAction(actionEvent -> {});
     }
 
     private void initDesignPropertyHandler() {
@@ -88,6 +76,29 @@ public class CloudVC {
         });
     }
 
+    private void initDesignAreaHandler() {
+        view.getPaneDesignArea().getComponentsTable().getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+//                getDesign().setSelectedComponent(newSelection);
+                view.getPaneDesignArea().getComponentsTable().getSelectionModel().clearSelection();
+            }
+        });
+    }
+
+    private void initDesignControlsHandler() {
+        view.getPaneDesignControls().getControlAdd().setOnAction(actionEvent -> {
+            DialogAddComponentC dialogAddComponentController = new DialogAddComponentC();
+            view.setTaskBarText("Added " + dialogAddComponentController.getAddedResponse() + " component");
+            design.addComponent(dialogAddComponentController.getAddedComponent());
+        });
+
+        view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
+            view.getPaneDesignArea().getComponentsTable().getItems().remove(getDesign().getSelectedComponent());
+        });
+
+        view.getPaneDesignControls().getControlEdit().setOnAction(actionEvent -> {});
+    }
+
     private Design getDesign() {
         return this.design;
     }
@@ -96,11 +107,7 @@ public class CloudVC {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About " + APP_TITLE);
         alert.setHeaderText(null);
-        alert.setContentText(ABOUT_TEXT);
+        alert.setContentText(Config.getInstance().getConfigValues("about-text")[0]);
         alert.showAndWait();
-    }
-
-    public void show() {
-        view.show(StageManager.getInstance().getPrimaryStage());
     }
 }
