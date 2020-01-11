@@ -1,27 +1,26 @@
 package cloud.model.components;
 
-import static cloud.constants.Constants.*;
-
 public class Component {
-
     private String name;
     private String service;
+    private String matchedService;
     private String category;
-    private String size;
+    private String region;
     private String usageType;
     private String usagePeriod;
     private String usagePrepay;
     private String opMode;
 
-    Component() {
-        setName("Default");
-        setService("Default");
-        setCategory("Default");
-        setSize("Medium");
-        setUsageType("On-Demand");
-        setUsagePeriod("Monthly");
-        setUsagePrepay("None");
-        setOpMode("On-Premise");
+    public Component() {
+        setName("");
+        setService("");
+        setMatchedService("");
+        setCategory("");
+        setRegion("");
+        setUsageType("");
+        setUsagePeriod("");
+        setUsagePrepay("");
+        setOpMode("");
     }
 
     public String getName() {
@@ -38,6 +37,13 @@ public class Component {
         this.service = service;
     }
 
+    public String getMatchedService() {
+        return this.matchedService;
+    }
+    public void setMatchedService(String match) {
+        this.matchedService = match;
+    }
+
     public String getCategory() {
         return this.category;
     }
@@ -45,12 +51,8 @@ public class Component {
         this.category = category;
     }
 
-    public String getSize() {
-        return size;
-    }
-    public void setSize(String size) {
-        this.size = size;
-    }
+    public String getRegion() {return this.region;}
+    public void setRegion(String region) {this.region = region;}
 
     public String getUsageType() {
         return this.usageType;
