@@ -2,21 +2,31 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-    <entry key="component-categories">Compute,Storage,Database,AnalyticsNetwork,Integration,Management</entry>
-    <entry key="component-instance-size">Micro,Small,Medium,Large,XLarge</entry>
-    <entry key="component-usage-type">On-Demand,Reserved,Spot</entry>
-    <entry key="component-usage-period">Hourly,Monthly,One Year,Three Years</entry>
-    <entry key="component-usage-prepay">None,Partial,Full</entry>
-    <entry key="component-property-period">Per Hour,Per Day,Per Month</entry>
-    <entry key="component-regions">US-East-1,US-West-1,EU-East,EU-West,EU-Central,Asia</entry>
-    <entry key="component-operating-mode">On-Premise,Off-Premise</entry>
+    <entry key="component-categories">Compute;Database;Storage;Analytic;Network;Integration;Monitoring</entry>
+    <entry key="component-instance-size">Micro;Small;Medium;Large;XLarge</entry>
+    <entry key="component-usage-type">On-Demand;Reserved;Spot</entry>
+    <entry key="component-usage-period">Hourly;Monthly;One Year;Three Years</entry>
+    <entry key="component-usage-prepay">None;Partial;Full</entry>
+    <entry key="component-regions">
+        US-California;US-Virginia;
+        Brasil-Sao Paulo;
+        CA-Central;
+        EU-Ireland;EU-London;EU-Frankfurt;
+        Asia-Hong Kong;Asia-Singapur;Asia-Tokyo;Asia-Mumbai;Asia-Seoul
+    </entry>
+    <entry key="component-property-period">Per Hour;Per Day;Per Month</entry>
+    <entry key="component-operating-mode">On-Premise;Off-Premise;Optional</entry>
 
-    <entry key="compute-instance-type">General,Compute-optimized,RAM-optimized,Storage-optimized,Burst,GPU</entry>
+    <entry key="compute-type">VM;Container;App;Batch;Code;Load Balancing</entry>
+    <entry key="compute-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
+    <entry key="compute-os">Windows;Linux;CentOS;Ubuntu;Red Hat;SUSE;Debian</entry>
 
-    <entry key="database-instance-type">Standard,Storage-optimized</entry>
-    <entry key="database-system-type">SQL,MariaDB,NoSQL,Document</entry>
+    <entry key="database-instance-type">Standard;Storage-optimized</entry>
+    <entry key="database-system-type">SQL;MariaDB;NoSQL;Document</entry>
 
-    <entry key="services">Amazon Web Services,Windows Azure,Google Cloud Platform</entry>
+    <entry key="network-type">VPC/VPN;API;CDN;DNS</entry>
+
+    <entry key="services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
     <entry key="services-active">Amazon Web Services</entry>
     
     <entry key="aws-file">empty</entry>
