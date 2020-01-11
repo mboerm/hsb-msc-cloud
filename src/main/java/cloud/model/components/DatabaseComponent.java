@@ -1,7 +1,5 @@
 package cloud.model.components;
 
-import static cloud.constants.Constants.*;
-
 public class DatabaseComponent extends Component {
 
     private String dbInstanceType;
