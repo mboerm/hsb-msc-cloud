@@ -1,10 +1,9 @@
-package cloud.config;
+package cloud.configuration;
 
 import java.io.*;
 import java.util.*;
 
-import cloud.log.Logger;
-import static cloud.constants.Constants.*;
+import static cloud.configuration.Constants.*;
 
 /**
  * Configuration class
@@ -12,9 +11,6 @@ import static cloud.constants.Constants.*;
  *
  */
 public class Config {
-	
-	private Logger _log = Logger.getInstance();
-	
 	private static volatile Config INSTANCE = null;
 
 	private Properties configs = null;
@@ -35,7 +31,7 @@ public class Config {
 				throw new Exception("resource not found: " + respath);
 			configs.loadFromXML(inStream);
 		} catch (Exception ex) {
-			_log.error("Error in get configuration value!" + ex);
+			System.out.println("Error in get configuration value!" + ex);
 		}
 	}
 	
@@ -52,8 +48,8 @@ public class Config {
 		try {
 			result = configs.getProperty(configName);
 		} catch (Exception ex) {
-			_log.error("Error in get configuration value!" + ex);
+			System.out.println("Error in get configuration value!" + ex);
 		}
-		return result.split(STRING_SEPARATOR);
+		return result.split(CONFIG_SEPARATOR);
 	}
 }
