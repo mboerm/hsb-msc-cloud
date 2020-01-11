@@ -4,17 +4,21 @@ public class ComputeComponent extends Component {
 
     // TODO: Parameter für Compute hinzufügen
 
-    private String computeInstanceType;
+    private String computeType;
 
-    public ComputeComponent() {
+    public ComputeComponent(
+            String name,
+            String type
+    ) {
+        setName(name);
         setCategory("Compute");
-        setComputeInstanceType("General");
+        setComputeType(type);
     }
 
-    public String getComputeInstanceType() {
-        return computeInstanceType;
+    public String getComputeType() {
+        return computeType;
     }
-    public void setComputeInstanceType(String computeInstanceType) {
-        this.computeInstanceType = computeInstanceType;
+    public void setComputeType(String computeType) {
+        this.computeType = computeType;
     }
 }
