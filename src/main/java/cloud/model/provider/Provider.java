@@ -1,4 +1,4 @@
-package cloud.provider;
+package cloud.model.provider;
 
 public abstract class Provider {
 

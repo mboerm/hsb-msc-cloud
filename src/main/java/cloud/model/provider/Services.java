@@ -1,4 +1,4 @@
-package cloud.provider;
+package cloud.model.provider;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -8,10 +8,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 
-import cloud.log.Logger;
-
 public class Services {
-    private Logger _log = Logger.getInstance();
 
     private static volatile Services INSTANCE = null;
 

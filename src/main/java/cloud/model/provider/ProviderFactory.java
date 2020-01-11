@@ -1,4 +1,4 @@
-package cloud.provider;
+package cloud.model.provider;
 
 public class ProviderFactory {
 

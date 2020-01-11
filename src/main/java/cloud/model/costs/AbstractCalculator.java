@@ -1,4 +1,4 @@
-package cloud.costs;
+package cloud.model.costs;
 
 public interface AbstractCalculator {
 }
