@@ -1,11 +1,11 @@
-package cloud.view.panes;
+package cloud.view.design;
 
-import cloud.config.Config;
+import cloud.configuration.Config;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-public class PaneDesignProperties extends GridPane {
+public class DesignProperties extends GridPane {
 
     private TextField usagePeriodField;
     private ComboBox regionComboBox;
@@ -15,7 +15,7 @@ public class PaneDesignProperties extends GridPane {
     private ComboBox periodOfRequestsComboBox;
     private ComboBox periodOfCapacityComboBox;
 
-    public PaneDesignProperties() {
+    public DesignProperties() {
         setPadding(new Insets(10, 10, 10, 10));
         setVgap(10);
         setHgap(10);
@@ -39,7 +39,7 @@ public class PaneDesignProperties extends GridPane {
         periodOfRequestsComboBox.getItems().addAll(Config.getInstance().getConfigValues("component-property-period"));
 
         Label numOfCapacityLbl = new Label("# of storage capacity: ");
-        numOfCapacitySpinner = new Spinner<>(10, 10000, 10);
+        numOfCapacitySpinner = new Spinner<>(10, 10000, 100);
         numOfCapacitySpinner.setEditable(true);
         periodOfCapacityComboBox = new ComboBox();
         periodOfCapacityComboBox.getItems().addAll(Config.getInstance().getConfigValues("component-property-period"));

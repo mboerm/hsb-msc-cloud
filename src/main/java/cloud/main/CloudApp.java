@@ -1,10 +1,9 @@
 package cloud.main;
 
-import cloud.controller.CloudVC;
-import cloud.model.Design;
-import cloud.model.StageManager;
+import cloud.view.CloudViewC;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import cloud.model.*;
 
 import java.util.Locale;
 
@@ -25,7 +24,7 @@ public class CloudApp extends Application {
         Design design = new Design();
 
         // create view controller and show ui
-        CloudVC vc = new CloudVC(design);
+        CloudViewC vc = new CloudViewC(design);
         vc.show();
     }
 }
