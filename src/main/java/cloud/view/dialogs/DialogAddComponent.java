@@ -1,11 +1,13 @@
 package cloud.view.dialogs;
 
 import cloud.configuration.Config;
+import cloud.view.components.PaneComponentUsageProperties;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -13,6 +15,8 @@ public class DialogAddComponent<String> extends Dialog<String> {
 
     private BorderPane componentsDialogPane;
     private ComboBox<String> componentsBox;
+
+    private GridPane designPropertiesPane;
 
     private Button buttonOk;
 
@@ -38,6 +42,7 @@ public class DialogAddComponent<String> extends Dialog<String> {
         componentsDialogPane = new BorderPane();
         componentsDialogPane.setPadding(new Insets(10, 10, 10, 10));
         componentsDialogPane.setTop(componentsBoxPane);
+        componentsDialogPane.setLeft(designPropertiesPane = new PaneComponentUsageProperties());
         getDialogPane().setContent(componentsDialogPane);
 
         getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
@@ -52,6 +57,7 @@ public class DialogAddComponent<String> extends Dialog<String> {
         });
     }
 
+    public GridPane getDesignPropertiesPane() {return this.designPropertiesPane;}
     public BorderPane getComponentsDialogPane() {return this.componentsDialogPane;}
     public ComboBox<String> getComponentsBox() {return this.componentsBox;}
 
