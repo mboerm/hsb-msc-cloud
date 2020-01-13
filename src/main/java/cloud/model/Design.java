@@ -1,13 +1,16 @@
 package cloud.model;
 
 import cloud.model.components.Component;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
 public class Design {
 
-    private ArrayList<Component> components;
-    private Component selectedComponent;
+    private int selectedComponent;
+    private final ObservableList<Component> componentsList =
+            FXCollections.observableArrayList();
 
     private String usagePeriod;
     private String primaryRegion;
@@ -18,26 +21,39 @@ public class Design {
     private String periodOfCapacity;
 
     public Design() {
-        components = new ArrayList<>();
+
+    }
+
+    public ObservableList<Component> getComponentsList() {
+        return this.componentsList;
     }
 
     public void addComponent(Component comp) {
-        this.components.add(comp);
+        this.componentsList.add(comp);
+    }
+
+    public Component getComponent(String name, String category) {
+        for (int i = 0; i < this.componentsList.size(); i++) {
+            if (this.componentsList.get(i).getName() == name && this.componentsList.get(i).getCategory() == category) {
+                return this.componentsList.get(i);
+            }
+        }
+        return null;
     }
 
     public void removeComponent(Component comp) {
-        this.components.remove(comp);
+        this.componentsList.remove(comp);
     }
 
     public void clearComponents() {
-        this.components.clear();
+        this.componentsList.clear();
     }
 
-    public Component getSelectedComponent() {
+    public int getSelectedComponent() {
         return this.selectedComponent;
     }
-    public void setSelectedComponent(Component comp) {
-        this.selectedComponent = comp;
+    public void setSelectedComponent(int id) {
+        this.selectedComponent = id;
     }
 
     public String getUsagePeriod() {return this.usagePeriod;}
