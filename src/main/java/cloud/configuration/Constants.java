@@ -10,7 +10,7 @@ public final class Constants {
     }
 
     public static final String APP_TITLE = "Cloud Architecture Optimizer";
-    public static final int WINDOW_MIN_WIDTH = 800;
+    public static final int WINDOW_MIN_WIDTH = 900;
     public static final int WINDOW_MIN_HEIGHT = 500;
 
     public static final String CONFIG_FILE = "config.xml";
