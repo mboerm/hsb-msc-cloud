@@ -7,7 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-public class PaneDesignProperties extends GridPane {
+public class PaneComponentUsageProperties extends GridPane {
 
     private ComboBox<String> regionBox;
     private ComboBox<String> usageTypeBox;
@@ -15,7 +15,7 @@ public class PaneDesignProperties extends GridPane {
     private ComboBox<String> usagePrepayBox;
     private ComboBox<String> opModeBox;
 
-    public PaneDesignProperties() {
+    public PaneComponentUsageProperties() {
         setPadding(new Insets(10, 10, 10, 10));
         setHgap(10);
         setVgap(10);
