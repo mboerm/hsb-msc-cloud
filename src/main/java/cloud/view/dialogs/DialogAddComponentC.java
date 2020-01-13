@@ -1,10 +1,8 @@
 package cloud.view.dialogs;
 
+import cloud.configuration.Config;
 import cloud.model.components.*;
 import cloud.view.components.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.layout.Pane;
 
 public class DialogAddComponentC {
 
@@ -21,17 +19,14 @@ public class DialogAddComponentC {
     public DialogAddComponentC() {
         DialogAddComponent<String> dialogAdd = new DialogAddComponent<>();
 
-        dialogAdd.getComponentsBox().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String oldItem, String newItem) {
-                dialogAdd.toggleOKButton(false);
-                dialogAdd.getComponentsDialogPane().setCenter(switchComponentPanes(newItem));
-                dialogAdd.getDialogPane().getScene().getWindow().sizeToScene();
-            }
+        dialogAdd.getComponentsBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
+            dialogAdd.toggleOKButton(false);
+            dialogAdd.getComponentsDialogPane().setCenter(switchComponentPanes(newItem));
+            dialogAdd.getDialogPane().getScene().getWindow().sizeToScene();
         });
 
         dialogAdd.showAndWait().ifPresent(response -> {
-            String responseValue = response.toString().substring(response.toString().lastIndexOf(':') + 2, response.toString().length() - 1);
+            String responseValue = response.substring(response.lastIndexOf(':') + 2, response.length() - 1);
             addedResponse = responseValue;
             addedComponent = createComponent(responseValue);
         });
@@ -89,7 +84,23 @@ public class DialogAddComponentC {
             case "Network":
                 return new NetworkComponent();
             case "Integration":
-                return new IntegrationComponent();
+                if (integrationPane.getType().equals(Config.getInstance().getConfigValues("integration-type")[0])) {
+                    return new IntegrationComponent(
+                            integrationPane.getName(),
+                            integrationPane.getType(),
+                            integrationPane.getData(),
+                            integrationPane.getRequests(),
+                            integrationPane.getMessages()
+                    );
+                } else {
+                    return new IntegrationComponent(
+                            integrationPane.getName(),
+                            integrationPane.getType(),
+                            integrationPane.getData(),
+                            integrationPane.getRequests()
+                    );
+                }
+
             case "Monitoring":
                 return new MonitoringComponent(
                         monitoringPane.getName(),
