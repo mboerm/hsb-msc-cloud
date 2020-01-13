@@ -2,8 +2,11 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.model.StageManager;
+import cloud.model.components.Component;
 import cloud.model.provider.ProviderFactory;
 import cloud.view.dialogs.DialogAddComponentC;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import cloud.model.Design;
 
@@ -12,8 +15,8 @@ import static cloud.configuration.Constants.*;
 public class CloudViewC {
 
     // Model
-    private Design design = null;
-    private ProviderFactory providerFactory = null;
+    private Design design;
+    private ProviderFactory providerFactory;
 
     // View
     private CloudView view;
@@ -37,7 +40,7 @@ public class CloudViewC {
 
         view.getMenuDesignReset().setOnAction(actionEvent -> {
             view.getPaneDesignArea().getComponentsTable().getItems().removeAll();
-            getDesign().clearComponents();
+            design.clearComponents();
         });
 
         view.getMenuProviderAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
@@ -49,39 +52,40 @@ public class CloudViewC {
 
     private void initDesignPropertyHandler() {
         view.getPaneDesignProperties().getUsagePeriodField().textProperty().addListener((obs, oldValue, newValue) ->
-            getDesign().setUsagePeriod(newValue));
+            design.setUsagePeriod(newValue));
 
         view.getPaneDesignProperties().getPrimaryRegionComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            getDesign().setPrimaryRegion(newValue.toString());
+            design.setPrimaryRegion(newValue.toString());
         });
 
         view.getPaneDesignProperties().getNumOfInstancesSpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            getDesign().setNumOfInstances(newValue);
+            design.setNumOfInstances(newValue);
         });
 
         view.getPaneDesignProperties().getNumOfRequestsSpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            getDesign().setNumOfRequests(newValue);
+            design.setNumOfRequests(newValue);
         });
 
         view.getPaneDesignProperties().getPeriodOfRequestsComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            getDesign().setPeriodOfRequests(newValue.toString());
+            design.setPeriodOfRequests(newValue.toString());
         });
 
         view.getPaneDesignProperties().getNumOfCapacitySpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            getDesign().setNumOfCapacity(newValue);
+            design.setNumOfCapacity(newValue);
         });
 
         view.getPaneDesignProperties().getPeriodOfCapacityComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            getDesign().setPeriodOfCapacity(newValue.toString());
+            design.setPeriodOfCapacity(newValue.toString());
         });
     }
 
     private void initDesignAreaHandler() {
-        view.getPaneDesignArea().getComponentsTable().getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-//                getDesign().setSelectedComponent(newSelection);
-                view.getPaneDesignArea().getComponentsTable().getSelectionModel().clearSelection();
-            }
+        view.getPaneDesignArea().getComponentsTable().setItems(design.getComponentsList());
+
+        ObservableList<Component> selectedItems = view.getPaneDesignArea().getComponentsTable().getSelectionModel().getSelectedItems();
+        selectedItems.addListener((ListChangeListener<Component>) change -> {
+            int selCompIdx = view.getPaneDesignArea().getComponentsTable().getSelectionModel().getSelectedIndex();
+            design.setSelectedComponent(selCompIdx);
         });
     }
 
@@ -89,18 +93,24 @@ public class CloudViewC {
         view.getPaneDesignControls().getControlAdd().setOnAction(actionEvent -> {
             DialogAddComponentC dialogAddComponentController = new DialogAddComponentC();
             view.setTaskBarText("Added " + dialogAddComponentController.getAddedResponse() + " component");
-            design.addComponent(dialogAddComponentController.getAddedComponent());
+
+            /* get created component */
+            Component createdComponent = dialogAddComponentController.getAddedComponent();
+
+            /* add component to components list */
+            design.addComponent(createdComponent);
         });
 
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
-            view.getPaneDesignArea().getComponentsTable().getItems().remove(getDesign().getSelectedComponent());
+            /* remove selected component from components list */
+            Component selectedComponent = view.getPaneDesignArea().getComponentsTable().getItems().get(design.getSelectedComponent());
+            design.removeComponent(selectedComponent);
+
+            /* clear selection */
+            view.getPaneDesignArea().getComponentsTable().getSelectionModel().clearSelection();
         });
 
         view.getPaneDesignControls().getControlEdit().setOnAction(actionEvent -> {});
-    }
-
-    private Design getDesign() {
-        return this.design;
     }
 
     private void showAboutDialog() {
