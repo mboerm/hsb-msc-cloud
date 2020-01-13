@@ -8,7 +8,6 @@ import javafx.scene.layout.GridPane;
 
 public class PaneComponent extends GridPane {
 
-    private String identifier;
     private TextField nameTFld;
 
     public PaneComponent() {
@@ -23,9 +22,6 @@ public class PaneComponent extends GridPane {
         add(nameLbl, 0, 0);
         add(nameTFld, 1, 0);
     }
-
-    public void setIdentifier(String identifier) {this.identifier = identifier;}
-    public String getIdentifier() {return this.identifier;}
 
     public String getName() {
         return this.nameTFld.getText();

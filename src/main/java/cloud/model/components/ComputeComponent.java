@@ -13,6 +13,11 @@ public class ComputeComponent extends Component {
         setName(name);
         setCategory("Compute");
         setComputeType(type);
+        setRegion("");
+        setUsageType("");
+        setUsagePeriod("");
+        setUsagePrepay("");
+        setOpMode("");
     }
 
     public String getComputeType() {

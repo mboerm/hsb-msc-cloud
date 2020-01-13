@@ -3,7 +3,7 @@ package cloud.model.components;
 public class Component {
     private String name;
     private String service;
-    private String matchedService;
+    private String providerService;
     private String category;
     private String region;
     private String usageType;
@@ -14,8 +14,20 @@ public class Component {
     public Component() {
         setName("");
         setService("");
-        setMatchedService("");
+        setProviderService("");
         setCategory("");
+        setRegion("");
+        setUsageType("");
+        setUsagePeriod("");
+        setUsagePrepay("");
+        setOpMode("");
+    }
+
+    public Component(String name, String category) {
+        setName(name);
+        setService("");
+        setProviderService("");
+        setCategory(category);
         setRegion("");
         setUsageType("");
         setUsagePeriod("");
@@ -37,11 +49,11 @@ public class Component {
         this.service = service;
     }
 
-    public String getMatchedService() {
-        return this.matchedService;
+    public String getProviderService() {
+        return this.providerService;
     }
-    public void setMatchedService(String match) {
-        this.matchedService = match;
+    public void setProviderService(String match) {
+        this.providerService = match;
     }
 
     public String getCategory() {

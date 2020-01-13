@@ -1,7 +1,6 @@
 package cloud.view.components;
 
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
@@ -14,8 +13,6 @@ public class PaneMonitoringComponent extends PaneComponent {
     private CheckBox isLoggingBox;
 
     public PaneMonitoringComponent() {
-        setIdentifier("Monitoring");
-
         Label metricsLbl = new Label("# of metrics:");
         Label requestsLbl = new Label("# of requests:");
         Label dataLbl = new Label("# of data in GB:");

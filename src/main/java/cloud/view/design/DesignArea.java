@@ -16,10 +16,10 @@ public class DesignArea extends VBox {
     }
 
     private void initArea() {
-        TableColumn compNameCol = new TableColumn("Name");
-        TableColumn compServiceCol = new TableColumn("Service");
-        TableColumn compProviderServiceCol = new TableColumn("Provider-Service");
-        TableColumn compCatCol = new TableColumn("Category");
+        TableColumn<Component, String> compNameCol = new TableColumn<>("Name");
+        TableColumn<Component, String> compServiceCol = new TableColumn<>("Service");
+        TableColumn<Component, String> compProviderServiceCol = new TableColumn<>("Provider-Service");
+        TableColumn<Component, String> compCatCol = new TableColumn<>("Category");
 
         compNameCol.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
         compServiceCol.setCellValueFactory(new PropertyValueFactory<Component, String>("service"));

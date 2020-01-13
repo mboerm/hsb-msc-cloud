@@ -1,6 +1,6 @@
 package cloud.view.dialogs;
 
-import cloud.configuration.Config;;
+import cloud.configuration.Config;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,11 +9,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.util.Optional;
+public class DialogAddComponent<String> extends Dialog<String> {
 
-public class DialogAddComponent<String> extends Dialog {
-
-    private HBox componentsBoxPane;
     private BorderPane componentsDialogPane;
     private ComboBox<String> componentsBox;
 
@@ -32,7 +29,7 @@ public class DialogAddComponent<String> extends Dialog {
         String[] componentTypes = (String[]) Config.getInstance().getConfigValues("component-categories");
         componentsBox = new ComboBox<>(FXCollections.observableArrayList(componentTypes));
 
-        componentsBoxPane = new HBox();
+        HBox componentsBoxPane = new HBox();
         componentsBoxPane.setSpacing(10);
         componentsBoxPane.setPadding(new Insets(10, 10, 10, 10));
         componentsBoxPane.getChildren().addAll(componentsLabel, componentsBox);
