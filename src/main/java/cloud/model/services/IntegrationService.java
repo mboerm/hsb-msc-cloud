@@ -1,6 +1,6 @@
-package cloud.model.components;
+package cloud.model.services;
 
-public class IntegrationComponent extends Component {
+public class IntegrationService extends Service {
 
     private String type;
     private String data;
@@ -14,7 +14,7 @@ public class IntegrationComponent extends Component {
      */
     private String[] messages = new String[4];
 
-    public IntegrationComponent(
+    public IntegrationService(
             String name,
             String type,
             String data,
@@ -27,7 +27,7 @@ public class IntegrationComponent extends Component {
         setRequests(requests);
     }
 
-    public IntegrationComponent(
+    public IntegrationService(
             String name,
             String type,
             String data,

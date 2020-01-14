@@ -2,9 +2,9 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.model.StageManager;
-import cloud.model.components.Component;
+import cloud.model.services.Service;
 import cloud.model.provider.ProviderFactory;
-import cloud.view.dialogs.DialogAddComponentC;
+import cloud.view.dialogs.DialogAddServiceC;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -40,7 +40,7 @@ public class CloudViewC {
 
         view.getMenuDesignReset().setOnAction(actionEvent -> {
             view.getPaneDesignArea().getComponentsTable().getItems().removeAll();
-            design.clearComponents();
+            design.clearServicesList();
         });
 
         view.getMenuProviderAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
@@ -80,31 +80,31 @@ public class CloudViewC {
     }
 
     private void initDesignAreaHandler() {
-        view.getPaneDesignArea().getComponentsTable().setItems(design.getComponentsList());
+        view.getPaneDesignArea().getComponentsTable().setItems(design.getServicesList());
 
-        ObservableList<Component> selectedItems = view.getPaneDesignArea().getComponentsTable().getSelectionModel().getSelectedItems();
-        selectedItems.addListener((ListChangeListener<Component>) change -> {
+        ObservableList<Service> selectedItems = view.getPaneDesignArea().getComponentsTable().getSelectionModel().getSelectedItems();
+        selectedItems.addListener((ListChangeListener<Service>) change -> {
             int selCompIdx = view.getPaneDesignArea().getComponentsTable().getSelectionModel().getSelectedIndex();
-            design.setSelectedComponent(selCompIdx);
+            design.setSelectedService(selCompIdx);
         });
     }
 
     private void initDesignControlsHandler() {
         view.getPaneDesignControls().getControlAdd().setOnAction(actionEvent -> {
-            DialogAddComponentC dialogAddComponentController = new DialogAddComponentC();
+            DialogAddServiceC dialogAddComponentController = new DialogAddServiceC();
             view.setTaskBarText("Added " + dialogAddComponentController.getAddedResponse() + " component");
 
             /* get created component */
-            Component createdComponent = dialogAddComponentController.getAddedComponent();
+            Service createdComponent = dialogAddComponentController.getAddedService();
 
             /* add component to components list */
-            design.addComponent(createdComponent);
+            design.addService(createdComponent);
         });
 
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
             /* remove selected component from components list */
-            Component selectedComponent = view.getPaneDesignArea().getComponentsTable().getItems().get(design.getSelectedComponent());
-            design.removeComponent(selectedComponent);
+            Service selectedComponent = view.getPaneDesignArea().getComponentsTable().getItems().get(design.getSelectedService());
+            design.removeService(selectedComponent);
 
             /* clear selection */
             view.getPaneDesignArea().getComponentsTable().getSelectionModel().clearSelection();

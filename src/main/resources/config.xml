@@ -2,14 +2,14 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-    <entry key="component-categories">Compute;Database;Storage;Analytic;Network;Integration;Monitoring</entry>
-    <entry key="component-instance-size">Micro;Small;Medium;Large;XLarge</entry>
-    <entry key="component-usage-type">On-Demand;Reserved;Spot</entry>
-    <entry key="component-usage-period">Hourly;Monthly;One Year;Three Years</entry>
-    <entry key="component-usage-prepay">None;Partial;Full</entry>
-    <entry key="component-regions">US-California;US-Virginia;Brasil-Sao Paulo;CA-Central;EU-Ireland;EU-London;EU-Frankfurt;Asia-Hong Kong;Asia-Singapur;Asia-Tokyo;Asia-Mumbai;Asia-Seoul</entry>
-    <entry key="component-property-period">Per Hour;Per Day;Per Month</entry>
-    <entry key="component-operating-mode">On-Premise;Off-Premise;Optional</entry>
+    <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Monitoring</entry>
+    <entry key="service-instance-size">Micro;Small;Medium;Large;XLarge</entry>
+    <entry key="service-usage-type">On-Demand;Reserved;Spot</entry>
+    <entry key="service-usage-period">Hourly;Monthly;One Year;Three Years</entry>
+    <entry key="service-usage-prepay">None;Partial;Full</entry>
+    <entry key="service-regions">US-California;US-Virginia;Brasil-Sao Paulo;CA-Central;EU-Ireland;EU-London;EU-Frankfurt;Asia-Hong Kong;Asia-Singapur;Asia-Tokyo;Asia-Mumbai;Asia-Seoul</entry>
+    <entry key="service-property-period">Per Hour;Per Day;Per Month</entry>
+    <entry key="service-operating-mode">On-Premise;Off-Premise;Optional</entry>
 
     <entry key="compute-type">VM;Container;App;Batch;Code;Load Balancing</entry>
     <entry key="compute-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>

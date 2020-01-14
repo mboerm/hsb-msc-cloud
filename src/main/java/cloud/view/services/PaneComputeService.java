@@ -1,15 +1,15 @@
-package cloud.view.components;
+package cloud.view.services;
 
 import cloud.configuration.Config;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
-public class PaneComputeComponent extends PaneComponent {
+public class PaneComputeService extends PaneServiceProperties {
 
     private ComboBox computeTypeBox;
 
-    public PaneComputeComponent() {
+    public PaneComputeService() {
         Label typeLabel = new Label("Type:");
         computeTypeBox = new ComboBox(FXCollections.observableArrayList(
                 Config.getInstance().getConfigValues("compute-type")

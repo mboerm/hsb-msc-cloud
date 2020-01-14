@@ -1,6 +1,6 @@
-package cloud.model.components;
+package cloud.model.services;
 
-public class Component {
+public class Service {
     private String name;
     private String service;
     private String providerService;
@@ -11,7 +11,7 @@ public class Component {
     private String usagePrepay;
     private String opMode;
 
-    public Component() {
+    public Service() {
         setName("");
         setService("");
         setProviderService("");
@@ -23,7 +23,7 @@ public class Component {
         setOpMode("");
     }
 
-    public Component(String name, String category) {
+    public Service(String name, String category) {
         setName(name);
         setService("");
         setProviderService("");

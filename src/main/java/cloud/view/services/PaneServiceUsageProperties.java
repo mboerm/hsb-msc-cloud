@@ -1,4 +1,4 @@
-package cloud.view.components;
+package cloud.view.services;
 
 import cloud.configuration.Config;
 import javafx.geometry.Insets;
@@ -7,7 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-public class PaneComponentUsageProperties extends GridPane {
+public class PaneServiceUsageProperties extends GridPane {
 
     private ComboBox<String> regionBox;
     private ComboBox<String> usageTypeBox;
@@ -15,7 +15,7 @@ public class PaneComponentUsageProperties extends GridPane {
     private ComboBox<String> usagePrepayBox;
     private ComboBox<String> opModeBox;
 
-    public PaneComponentUsageProperties() {
+    public PaneServiceUsageProperties() {
         setPadding(new Insets(10, 10, 10, 10));
         setHgap(10);
         setVgap(10);
@@ -23,24 +23,24 @@ public class PaneComponentUsageProperties extends GridPane {
 
         Label regionLbl = new Label("Region: ");
         regionBox = new ComboBox<>();
-        regionBox.getItems().addAll(Config.getInstance().getConfigValues("component-regions"));
+        regionBox.getItems().addAll(Config.getInstance().getConfigValues("service-regions"));
 
         Label usageTypeLbl = new Label("Usage type: ");
         usageTypeBox = new ComboBox<>();
-        usageTypeBox.getItems().addAll(Config.getInstance().getConfigValues("component-usage-type"));
+        usageTypeBox.getItems().addAll(Config.getInstance().getConfigValues("service-usage-type"));
 
         Label usagePeriodLbl = new Label("Usage period: ");
         usagePeriodBox = new ComboBox<>();
-        usagePeriodBox.getItems().addAll(Config.getInstance().getConfigValues("component-usage-period"));
+        usagePeriodBox.getItems().addAll(Config.getInstance().getConfigValues("service-usage-period"));
 
         Label usagePrepayLbl = new Label("Usage prepay: ");
         usagePrepayBox = new ComboBox<>();
-        usagePrepayBox.getItems().addAll(Config.getInstance().getConfigValues("component-usage-prepay"));
+        usagePrepayBox.getItems().addAll(Config.getInstance().getConfigValues("service-usage-prepay"));
         usagePrepayBox.setDisable(true);
 
         Label opModeLbl = new Label("Operating mode: ");
         opModeBox = new ComboBox<>();
-        opModeBox.getItems().addAll(Config.getInstance().getConfigValues("component-operating-mode"));
+        opModeBox.getItems().addAll(Config.getInstance().getConfigValues("service-operating-mode"));
 
         add(regionLbl, 0, 0);
         add(regionBox, 1, 0);
@@ -54,7 +54,7 @@ public class PaneComponentUsageProperties extends GridPane {
         add(opModeBox, 1, 4);
 
         usageTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
-            if (newItem.equals(Config.getInstance().getConfigValues("component-usage-type")[1]))
+            if (newItem.equals(Config.getInstance().getConfigValues("service-usage-type")[1]))
                 this.usagePrepayBox.setDisable(false);
             else {
                 this.usagePrepayBox.setDisable(true);

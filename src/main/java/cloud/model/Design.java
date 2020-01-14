@@ -1,15 +1,13 @@
 package cloud.model;
 
-import cloud.model.components.Component;
+import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-
 public class Design {
 
-    private int selectedComponent;
-    private final ObservableList<Component> componentsList =
+    private int selectedService;
+    private final ObservableList<Service> servicesList =
             FXCollections.observableArrayList();
 
     private String usagePeriod;
@@ -24,36 +22,36 @@ public class Design {
 
     }
 
-    public ObservableList<Component> getComponentsList() {
-        return this.componentsList;
+    public ObservableList<Service> getServicesList() {
+        return this.servicesList;
     }
 
-    public void addComponent(Component comp) {
-        this.componentsList.add(comp);
+    public void addService(Service service) {
+        this.servicesList.add(service);
     }
 
-    public Component getComponent(String name, String category) {
-        for (int i = 0; i < this.componentsList.size(); i++) {
-            if (this.componentsList.get(i).getName() == name && this.componentsList.get(i).getCategory() == category) {
-                return this.componentsList.get(i);
+    public Service getService(String name, String category) {
+        for (int i = 0; i < this.servicesList.size(); i++) {
+            if (this.servicesList.get(i).getName() == name && this.servicesList.get(i).getCategory() == category) {
+                return this.servicesList.get(i);
             }
         }
         return null;
     }
 
-    public void removeComponent(Component comp) {
-        this.componentsList.remove(comp);
+    public void removeService(Service service) {
+        this.servicesList.remove(service);
     }
 
-    public void clearComponents() {
-        this.componentsList.clear();
+    public void clearServicesList() {
+        this.servicesList.clear();
     }
 
-    public int getSelectedComponent() {
-        return this.selectedComponent;
+    public int getSelectedService() {
+        return this.selectedService;
     }
-    public void setSelectedComponent(int id) {
-        this.selectedComponent = id;
+    public void setSelectedService(int id) {
+        this.selectedService = id;
     }
 
     public String getUsagePeriod() {return this.usagePeriod;}

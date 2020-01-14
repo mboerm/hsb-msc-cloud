@@ -1,6 +1,6 @@
-package cloud.model.components;
+package cloud.model.services;
 
-public class MonitoringComponent extends Component {
+public class MonitoringService extends Service {
 
     private String metrics;
     private String apiRequests;
@@ -8,7 +8,7 @@ public class MonitoringComponent extends Component {
     private String events;
     private boolean isLogger;
 
-    public MonitoringComponent(
+    public MonitoringService(
             String name,
             String metrics,
             String requests,

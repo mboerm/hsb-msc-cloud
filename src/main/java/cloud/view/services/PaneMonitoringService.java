@@ -1,10 +1,10 @@
-package cloud.view.components;
+package cloud.view.services;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-public class PaneMonitoringComponent extends PaneComponent {
+public class PaneMonitoringService extends PaneServiceProperties {
 
     private Spinner metricsSpinner;
     private Spinner requestsSpinner;
@@ -12,7 +12,7 @@ public class PaneMonitoringComponent extends PaneComponent {
     private Spinner eventsSpinner;
     private CheckBox isLoggingBox;
 
-    public PaneMonitoringComponent() {
+    public PaneMonitoringService() {
         Label metricsLbl = new Label("# of metrics:");
         Label requestsLbl = new Label("# of requests:");
         Label dataLbl = new Label("# of data in GB:");

@@ -1,12 +1,12 @@
-package cloud.model.components;
+package cloud.model.services;
 
-public class ComputeComponent extends Component {
+public class ComputeService extends Service {
 
     // TODO: Parameter für Compute hinzufügen
 
     private String computeType;
 
-    public ComputeComponent(
+    public ComputeService(
             String name,
             String type
     ) {

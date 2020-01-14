@@ -1,4 +1,4 @@
-package cloud.view.components;
+package cloud.view.services;
 
 import cloud.configuration.Config;
 import javafx.collections.FXCollections;
@@ -6,7 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-public class PaneIntegrationComponent extends PaneComponent {
+public class PaneIntegrationService extends PaneServiceProperties {
 
     private ComboBox<String> integrationTypeBox;
     private Spinner<Integer> dataSpinner;
@@ -17,7 +17,7 @@ public class PaneIntegrationComponent extends PaneComponent {
     private Spinner<Integer> mailSpinner;
     private Spinner<Integer> smsSpinner;
 
-    public PaneIntegrationComponent() {
+    public PaneIntegrationService() {
         Label typeLbl = new Label("Type:");
         Label dataLbl = new Label("# of data in GB:");
         Label requestsLbl = new Label("# of requests:");

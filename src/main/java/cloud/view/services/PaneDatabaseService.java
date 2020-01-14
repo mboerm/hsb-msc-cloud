@@ -1,16 +1,16 @@
-package cloud.view.components;
+package cloud.view.services;
 
 import cloud.configuration.Config;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
-public class PaneDatabaseComponent extends PaneComponent {
+public class PaneDatabaseService extends PaneServiceProperties {
 
     private ComboBox<String> databaseSystemTypeBox;
     private ComboBox<String> databaseInstanceTypeBox;
 
-    public PaneDatabaseComponent() {
+    public PaneDatabaseService() {
         Label systemTypeLabel = new Label("System type:");
         databaseSystemTypeBox = new ComboBox<>(FXCollections.observableArrayList(
                 Config.getInstance().getConfigValues("database-system-type")

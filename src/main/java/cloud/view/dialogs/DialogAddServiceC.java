@@ -1,91 +1,91 @@
 package cloud.view.dialogs;
 
 import cloud.configuration.Config;
-import cloud.model.components.*;
-import cloud.view.components.*;
+import cloud.model.services.*;
+import cloud.view.services.*;
 
-public class DialogAddComponentC {
+public class DialogAddServiceC {
 
-    private Component addedComponent;
+    private Service addedService;
     private String addedResponse;
-    private PaneComputeComponent computePane;
-    private PaneDatabaseComponent databasePane;
-    private PaneStorageComponent storagePane;
-    private PaneAnalyticComponent analyticPane;
-    private PaneNetworkComponent networkPane;
-    private PaneIntegrationComponent integrationPane;
-    private PaneMonitoringComponent monitoringPane;
+    private PaneComputeService computePane;
+    private PaneDatabaseService databasePane;
+    private PaneStorageService storagePane;
+    private PaneAnalyticService analyticPane;
+    private PaneNetworkService networkPane;
+    private PaneIntegrationService integrationPane;
+    private PaneMonitoringService monitoringPane;
 
-    public DialogAddComponentC() {
-        DialogAddComponent<String> dialogAdd = new DialogAddComponent<>();
+    public DialogAddServiceC() {
+        DialogAddService<String> dialogAdd = new DialogAddService<>();
 
-        dialogAdd.getComponentsBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
+        dialogAdd.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             dialogAdd.toggleOKButton(false);
-            dialogAdd.getComponentsDialogPane().setCenter(switchComponentPanes(newItem));
+            dialogAdd.getServiceDialogPane().setCenter(switchServicePanes(newItem));
             dialogAdd.getDialogPane().getScene().getWindow().sizeToScene();
         });
 
         dialogAdd.showAndWait().ifPresent(response -> {
             String responseValue = response.substring(response.lastIndexOf(':') + 2, response.length() - 1);
             addedResponse = responseValue;
-            addedComponent = createComponent(responseValue);
+            addedService = createService(responseValue);
         });
     }
 
-    public Component getAddedComponent() {
-        return addedComponent;
+    public Service getAddedService() {
+        return addedService;
     }
 
     public String getAddedResponse() {
         return addedResponse;
     }
 
-    private PaneComponent switchComponentPanes(String item) {
+    private PaneServiceProperties switchServicePanes(String item) {
         switch (item) {
             case "Compute":
-                computePane = new PaneComputeComponent();
+                computePane = new PaneComputeService();
                 return computePane;
             case "Database":
-                databasePane = new PaneDatabaseComponent();
+                databasePane = new PaneDatabaseService();
                 return databasePane;
             case "Storage":
-                storagePane = new PaneStorageComponent();
+                storagePane = new PaneStorageService();
                 return storagePane;
             case "Analytic":
-                analyticPane = new PaneAnalyticComponent();
+                analyticPane = new PaneAnalyticService();
                 return analyticPane;
             case "Network":
-                networkPane = new PaneNetworkComponent();
+                networkPane = new PaneNetworkService();
                 return networkPane;
             case "Integration":
-                integrationPane = new PaneIntegrationComponent();
+                integrationPane = new PaneIntegrationService();
                 return integrationPane;
             case "Monitoring":
-                monitoringPane = new PaneMonitoringComponent();
+                monitoringPane = new PaneMonitoringService();
                 return monitoringPane;
             default:
                 return null;
         }
     }
 
-    private Component createComponent(String choice) {
+    private Service createService(String choice) {
         switch (choice) {
             case "Compute":
-                return new ComputeComponent(
+                return new ComputeService(
                         computePane.getName(),
                         computePane.getComputeType()
                 );
             case "Database":
-                return new DatabaseComponent();
+                return new DatabaseService();
             case "Storage":
-                return new StorageComponent();
+                return new StorageService();
             case "Analytic":
-                return new AnalyticComponent();
+                return new AnalyticService();
             case "Network":
-                return new NetworkComponent();
+                return new NetworkService();
             case "Integration":
                 if (integrationPane.getType().equals(Config.getInstance().getConfigValues("integration-type")[0])) {
-                    return new IntegrationComponent(
+                    return new IntegrationService(
                             integrationPane.getName(),
                             integrationPane.getType(),
                             integrationPane.getData(),
@@ -93,7 +93,7 @@ public class DialogAddComponentC {
                             integrationPane.getMessages()
                     );
                 } else {
-                    return new IntegrationComponent(
+                    return new IntegrationService(
                             integrationPane.getName(),
                             integrationPane.getType(),
                             integrationPane.getData(),
@@ -102,7 +102,7 @@ public class DialogAddComponentC {
                 }
 
             case "Monitoring":
-                return new MonitoringComponent(
+                return new MonitoringService(
                         monitoringPane.getName(),
                         monitoringPane.getMetrics(),
                         monitoringPane.getRequests(),

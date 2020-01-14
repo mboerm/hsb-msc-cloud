@@ -1,4 +1,4 @@
-package cloud.view.components;
+package cloud.view.services;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -6,11 +6,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class PaneComponent extends GridPane {
+public class PaneServiceProperties extends GridPane {
 
     private TextField nameTFld;
 
-    public PaneComponent() {
+    public PaneServiceProperties() {
         setPadding(new Insets(10, 10, 10, 10));
         setHgap(10);
         setVgap(10);

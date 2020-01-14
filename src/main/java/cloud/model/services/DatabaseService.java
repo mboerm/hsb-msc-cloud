@@ -1,11 +1,11 @@
-package cloud.model.components;
+package cloud.model.services;
 
-public class DatabaseComponent extends Component {
+public class DatabaseService extends Service {
 
     private String dbInstanceType;
     private String dbSystemType;
 
-    public DatabaseComponent() {
+    public DatabaseService() {
         setCategory("Database");
         setDatabaseInstanceType("Standard");
         setDatabaseSystemType("SQL");
