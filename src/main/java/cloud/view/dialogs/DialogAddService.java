@@ -1,22 +1,22 @@
 package cloud.view.dialogs;
 
 import cloud.configuration.Config;
+import cloud.view.services.PaneServiceProperties;
 import cloud.view.services.PaneServiceUsageProperties;
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class DialogAddService<String> extends Dialog<String> {
+public class DialogAddService extends Dialog {
 
-    private BorderPane serviceDialogPane;
+    private PaneServiceUsageProperties serviceUsagePropertiesPane;
     private ComboBox<String> serviceTypeBox;
-
-    private GridPane designPropertiesPane;
+    private BorderPane serviceDialogPane;
 
     private Button buttonOk;
 
@@ -30,24 +30,30 @@ public class DialogAddService<String> extends Dialog<String> {
         stage.setMinWidth(300);
 
         Label serviceTypeLbl = new Label("Category: ");
-        String[] serviceCategories = (String[]) Config.getInstance().getConfigValues("component-categories");
-        serviceTypeBox = new ComboBox<>(FXCollections.observableArrayList(serviceCategories));
+        serviceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-categories"));
 
-        HBox serviceTypBoxPane = new HBox();
-        serviceTypBoxPane.setSpacing(10);
-        serviceTypBoxPane.setPadding(new Insets(10, 10, 10, 10));
-        serviceTypBoxPane.getChildren().addAll(serviceTypeLbl, serviceTypeBox);
-        serviceTypBoxPane.setAlignment(Pos.CENTER);
+        HBox serviceTypeBoxPane = new HBox();
+        serviceTypeBoxPane.setSpacing(10);
+        serviceTypeBoxPane.setPadding(new Insets(10, 10, 10, 10));
+        serviceTypeBoxPane.getChildren().addAll(serviceTypeLbl, serviceTypeBox);
+        serviceTypeBoxPane.setAlignment(Pos.CENTER);
 
         serviceDialogPane = new BorderPane();
         serviceDialogPane.setPadding(new Insets(10, 10, 10, 10));
-        serviceDialogPane.setTop(serviceTypBoxPane);
-        serviceDialogPane.setLeft(designPropertiesPane = new PaneServiceUsageProperties());
+        serviceDialogPane.setTop(serviceTypeBoxPane);
+        serviceDialogPane.setLeft(serviceUsagePropertiesPane = new PaneServiceUsageProperties());
+
+        final Separator sepVert = new Separator();
+        sepVert.setOrientation(Orientation.VERTICAL);
+        sepVert.setValignment(VPos.CENTER);
+        sepVert.setPrefHeight(100);
+        serviceDialogPane.setCenter(sepVert);
+
         getDialogPane().setContent(serviceDialogPane);
 
         getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
         buttonOk = (Button)getDialogPane().lookupButton(ButtonType.OK);
-        buttonOk.setDisable(true);
+        disableOKButton();
 
         setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
@@ -57,15 +63,16 @@ public class DialogAddService<String> extends Dialog<String> {
         });
     }
 
-    public GridPane getDesignPropertiesPane() {return this.designPropertiesPane;}
     public BorderPane getServiceDialogPane() {return this.serviceDialogPane;}
+    public PaneServiceUsageProperties getUsagePropertiesPane() {return this.serviceUsagePropertiesPane;}
     public ComboBox<String> getServiceTypeBox() {return this.serviceTypeBox;}
 
-    public void toggleOKButton(boolean toggle) {
-        this.buttonOk.setDisable(toggle);
+    public void disableOKButton() {
+        this.buttonOk.setDisable(true);
     }
+    public void enableOKButton() {this.buttonOk.setDisable(false);}
 
     private String getComboBoxItem() {
-        return (String) this.serviceTypeBox.getSelectionModel().selectedItemProperty().toString();
+        return this.serviceTypeBox.getSelectionModel().selectedItemProperty().toString();
     }
 }
