@@ -1,13 +1,14 @@
 package cloud.view.dialogs;
 
-import cloud.configuration.Config;
 import cloud.model.services.*;
 import cloud.view.services.*;
 
 public class DialogAddServiceC {
+    private Service createdService;
+    private String dialogResponse;
 
-    private Service addedService;
-    private String addedResponse;
+    private PaneServiceUsageProperties serviceUsagePane;
+
     private PaneComputeService computePane;
     private PaneDatabaseService databasePane;
     private PaneStorageService storagePane;
@@ -17,27 +18,30 @@ public class DialogAddServiceC {
     private PaneMonitoringService monitoringPane;
 
     public DialogAddServiceC() {
-        DialogAddService<String> dialogAdd = new DialogAddService<>();
+        DialogAddService dialogAdd = new DialogAddService();
+
+        serviceUsagePane = dialogAdd.getUsagePropertiesPane();
 
         dialogAdd.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
-            dialogAdd.toggleOKButton(false);
-            dialogAdd.getServiceDialogPane().setCenter(switchServicePanes(newItem));
+            dialogAdd.getServiceDialogPane().setRight(switchServicePanes(newItem));
             dialogAdd.getDialogPane().getScene().getWindow().sizeToScene();
+            dialogAdd.enableOKButton();
         });
 
         dialogAdd.showAndWait().ifPresent(response -> {
-            String responseValue = response.substring(response.lastIndexOf(':') + 2, response.length() - 1);
-            addedResponse = responseValue;
-            addedService = createService(responseValue);
+            String responseValue = response.toString().substring(
+                    response.toString().lastIndexOf(':') + 2,
+                    response.toString().length() - 1);
+            dialogResponse = responseValue;
+            createdService = setCreatedService(responseValue);
         });
     }
 
-    public Service getAddedService() {
-        return addedService;
+    public Service getCreatedService() {
+        return createdService;
     }
-
-    public String getAddedResponse() {
-        return addedResponse;
+    public String getDialogResponse() {
+        return dialogResponse;
     }
 
     private PaneServiceProperties switchServicePanes(String item) {
@@ -64,54 +68,37 @@ public class DialogAddServiceC {
                 monitoringPane = new PaneMonitoringService();
                 return monitoringPane;
             default:
-                return null;
+                return new PaneServiceProperties();
         }
     }
 
-    private Service createService(String choice) {
-        switch (choice) {
-            case "Compute":
-                return new ComputeService(
-                        computePane.getName(),
-                        computePane.getComputeType()
-                );
-            case "Database":
-                return new DatabaseService();
-            case "Storage":
-                return new StorageService();
-            case "Analytic":
-                return new AnalyticService();
-            case "Network":
-                return new NetworkService();
-            case "Integration":
-                if (integrationPane.getType().equals(Config.getInstance().getConfigValues("integration-type")[0])) {
-                    return new IntegrationService(
-                            integrationPane.getName(),
-                            integrationPane.getType(),
-                            integrationPane.getData(),
-                            integrationPane.getRequests(),
-                            integrationPane.getMessages()
-                    );
-                } else {
-                    return new IntegrationService(
-                            integrationPane.getName(),
-                            integrationPane.getType(),
-                            integrationPane.getData(),
-                            integrationPane.getRequests()
-                    );
-                }
-
-            case "Monitoring":
-                return new MonitoringService(
-                        monitoringPane.getName(),
-                        monitoringPane.getMetrics(),
-                        monitoringPane.getRequests(),
-                        monitoringPane.getData(),
-                        monitoringPane.getEvents(),
-                        monitoringPane.getLoggingState()
-                );
-            default:
-                return null;
+    private Service setCreatedService(String choice) {
+        if (choice.equals("Compute")) {
+            return null;
+        } else if (choice.equals("Database")) {
+            return null;
+        } else if (choice.equals("Storage")) {
+            return null;
+        } else if (choice.equals("Analytic")) {
+            return null;
+        } else if (choice.equals("Network")) {
+            return ServiceCreator.getService(new NetworkServiceCreator(
+                    networkPane.getName(), networkPane.getNetworkType(), networkPane.getRequests(),
+                    networkPane.getData(), networkPane.getDataOut(), networkPane.getZones()
+            ));
+        } else if (choice.equals("Integration")) {
+            return ServiceCreator.getService(new IntegrationServiceCreator(
+                    integrationPane.getName(),integrationPane.getType(),integrationPane.getData(),
+                    integrationPane.getRequests(),integrationPane.getMessages()
+            ));
+        } else if (choice.equals("Monitoring")) {
+            return ServiceCreator.getService(new MonitoringServiceCreator(
+                    monitoringPane.getName(),monitoringPane.getMetrics(),monitoringPane.getRequests(),
+                    monitoringPane.getData(),monitoringPane.getEvents(),monitoringPane.getLoggingState()
+            ));
+        } else {
+            System.err.println("Empty service!");
+            return null;
         }
     }
 }
