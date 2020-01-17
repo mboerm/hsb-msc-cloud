@@ -1,6 +1,6 @@
 package cloud.model.services;
 
-public class Service {
+public abstract class Service {
     private String name;
     private String service;
     private String providerService;
@@ -16,18 +16,6 @@ public class Service {
         setService("");
         setProviderService("");
         setCategory("");
-        setRegion("");
-        setUsageType("");
-        setUsagePeriod("");
-        setUsagePrepay("");
-        setOpMode("");
-    }
-
-    public Service(String name, String category) {
-        setName(name);
-        setService("");
-        setProviderService("");
-        setCategory(category);
         setRegion("");
         setUsageType("");
         setUsagePeriod("");
