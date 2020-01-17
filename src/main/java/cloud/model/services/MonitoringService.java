@@ -1,28 +1,21 @@
 package cloud.model.services;
 
-public class MonitoringService extends Service {
+class MonitoringService extends Service {
 
     private String metrics;
     private String apiRequests;
     private String data;
     private String events;
-    private boolean isLogger;
+    private boolean loggerState;
 
-    public MonitoringService(
-            String name,
-            String metrics,
-            String requests,
-            String data,
-            String events,
-            boolean isLogger
-    ) {
+    public MonitoringService(String name, String metrics, String apiRequests, String data, String events, boolean loggerState) {
         setName(name);
         setCategory("Monitoring");
         setMetrics(metrics);
-        setApiRequests(requests);
+        setApiRequests(apiRequests);
         setData(data);
         setEvents(events);
-        setIsLogger(isLogger);
+        setLoggerState(loggerState);
     }
 
     public String getMetrics() {return this.metrics;}
@@ -37,6 +30,6 @@ public class MonitoringService extends Service {
     public String getEvents() {return this.events;}
     public void setEvents(String events) {this.events = events;}
 
-    public boolean getIsLogger() {return this.isLogger;}
-    public void setIsLogger(boolean isLogger) {this.isLogger = isLogger;}
+    public boolean getLoggerState() {return this.loggerState;}
+    public void setLoggerState(boolean isLogger) {this.loggerState = isLogger;}
 }
