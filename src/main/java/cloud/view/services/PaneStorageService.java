@@ -7,6 +7,6 @@ public class PaneStorageService extends PaneServiceProperties {
     public PaneStorageService() {
         Label labelType = new Label("Storage type:");
 
-        add(labelType, 0, 1);
+        add(labelType, 0, 2);
     }
 }
