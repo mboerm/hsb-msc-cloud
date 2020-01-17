@@ -1,5 +1,6 @@
 package cloud.view;
 
+import cloud.configuration.Config;
 import cloud.view.design.DesignArea;
 import cloud.view.design.DesignControls;
 import cloud.view.design.DesignProperties;
@@ -17,8 +18,8 @@ public class CloudView {
     private Scene scene;
 
     private MenuItem menuFileExit;
-    private MenuItem menuDesignAnalyse;
-    private MenuItem menuDesignOptimize;
+    private MenuItem menuDesignMatch;
+    private MenuItem menuDesignCalculate;
     private MenuItem menuDesignReset;
     private RadioMenuItem menuProviderAmazon;
     private RadioMenuItem menuProviderWindows;
@@ -79,18 +80,18 @@ public class CloudView {
 
     private Menu initMenuDesign() {
         Menu menuDesign = new Menu("Design");
-        menuDesignAnalyse = new MenuItem("Analyse Design");
-        menuDesignOptimize = new MenuItem("Optimize Design");
+        menuDesignMatch = new MenuItem("Match Services");
+        menuDesignCalculate = new MenuItem("Calculate Costs");
         menuDesignReset = new MenuItem("Reset Design");
-        menuDesign.getItems().addAll(menuDesignAnalyse, menuDesignOptimize, menuDesignReset);
+        menuDesign.getItems().addAll(menuDesignMatch, menuDesignCalculate, menuDesignReset);
         return menuDesign;
     }
 
     private Menu initMenuProvider() {
         Menu menuProvider = new Menu("Provider");
-        menuProviderAmazon = new RadioMenuItem("Amazon Web Services");
-        menuProviderWindows = new RadioMenuItem("Windows Azure");
-        menuProviderGoogle = new RadioMenuItem("Google Cloud Platform");
+        menuProviderAmazon = new RadioMenuItem(Config.getInstance().getConfigValuesAsArray("services")[0]);
+        menuProviderWindows = new RadioMenuItem(Config.getInstance().getConfigValuesAsArray("services")[1]);
+        menuProviderGoogle = new RadioMenuItem(Config.getInstance().getConfigValuesAsArray("services")[2]);
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().add(menuProviderAmazon);
         toggleGroup.getToggles().add(menuProviderWindows);
@@ -135,11 +136,11 @@ public class CloudView {
     public MenuItem getMenuFileExit() {
         return this.menuFileExit;
     }
-    public MenuItem getMenuDesignAnalyse() {
-        return this.menuDesignAnalyse;
+    public MenuItem getMenuDesignMatch() {
+        return this.menuDesignMatch;
     }
-    public MenuItem getMenuDesignOptimize() {
-        return this.menuDesignOptimize;
+    public MenuItem getMenuDesignCalculate() {
+        return this.menuDesignCalculate;
     }
     public MenuItem getMenuDesignReset() {
         return this.menuDesignReset;

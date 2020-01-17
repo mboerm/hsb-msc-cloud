@@ -8,11 +8,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
 public class DesignArea extends VBox {
-    private TableView<Service> componentsTable = new TableView<>();
+    private TableView<Service> servicesTable = new TableView<>();
 
     public DesignArea() {
         initArea();
-        getChildren().add(componentsTable);
+        getChildren().add(servicesTable);
     }
 
     private void initArea() {
@@ -26,17 +26,17 @@ public class DesignArea extends VBox {
         serviceProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("providerService"));
         serviceCategoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
 
-        componentsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        componentsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        servicesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        servicesTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         serviceNameCol.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
         serviceTypeCol.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
         serviceProviderNameCol.setMaxWidth(1f * Integer.MAX_VALUE * 30);
         serviceCategoryCol.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
-        componentsTable.getColumns().addAll(serviceNameCol, serviceTypeCol, serviceProviderNameCol, serviceCategoryCol);
+        servicesTable.getColumns().addAll(serviceNameCol, serviceTypeCol, serviceProviderNameCol, serviceCategoryCol);
     }
 
-    public TableView<Service> getComponentsTable() {
-        return this.componentsTable;
+    public TableView<Service> getServicesTable() {
+        return this.servicesTable;
     }
 }

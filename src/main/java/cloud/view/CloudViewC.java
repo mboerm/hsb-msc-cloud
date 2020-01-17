@@ -39,7 +39,7 @@ public class CloudViewC {
         view.getMenuFileExit().setOnAction(actionEvent -> System.exit(0));
 
         view.getMenuDesignReset().setOnAction(actionEvent -> {
-            view.getPaneDesignArea().getComponentsTable().getItems().removeAll();
+            view.getPaneDesignArea().getServicesTable().getItems().removeAll();
             design.clearServicesList();
         });
 
@@ -55,7 +55,7 @@ public class CloudViewC {
             design.setUsagePeriod(newValue));
 
         view.getPaneDesignProperties().getPrimaryRegionComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setPrimaryRegion(newValue.toString());
+            design.setPrimaryRegion(newValue);
         });
 
         view.getPaneDesignProperties().getNumOfInstancesSpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
@@ -67,7 +67,7 @@ public class CloudViewC {
         });
 
         view.getPaneDesignProperties().getPeriodOfRequestsComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setPeriodOfRequests(newValue.toString());
+            design.setPeriodOfRequests(newValue);
         });
 
         view.getPaneDesignProperties().getNumOfCapacitySpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
@@ -75,39 +75,40 @@ public class CloudViewC {
         });
 
         view.getPaneDesignProperties().getPeriodOfCapacityComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setPeriodOfCapacity(newValue.toString());
+            design.setPeriodOfCapacity(newValue);
         });
     }
 
     private void initDesignAreaHandler() {
-        view.getPaneDesignArea().getComponentsTable().setItems(design.getServicesList());
+        view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
 
-        ObservableList<Service> selectedItems = view.getPaneDesignArea().getComponentsTable().getSelectionModel().getSelectedItems();
+        ObservableList<Service> selectedItems = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItems();
         selectedItems.addListener((ListChangeListener<Service>) change -> {
-            int selCompIdx = view.getPaneDesignArea().getComponentsTable().getSelectionModel().getSelectedIndex();
+            int selCompIdx = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedIndex();
             design.setSelectedService(selCompIdx);
         });
     }
 
     private void initDesignControlsHandler() {
         view.getPaneDesignControls().getControlAdd().setOnAction(actionEvent -> {
-            DialogAddServiceC dialogAddComponentController = new DialogAddServiceC();
-            view.setTaskBarText("Added " + dialogAddComponentController.getAddedResponse() + " component");
+            DialogAddServiceC dialogAddServiceController = new DialogAddServiceC();
 
-            /* get created component */
-            Service createdComponent = dialogAddComponentController.getAddedService();
+            /* get created service */
+            Service createdService = dialogAddServiceController.getCreatedService();
 
-            /* add component to components list */
-            design.addService(createdComponent);
+            /* add service to services list */
+            design.addService(createdService);
+
+            view.setTaskBarText("Added " + dialogAddServiceController.getDialogResponse() + " service");
         });
 
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
-            /* remove selected component from components list */
-            Service selectedComponent = view.getPaneDesignArea().getComponentsTable().getItems().get(design.getSelectedService());
-            design.removeService(selectedComponent);
+            /* remove selected service from services list */
+            Service selectedService = view.getPaneDesignArea().getServicesTable().getItems().get(design.getSelectedService());
+            design.removeService(selectedService);
 
             /* clear selection */
-            view.getPaneDesignArea().getComponentsTable().getSelectionModel().clearSelection();
+            view.getPaneDesignArea().getServicesTable().getSelectionModel().clearSelection();
         });
 
         view.getPaneDesignControls().getControlEdit().setOnAction(actionEvent -> {});
@@ -117,7 +118,7 @@ public class CloudViewC {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About " + APP_TITLE);
         alert.setHeaderText(null);
-        alert.setContentText(Config.getInstance().getConfigValues("about-text")[0]);
+        alert.setContentText(Config.getInstance().getConfigValuesAsArray("about-text")[0]);
         alert.showAndWait();
     }
 }

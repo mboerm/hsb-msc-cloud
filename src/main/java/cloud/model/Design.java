@@ -3,12 +3,29 @@ package cloud.model;
 import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Design {
 
     private int selectedService;
     private final ObservableList<Service> servicesList =
             FXCollections.observableArrayList();
+
+    /**
+    private final Map<Service, String> matchedServicesMap = new HashMap<Service, String>();
+    matchedServicesMap.put(Service,"AWS-EC2");
+     */
+
+    /**
+    private final List<Pair> matchedServicesList = new ArrayList<Pair>();
+    Pair pair = new Pair(Service,"AWS-EC2");
+     matchedServicesList.add(pair);
+     */
 
     private String usagePeriod;
     private String primaryRegion;
