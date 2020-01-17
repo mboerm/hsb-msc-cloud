@@ -1,21 +1,37 @@
 package cloud.model.provider;
 
-public abstract class Provider {
+abstract class Provider {
 
-    private String name;
     private String serviceName;
+    private String serviceFile;
+    private String priceFile;
+    private String freeFile;
 
-    void setName(String name) {
-        this.name = name;
+    public String getServiceName() {
+        return this.serviceName;
     }
-    public String getName() {
-        return this.name;
-    }
-
     void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
-    public String getServiceName() {
-        return this.serviceName;
+
+    public String getServiceFile() {
+        return serviceFile;
+    }
+    public void setServiceFile(String serviceFile) {
+        this.serviceFile = serviceFile;
+    }
+
+    public String getPriceFile() {
+        return priceFile;
+    }
+    public void setPriceFile(String priceFile) {
+        this.priceFile = priceFile;
+    }
+
+    public String getFreeFile() {
+        return freeFile;
+    }
+    public void setFreeFile(String freeFile) {
+        this.freeFile = freeFile;
     }
 }
