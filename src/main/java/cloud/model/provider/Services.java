@@ -10,15 +10,6 @@ import java.io.File;
 
 public class Services {
 
-    private static volatile Services INSTANCE = null;
-
-    public static Services getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Services();
-        }
-        return INSTANCE;
-    }
-
     /**
      * Get properties of service
      * @param serviceName
