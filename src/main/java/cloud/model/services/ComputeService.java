@@ -1,23 +1,11 @@
 package cloud.model.services;
 
-public class ComputeService extends Service {
-
-    // TODO: Parameter für Compute hinzufügen
+class ComputeService extends Service {
 
     private String computeType;
 
-    public ComputeService(
-            String name,
-            String type
-    ) {
-        setName(name);
+    public ComputeService() {
         setCategory("Compute");
-        setComputeType(type);
-        setRegion("");
-        setUsageType("");
-        setUsagePeriod("");
-        setUsagePrepay("");
-        setOpMode("");
     }
 
     public String getComputeType() {

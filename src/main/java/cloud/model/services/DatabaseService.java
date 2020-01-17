@@ -1,14 +1,12 @@
 package cloud.model.services;
 
-public class DatabaseService extends Service {
+class DatabaseService extends Service {
 
     private String dbInstanceType;
     private String dbSystemType;
 
     public DatabaseService() {
         setCategory("Database");
-        setDatabaseInstanceType("Standard");
-        setDatabaseSystemType("SQL");
     }
 
     public String getDatabaseInstanceType() {
