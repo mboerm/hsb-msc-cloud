@@ -5,9 +5,14 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 
 public class PaneServiceProperties extends GridPane {
 
+    private Label servicePropertiesLbl;
+    private Label nameLbl;
     private TextField nameTFld;
 
     public PaneServiceProperties() {
@@ -16,17 +21,24 @@ public class PaneServiceProperties extends GridPane {
         setVgap(10);
         setAlignment(Pos.TOP_CENTER);
 
-        Label nameLbl = new Label("Name:");
+        servicePropertiesLbl = new Label("Service properties");
+        servicePropertiesLbl.setTextAlignment(TextAlignment.CENTER);
+        servicePropertiesLbl.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+        nameLbl = new Label("Name:");
         nameTFld = new TextField();
 
-        add(nameLbl, 0, 0);
-        add(nameTFld, 1, 0);
+        setControls();
     }
 
+    public TextField getNameTFld() {return this.nameTFld;}
     public String getName() {
         return this.nameTFld.getText();
     }
-    public void setName(String name) {
-        this.nameTFld.setText(name);
+
+    public void setControls() {
+        add(servicePropertiesLbl, 0,0);
+        setColumnSpan(servicePropertiesLbl, 2);
+        add(nameLbl, 0, 1);
+        add(nameTFld, 1, 1);
     }
 }
