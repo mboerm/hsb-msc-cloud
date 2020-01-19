@@ -21,9 +21,6 @@ public class CloudView {
     private MenuItem menuDesignMatch;
     private MenuItem menuDesignCalculate;
     private MenuItem menuDesignReset;
-    private RadioMenuItem menuProviderAmazon;
-    private RadioMenuItem menuProviderWindows;
-    private RadioMenuItem menuProviderGoogle;
     private MenuItem menuHelpAbout;
     private Label taskLbl;
 
@@ -56,7 +53,6 @@ public class CloudView {
         menuBar.getMenus().add(initMenuEdit());
         menuBar.getMenus().add(initMenuDesign());
         menuBar.getMenus().add(initMenuView());
-        menuBar.getMenus().add(initMenuProvider());
         menuBar.getMenus().add(initMenuHelp());
         return menuBar;
     }
@@ -85,19 +81,6 @@ public class CloudView {
         menuDesignReset = new MenuItem("Reset Design");
         menuDesign.getItems().addAll(menuDesignMatch, menuDesignCalculate, menuDesignReset);
         return menuDesign;
-    }
-
-    private Menu initMenuProvider() {
-        Menu menuProvider = new Menu("Provider");
-        menuProviderAmazon = new RadioMenuItem(Config.getInstance().getConfigValuesAsArray("services")[0]);
-        menuProviderWindows = new RadioMenuItem(Config.getInstance().getConfigValuesAsArray("services")[1]);
-        menuProviderGoogle = new RadioMenuItem(Config.getInstance().getConfigValuesAsArray("services")[2]);
-        ToggleGroup toggleGroup = new ToggleGroup();
-        toggleGroup.getToggles().add(menuProviderAmazon);
-        toggleGroup.getToggles().add(menuProviderWindows);
-        toggleGroup.getToggles().add(menuProviderGoogle);
-        menuProvider.getItems().addAll(menuProviderAmazon, menuProviderWindows, menuProviderGoogle);
-        return menuProvider;
     }
 
     private Menu initMenuHelp() {
@@ -144,15 +127,6 @@ public class CloudView {
     }
     public MenuItem getMenuDesignReset() {
         return this.menuDesignReset;
-    }
-    public MenuItem getMenuProviderAmazon() {
-        return this.menuProviderAmazon;
-    }
-    public MenuItem getMenuProviderWindows() {
-        return this.menuProviderWindows;
-    }
-    public MenuItem getMenuProviderGoogle() {
-        return this.menuProviderGoogle;
     }
     public MenuItem getMenuHelpAbout() {
         return this.menuHelpAbout;
