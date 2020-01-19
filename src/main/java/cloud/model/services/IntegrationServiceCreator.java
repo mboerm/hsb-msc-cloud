@@ -1,5 +1,7 @@
 package cloud.model.services;
 
+import cloud.configuration.Config;
+
 public class IntegrationServiceCreator implements ServiceAbstractCreator {
 
     private String name;
@@ -18,6 +20,14 @@ public class IntegrationServiceCreator implements ServiceAbstractCreator {
 
     @Override
     public Service createService() {
-        return new IntegrationService(name, type, data, requests, messages);
+        String[] types = Config.getInstance().getConfigValuesAsArray("integration-type");
+
+        if (type.equals(types[0])) {
+            return new IntegrationService(name, type, data, requests, messages);
+        } else if (type.equals(types[1])) {
+            return new IntegrationService(name, type, data, requests, null);
+        } else {
+            return null;
+        }
     }
 }
