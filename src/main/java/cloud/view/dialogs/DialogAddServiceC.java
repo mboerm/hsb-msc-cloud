@@ -73,40 +73,49 @@ public class DialogAddServiceC {
     }
 
     private Service setCreatedService(String choice) {
-        if (choice.equals("Compute")) {
-            return null;
-        } else if (choice.equals("Database")) {
-            return null;
-        } else if (choice.equals("Storage")) {
-            return ServiceCreator.getService(new StorageServiceCreator(
-                    storagePane.getName(),storagePane.getStorageType(),storagePane.getStorageMode(),
-                    storagePane.getCapacity(),storagePane.getData(),storagePane.getRequests(),
-                    storagePane.getQueries(),storagePane.getRate()
-            ));
-        } else if (choice.equals("Analytic")) {
-            return ServiceCreator.getService(new AnalyticServiceCreator(
-                    analyticPane.getName(),analyticPane.getAnalyticType(),analyticPane.getData(),
-                    analyticPane.getDataOut(),analyticPane.getActivities(),analyticPane.getUnits(),
-                    analyticPane.getInstanceSize()
-            ));
-        } else if (choice.equals("Network")) {
-            return ServiceCreator.getService(new NetworkServiceCreator(
-                    networkPane.getName(), networkPane.getNetworkType(), networkPane.getRequests(),
-                    networkPane.getData(), networkPane.getDataOut(), networkPane.getZones()
-            ));
-        } else if (choice.equals("Integration")) {
-            return ServiceCreator.getService(new IntegrationServiceCreator(
-                    integrationPane.getName(),integrationPane.getType(),integrationPane.getData(),
-                    integrationPane.getRequests(),integrationPane.getMessages()
-            ));
-        } else if (choice.equals("Monitoring")) {
-            return ServiceCreator.getService(new MonitoringServiceCreator(
-                    monitoringPane.getName(),monitoringPane.getMetrics(),monitoringPane.getRequests(),
-                    monitoringPane.getData(),monitoringPane.getEvents(),monitoringPane.getLoggingState()
-            ));
-        } else {
-            System.err.println("Empty service!");
-            return null;
+        switch (choice) {
+            case "Compute":
+                return ServiceCreator.getService(new ComputeServiceCreator(
+                        computePane.getName(), computePane.getComputeType(), computePane.getInstanceType(), computePane.getInstanceSize(),
+                        computePane.getComputeInstanceRef(), computePane.getStorageInstanceRef(), computePane.getSystem(),
+                        computePane.getCPU(), computePane.getStorage(), computePane.getData(), computePane.getNumOne(), computePane.getNumTwo()
+                ));
+            case "Database":
+                return ServiceCreator.getService(new DatabaseServiceCreator(
+                        databasePane.getName(), databasePane.getDatabaseType(), databasePane.getDatabaseScheme(),
+                        databasePane.getInstanceType(), databasePane.getInstanceSize(), databasePane.getDuration(),
+                        databasePane.getStorage(), databasePane.getBackup(), databasePane.getData(), databasePane.getQueries()
+                ));
+            case "Storage":
+                return ServiceCreator.getService(new StorageServiceCreator(
+                        storagePane.getName(), storagePane.getStorageType(), storagePane.getStorageMode(),
+                        storagePane.getCapacity(), storagePane.getData(), storagePane.getRequests(),
+                        storagePane.getQueries(), storagePane.getRate()
+                ));
+            case "Analytic":
+                return ServiceCreator.getService(new AnalyticServiceCreator(
+                        analyticPane.getName(), analyticPane.getAnalyticType(), analyticPane.getData(),
+                        analyticPane.getDataOut(), analyticPane.getActivities(), analyticPane.getUnits(),
+                        analyticPane.getInstanceSize()
+                ));
+            case "Network":
+                return ServiceCreator.getService(new NetworkServiceCreator(
+                        networkPane.getName(), networkPane.getNetworkType(), networkPane.getRequests(),
+                        networkPane.getData(), networkPane.getDataOut(), networkPane.getZones()
+                ));
+            case "Integration":
+                return ServiceCreator.getService(new IntegrationServiceCreator(
+                        integrationPane.getName(), integrationPane.getType(), integrationPane.getData(),
+                        integrationPane.getRequests(), integrationPane.getMessages()
+                ));
+            case "Monitoring":
+                return ServiceCreator.getService(new MonitoringServiceCreator(
+                        monitoringPane.getName(), monitoringPane.getMetrics(), monitoringPane.getRequests(),
+                        monitoringPane.getData(), monitoringPane.getEvents(), monitoringPane.getLoggingState()
+                ));
+            default:
+                System.err.println("Empty service!");
+                return null;
         }
     }
 }
