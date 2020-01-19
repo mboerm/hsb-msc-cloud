@@ -3,12 +3,6 @@ package cloud.model;
 import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Design {
 
@@ -27,6 +21,7 @@ public class Design {
      matchedServicesList.add(pair);
      */
 
+    private String provider;
     private String usagePeriod;
     private String primaryRegion;
     private String numOfInstances;
@@ -59,16 +54,21 @@ public class Design {
     public void removeService(Service service) {
         this.servicesList.remove(service);
     }
-
     public void clearServicesList() {
         this.servicesList.clear();
     }
-
     public int getSelectedService() {
         return this.selectedService;
     }
     public void setSelectedService(int id) {
         this.selectedService = id;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
     public String getUsagePeriod() {return this.usagePeriod;}
