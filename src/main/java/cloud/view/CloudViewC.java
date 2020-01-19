@@ -2,6 +2,7 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.model.StageManager;
+import cloud.model.DesignManager;
 import cloud.model.services.Service;
 import cloud.model.provider.ProviderFactory;
 import cloud.view.dialogs.DialogAddServiceC;
@@ -21,8 +22,8 @@ public class CloudViewC {
     // View
     private CloudView view;
 
-    public CloudViewC(Design design) {
-        this.design = design;
+    public CloudViewC() {
+        this.design = DesignManager.getInstance().getDesign();
         this.providerFactory = new ProviderFactory();
         this.view = new CloudView();
         initMenuHandler();
