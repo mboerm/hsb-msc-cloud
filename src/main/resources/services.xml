@@ -1,38 +1,18 @@
-<?xml version="1.0"?>
-<provider>
-    <aws>
-        <category name="compute">
-            <service>
-                <name>EC2</name>
-            </service>
-            <service>
-                <name>ECS</name>
-            </service>
-            <service>
-                <name>Lightsail</name>
-            </service>
-            <service>
-                <name>Lambda</name>
-            </service>
-            <service>
-                <name>Elastic Beanstalk</name>
-            </service>
-        </category>
-
-        <service name="S3">
-            <category>storage</category>
-        </service>
-        <service name="EBS">
-            <category>storage</category>
-        </service>
-        <service name="EFS">
-            <category>storage</category>
-        </service>
-        <service name="Glacier">
-            <category>storage</category>
-        </service>
-        <service name="Backup">
-            <category>storage</category>
-        </service>
-    </aws>
-</provider>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<services>
+	<service name="S3">
+		<category>storage</category>
+	</service>
+	<service name="EBS">
+		<category>storage</category>
+	</service>
+	<service name="EFS">
+		<category>storage</category>
+	</service>
+	<service name="Glacier">
+		<category>storage</category>
+	</service>
+	<service name="Backup">
+		<category>storage</category>
+	</service>
+</services>
