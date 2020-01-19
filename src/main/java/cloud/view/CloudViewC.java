@@ -43,18 +43,20 @@ public class CloudViewC {
             design.clearServicesList();
         });
 
-        view.getMenuProviderAmazon().setOnAction(actionEvent -> providerFactory.getProvider("Amazon"));
-        view.getMenuProviderWindows().setOnAction(actionEvent -> providerFactory.getProvider("Windows"));
-        view.getMenuProviderGoogle().setOnAction(actionEvent -> providerFactory.getProvider("Google"));
+        view.getMenuDesignMatch().setOnAction(actionEvent -> providerFactory.getProvider(design.getProvider()));
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
     }
 
     private void initDesignPropertyHandler() {
+        view.getPaneDesignProperties().getProviderBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+            design.setProvider(newValue);
+        });
+
         view.getPaneDesignProperties().getUsagePeriodField().textProperty().addListener((obs, oldValue, newValue) ->
             design.setUsagePeriod(newValue));
 
-        view.getPaneDesignProperties().getPrimaryRegionComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+        view.getPaneDesignProperties().getPrimaryRegionBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             design.setPrimaryRegion(newValue);
         });
 
@@ -66,7 +68,7 @@ public class CloudViewC {
             design.setNumOfRequests(newValue);
         });
 
-        view.getPaneDesignProperties().getPeriodOfRequestsComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+        view.getPaneDesignProperties().getPeriodOfRequestsBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             design.setPeriodOfRequests(newValue);
         });
 
@@ -74,7 +76,7 @@ public class CloudViewC {
             design.setNumOfCapacity(newValue);
         });
 
-        view.getPaneDesignProperties().getPeriodOfCapacityComboBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+        view.getPaneDesignProperties().getPeriodOfCapacityBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             design.setPeriodOfCapacity(newValue);
         });
     }
