@@ -11,8 +11,8 @@ public class Design {
             FXCollections.observableArrayList();
 
     /**
-    private final Map<Service, String> matchedServicesMap = new HashMap<Service, String>();
-    matchedServicesMap.put(Service,"AWS-EC2");
+     * private final Map<Service, String> matchedServicesMap = new HashMap<Service, String>();
+     * matchedServicesMap.put(Service,"AWS-EC2");
      */
 
     /**
@@ -43,9 +43,9 @@ public class Design {
     }
 
     public Service getService(String name, String category) {
-        for (int i = 0; i < this.servicesList.size(); i++) {
-            if (this.servicesList.get(i).getName() == name && this.servicesList.get(i).getCategory() == category) {
-                return this.servicesList.get(i);
+        for (Service service : this.servicesList) {
+            if (service.getName().equals(name) && service.getCategory().equals(category)) {
+                return service;
             }
         }
         return null;

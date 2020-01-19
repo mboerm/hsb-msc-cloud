@@ -1,5 +1,6 @@
 package cloud.main;
 
+import cloud.model.DesignManager;
 import cloud.view.CloudViewC;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -20,11 +21,11 @@ public class CloudApp extends Application {
         // set primarystage in stage manager
         StageManager.getInstance().setPrimaryStage(primaryStage);
 
-        // create new design
-        Design design = new Design();
+        // create new design in design manager
+        DesignManager.getInstance().setDesign(new Design());
 
         // create view controller and show ui
-        CloudViewC vc = new CloudViewC(design);
+        CloudViewC vc = new CloudViewC();
         vc.show();
     }
 }
