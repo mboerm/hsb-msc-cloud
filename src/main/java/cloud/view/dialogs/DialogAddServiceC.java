@@ -78,7 +78,11 @@ public class DialogAddServiceC {
         } else if (choice.equals("Database")) {
             return null;
         } else if (choice.equals("Storage")) {
-            return null;
+            return ServiceCreator.getService(new StorageServiceCreator(
+                    storagePane.getName(),storagePane.getStorageType(),storagePane.getStorageMode(),
+                    storagePane.getCapacity(),storagePane.getData(),storagePane.getRequests(),
+                    storagePane.getQueries(),storagePane.getRate()
+            ));
         } else if (choice.equals("Analytic")) {
             return ServiceCreator.getService(new AnalyticServiceCreator(
                     analyticPane.getName(),analyticPane.getAnalyticType(),analyticPane.getData(),
