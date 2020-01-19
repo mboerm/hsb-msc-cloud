@@ -7,54 +7,61 @@ import javafx.scene.layout.GridPane;
 
 public class DesignProperties extends GridPane {
 
+    private ComboBox<String> providerBox;
     private TextField usagePeriodField;
-    private ComboBox<String> regionComboBox;
+    private ComboBox<String> regionBox;
     private Spinner<Integer> numOfInstancesSpinner;
     private Spinner<Integer> numOfRequestsSpinner;
     private Spinner<Integer> numOfCapacitySpinner;
-    private ComboBox<String> periodOfRequestsComboBox;
-    private ComboBox<String> periodOfCapacityComboBox;
+    private ComboBox<String> periodOfRequestsBox;
+    private ComboBox<String> periodOfCapacityBox;
 
     public DesignProperties() {
         setPadding(new Insets(10, 10, 10, 10));
         setVgap(10);
         setHgap(10);
 
-        Label usagePeriodLbl = new Label("Primary usage period: ");
+        Label providerLbl = new Label("Provider:");
+        providerBox = new ComboBox<>(Config.getInstance().getConfigValues("provider-services"));
+
+        Label usagePeriodLbl = new Label("Primary usage period:");
         usagePeriodField = new TextField();
         usagePeriodField.setPromptText("hh:mm - hh:mm");
 
-        Label regionLbl = new Label("Primary region: ");
-        regionComboBox = new ComboBox<>(Config.getInstance().getConfigValues("service-regions"));
+        Label regionLbl = new Label("Primary region:");
+        regionBox = new ComboBox<>(Config.getInstance().getConfigValues("service-regions"));
 
-        Label numOfInstancesLbl = new Label("# of compute instances: ");
+        Label numOfInstancesLbl = new Label("# of compute instances:");
         numOfInstancesSpinner = new Spinner<>(1, 100, 1);
         numOfInstancesSpinner.setEditable(true);
 
-        Label numOfRequestsLbl = new Label("# of requests: ");
+        Label numOfRequestsLbl = new Label("# of requests:");
         numOfRequestsSpinner = new Spinner<>(100000, 10000000, 100000);
         numOfRequestsSpinner.setEditable(true);
-        periodOfRequestsComboBox = new ComboBox<>(Config.getInstance().getConfigValues("service-property-period"));
+        periodOfRequestsBox = new ComboBox<>(Config.getInstance().getConfigValues("service-property-period"));
 
-        Label numOfCapacityLbl = new Label("# of storage capacity: ");
+        Label numOfCapacityLbl = new Label("# of storage capacity:");
         numOfCapacitySpinner = new Spinner<>(10, 10000, 100);
         numOfCapacitySpinner.setEditable(true);
-        periodOfCapacityComboBox = new ComboBox<>(Config.getInstance().getConfigValues("service-property-period"));
+        periodOfCapacityBox = new ComboBox<>(Config.getInstance().getConfigValues("service-property-period"));
 
-        add(usagePeriodLbl, 0, 0);
-        add(usagePeriodField, 1, 0);
-        add(regionLbl, 0, 1);
-        add(regionComboBox, 1, 1);
-        add(numOfInstancesLbl, 0, 2);
-        add(numOfInstancesSpinner, 1, 2);
-        add(numOfRequestsLbl, 0, 3);
-        add(numOfRequestsSpinner, 1, 3);
-        add(periodOfRequestsComboBox, 1, 4);
-        add(numOfCapacityLbl, 0, 5);
-        add(numOfCapacitySpinner, 1, 5);
-        add(periodOfCapacityComboBox, 1, 6);
+        add(providerLbl, 0, 0);
+        add(providerBox, 1, 0);
+        add(usagePeriodLbl, 0, 1);
+        add(usagePeriodField, 1, 1);
+        add(regionLbl, 0, 2);
+        add(regionBox, 1, 2);
+        add(numOfInstancesLbl, 0, 3);
+        add(numOfInstancesSpinner, 1, 3);
+        add(numOfRequestsLbl, 0, 4);
+        add(numOfRequestsSpinner, 1, 4);
+        add(periodOfRequestsBox, 1, 5);
+        add(numOfCapacityLbl, 0, 6);
+        add(numOfCapacitySpinner, 1, 6);
+        add(periodOfCapacityBox, 1, 7);
     }
 
+    public ComboBox<String> getProviderBox() {return this.providerBox;}
     public TextField getUsagePeriodField() {
         return this.usagePeriodField;
     }
@@ -67,15 +74,16 @@ public class DesignProperties extends GridPane {
     public Spinner<Integer> getNumOfCapacitySpinner() {
         return this.numOfCapacitySpinner;
     }
-    public ComboBox<String> getPrimaryRegionComboBox() {
-        return this.regionComboBox;
+    public ComboBox<String> getPrimaryRegionBox() {
+        return this.regionBox;
     }
-    public ComboBox<String> getPeriodOfRequestsComboBox() {
-        return this.periodOfRequestsComboBox;
+    public ComboBox<String> getPeriodOfRequestsBox() {
+        return this.periodOfRequestsBox;
     }
-    public ComboBox<String> getPeriodOfCapacityComboBox() {
-        return this.periodOfCapacityComboBox;
+    public ComboBox<String> getPeriodOfCapacityBox() {
+        return this.periodOfCapacityBox;
     }
 
-    public String getPrimaryRegion() {return this.regionComboBox.getEditor().getText();}
+    public String getProvider() {return this.providerBox.getEditor().getText();}
+    public String getPrimaryRegion() {return this.regionBox.getEditor().getText();}
 }
