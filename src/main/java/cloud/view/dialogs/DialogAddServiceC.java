@@ -80,7 +80,11 @@ public class DialogAddServiceC {
         } else if (choice.equals("Storage")) {
             return null;
         } else if (choice.equals("Analytic")) {
-            return null;
+            return ServiceCreator.getService(new AnalyticServiceCreator(
+                    analyticPane.getName(),analyticPane.getAnalyticType(),analyticPane.getData(),
+                    analyticPane.getDataOut(),analyticPane.getActivities(),analyticPane.getUnits(),
+                    analyticPane.getInstanceSize()
+            ));
         } else if (choice.equals("Network")) {
             return ServiceCreator.getService(new NetworkServiceCreator(
                     networkPane.getName(), networkPane.getNetworkType(), networkPane.getRequests(),
