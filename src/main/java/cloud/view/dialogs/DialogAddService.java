@@ -1,7 +1,6 @@
 package cloud.view.dialogs;
 
 import cloud.configuration.Config;
-import cloud.view.services.PaneServiceProperties;
 import cloud.view.services.PaneServiceUsageProperties;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -57,14 +56,14 @@ public class DialogAddService extends Dialog {
 
         setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
-                return getComboBoxItem();
+                return getServiceTypeBoxItem();
             }
             return null;
         });
     }
 
     public BorderPane getServiceDialogPane() {return this.serviceDialogPane;}
-    public PaneServiceUsageProperties getUsagePropertiesPane() {return this.serviceUsagePropertiesPane;}
+    public PaneServiceUsageProperties getServiceUsagePropertiesPane() {return this.serviceUsagePropertiesPane;}
     public ComboBox<String> getServiceTypeBox() {return this.serviceTypeBox;}
 
     public void disableOKButton() {
@@ -72,7 +71,7 @@ public class DialogAddService extends Dialog {
     }
     public void enableOKButton() {this.buttonOk.setDisable(false);}
 
-    private String getComboBoxItem() {
+    private String getServiceTypeBoxItem() {
         return this.serviceTypeBox.getSelectionModel().selectedItemProperty().toString();
     }
 }

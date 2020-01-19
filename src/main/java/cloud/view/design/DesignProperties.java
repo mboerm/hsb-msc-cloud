@@ -84,6 +84,6 @@ public class DesignProperties extends GridPane {
         return this.periodOfCapacityBox;
     }
 
-    public String getProvider() {return this.providerBox.getEditor().getText();}
-    public String getPrimaryRegion() {return this.regionBox.getEditor().getText();}
+    public String getProvider() {return this.providerBox.getValue();}
+    public String getPrimaryRegion() {return this.regionBox.getValue();}
 }

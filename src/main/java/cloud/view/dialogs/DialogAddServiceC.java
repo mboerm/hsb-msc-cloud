@@ -1,9 +1,12 @@
 package cloud.view.dialogs;
 
+import cloud.model.Design;
+import cloud.model.DesignManager;
 import cloud.model.services.*;
 import cloud.view.services.*;
 
 public class DialogAddServiceC {
+    private Design design;
     private Service createdService;
     private String dialogResponse;
 
@@ -20,7 +23,8 @@ public class DialogAddServiceC {
     public DialogAddServiceC() {
         DialogAddService dialogAdd = new DialogAddService();
 
-        serviceUsagePane = dialogAdd.getUsagePropertiesPane();
+        serviceUsagePane = dialogAdd.getServiceUsagePropertiesPane();
+        serviceUsagePane.setRegionItem(DesignManager.getInstance().getDesign().getPrimaryRegion());
 
         dialogAdd.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             dialogAdd.getServiceDialogPane().setRight(switchServicePanes(newItem));
@@ -34,6 +38,7 @@ public class DialogAddServiceC {
                     response.toString().length() - 1);
             dialogResponse = responseValue;
             createdService = setCreatedService(responseValue);
+            setServiceUsageProperties();
         });
     }
 
@@ -117,5 +122,13 @@ public class DialogAddServiceC {
                 System.err.println("Empty service!");
                 return null;
         }
+    }
+
+    private void setServiceUsageProperties() {
+        createdService.setRegion(serviceUsagePane.getRegionText());
+        createdService.setUsageType(serviceUsagePane.getUsageTypeText());
+        createdService.setUsagePeriod(serviceUsagePane.getUsagePeriodText());
+        createdService.setUsagePrepay(serviceUsagePane.getUsagePrepayText());
+        createdService.setOpMode(serviceUsagePane.getOpModeText());
     }
 }
