@@ -2,7 +2,7 @@ package cloud.model.services;
 
 class StorageService extends Service {
 
-    private String type;
+    private String storageType;
     private String mode;
     private String capacity;
     private String data;
@@ -13,6 +13,7 @@ class StorageService extends Service {
     public StorageService(String name, String type, String mode, String capacity, String data, String requests, String queries, String rate) {
         setName(name);
         setCategory("Storage");
+        setService(type);
         setStorageType(type);
         setMode(mode);
         setCapacity(capacity);
@@ -23,10 +24,10 @@ class StorageService extends Service {
     }
 
     public String getStorageType() {
-        return type;
+        return storageType;
     }
     public void setStorageType(String type) {
-        this.type = type;
+        this.storageType = type;
     }
 
     public String getMode() {

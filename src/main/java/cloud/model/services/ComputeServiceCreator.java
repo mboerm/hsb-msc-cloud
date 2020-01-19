@@ -39,21 +39,27 @@ public class ComputeServiceCreator implements ServiceAbstractCreator {
         String[] types = Config.getInstance().getConfigValuesAsArray("compute-type");
 
         if (computeType.equals(types[0])) {
+            /* VM */
             return new ComputeService(name, computeType, instanceType, instanceSize, "", "",
                     system, "", "", "", "", "");
         } else if (computeType.equals(types[1])) {
+            /* Container */
             return new ComputeService(name, computeType, "", "", "", "",
                     "", cpu, storage, data, numOne, numTwo);
         } else if (computeType.equals(types[2])) {
+            /* App */
             return new ComputeService(name, computeType, "", "", computeInstance, storageInstance,
                     system, "", "", "", "", "");
         } else if (computeType.equals(types[3])) {
+            /* Batch */
             return new ComputeService(name, computeType, "", "", computeInstance, "",
                     "", "", "", "", "", "");
         } else if (computeType.equals(types[4])) {
+            /* Code */
             return new ComputeService(name, computeType, "", "", "", "",
                     "", cpu, storage, "", numOne, numTwo);
         } else if (computeType.equals(types[5])) {
+            /* Load Balancing */
             return new ComputeService(name, computeType, "", "", computeInstance, "",
                     system, "", "", data, numOne, "");
         } else {

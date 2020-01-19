@@ -20,6 +20,12 @@ public class MonitoringServiceCreator implements ServiceAbstractCreator {
 
     @Override
     public Service createService() {
-        return new MonitoringService(name, metrics, apiRequests, data, events, loggerState);
+        MonitoringService monitor = new MonitoringService(name, metrics, apiRequests, data, events, loggerState);
+        if (loggerState) {
+            monitor.setService("User monitor");
+        } else {
+            monitor.setService("System monitor");
+        }
+        return monitor;
     }
 }

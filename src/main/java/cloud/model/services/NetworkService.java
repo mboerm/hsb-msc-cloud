@@ -2,7 +2,7 @@ package cloud.model.services;
 
 class NetworkService extends Service {
 
-    private String type;
+    private String networkType;
     private String requests;
     private String data;
     private String dataOut;
@@ -11,6 +11,7 @@ class NetworkService extends Service {
     public NetworkService(String name, String type, String requests, String data, String dataOut, String zones) {
         setName(name);
         setCategory("Network");
+        setService(type);
         setNetworkType(type);
         setRequests(requests);
         setData(data);
@@ -19,10 +20,10 @@ class NetworkService extends Service {
     }
 
     public String getNetworkType() {
-        return type;
+        return networkType;
     }
     public void setNetworkType(String type) {
-        this.type = type;
+        this.networkType = type;
     }
 
     public String getRequests() {

@@ -2,7 +2,7 @@ package cloud.model.services;
 
 class IntegrationService extends Service {
 
-    private String type;
+    private String integrationType;
     private String data;
     private String requests;
 
@@ -17,6 +17,7 @@ class IntegrationService extends Service {
     public IntegrationService(String name, String type, String data, String requests, String[] messages) {
         setName(name);
         setCategory("Integration");
+        setService(type);
         setIntegrationType(type);
         setData(data);
         setRequests(requests);
@@ -24,10 +25,10 @@ class IntegrationService extends Service {
     }
 
     public String getIntegrationType() {
-        return type;
+        return integrationType;
     }
     public void setIntegrationType(String type) {
-        this.type = type;
+        this.integrationType = type;
     }
 
     public String getData() {return this.data;}

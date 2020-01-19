@@ -4,7 +4,7 @@ import javafx.util.Pair;
 
 class AnalyticService extends Service {
 
-    private String type;
+    private String analyticType;
     private String data;
     private String dataOut;
     private Pair<String,String> activities;
@@ -14,6 +14,7 @@ class AnalyticService extends Service {
     public AnalyticService(String name, String type, String data, String dataOut, Pair<String,String> activities, String units, String instanceSize) {
         setName(name);
         setCategory("Analytics");
+        setService(type);
         setAnalyticType(type);
         setData(data);
         setDataOut(dataOut);
@@ -23,10 +24,10 @@ class AnalyticService extends Service {
     }
 
     public String getAnalyticType() {
-        return type;
+        return analyticType;
     }
     public void setAnalyticType(String type) {
-        this.type = type;
+        this.analyticType = type;
     }
 
     public String getData() {

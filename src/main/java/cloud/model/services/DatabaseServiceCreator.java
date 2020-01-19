@@ -33,7 +33,7 @@ public class DatabaseServiceCreator implements ServiceAbstractCreator {
 
     @Override
     public Service createService() {
-        String[] types = Config.getInstance().getConfigValuesAsArray("database-type");
+        String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
 
         if (databaseType.equals(types[0])) {
             return new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,

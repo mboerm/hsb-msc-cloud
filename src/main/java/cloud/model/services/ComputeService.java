@@ -18,6 +18,7 @@ class ComputeService extends Service {
                           String computeInstance, String storageInstance, String system,
                           String cpu, String storage, String data, String numOne, String numTwo) {
         setName(name);
+        setService(computeType);
         setCategory("Compute");
         setComputeType(computeType);
         setInstanceType(instanceType);
