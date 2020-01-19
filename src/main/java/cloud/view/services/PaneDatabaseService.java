@@ -68,10 +68,10 @@ public class PaneDatabaseService extends PaneServiceProperties {
         });
     }
 
-    public String getDatabaseType() {return this.databaseTypeBox.getEditor().getText();}
-    public String getDatabaseScheme() {return this.databaseSchemeBox.getEditor().getText();}
-    public String getInstanceType() {return this.instanceTypeBox.getEditor().getText();}
-    public String getInstanceSize() {return this.instanceSizeBox.getEditor().getText();}
+    public String getDatabaseType() {return this.databaseTypeBox.getValue();}
+    public String getDatabaseScheme() {return this.databaseSchemeBox.getValue();}
+    public String getInstanceType() {return this.instanceTypeBox.getValue();}
+    public String getInstanceSize() {return this.instanceSizeBox.getValue();}
     public String getDuration() {return this.durationSpinner.getEditor().getText();}
     public String getStorage() {return this.storageSpinner.getEditor().getText();}
     public String getBackup() {return this.backupSpinner.getEditor().getText();}

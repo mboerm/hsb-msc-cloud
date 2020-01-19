@@ -65,10 +65,10 @@ public class PaneStorageService extends PaneServiceProperties {
     }
 
     public String getStorageType() {
-        return storageTypeBox.getEditor().getText();
+        return storageTypeBox.getValue();
     }
     public String getStorageMode() {
-        return storageModeBox.getEditor().getText();
+        return storageModeBox.getValue();
     }
     public String getCapacity() {
         return capacitySpinner.getEditor().getText();

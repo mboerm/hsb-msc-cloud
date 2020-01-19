@@ -74,18 +74,20 @@ public class PaneServiceUsageProperties extends GridPane {
     }
 
     public String getRegionText() {
-        return regionBox.getEditor().getText();
+        return regionBox.getValue();
     }
+    public void setRegionItem(String val) {this.regionBox.getSelectionModel().select(val);}
+
     public String getUsageTypeText() {
-        return usageTypeBox.getEditor().getText();
+        return usageTypeBox.getValue();
     }
     public String getUsagePeriodText() {
-        return usagePeriodBox.getEditor().getText();
+        return usagePeriodBox.getValue();
     }
     public String getUsagePrepayText() {
-        return usagePrepayBox.getEditor().getText();
+        return usagePrepayBox.getValue();
     }
     public String getOpModeText() {
-        return opModeBox.getEditor().getText();
+        return opModeBox.getValue();
     }
 }

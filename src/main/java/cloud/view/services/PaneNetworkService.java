@@ -58,7 +58,7 @@ public class PaneNetworkService extends PaneServiceProperties {
         });
     }
 
-    public String getNetworkType() {return this.networkTypeBox.getEditor().getText();}
+    public String getNetworkType() {return this.networkTypeBox.getValue();}
     public String getRequests() {return this.requestsSpinner.getEditor().getText();}
     public String getData() {return this.dataSpinner.getEditor().getText();}
     public String getDataOut() {return this.dataOutSpinner.getEditor().getText();}

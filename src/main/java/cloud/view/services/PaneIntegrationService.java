@@ -74,7 +74,7 @@ public class PaneIntegrationService extends PaneServiceProperties {
         });
     }
 
-    public String getType() {return this.integrationTypeBox.getEditor().getText();}
+    public String getType() {return this.integrationTypeBox.getValue();}
     public String getData() {return this.dataSpinner.getEditor().getText();}
     public String getRequests() {return this.requestsSpinner.getEditor().getText();}
     public String[] getMessages() {return new String[] {

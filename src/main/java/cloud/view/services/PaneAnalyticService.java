@@ -67,8 +67,8 @@ public class PaneAnalyticService extends PaneServiceProperties {
         });
     }
 
-    public String getAnalyticType() {return this.analyticTypeBox.getEditor().getText();}
-    public String getInstanceSize() {return this.instanceSizeBox.getEditor().getText();}
+    public String getAnalyticType() {return this.analyticTypeBox.getValue();}
+    public String getInstanceSize() {return this.instanceSizeBox.getValue();}
     public String getData() {return this.dataSpinner.getEditor().getText();}
     public String getDataOut() {return this.dataOutSpinner.getEditor().getText();}
     public Pair<String,String> getActivities() {return new Pair<>(

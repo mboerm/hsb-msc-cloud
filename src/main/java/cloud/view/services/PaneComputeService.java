@@ -61,12 +61,12 @@ public class PaneComputeService extends PaneServiceProperties {
         });
     }
 
-    public String getComputeType() {return this.computeTypeBox.getEditor().getText();}
-    public String getInstanceType() {return this.instanceTypeBox.getEditor().getText();}
-    public String getInstanceSize() {return this.instanceSizeBox.getEditor().getText();}
-    public String getComputeInstanceRef() {return this.computeInstanceBox.getEditor().getText();}
-    public String getStorageInstanceRef() {return this.storageInstanceBox.getEditor().getText();}
-    public String getSystem() {return this.systemBox.getEditor().getText();}
+    public String getComputeType() {return this.computeTypeBox.getValue();}
+    public String getInstanceType() {return this.instanceTypeBox.getValue();}
+    public String getInstanceSize() {return this.instanceSizeBox.getValue();}
+    public String getComputeInstanceRef() {return this.computeInstanceBox.getValue();}
+    public String getStorageInstanceRef() {return this.storageInstanceBox.getValue();}
+    public String getSystem() {return this.systemBox.getValue();}
     public String getCPU() {return this.cpuSpinner.getEditor().getText();}
     public String getStorage() {return this.storageSpinner.getEditor().getText();}
     public String getData() {return this.dataSpinner.getEditor().getText();}
