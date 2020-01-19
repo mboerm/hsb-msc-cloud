@@ -37,6 +37,7 @@ public class PaneServiceUsageProperties extends GridPane {
 
         Label usagePeriodLbl = new Label("Usage period: ");
         usagePeriodBox = new ComboBox<>();
+        usagePeriodBox.setDisable(true);
 
         Label usagePrepayLbl = new Label("Usage prepay: ");
         usagePrepayBox = new ComboBox<>(Config.getInstance().getConfigValues("service-usage-prepay"));
@@ -59,6 +60,7 @@ public class PaneServiceUsageProperties extends GridPane {
         add(opModeBox, 1, 5);
 
         usageTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
+            usagePeriodBox.setDisable(false);
             if (newItem.equals(Config.getInstance().getConfigValuesAsArray("service-usage-type")[1])) {
                 this.usagePeriodBox.setItems(FXCollections.observableArrayList(
                         Config.getInstance().getConfigValues("service-usage-period").subList(2,4)));
