@@ -14,13 +14,12 @@
     <entry key="compute-type">VM;Container;App;Batch;Code;Load Balancing</entry>
     <entry key="compute-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
     <entry key="compute-os">Windows;Linux;CentOS;Ubuntu;Red Hat;SUSE;Debian</entry>
+    <entry key="compute-app-language">Python;Java;PHP;Ruby;Node.js;.NET;Go;C#;C</entry>
     <entry key="compute-balancer-type">Internal;External</entry>
-    <entry key="app-language">Python;Java;PHP;Ruby;Node.js;.NET;Go;C#;C</entry>
-    <entry key="loadBalancer-mode">Internal;External</entry>
 
-    <entry key="database-instance-type">Standard;Storage-optimized</entry>
     <entry key="database-system-type">SQL;NoSQL;Document;Cache</entry>
     <entry key="database-sql-scheme">MySQL;PostgreSQL;MariaDB</entry>
+    <entry key="database-instance-type">Standard;Storage-optimized</entry>
 
     <entry key="storage-type">Object-Storage;Block-Storage;File-Storage</entry>
     <entry key="storage-object-mode">Standard;Archive</entry>
