@@ -22,8 +22,9 @@
     <entry key="database-system-type">SQL;NoSQL;Document;Cache</entry>
     <entry key="database-sql-scheme">MySQL;PostgreSQL;MariaDB</entry>
 
+    <entry key="storage-type">Object-Storage;Block-Storage;File-Storage</entry>
     <entry key="storage-object-mode">Standard;Archive</entry>
-    <entry key="storage-block-type">HDD;SSD</entry>
+    <entry key="storage-block-mode">HDD;SSD</entry>
     <entry key="storage-file-mode">Standard;Premium</entry>
     
     <entry key="analytic-type">Data query;Data share;Data transfer;Data catalog;Data lake;Search engine</entry>
