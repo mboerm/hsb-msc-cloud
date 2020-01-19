@@ -3,7 +3,7 @@
 <properties>
 
     <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Monitoring</entry>
-    <entry key="service-instance-size">Micro;Small;Medium;Large;XLarge</entry>
+    <entry key="service-instance-size">Micro;Small;Medium;Large;Xlarge</entry>
     <entry key="service-usage-type">On-Demand;Reserved;Spot</entry>
     <entry key="service-usage-period">Hourly;Monthly;One Year;Three Years</entry>
     <entry key="service-usage-prepay">None;Partial;Full</entry>
@@ -25,6 +25,8 @@
     <entry key="storage-object-mode">Standard;Archive</entry>
     <entry key="storage-block-type">HDD;SSD</entry>
     <entry key="storage-file-mode">Standard;Premium</entry>
+    
+    <entry key="analytic-type">Data query;Data share;Data transfer;Data catalog;Data lake;Search engine</entry>
 
     <entry key="network-type">VPC;VPN;API;CDN;DNS</entry>
 
