@@ -32,8 +32,8 @@
 
     <entry key="integration-type">Messaging;Queueing</entry>
 
-    <entry key="services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
-    <entry key="services-active">Amazon Web Services</entry>
+    <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
+    <entry key="provider-services-active">Amazon Web Services</entry>
 
     <entry key="aws-service-file">empty</entry>
     <entry key="aws-free-file">empty</entry>
