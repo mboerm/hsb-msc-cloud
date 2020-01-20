@@ -9,18 +9,27 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 
-public class Services {
+public class ProviderServices {
     private Document doc;
     private String servicesFileName;
 
-    public Services() {
+    private static ProviderServices instance;
+
+    private ProviderServices() {
         servicesFileName = Config.getInstance().getConfigValue("services-file");
         setServicesDocument();
     }
 
+    public static ProviderServices getInstance() {
+        if (instance == null) {
+            instance = new ProviderServices();
+        }
+        return instance;
+    }
+
     private void setServicesDocument() {
         try {
-            File servicesFile = new File(servicesFileName);
+            File servicesFile = new File(getClass().getClassLoader().getResource(servicesFileName).getFile());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(servicesFile);
@@ -30,7 +39,7 @@ public class Services {
         }
     }
 
-    private void getServices() {
+    public void getServices() {
         try {
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
@@ -46,17 +55,11 @@ public class Services {
                     Element serviceElement = (Element) serviceNode;
 
                     String serviceName = serviceElement.getAttribute("name");
-                    System.out.println("Name : " + serviceName);
-
-                    if (serviceElement.getAttributes().getLength() > 1) {
-                        String serviceMode = serviceElement.getAttribute("mode");
-                        System.out.println("Mode : " + serviceMode);
-                    }
-
                     String serviceAWS = serviceElement.getElementsByTagName("aws").item(0).getTextContent();
                     String serviceAzure = serviceElement.getElementsByTagName("azure").item(0).getTextContent();
                     String serviceGCP = serviceElement.getElementsByTagName("gcp").item(0).getTextContent();
 
+                    System.out.println("Name : " + serviceName);
                     System.out.println("AWS : " + serviceAWS);
                     System.out.println("Azure : " + serviceAzure);
                     System.out.println("GCP : " + serviceGCP);
@@ -67,7 +70,7 @@ public class Services {
         }
     }
 
-    private String[] getServiceByName(String nameValue) {
+    public String[] getServiceByName(String nameValue) {
         NodeList servicesNodeList = doc.getElementsByTagName("service");
 
         for(int i=0; i<servicesNodeList.getLength(); i++) {
@@ -77,49 +80,30 @@ public class Services {
                 Element serviceElement = (Element) serviceNode;
 
                 if(nameValue.equalsIgnoreCase(serviceElement.getAttribute("name"))) {
-                    String serviceMode = "";
-                    if (serviceElement.getAttributes().getLength() > 1) {
-                        serviceMode = serviceElement.getAttribute("mode");
-                        System.out.println("Mode : " + serviceMode);
-                    }
-
                     String serviceAWS = serviceElement.getElementsByTagName("aws").item(0).getTextContent();
                     String serviceAzure = serviceElement.getElementsByTagName("azure").item(0).getTextContent();
                     String serviceGCP = serviceElement.getElementsByTagName("gcp").item(0).getTextContent();
-                    System.out.println("AWS : " + serviceAWS);
-                    System.out.println("Azure : " + serviceAzure);
-                    System.out.println("GCP : " + serviceGCP);
 
-                    return new String[] {nameValue, serviceMode, serviceAWS, serviceAzure, serviceGCP};
+                    return new String[] {nameValue, serviceAWS, serviceAzure, serviceGCP};
                 }
             }
         }
         return null;
     }
 
-    private String[] getProviderServiceForName(String nameValue, String modeValue, String provider) {
+    public String getProviderServiceForName(String nameValue, String provider) {
         NodeList servicesNodeList = doc.getElementsByTagName("service");
-        String service = "No provider service";
 
         for(int i=0; i<servicesNodeList.getLength(); i++) {
             Node serviceNode = servicesNodeList.item(i);
             if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element serviceElement = (Element) serviceNode;
-
-                if (serviceElement.getAttributes().getLength() == 1 &&
-                        nameValue.equalsIgnoreCase(serviceElement.getAttribute("name"))) {
-                    service = serviceElement.getElementsByTagName(provider).item(0).getTextContent();
-
-                } else if (nameValue.equalsIgnoreCase(serviceElement.getAttribute("name")) &&
-                        modeValue.equalsIgnoreCase(serviceElement.getAttribute("mode"))) {
-                    service = serviceElement.getElementsByTagName(provider).item(0).getTextContent();
+                if (nameValue.equalsIgnoreCase(serviceElement.getAttribute("name"))) {
+                    return serviceElement.getElementsByTagName(provider).item(0).getTextContent();
                 }
-
-                System.out.println("Provider service : " + service);
-                return new String[] {nameValue, modeValue, provider, service};
             }
         }
-        return null;
+        return "";
     }
 }
 
