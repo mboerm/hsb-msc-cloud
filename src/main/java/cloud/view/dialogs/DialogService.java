@@ -11,7 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class DialogAddService extends Dialog {
+public class DialogService extends Dialog {
 
     private PaneServiceUsageProperties serviceUsagePropertiesPane;
     private ComboBox<String> serviceTypeBox;
@@ -19,7 +19,7 @@ public class DialogAddService extends Dialog {
 
     private Button buttonOk;
 
-    public DialogAddService() {
+    public DialogService() {
         setTitle("Add service to Design");
         setHeaderText("Select service category and define properties");
         setResizable(false);
