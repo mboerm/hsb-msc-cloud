@@ -108,7 +108,7 @@ public class CloudView {
     private HBox initTaskBar() {
         HBox taskBox = new HBox();
         taskBox.setPadding(new Insets(5, 5, 5, 5));
-        taskLbl = new Label("Init");
+        taskLbl = new Label("");
         taskLbl.setTextAlignment(TextAlignment.RIGHT);
         taskLbl.setWrapText(true);
         taskBox.setAlignment(Pos.CENTER_RIGHT);
