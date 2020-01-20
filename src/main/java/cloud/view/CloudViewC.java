@@ -2,14 +2,14 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.model.StageManager;
-import cloud.model.DesignManager;
+import cloud.model.design.DesignManager;
 import cloud.model.services.Service;
 import cloud.model.provider.ProviderFactory;
 import cloud.view.dialogs.DialogServiceC;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import cloud.model.Design;
+import cloud.model.design.Design;
 
 import static cloud.configuration.Constants.*;
 
@@ -44,14 +44,21 @@ public class CloudViewC {
             design.clearServicesList();
         });
 
-        view.getMenuDesignMatch().setOnAction(actionEvent -> providerFactory.getProvider(design.getProvider()));
+        view.getMenuDesignMatch().setOnAction(actionEvent -> {
+            design.setMatchedServicesForDesign();
+            view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
+            view.getMenuDesignCalculate().setDisable(false);
+        });
+
+        view.getMenuDesignCalculate().setOnAction(actionEvent -> {});
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
     }
 
     private void initDesignPropertyHandler() {
         view.getPaneDesignProperties().getProviderBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setProvider(newValue);
+            design.setProvider(providerFactory.getProvider(newValue));
+            view.getMenuDesignMatch().setDisable(false);
         });
 
         view.getPaneDesignProperties().getUsagePeriodField().textProperty().addListener((obs, oldValue, newValue) ->
@@ -101,8 +108,6 @@ public class CloudViewC {
 
             /* add service to services list */
             design.addService(createdService);
-
-            view.setTaskBarText("Added " + dialogAddServiceController.getDialogResponse() + " service");
         });
 
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {

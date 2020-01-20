@@ -31,9 +31,9 @@ public class CloudView {
     public CloudView() {
         BorderPane rootPane = new BorderPane();
         rootPane.setTop(initMenuBar());
-        rootPane.setLeft(initDesignProperties());
-        rootPane.setCenter(initDesignArea());
-        rootPane.setRight(initDesignControls());
+        rootPane.setLeft(paneDesignProperties = new DesignProperties());
+        rootPane.setCenter(paneDesignArea = new DesignArea());
+        rootPane.setRight(paneDesignControls = new DesignControls());
         rootPane.setBottom(initTaskBar());
         scene = new Scene(rootPane);
     }
@@ -65,20 +65,21 @@ public class CloudView {
     }
 
     private Menu initMenuEdit() {
-        Menu menuEdit = new Menu("Edit");
-        return menuEdit;
+        return new Menu("Edit");
     }
 
     private Menu initMenuView() {
-        Menu menuView = new Menu("View");
-        return menuView;
+        return new Menu("View");
     }
 
     private Menu initMenuDesign() {
         Menu menuDesign = new Menu("Design");
         menuDesignMatch = new MenuItem("Match Services");
+        menuDesignMatch.setDisable(true);
         menuDesignCalculate = new MenuItem("Calculate Costs");
+        menuDesignCalculate.setDisable(true);
         menuDesignReset = new MenuItem("Reset Design");
+
         menuDesign.getItems().addAll(menuDesignMatch, menuDesignCalculate, menuDesignReset);
         return menuDesign;
     }
@@ -88,21 +89,6 @@ public class CloudView {
         menuHelpAbout = new MenuItem("About");
         menuHelp.getItems().addAll(menuHelpAbout);
         return menuHelp;
-    }
-
-    private DesignProperties initDesignProperties() {
-        paneDesignProperties = new DesignProperties();
-        return paneDesignProperties;
-    }
-
-    private DesignArea initDesignArea() {
-        paneDesignArea = new DesignArea();
-        return paneDesignArea;
-    }
-
-    private DesignControls initDesignControls() {
-        paneDesignControls = new DesignControls();
-        return paneDesignControls;
     }
 
     private HBox initTaskBar() {
