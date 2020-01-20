@@ -6,9 +6,9 @@ class Amazon extends Provider implements Costs {
 
     Amazon() {
         setServiceName("Amazon Web Services");
-        setServiceFile(Config.getInstance().getConfigValue("aws-service-file"));
-        setPriceFile(Config.getInstance().getConfigValue("aws-price-file"));
-        setFreeFile(Config.getInstance().getConfigValue("aws-free-file"));
+        setShortName("aws");
+        setPriceFile(Config.getInstance().getConfigValue("aws-price"));
+        setFreeFile(Config.getInstance().getConfigValue("aws-free-tier"));
     }
 
     @Override

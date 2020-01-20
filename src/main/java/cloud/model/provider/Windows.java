@@ -6,8 +6,8 @@ class Windows extends Provider {
 
     Windows() {
         setServiceName("Windows Azure");
-        setServiceFile(Config.getInstance().getConfigValue("azure-service-file"));
-        setPriceFile(Config.getInstance().getConfigValue("azure-price-file"));
-        setFreeFile(Config.getInstance().getConfigValue("azure-free-file"));
+        setShortName("azure");
+        setPriceFile(Config.getInstance().getConfigValue("azure-price"));
+        setFreeFile(Config.getInstance().getConfigValue("azure-free-tier"));
     }
 }

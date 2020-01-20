@@ -1,9 +1,9 @@
 package cloud.model.provider;
 
-abstract class Provider {
+public abstract class Provider {
 
     private String serviceName;
-    private String serviceFile;
+    private String shortName;
     private String priceFile;
     private String freeFile;
 
@@ -14,11 +14,11 @@ abstract class Provider {
         this.serviceName = serviceName;
     }
 
-    public String getServiceFile() {
-        return serviceFile;
+    public String getShortName() {
+        return shortName;
     }
-    public void setServiceFile(String serviceFile) {
-        this.serviceFile = serviceFile;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getPriceFile() {
