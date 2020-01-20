@@ -8,23 +8,20 @@ public class DesignControls extends VBox {
 
     private Button controlAdd;
     private Button controlRemove;
-    private Button controlEdit;
 
     public DesignControls() {
         initControls();
         setSpacing(10);
         setPadding(new Insets(10,10, 10, 10));
-        getChildren().addAll(controlAdd, controlRemove, controlEdit);
+        getChildren().addAll(controlAdd, controlRemove);
     }
 
     private void initControls() {
         controlAdd = new Button("Add");
         controlRemove = new Button("Remove");
-        controlEdit = new Button("Edit");
 
         controlAdd.setMaxWidth(Double.MAX_VALUE);
         controlRemove.setMaxWidth(Double.MAX_VALUE);
-        controlEdit.setMaxWidth(Double.MAX_VALUE);
     }
 
     public Button getControlAdd() {
@@ -33,9 +30,5 @@ public class DesignControls extends VBox {
 
     public Button getControlRemove() {
         return this.controlRemove;
-    }
-
-    public Button getControlEdit() {
-        return this.controlEdit;
     }
 }

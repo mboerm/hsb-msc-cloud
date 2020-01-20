@@ -5,7 +5,7 @@ import cloud.model.StageManager;
 import cloud.model.DesignManager;
 import cloud.model.services.Service;
 import cloud.model.provider.ProviderFactory;
-import cloud.view.dialogs.DialogAddServiceC;
+import cloud.view.dialogs.DialogServiceC;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -94,7 +94,7 @@ public class CloudViewC {
 
     private void initDesignControlsHandler() {
         view.getPaneDesignControls().getControlAdd().setOnAction(actionEvent -> {
-            DialogAddServiceC dialogAddServiceController = new DialogAddServiceC();
+            DialogServiceC dialogAddServiceController = new DialogServiceC();
 
             /* get created service */
             Service createdService = dialogAddServiceController.getCreatedService();
@@ -113,8 +113,6 @@ public class CloudViewC {
             /* clear selection */
             view.getPaneDesignArea().getServicesTable().getSelectionModel().clearSelection();
         });
-
-        view.getPaneDesignControls().getControlEdit().setOnAction(actionEvent -> {});
     }
 
     private void showAboutDialog() {
