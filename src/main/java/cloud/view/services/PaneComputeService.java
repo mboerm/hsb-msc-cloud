@@ -15,11 +15,11 @@ public class PaneComputeService extends PaneServiceProperties {
     private ComboBox<String> computeInstanceBox;
     private ComboBox<String> storageInstanceBox;
     private ComboBox<String> systemBox;
-    private Spinner<String> cpuSpinner;
-    private Spinner<String> storageSpinner;
-    private Spinner<String> dataSpinner;
-    private Spinner<String> numOneSpinner;
-    private Spinner<String> numTwoSpinner;
+    private Spinner<Integer> cpuSpinner;
+    private Spinner<Integer> storageSpinner;
+    private Spinner<Integer> dataSpinner;
+    private Spinner<Integer> numOneSpinner;
+    private Spinner<Integer> numTwoSpinner;
 
     public PaneComputeService() {
         computeTypeLbl = new Label("Type:");
@@ -30,13 +30,17 @@ public class PaneComputeService extends PaneServiceProperties {
         computeInstanceBox = new ComboBox<>();
         storageInstanceBox = new ComboBox<>();
 
-        new Label("Transferred data in GB:");
-
         cpuSpinner = new Spinner<>(1, 1000000, 1);
         storageSpinner = new Spinner<>(1, 1000000, 1);
         dataSpinner = new Spinner<>(1, 1000000, 1);
         numOneSpinner = new Spinner<>(1, 1000000, 1);
         numTwoSpinner = new Spinner<>(1, 1000000, 1);
+
+        cpuSpinner.setEditable(true);
+        storageSpinner.setEditable(true);
+        dataSpinner.setEditable(true);
+        numOneSpinner.setEditable(true);
+        numTwoSpinner.setEditable(true);
 
         add(computeTypeLbl, 0, 2);
         add(computeTypeBox, 1, 2);

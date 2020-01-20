@@ -13,6 +13,7 @@ import javafx.scene.text.TextAlignment;
 
 public class PaneServiceUsageProperties extends GridPane {
 
+    private Label serviceUsageLbl;
     private ComboBox<String> regionBox;
     private ComboBox<String> usageTypeBox;
     private ComboBox<String> usagePeriodBox;
@@ -25,39 +26,20 @@ public class PaneServiceUsageProperties extends GridPane {
         setVgap(10);
         setAlignment(Pos.TOP_CENTER);
 
-        Label serviceUsageLbl = new Label("Usage properties");
+        serviceUsageLbl = new Label("Usage properties");
         serviceUsageLbl.setTextAlignment(TextAlignment.CENTER);
         serviceUsageLbl.setFont(Font.font("Arial", FontWeight.BOLD, 12));
 
-        Label regionLbl = new Label("Region: ");
         regionBox = new ComboBox<>(Config.getInstance().getConfigValues("service-regions"));
-
-        Label usageTypeLbl = new Label("Usage type: ");
         usageTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-usage-type"));
-
-        Label usagePeriodLbl = new Label("Usage period: ");
         usagePeriodBox = new ComboBox<>();
-        usagePeriodBox.setDisable(true);
-
-        Label usagePrepayLbl = new Label("Usage prepay: ");
         usagePrepayBox = new ComboBox<>(Config.getInstance().getConfigValues("service-usage-prepay"));
-        usagePrepayBox.setDisable(true);
-
-        Label opModeLbl = new Label("Operating mode: ");
         opModeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-operating-mode"));
 
-        add(serviceUsageLbl, 0,0);
-        setColumnSpan(serviceUsageLbl, 2);
-        add(regionLbl, 0, 1);
-        add(regionBox, 1, 1);
-        add(usageTypeLbl, 0, 2);
-        add(usageTypeBox, 1, 2);
-        add(usagePeriodLbl, 0, 3);
-        add(usagePeriodBox, 1, 3);
-        add(usagePrepayLbl, 0, 4);
-        add(usagePrepayBox, 1, 4);
-        add(opModeLbl, 0, 5);
-        add(opModeBox, 1, 5);
+        usagePeriodBox.setDisable(true);
+        usagePrepayBox.setDisable(true);
+
+        setServiceUsageControls();
 
         usageTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             usagePeriodBox.setDisable(false);
@@ -89,5 +71,20 @@ public class PaneServiceUsageProperties extends GridPane {
     }
     public String getOpModeText() {
         return opModeBox.getValue();
+    }
+
+    private void setServiceUsageControls() {
+        add(serviceUsageLbl, 0,0);
+        setColumnSpan(serviceUsageLbl, 2);
+        add(new Label("Region: "), 0, 1);
+        add(regionBox, 1, 1);
+        add(new Label("Usage type: "), 0, 2);
+        add(usageTypeBox, 1, 2);
+        add(new Label("Usage period: "), 0, 3);
+        add(usagePeriodBox, 1, 3);
+        add(new Label("Usage prepay: "), 0, 4);
+        add(usagePrepayBox, 1, 4);
+        add(new Label("Operating mode: "), 0, 5);
+        add(opModeBox, 1, 5);
     }
 }

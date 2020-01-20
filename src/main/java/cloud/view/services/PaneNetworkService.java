@@ -8,36 +8,25 @@ import javafx.scene.control.Spinner;
 public class PaneNetworkService extends PaneServiceProperties {
 
     private Label networkTypeLbl;
-    private Label connectionsLbl;
-    private Label requestsLbl;
-    private Label dataLbl;
-    private Label dataOutLbl;
-    private Label httpRequestsLbl;
-    private Label dnsRequestsLbl;
-    private Label zonesLbl;
-
     private ComboBox<String> networkTypeBox;
-    private Spinner<String> requestsSpinner;
-    private Spinner<String> dataSpinner;
-    private Spinner<String> dataOutSpinner;
-    private Spinner<String> zonesSpinner;
+    private Spinner<Integer> requestsSpinner;
+    private Spinner<Integer> dataSpinner;
+    private Spinner<Integer> dataOutSpinner;
+    private Spinner<Integer> zonesSpinner;
 
     public PaneNetworkService() {
         networkTypeLbl = new Label("Type:");
         networkTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("network-type"));
 
-        connectionsLbl = new Label("# of connections:");
-        requestsLbl = new Label("# of requests:");
-        dataLbl = new Label("# of transferred data in GB:");
-        dataOutLbl = new Label("# of transferred data in GB into internet:");
-        httpRequestsLbl = new Label("# of http-requests:");
-        dnsRequestsLbl = new Label("# of dns-requests:");
-        zonesLbl = new Label("# of zones:");
-
         requestsSpinner = new Spinner<>(1, 1000000, 1);
         dataSpinner = new Spinner<>(1, 1000000, 1);
         dataOutSpinner = new Spinner<>(1, 1000000, 1);
         zonesSpinner = new Spinner<>(1, 1000000, 1);
+
+        requestsSpinner.setEditable(true);
+        dataSpinner.setEditable(true);
+        dataOutSpinner.setEditable(true);
+        zonesSpinner.setEditable(true);
 
         add(networkTypeLbl, 0, 2);
         add(networkTypeBox, 1, 2);
@@ -72,39 +61,39 @@ public class PaneNetworkService extends PaneServiceProperties {
     }
 
     private void setPrivateControls() {
-        add(connectionsLbl, 0, 3);
+        add(new Label("# of connections:"), 0, 3);
         add(requestsSpinner, 1, 3);
         add(new Label("per hour"), 2, 3);
-        add(dataLbl, 0, 4);
+        add(new Label("# of transferred data in GB:"), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per hour"), 2, 4);
     }
 
     private void setAPIControls() {
-        add(requestsLbl, 0, 3);
+        add(new Label("# of requests:"), 0, 3);
         add(requestsSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(dataLbl, 0, 4);
+        add(new Label("# of transferred data in GB:"), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
     }
 
     private void setCDNControls() {
-        add(dataLbl, 0, 3);
+        add(new Label("# of transferred data in GB:"), 0, 3);
         add(dataSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(dataOutLbl, 0, 4);
+        add(new Label("# of transferred data in GB into internet:"), 0, 4);
         add(dataOutSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(httpRequestsLbl, 0, 5);
+        add(new Label("# of http-requests:"), 0, 5);
         add(requestsSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
     }
 
     private void setDNSControls() {
-        add(zonesLbl, 0, 3);
+        add(new Label("# of zones:"), 0, 3);
         add(zonesSpinner, 1, 3);
-        add(dnsRequestsLbl, 0, 4);
+        add(new Label("# of dns-requests:"), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
     }

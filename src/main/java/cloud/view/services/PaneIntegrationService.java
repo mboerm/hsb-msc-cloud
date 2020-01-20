@@ -1,31 +1,22 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
-import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
 public class PaneIntegrationService extends PaneServiceProperties {
-
+    private Label integrationTypeLbl;
     private ComboBox<String> integrationTypeBox;
     private Spinner<Integer> dataSpinner;
     private Spinner<Integer> requestsSpinner;
-
     private Spinner<Integer> pushSpinner;
     private Spinner<Integer> httpSpinner;
     private Spinner<Integer> mailSpinner;
     private Spinner<Integer> smsSpinner;
 
     public PaneIntegrationService() {
-        Label typeLbl = new Label("Type:");
-        Label dataLbl = new Label("# of data in GB:");
-        Label requestsLbl = new Label("# of requests:");
-        Label pushLbl = new Label("# of push messages:");
-        Label httpLbl = new Label("# of http messages:");
-        Label mailLbl = new Label("# of mail messages:");
-        Label smsLbl = new Label("# of sms messages:");
-
+        integrationTypeLbl = new Label("Type:");
         integrationTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("integration-type"));
         dataSpinner = new Spinner<>(1, 10000, 1);
         requestsSpinner = new Spinner<>(1, 10000000, 1);
@@ -41,28 +32,7 @@ public class PaneIntegrationService extends PaneServiceProperties {
         mailSpinner.setEditable(true);
         smsSpinner.setEditable(true);
 
-        add(typeLbl, 0, 3);
-        add(integrationTypeBox, 1, 3);
-        add(dataLbl, 0, 4);
-        add(dataSpinner, 1, 4);
-        add(new Label("per month"), 2, 4);
-        add(requestsLbl, 0, 5);
-        add(requestsSpinner, 1, 5);
-        add(new Label("per month"), 2, 5);
-
-        add(pushLbl, 0, 6);
-        add(pushSpinner, 1, 6);
-        add(new Label("per month"), 2, 6);
-        add(httpLbl, 0, 7);
-        add(httpSpinner, 1, 7);
-        add(new Label("per month"), 2, 7);
-        add(mailLbl, 0, 8);
-        add(mailSpinner, 1, 8);
-        add(new Label("per month"), 2, 8);
-        add(smsLbl, 0, 9);
-        add(smsSpinner, 1, 9);
-        add(new Label("per month"), 2, 9);
-
+        setMessageControls();
         disableMessageControls(true);
 
         integrationTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
@@ -83,6 +53,29 @@ public class PaneIntegrationService extends PaneServiceProperties {
             this.mailSpinner.getEditor().getText(),
             this.smsSpinner.getEditor().getText(),
     };}
+
+    private void setMessageControls() {
+        add(integrationTypeLbl, 0, 3);
+        add(integrationTypeBox, 1, 3);
+        add(new Label("# of data in GB:"), 0, 4);
+        add(dataSpinner, 1, 4);
+        add(new Label("per month"), 2, 4);
+        add(new Label("# of requests:"), 0, 5);
+        add(requestsSpinner, 1, 5);
+        add(new Label("per month"), 2, 5);
+        add(new Label("# of push messages:"), 0, 6);
+        add(pushSpinner, 1, 6);
+        add(new Label("per month"), 2, 6);
+        add(new Label("# of http messages:"), 0, 7);
+        add(httpSpinner, 1, 7);
+        add(new Label("per month"), 2, 7);
+        add(new Label("# of mail messages:"), 0, 8);
+        add(mailSpinner, 1, 8);
+        add(new Label("per month"), 2, 8);
+        add(new Label("# of sms messages:"), 0, 9);
+        add(smsSpinner, 1, 9);
+        add(new Label("per month"), 2, 9);
+    }
 
     private void disableMessageControls(boolean show) {
         this.pushSpinner.setDisable(show);
