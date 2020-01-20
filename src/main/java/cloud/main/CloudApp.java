@@ -1,6 +1,7 @@
 package cloud.main;
 
-import cloud.model.DesignManager;
+import cloud.model.design.DesignManager;
+import cloud.model.design.Design;
 import cloud.view.CloudViewC;
 import javafx.application.Application;
 import javafx.stage.Stage;

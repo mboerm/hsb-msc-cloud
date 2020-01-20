@@ -1,4 +1,4 @@
-package cloud.model;
+package cloud.model.design;
 
 public class DesignManager {
 
@@ -18,9 +18,9 @@ public class DesignManager {
     }
 
     public Design getDesign() {
-        return this.design;
+        return design;
     }
     public void setDesign(Design design) {
-        this.design = design;
+        DesignManager.design = design;
     }
 }

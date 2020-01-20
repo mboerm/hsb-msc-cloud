@@ -1,5 +1,7 @@
-package cloud.model;
+package cloud.model.design;
 
+import cloud.model.provider.Provider;
+import cloud.model.provider.ProviderServices;
 import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,8 +9,7 @@ import javafx.collections.ObservableList;
 public class Design {
 
     private int selectedService;
-    private final ObservableList<Service> servicesList =
-            FXCollections.observableArrayList();
+    private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
 
     /**
      * private final Map<Service, String> matchedServicesMap = new HashMap<Service, String>();
@@ -21,7 +22,7 @@ public class Design {
      matchedServicesList.add(pair);
      */
 
-    private String provider;
+    private Provider provider;
     private String usagePeriod;
     private String primaryRegion;
     private String numOfInstances;
@@ -30,29 +31,23 @@ public class Design {
     private String numOfCapacity;
     private String periodOfCapacity;
 
-    public Design() {
-
-    }
-
-    public ObservableList<Service> getServicesList() {
-        return this.servicesList;
-    }
-
-    public void addService(Service service) {
-        this.servicesList.add(service);
-    }
-
-    public Service getService(String name, String category) {
+    public Service getService(String name) {
         for (Service service : this.servicesList) {
-            if (service.getName().equals(name) && service.getCategory().equals(category)) {
+            if (service.getName().equals(name)) {
                 return service;
             }
         }
         return null;
     }
 
+    public void addService(Service service) {
+        this.servicesList.add(service);
+    }
     public void removeService(Service service) {
         this.servicesList.remove(service);
+    }
+    public ObservableList<Service> getServicesList() {
+        return this.servicesList;
     }
     public void clearServicesList() {
         this.servicesList.clear();
@@ -64,10 +59,19 @@ public class Design {
         this.selectedService = id;
     }
 
-    public String getProvider() {
+    public void setMatchedServicesForDesign() {
+        for (Service service : servicesList) {
+            service.setProviderService(ProviderServices.getInstance().getProviderServiceForName(
+                            service.getDisplayName(), provider.getShortName()));
+
+            System.out.println(service.getDisplayName() + " in " + provider.getShortName() + " => " + service.getProviderService());
+        }
+    }
+
+    public Provider getProvider() {
         return provider;
     }
-    public void setProvider(String provider) {
+    public void setProvider(Provider provider) {
         this.provider = provider;
     }
 
