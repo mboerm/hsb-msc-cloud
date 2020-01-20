@@ -10,11 +10,11 @@ class StorageService extends Service {
     private String queries;
     private String rate;
 
-    public StorageService(String name, String type, String mode, String capacity, String data, String requests, String queries, String rate) {
+    public StorageService(String name, String storageType, String mode, String capacity, String data, String requests, String queries, String rate) {
         setName(name);
         setCategory("Storage");
-        setService(type);
-        setStorageType(type);
+        setDisplayName(storageType);
+        setStorageType(storageType);
         setMode(mode);
         setCapacity(capacity);
         setData(data);

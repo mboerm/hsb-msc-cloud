@@ -11,7 +11,7 @@ class NetworkService extends Service {
     public NetworkService(String name, String type, String requests, String data, String dataOut, String zones) {
         setName(name);
         setCategory("Network");
-        setService(type);
+        setDisplayName(type);
         setNetworkType(type);
         setRequests(requests);
         setData(data);

@@ -36,8 +36,10 @@ public class DatabaseServiceCreator implements ServiceAbstractCreator {
         String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
 
         if (databaseType.equals(types[0])) {
-            return new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
+            DatabaseService dbService = new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
                     duration, storage, backup, data, new Pair<>("",""));
+            dbService.setDisplayName(databaseType + " (" + databaseScheme + ")");
+            return dbService;
         } else if (databaseType.equals(types[1])) {
             return new DatabaseService(name, databaseType, "", "", "",
                     "", storage, "", data, queries);

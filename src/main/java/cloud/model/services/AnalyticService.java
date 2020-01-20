@@ -14,7 +14,7 @@ class AnalyticService extends Service {
     public AnalyticService(String name, String type, String data, String dataOut, Pair<String,String> activities, String units, String instanceSize) {
         setName(name);
         setCategory("Analytics");
-        setService(type);
+        setDisplayName(type);
         setAnalyticType(type);
         setData(data);
         setDataOut(dataOut);

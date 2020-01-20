@@ -17,7 +17,7 @@ class IntegrationService extends Service {
     public IntegrationService(String name, String type, String data, String requests, String[] messages) {
         setName(name);
         setCategory("Integration");
-        setService(type);
+        setDisplayName(type);
         setIntegrationType(type);
         setData(data);
         setRequests(requests);

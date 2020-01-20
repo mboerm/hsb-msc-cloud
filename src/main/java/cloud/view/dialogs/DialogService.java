@@ -17,6 +17,7 @@ public class DialogService extends Dialog {
     private ComboBox<String> serviceTypeBox;
     private BorderPane serviceDialogPane;
 
+    private Separator sepVert;
     private Button buttonOk;
 
     public DialogService() {
@@ -42,11 +43,10 @@ public class DialogService extends Dialog {
         serviceDialogPane.setTop(serviceTypeBoxPane);
         serviceDialogPane.setLeft(serviceUsagePropertiesPane = new PaneServiceUsageProperties());
 
-        final Separator sepVert = new Separator();
+        sepVert = new Separator();
         sepVert.setOrientation(Orientation.VERTICAL);
         sepVert.setValignment(VPos.CENTER);
         sepVert.setPrefHeight(100);
-        serviceDialogPane.setCenter(sepVert);
 
         getDialogPane().setContent(serviceDialogPane);
 
@@ -65,6 +65,10 @@ public class DialogService extends Dialog {
     public BorderPane getServiceDialogPane() {return this.serviceDialogPane;}
     public PaneServiceUsageProperties getServiceUsagePropertiesPane() {return this.serviceUsagePropertiesPane;}
     public ComboBox<String> getServiceTypeBox() {return this.serviceTypeBox;}
+
+    public void setSeparator() {
+        serviceDialogPane.setCenter(sepVert);
+    }
 
     public void disableOKButton() {
         this.buttonOk.setDisable(true);

@@ -29,7 +29,9 @@ public class StorageServiceCreator implements ServiceAbstractCreator {
         String[] types = Config.getInstance().getConfigValuesAsArray("storage-type");
 
         if (type.equals(types[0])) {
-            return new StorageService(name, type, mode, capacity, data, requests, queries, "");
+            StorageService storageService = new StorageService(name, type, mode, capacity, data, requests, queries, "");
+            storageService.setDisplayName(type + " (" + mode + ")");
+            return storageService;
         } else if (type.equals(types[1])) {
             return new StorageService(name, type, mode, capacity, data, "", "", "");
         } else if (type.equals(types[2])) {

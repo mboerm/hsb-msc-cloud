@@ -2,7 +2,7 @@ package cloud.model.services;
 
 public abstract class Service {
     private String name;
-    private String service;
+    private String displayName;
     private String providerService;
     private String category;
     private String region;
@@ -13,7 +13,7 @@ public abstract class Service {
 
     public Service() {
         setName("");
-        setService("");
+        setDisplayName("");
         setProviderService("");
         setCategory("");
         setRegion("");
@@ -30,11 +30,11 @@ public abstract class Service {
         this.name = name;
     }
 
-    public String getService() {
-        return this.service;
+    public String getDisplayName() {
+        return this.displayName;
     }
-    public void setService(String service) {
-        this.service = service;
+    public void setDisplayName(String display) {
+        this.displayName = display;
     }
 
     public String getProviderService() {

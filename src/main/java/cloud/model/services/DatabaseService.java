@@ -19,7 +19,7 @@ class DatabaseService extends Service {
                            String storage, String backup, String data, Pair<String,String> queries) {
         setName(name);
         setCategory("Database");
-        setService(databaseType);
+        setDisplayName(databaseType);
         setDatabaseType(databaseType);
         setDatabaseScheme(databaseScheme);
         setInstanceType(instanceType);

@@ -1,7 +1,6 @@
 package cloud.view.dialogs;
 
-import cloud.model.Design;
-import cloud.model.DesignManager;
+import cloud.model.design.DesignManager;
 import cloud.model.services.*;
 import cloud.view.services.*;
 
@@ -26,6 +25,7 @@ public class DialogServiceC {
         serviceUsagePane.setRegionItem(DesignManager.getInstance().getDesign().getPrimaryRegion());
 
         dialogAdd.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
+            dialogAdd.setSeparator();
             dialogAdd.getServiceDialogPane().setRight(switchServicePanes(newItem));
             dialogAdd.getDialogPane().getScene().getWindow().sizeToScene();
             dialogAdd.enableOKButton();
