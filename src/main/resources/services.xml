@@ -1,18 +1,158 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <services>
-	<service name="S3">
-		<category>storage</category>
+	<service name="VM">
+		<aws>AWS EC2</aws>
+		<azure>Windows VM</azure>
+		<gcp>Google Compute Engine</gcp>
 	</service>
-	<service name="EBS">
-		<category>storage</category>
+	<service name="Container">
+		<aws>AWS ECS, AWS EKS</aws>
+		<azure>Azure Container Instances, Azure Kubernetes Services</azure>
+		<gcp>Container Registry;Google Kubernetes Engine</gcp>
 	</service>
-	<service name="EFS">
-		<category>storage</category>
+	<service name="App">
+		<aws>Elastic Beanstalk</aws>
+		<azure>Azure App Engine</azure>
+		<gcp>Google App Engine</gcp>
 	</service>
-	<service name="Glacier">
-		<category>storage</category>
+	<service name="Batch">
+		<aws>AWS Batch</aws>
+		<azure>Azure Batch</azure>
+		<gcp>Google Batch</gcp>
 	</service>
-	<service name="Backup">
-		<category>storage</category>
+	<service name="Code">
+		<aws>AWS Lambda</aws>
+		<azure>Azure Functions</azure>
+		<gcp>Cloud Functions</gcp>
+	</service>
+	<service name="Load Balancing">
+		<aws>Elastic Load Balancing</aws>
+		<azure>Azure Load Balancer</azure>
+		<gcp>Cloud Load Balancing</gcp>
+	</service>
+	<service name="Object-Storage (Standard)">
+		<aws>AWS S3</aws>
+		<azure>Azure Blob Storage</azure>
+		<gcp>Google Cloud Storage</gcp>
+	</service>
+	<service name="Object-Storage (Archive)">
+		<aws>AWS Glacier (S3)</aws>
+		<azure>Azure Blob Storage (Cold/Archive-Mode)</azure>
+		<gcp>Google Cloud Storage (Coldline-Mode)</gcp>
+	</service>
+	<service name="Block-Storage">
+		<aws>AWS EBS</aws>
+		<azure>Azure Disk Storage, Azure Managed Disks</azure>
+		<gcp>Google Persistent Disk</gcp>
+	</service>
+	<service name="File-Storage">
+		<aws>AWS EFS</aws>
+		<azure>Azure File Storage</azure>
+		<gcp>Cloud Filestore</gcp>
+	</service>
+	<service name="SQL (MySQL)">
+		<aws>AWS RDS;Aurora</aws>
+		<azure>Azure SQL Database, Azure Database for MySQL</azure>
+		<gcp>CloudSQL</gcp>
+	</service>
+	<service name="SQL (PostgreSQL)">
+		<aws>AWS RDS for PostgreSQL, Aurora for PostgreSQL</aws>
+		<azure>Azure Database for PostgreSQL</azure>
+		<gcp>CloudSQL for PostgreSQL</gcp>
+	</service>
+	<service name="SQL (MariaDB)">
+		<aws>AWS RDS for MariaDB</aws>
+		<azure>Azure Database for MariaDB</azure>
+		<gcp>-</gcp>
+	</service>
+	<service name="NoSQL">
+		<aws>AWS DynamoDB;AWS SimpleDB</aws>
+		<azure>Azure CosmosDB, Azure Table Storage</azure>
+		<gcp>Cloud BigTable</gcp>
+	</service>
+	<service name="Document">
+		<aws>AWS DocumentDB</aws>
+		<azure>Azure CosmosDB</azure>
+		<gcp>Cloud Firestore</gcp>
+	</service>
+	<service name="Cache">
+		<aws>AWS ElastiCache</aws>
+		<azure>Azure Cache for Redis</azure>
+		<gcp>Cloud Memorystore</gcp>
+	</service>
+	<service name="Messaging">
+		<aws>AWS SNS</aws>
+		<azure>Azure EventGrid</azure>
+		<gcp>Cloud Pub/Sub</gcp>
+	</service>
+	<service name="Queueing">
+		<aws>AWS SQS</aws>
+		<azure>Azure Service Bus</azure>
+		<gcp>Cloud Pub/Sub</gcp>
+	</service>
+	<service name="System Monitor">
+		<aws>AWS CloudWatch</aws>
+		<azure>Azure Monitor</azure>
+		<gcp>Google Stackdriver</gcp>
+	</service>
+	<service name="User Monitor">
+		<aws>AWS CloudTrail</aws>
+		<azure>Azure Monitor Log Analytics</azure>
+		<gcp>Google Stackdriver Logging</gcp>
+	</service>
+	<service name="VPC">
+		<aws>AWS VPC</aws>
+		<azure>Azure Virtual Network</azure>
+		<gcp>Google VPC</gcp>
+	</service>
+	<service name="VPN">
+		<aws>AWS VPN</aws>
+		<azure>Azure VPN Gateway</azure>
+		<gcp>Google VPC</gcp>
+	</service>
+	<service name="API">
+		<aws>Amazon API Gateway</aws>
+		<azure>Azure API Management</azure>
+		<gcp>Cloud Endpoints</gcp>
+	</service>
+	<service name="CDN">
+		<aws>AWS CloudFront</aws>
+		<azure>Azure CDN</azure>
+		<gcp>Cloud CDN</gcp>
+	</service>
+	<service name="DNS">
+		<aws>Amazon Route 53</aws>
+		<azure>Azure DNS</azure>
+		<gcp>Cloud DNS</gcp>
+	</service>
+	<service name="Data Query">
+		<aws>Amazon Athena</aws>
+		<azure>Azure Data Lake Analytics</azure>
+		<gcp>Google BigQuery</gcp>
+	</service>
+	<service name="Data Share">
+		<aws>AWS Data Exchange</aws>
+		<azure>Azure Data Share</azure>
+		<gcp>Cloud Pub/Sub</gcp>
+	</service>
+	<service name="Data Transfer">
+		<aws>AWS Data Pipeline</aws>
+		<azure>Azure Data Factory</azure>
+		<gcp>Cloud Composer</gcp>
+	</service>
+	<service name="Data Catalog">
+		<aws>AWS Glue</aws>
+		<azure>Azure Data Catalog</azure>
+		<gcp>Google Data Catalog</gcp>
+	</service>
+	<service name="Data Lake">
+		<aws>AWS Lake Formation</aws>
+		<azure>Azure Data Lake Storage</azure>
+		<gcp>Cloud Dataprep</gcp>
+	</service>
+	<service name="Search Engine">
+		<aws>AWS CloudSearch, AWS ElasticSearch</aws>
+		<azure>Azure Search</azure>
+		<gcp>Cloud Search</gcp>
 	</service>
 </services>
