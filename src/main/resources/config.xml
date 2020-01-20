@@ -17,32 +17,31 @@
     <entry key="compute-app-language">Python;Java;PHP;Ruby;Node.js;.NET;Go;C#;C</entry>
     <entry key="compute-balancer-type">Internal;External</entry>
 
-    <entry key="database-system-type">SQL;NoSQL;Document;Cache</entry>
-    <entry key="database-sql-scheme">MySQL;PostgreSQL;MariaDB</entry>
-    <entry key="database-instance-type">Standard;Storage-optimized</entry>
-
     <entry key="storage-type">Object-Storage;Block-Storage;File-Storage</entry>
     <entry key="storage-object-mode">Standard;Archive</entry>
     <entry key="storage-block-mode">HDD;SSD</entry>
     <entry key="storage-file-mode">Standard;Premium</entry>
-    
-    <entry key="analytic-type">Data query;Data share;Data transfer;Data catalog;Data lake;Search engine</entry>
 
-    <entry key="network-type">VPC;VPN;API;CDN;DNS</entry>
+    <entry key="database-system-type">SQL;NoSQL;Document;Cache</entry>
+    <entry key="database-sql-scheme">MySQL;PostgreSQL;MariaDB</entry>
+    <entry key="database-instance-type">Standard;Storage-optimized</entry>
 
     <entry key="integration-type">Messaging;Queueing</entry>
+    <entry key="monitoring-type">User Monitor;System Monitor</entry>
+    <entry key="network-type">VPC;VPN;API;CDN;DNS</entry>
+    <entry key="analytic-type">Data Query;Data Share;Data Transfer;Data Catalog;Data Lake;Search Engine</entry>
 
     <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
-    <entry key="provider-services-active">Amazon Web Services</entry>
 
-    <entry key="aws-service-file">empty</entry>
-    <entry key="aws-free-file">empty</entry>
-    <entry key="azure-service-file">empty</entry>
-    <entry key="azure-price-file">empty</entry>
-    <entry key="azure-free-file">empty</entry>
-    <entry key="gcp-service-file">empty</entry>
-    <entry key="gcp-price-file">empty</entry>
-    <entry key="gcp-free-file">empty</entry>
+    <entry key="services-file">services.xml</entry>
+
+    <entry key="aws-price">empty</entry>
+    <entry key="azure-price">empty</entry>
+    <entry key="gcp-price">empty</entry>
+
+    <entry key="aws-free-tier">empty</entry>
+    <entry key="azure-free-tier">empty</entry>
+    <entry key="gcp-free-tier">empty</entry>
 
     <entry key="about-text">This tool is the result of the master thesis.</entry>
 </properties>
