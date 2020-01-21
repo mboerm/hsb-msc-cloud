@@ -47,6 +47,7 @@ public class CloudViewC {
         view.getMenuDesignMatch().setOnAction(actionEvent -> {
             design.setMatchedServicesForDesign();
             view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
+            view.getPaneDesignArea().getServicesTable().refresh();
             view.getMenuDesignCalculate().setDisable(false);
         });
 
