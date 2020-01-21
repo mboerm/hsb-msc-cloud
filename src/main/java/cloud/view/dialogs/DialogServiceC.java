@@ -41,7 +41,7 @@ public class DialogServiceC {
         });
     }
 
-    public Service getCreatedService() {
+    public Service getServiceData() {
         return createdService;
     }
     public String getDialogResponse() {

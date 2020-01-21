@@ -63,8 +63,6 @@ public class Design {
         for (Service service : servicesList) {
             service.setProviderService(ProviderServices.getInstance().getProviderServiceForName(
                             service.getDisplayName(), provider.getShortName()));
-
-            System.out.println(service.getDisplayName() + " in " + provider.getShortName() + " => " + service.getProviderService());
         }
     }
 
