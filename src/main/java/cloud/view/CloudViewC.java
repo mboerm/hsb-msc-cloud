@@ -1,6 +1,7 @@
 package cloud.view;
 
 import cloud.configuration.Config;
+import cloud.log.Logger;
 import cloud.model.StageManager;
 import cloud.model.design.DesignManager;
 import cloud.model.services.Service;
@@ -10,6 +11,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import cloud.model.design.Design;
+import javafx.scene.input.MouseButton;
 
 import static cloud.configuration.Constants.*;
 
@@ -96,16 +98,29 @@ public class CloudViewC {
         ObservableList<Service> selectedItems = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItems();
         selectedItems.addListener((ListChangeListener<Service>) change -> {
             int selCompIdx = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedIndex();
+            Logger.getInstance().debug(String.valueOf(selCompIdx));
             design.setSelectedService(selCompIdx);
+            view.getPaneDesignControls().getControlRemove().setDisable(false);
+        });
+
+        view.getPaneDesignArea().getServicesTable().setOnMousePressed(mouseEvent -> {
+            if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && mouseEvent.getClickCount() == 2) {
+                Service selService = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItem();
+                if (selService != null) {
+                    System.out.println(selService.getName());
+                }
+            }
         });
     }
 
     private void initDesignControlsHandler() {
+        view.getPaneDesignControls().getControlRemove().setDisable(true);
+
         view.getPaneDesignControls().getControlAdd().setOnAction(actionEvent -> {
-            DialogServiceC dialogAddServiceController = new DialogServiceC();
+            DialogServiceC dialogServiceC = new DialogServiceC();
 
             /* get created service */
-            Service createdService = dialogAddServiceController.getCreatedService();
+            Service createdService = dialogServiceC.getServiceData();
 
             /* add service to services list */
             design.addService(createdService);
@@ -115,6 +130,7 @@ public class CloudViewC {
             /* remove selected service from services list */
             Service selectedService = view.getPaneDesignArea().getServicesTable().getItems().get(design.getSelectedService());
             design.removeService(selectedService);
+            view.getPaneDesignControls().getControlRemove().setDisable(true);
 
             /* clear selection */
             view.getPaneDesignArea().getServicesTable().getSelectionModel().clearSelection();
