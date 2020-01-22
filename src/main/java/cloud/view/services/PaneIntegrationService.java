@@ -57,6 +57,9 @@ public class PaneIntegrationService extends PaneServiceProperties {
         this.smsSpinner.getValue(),
     };}
     public void setMessages(Integer[] values) {
+        if (values == null) {
+            values = new Integer[] {1,1,1,1};
+        }
         this.pushSpinner.getValueFactory().setValue(values[0]);
         this.httpSpinner.getValueFactory().setValue(values[1]);
         this.mailSpinner.getValueFactory().setValue(values[2]);
