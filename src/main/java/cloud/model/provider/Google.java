@@ -7,7 +7,7 @@ class Google extends Provider {
     Google() {
         setServiceName("Google Cloud Platform");
         setShortName("gcp");
-        setPriceFile(Config.getInstance().getConfigValue("gcp-price"));
+        setPriceFile(Config.getInstance().getConfigValue("gcp-prices"));
         setFreeFile(Config.getInstance().getConfigValue("gcp-free-tier"));
     }
 }

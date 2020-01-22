@@ -35,13 +35,13 @@
 
     <entry key="services-file">services.xml</entry>
 
-    <entry key="aws-price">empty</entry>
-    <entry key="azure-price">empty</entry>
-    <entry key="gcp-price">empty</entry>
+    <entry key="aws-prices">aws-prices.xml</entry>
+    <entry key="azure-prices">azure-prices.xml</entry>
+    <entry key="gcp-prices">gcp-prices.xml</entry>
 
-    <entry key="aws-free-tier">empty</entry>
-    <entry key="azure-free-tier">empty</entry>
-    <entry key="gcp-free-tier">empty</entry>
+    <entry key="aws-free-tier">aws-free-tier.xml</entry>
+    <entry key="azure-free-tier">azure-free-tier.xml</entry>
+    <entry key="gcp-free-tier">gcp-free-tier.xml</entry>
 
     <entry key="about-text">This tool is the result of the master thesis.</entry>
 </properties>
