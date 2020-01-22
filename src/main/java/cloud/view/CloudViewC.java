@@ -1,7 +1,6 @@
 package cloud.view;
 
 import cloud.configuration.Config;
-import cloud.log.Logger;
 import cloud.model.StageManager;
 import cloud.model.design.DesignManager;
 import cloud.model.services.Service;
@@ -17,17 +16,22 @@ import static cloud.configuration.Constants.*;
 
 public class CloudViewC {
 
+    // View
+    private CloudView view;
+
     // Model
     private Design design;
     private ProviderFactory providerFactory;
 
-    // View
-    private CloudView view;
+    // Controller
+    private DialogServiceC dialogServiceC;
 
     public CloudViewC() {
+        this.view = new CloudView();
         this.design = DesignManager.getInstance().getDesign();
         this.providerFactory = new ProviderFactory();
-        this.view = new CloudView();
+        this.dialogServiceC = new DialogServiceC();
+
         initMenuHandler();
         initDesignPropertyHandler();
         initDesignAreaHandler();
@@ -67,29 +71,23 @@ public class CloudViewC {
         view.getPaneDesignProperties().getUsagePeriodField().textProperty().addListener((obs, oldValue, newValue) ->
             design.setUsagePeriod(newValue));
 
-        view.getPaneDesignProperties().getPrimaryRegionBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setPrimaryRegion(newValue);
-        });
+        view.getPaneDesignProperties().getPrimaryRegionBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
+            design.setPrimaryRegion(newValue));
 
-        view.getPaneDesignProperties().getNumOfInstancesSpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            design.setNumOfInstances(newValue);
-        });
+        view.getPaneDesignProperties().getNumOfInstancesSpinner().valueProperty().addListener((obs, oldValue, newValue) ->
+            design.setNumOfInstances(newValue));
 
-        view.getPaneDesignProperties().getNumOfRequestsSpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            design.setNumOfRequests(newValue);
-        });
+        view.getPaneDesignProperties().getNumOfRequestsSpinner().valueProperty().addListener((obs, oldValue, newValue) ->
+            design.setNumOfRequests(newValue));
 
-        view.getPaneDesignProperties().getPeriodOfRequestsBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setPeriodOfRequests(newValue);
-        });
+        view.getPaneDesignProperties().getPeriodOfRequestsBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
+            design.setPeriodOfRequests(newValue));
 
-        view.getPaneDesignProperties().getNumOfCapacitySpinner().getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            design.setNumOfCapacity(newValue);
-        });
+        view.getPaneDesignProperties().getNumOfCapacitySpinner().valueProperty().addListener((obs, oldValue, newValue) ->
+            design.setNumOfCapacity(newValue));
 
-        view.getPaneDesignProperties().getPeriodOfCapacityBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setPeriodOfCapacity(newValue);
-        });
+        view.getPaneDesignProperties().getPeriodOfCapacityBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
+            design.setPeriodOfCapacity(newValue));
     }
 
     private void initDesignAreaHandler() {
@@ -97,17 +95,24 @@ public class CloudViewC {
 
         ObservableList<Service> selectedItems = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItems();
         selectedItems.addListener((ListChangeListener<Service>) change -> {
-            int selCompIdx = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedIndex();
-            Logger.getInstance().debug(String.valueOf(selCompIdx));
-            design.setSelectedService(selCompIdx);
+            design.setSelectedService(view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedIndex());
             view.getPaneDesignControls().getControlRemove().setDisable(false);
         });
 
         view.getPaneDesignArea().getServicesTable().setOnMousePressed(mouseEvent -> {
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && mouseEvent.getClickCount() == 2) {
-                Service selService = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItem();
-                if (selService != null) {
-                    System.out.println(selService.getName());
+                // get selected service item
+                Service selectedService = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItem();
+
+                // if selected service item really exists
+                if (selectedService != null) {
+                    // create new dialog
+                    dialogServiceC.newDialog();
+                    // show dialog with preset by service
+                    if (dialogServiceC.showPresetDialog(selectedService)) {
+                        Service editedService = dialogServiceC.getServiceData();
+                        design.replaceService(selectedService, editedService);
+                    }
                 }
             }
         });
@@ -117,23 +122,20 @@ public class CloudViewC {
         view.getPaneDesignControls().getControlRemove().setDisable(true);
 
         view.getPaneDesignControls().getControlAdd().setOnAction(actionEvent -> {
-            DialogServiceC dialogServiceC = new DialogServiceC();
-
-            /* get created service */
-            Service createdService = dialogServiceC.getServiceData();
-
-            /* add service to services list */
-            design.addService(createdService);
+            dialogServiceC.newDialog();
+            if (dialogServiceC.showDialog()) {
+                /* add created service to services list */
+                design.addService(dialogServiceC.getServiceData());
+            }
         });
 
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
             /* remove selected service from services list */
             Service selectedService = view.getPaneDesignArea().getServicesTable().getItems().get(design.getSelectedService());
             design.removeService(selectedService);
-            view.getPaneDesignControls().getControlRemove().setDisable(true);
-
             /* clear selection */
             view.getPaneDesignArea().getServicesTable().getSelectionModel().clearSelection();
+            view.getPaneDesignControls().getControlRemove().setDisable(true);
         });
     }
 
