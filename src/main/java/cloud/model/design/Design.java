@@ -26,20 +26,19 @@ public class Design {
     public void removeService(Service service) {
         this.servicesList.remove(service);
     }
-    public Service getService(String name) {
-        for (Service service : this.servicesList) {
-            if (service.getName().equals(name)) {
-                return service;
-            }
-        }
-        return null;
+    public void replaceService(Service oldService, Service newService) {
+        int index = this.servicesList.indexOf(oldService);
+        this.servicesList.set(index, newService);
     }
+
     public ObservableList<Service> getServicesList() {
         return this.servicesList;
     }
+
     public void clearServicesList() {
         this.servicesList.clear();
     }
+
     public int getSelectedService() {
         return this.selectedService;
     }
