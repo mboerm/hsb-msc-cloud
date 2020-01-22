@@ -27,11 +27,16 @@ public class PaneMonitoringService extends PaneServiceProperties {
         setMonitoringControls();
     }
 
-    public String getMetrics() {return this.metricsSpinner.getEditor().getText();}
-    public String getRequests() {return this.requestsSpinner.getEditor().getText();}
-    public String getData() {return this.dataSpinner.getEditor().getText();}
-    public String getEvents() {return this.eventsSpinner.getEditor().getText();}
-    public Boolean getLoggingState() {return this.isLoggingBox.isSelected();}
+    public Integer getMetrics() {return this.metricsSpinner.getValue();}
+    public void setMetrics(Integer value) {this.metricsSpinner.getValueFactory().setValue(value);}
+    public Integer getRequests() {return this.requestsSpinner.getValue();}
+    public void setRequests(Integer value) {this.requestsSpinner.getValueFactory().setValue(value);}
+    public Integer getData() {return this.dataSpinner.getValue();}
+    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
+    public Integer getEvents() {return this.eventsSpinner.getValue();}
+    public void setEvents(Integer value) {this.eventsSpinner.getValueFactory().setValue(value);}
+    public boolean getLoggingState() {return this.isLoggingBox.isSelected();}
+    public void setLoggingState(boolean state) {this.isLoggingBox.setSelected(state);}
 
     private void setMonitoringControls() {
         add(new Label("# of metrics:"), 0, 2);

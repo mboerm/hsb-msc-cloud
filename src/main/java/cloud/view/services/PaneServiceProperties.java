@@ -34,6 +34,7 @@ public class PaneServiceProperties extends GridPane {
     public String getName() {
         return this.nameTFld.getText();
     }
+    public void setName(String name) {this.nameTFld.setText(name);}
 
     public void setControls() {
         add(servicePropertiesLbl, 0,0);

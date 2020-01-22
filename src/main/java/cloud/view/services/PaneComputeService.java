@@ -66,16 +66,27 @@ public class PaneComputeService extends PaneServiceProperties {
     }
 
     public String getComputeType() {return this.computeTypeBox.getValue();}
+    public void setComputeType(String item) {this.computeTypeBox.getSelectionModel().select(item);}
     public String getInstanceType() {return this.instanceTypeBox.getValue();}
+    public void setInstanceType(String item) {this.instanceTypeBox.getSelectionModel().select(item);}
     public String getInstanceSize() {return this.instanceSizeBox.getValue();}
+    public void setInstanceSize(String item) {this.instanceSizeBox.getSelectionModel().select(item);}
     public String getComputeInstanceRef() {return this.computeInstanceBox.getValue();}
+    public void setComputeInstanceRef(String item) {this.computeInstanceBox.getSelectionModel().select(item);}
     public String getStorageInstanceRef() {return this.storageInstanceBox.getValue();}
+    public void setStorageInstanceRef(String item) {this.storageInstanceBox.getSelectionModel().select(item);}
     public String getSystem() {return this.systemBox.getValue();}
-    public String getCPU() {return this.cpuSpinner.getEditor().getText();}
-    public String getStorage() {return this.storageSpinner.getEditor().getText();}
-    public String getData() {return this.dataSpinner.getEditor().getText();}
-    public String getNumOne() {return this.numOneSpinner.getEditor().getText();}
-    public String getNumTwo() {return this.numTwoSpinner.getEditor().getText();}
+    public void setSystem(String item) {this.systemBox.getSelectionModel().select(item);}
+    public Integer getCPU() {return this.cpuSpinner.getValue();}
+    public void setCPU(Integer value) {this.cpuSpinner.getValueFactory().setValue(value);}
+    public Integer getStorage() {return this.storageSpinner.getValue();}
+    public void setStorage(Integer value) {this.storageSpinner.getValueFactory().setValue(value);}
+    public Integer getData() {return this.dataSpinner.getValue();}
+    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
+    public Integer getNumOne() {return this.numOneSpinner.getValue();}
+    public void setNumOne(Integer value) {this.numOneSpinner.getValueFactory().setValue(value);}
+    public Integer getNumTwo() {return this.numTwoSpinner.getValue();}
+    public void setNumTwo(Integer value) {this.numTwoSpinner.getValueFactory().setValue(value);}
 
     private void recoverControls() {
         getChildren().clear();

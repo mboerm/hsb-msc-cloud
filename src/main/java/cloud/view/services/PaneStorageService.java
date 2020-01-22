@@ -58,24 +58,31 @@ public class PaneStorageService extends PaneServiceProperties {
     public String getStorageType() {
         return storageTypeBox.getValue();
     }
+    public void setStorageType(String item) {this.storageTypeBox.getSelectionModel().select(item);}
     public String getStorageMode() {
         return storageModeBox.getValue();
     }
-    public String getCapacity() {
-        return capacitySpinner.getEditor().getText();
+    public void setStorageMode(String item) {this.storageModeBox.getSelectionModel().select(item);}
+    public Integer getCapacity() {
+        return capacitySpinner.getValue();
     }
-    public String getRequests() {
-        return requestsSpinner.getEditor().getText();
+    public void setCapacity(Integer value) {this.capacitySpinner.getValueFactory().setValue(value);}
+    public Integer getRequests() {
+        return requestsSpinner.getValue();
     }
-    public String getData() {
-        return dataSpinner.getEditor().getText();
+    public void setRequests(Integer value) {this.requestsSpinner.getValueFactory().setValue(value);}
+    public Integer getData() {
+        return dataSpinner.getValue();
     }
-    public String getQueries() {
-        return queriesSpinner.getEditor().getText();
+    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
+    public Integer getQueries() {
+        return queriesSpinner.getValue();
     }
-    public String getRate() {
-        return rateSpinner.getEditor().getText();
+    public void setQueries(Integer value) {this.queriesSpinner.getValueFactory().setValue(value);}
+    public Integer getRate() {
+        return rateSpinner.getValue();
     }
+    public void setRate(Integer value) {this.rateSpinner.getValueFactory().setValue(value);}
 
     private void recoverControls() {
         getChildren().clear();

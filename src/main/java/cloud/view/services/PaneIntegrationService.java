@@ -45,14 +45,23 @@ public class PaneIntegrationService extends PaneServiceProperties {
     }
 
     public String getType() {return this.integrationTypeBox.getValue();}
-    public String getData() {return this.dataSpinner.getEditor().getText();}
-    public String getRequests() {return this.requestsSpinner.getEditor().getText();}
-    public String[] getMessages() {return new String[] {
-            this.pushSpinner.getEditor().getText(),
-            this.httpSpinner.getEditor().getText(),
-            this.mailSpinner.getEditor().getText(),
-            this.smsSpinner.getEditor().getText(),
+    public void setType(String item) {this.integrationTypeBox.getSelectionModel().select(item);}
+    public Integer getData() {return this.dataSpinner.getValue();}
+    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
+    public Integer getRequests() {return this.requestsSpinner.getValue();}
+    public void setRequests(Integer value) {this.requestsSpinner.getValueFactory().setValue(value);}
+    public Integer[] getMessages() {return new Integer[] {
+        this.pushSpinner.getValue(),
+        this.httpSpinner.getValue(),
+        this.mailSpinner.getValue(),
+        this.smsSpinner.getValue(),
     };}
+    public void setMessages(Integer[] values) {
+        this.pushSpinner.getValueFactory().setValue(values[0]);
+        this.httpSpinner.getValueFactory().setValue(values[1]);
+        this.mailSpinner.getValueFactory().setValue(values[2]);
+        this.smsSpinner.getValueFactory().setValue(values[3]);
+    }
 
     private void setMessageControls() {
         add(integrationTypeLbl, 0, 3);

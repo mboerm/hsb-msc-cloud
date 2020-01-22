@@ -22,7 +22,7 @@ public class PaneDatabaseService extends PaneServiceProperties {
     private Spinner<Integer> queriesWriteSpinner;
 
     public PaneDatabaseService() {
-        databaseTypeLbl = new Label("Database type:");
+        databaseTypeLbl = new Label("Type:");
         databaseTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-system-type"));
         databaseSchemeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-sql-scheme"));
         instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-instance-type"));
@@ -62,16 +62,28 @@ public class PaneDatabaseService extends PaneServiceProperties {
     }
 
     public String getDatabaseType() {return this.databaseTypeBox.getValue();}
+    public void setDatabaseType(String item) {this.databaseTypeBox.getSelectionModel().select(item);}
     public String getDatabaseScheme() {return this.databaseSchemeBox.getValue();}
+    public void setDatabaseScheme(String item) {this.databaseSchemeBox.getSelectionModel().select(item);}
     public String getInstanceType() {return this.instanceTypeBox.getValue();}
+    public void setInstanceType(String item) {this.instanceTypeBox.getSelectionModel().select(item);}
     public String getInstanceSize() {return this.instanceSizeBox.getValue();}
-    public String getDuration() {return this.durationSpinner.getEditor().getText();}
-    public String getStorage() {return this.storageSpinner.getEditor().getText();}
-    public String getBackup() {return this.backupSpinner.getEditor().getText();}
-    public String getData() {return this.dataSpinner.getEditor().getText();}
-    public Pair<String,String> getQueries() {return new Pair<>(
-            this.queriesReadSpinner.getEditor().getText(),
-            this.queriesWriteSpinner.getEditor().getText());
+    public void setInstanceSize(String item) {this.instanceSizeBox.getSelectionModel().select(item);}
+    public Integer getDuration() {return this.durationSpinner.getValue();}
+    public void setDuration(Integer value) {this.durationSpinner.getValueFactory().setValue(value);}
+    public Integer getStorage() {return this.storageSpinner.getValue();}
+    public void setStorage(Integer value) {this.storageSpinner.getValueFactory().setValue(value);}
+    public Integer getBackup() {return this.backupSpinner.getValue();}
+    public void setBackup(Integer value) {this.backupSpinner.getValueFactory().setValue(value);}
+    public Integer getData() {return this.dataSpinner.getValue();}
+    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
+    public Pair<Integer,Integer> getQueries() {return new Pair<>(
+        this.queriesReadSpinner.getValue(),
+        this.queriesWriteSpinner.getValue());
+    }
+    public void setQueries(Pair<Integer,Integer> values) {
+        this.queriesReadSpinner.getValueFactory().setValue(values.getKey());
+        this.queriesWriteSpinner.getValueFactory().setValue(values.getValue());
     }
 
     private void recoverControls() {
@@ -82,7 +94,7 @@ public class PaneDatabaseService extends PaneServiceProperties {
     }
 
     private void setSQLControls() {
-        add(new Label("Database scheme:"), 0, 3);
+        add(new Label("Scheme:"), 0, 3);
         add(databaseSchemeBox, 1, 3);
         add(new Label("Instance type:"), 0, 4);
         add(instanceTypeBox, 1, 4);

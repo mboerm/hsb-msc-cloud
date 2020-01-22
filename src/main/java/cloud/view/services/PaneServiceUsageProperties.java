@@ -55,23 +55,30 @@ public class PaneServiceUsageProperties extends GridPane {
         });
     }
 
-    public String getRegionText() {
+    public String getRegionItem() {
         return regionBox.getValue();
     }
-    public void setRegionItem(String val) {this.regionBox.getSelectionModel().select(val);}
+    public void setRegionItem(String item) {this.regionBox.getSelectionModel().select(item);}
 
-    public String getUsageTypeText() {
+    public String getUsageTypeItem() {
         return usageTypeBox.getValue();
     }
-    public String getUsagePeriodText() {
+    public void setUsageTypeItem(String item) {this.usageTypeBox.getSelectionModel().select(item);}
+
+    public String getUsagePeriodItem() {
         return usagePeriodBox.getValue();
     }
-    public String getUsagePrepayText() {
+    public void setUsagePeriodItem(String item) {this.usagePeriodBox.getSelectionModel().select(item);}
+
+    public String getUsagePrepayItem() {
         return usagePrepayBox.getValue();
     }
-    public String getOpModeText() {
+    public void setUsagePrepayItem(String item) {this.usagePrepayBox.getSelectionModel().select(item);}
+
+    public String getOpModeItem() {
         return opModeBox.getValue();
     }
+    public void setOpModeItem(String item) {this.opModeBox.getSelectionModel().select(item);}
 
     private void setServiceUsageControls() {
         add(serviceUsageLbl, 0,0);

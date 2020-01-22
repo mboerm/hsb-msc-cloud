@@ -58,14 +58,28 @@ public class PaneAnalyticService extends PaneServiceProperties {
     }
 
     public String getAnalyticType() {return this.analyticTypeBox.getValue();}
+    public void setAnalyticType(String item) {this.analyticTypeBox.getSelectionModel().select(item);}
+
     public String getInstanceSize() {return this.instanceSizeBox.getValue();}
-    public String getData() {return this.dataSpinner.getEditor().getText();}
-    public String getDataOut() {return this.dataOutSpinner.getEditor().getText();}
-    public Pair<String,String> getActivities() {return new Pair<>(
-        this.activitiesOnSpinner.getEditor().getText(),
-        this.activitiesOffSpinner.getEditor().getText());
+    public void setInstanceSize(String item) {this.instanceSizeBox.getSelectionModel().select(item);}
+
+    public Integer getData() {return this.dataSpinner.getValue();}
+    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
+
+    public Integer getDataOut() {return this.dataOutSpinner.getValue();}
+    public void setDataOut(Integer value) {this.dataOutSpinner.getValueFactory().setValue(value);}
+
+    public Pair<Integer,Integer> getActivities() {return new Pair<>(
+        this.activitiesOnSpinner.getValue(),
+        this.activitiesOffSpinner.getValue());
     }
-    public String getUnits() {return this.unitsSpinner.getEditor().getText();}
+    public void setActivities(Pair<Integer,Integer> values) {
+        this.activitiesOnSpinner.getValueFactory().setValue(values.getKey());
+        this.activitiesOffSpinner.getValueFactory().setValue(values.getValue());
+    }
+
+    public Integer getUnits() {return this.unitsSpinner.getValue();}
+    public void setUnits(Integer value) {this.unitsSpinner.getValueFactory().setValue(value);}
 
     private void recoverControls() {
         getChildren().clear();

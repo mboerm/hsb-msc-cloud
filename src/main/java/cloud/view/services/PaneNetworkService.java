@@ -48,10 +48,15 @@ public class PaneNetworkService extends PaneServiceProperties {
     }
 
     public String getNetworkType() {return this.networkTypeBox.getValue();}
-    public String getRequests() {return this.requestsSpinner.getEditor().getText();}
-    public String getData() {return this.dataSpinner.getEditor().getText();}
-    public String getDataOut() {return this.dataOutSpinner.getEditor().getText();}
-    public String getZones() {return this.zonesSpinner.getEditor().getText();}
+    public void setNetworkType(String item) {this.networkTypeBox.getSelectionModel().select(item);}
+    public Integer getRequests() {return this.requestsSpinner.getValue();}
+    public void setRequests(Integer value) {this.requestsSpinner.getValueFactory().setValue(value);}
+    public Integer getData() {return this.dataSpinner.getValue();}
+    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
+    public Integer getDataOut() {return this.dataOutSpinner.getValue();}
+    public void setDataOut(Integer value) {this.dataOutSpinner.getValueFactory().setValue(value);}
+    public Integer getZones() {return this.zonesSpinner.getValue();}
+    public void setZones(Integer value) {this.zonesSpinner.getValueFactory().setValue(value);}
 
     private void recoverControls() {
         getChildren().clear();
