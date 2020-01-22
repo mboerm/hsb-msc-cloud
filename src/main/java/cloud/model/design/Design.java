@@ -11,24 +11,13 @@ public class Design {
     private int selectedService;
     private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
 
-    /**
-     * private final Map<Service, String> matchedServicesMap = new HashMap<Service, String>();
-     * matchedServicesMap.put(Service,"AWS-EC2");
-     */
-
-    /**
-    private final List<Pair> matchedServicesList = new ArrayList<Pair>();
-    Pair pair = new Pair(Service,"AWS-EC2");
-     matchedServicesList.add(pair);
-     */
-
     private Provider provider;
     private String usagePeriod;
     private String primaryRegion;
-    private String numOfInstances;
-    private String numOfRequests;
+    private Integer numOfInstances;
+    private Integer numOfRequests;
     private String periodOfRequests;
-    private String numOfCapacity;
+    private Integer numOfCapacity;
     private String periodOfCapacity;
 
     public Service getService(String name) {
@@ -79,17 +68,17 @@ public class Design {
     public String getPrimaryRegion() {return this.primaryRegion;}
     public void setPrimaryRegion(String region) {this.primaryRegion = region;}
 
-    public String getNumOfInstances() {return this.numOfInstances;}
-    public void setNumOfInstances(String instances) {this.numOfInstances = instances;}
+    public Integer getNumOfInstances() {return this.numOfInstances;}
+    public void setNumOfInstances(Integer instances) {this.numOfInstances = instances;}
 
-    public String getNumOfRequests() {return this.numOfRequests;}
-    public void setNumOfRequests(String requests) {this.numOfRequests = requests;}
+    public Integer getNumOfRequests() {return this.numOfRequests;}
+    public void setNumOfRequests(Integer requests) {this.numOfRequests = requests;}
 
     public String getPeriodOfRequests() {return this.periodOfRequests;}
     public void setPeriodOfRequests(String requestPeriod) {this.periodOfRequests = requestPeriod;}
 
-    public String getNumOfCapacity() {return this.numOfCapacity;}
-    public void setNumOfCapacity(String capacity) {this.numOfCapacity = capacity;}
+    public Integer getNumOfCapacity() {return this.numOfCapacity;}
+    public void setNumOfCapacity(Integer capacity) {this.numOfCapacity = capacity;}
 
     public String getPeriodOfCapacity() {return this.periodOfCapacity;}
     public void setPeriodOfCapacity(String capacityPeriod) {this.periodOfCapacity = capacityPeriod;}
