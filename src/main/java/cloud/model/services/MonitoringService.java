@@ -12,17 +12,17 @@ public class MonitoringService extends Service {
         setName(name);
         setCategory("Monitoring");
         setMetrics(metrics);
-        setApiRequests(apiRequests);
+        setRequests(apiRequests);
         setData(data);
         setEvents(events);
-        setLoggerState(loggerState);
+        setLoggingState(loggerState);
     }
 
     public Integer getMetrics() {return this.metrics;}
     public void setMetrics(Integer metrics) {this.metrics = metrics;}
 
-    public Integer getApiRequests() {return this.apiRequests;}
-    public void setApiRequests(Integer requests) {this.apiRequests = requests;}
+    public Integer getRequests() {return this.apiRequests;}
+    public void setRequests(Integer requests) {this.apiRequests = requests;}
 
     public Integer getData() {return this.data;}
     public void setData(Integer data) {this.data = data;}
@@ -30,6 +30,6 @@ public class MonitoringService extends Service {
     public Integer getEvents() {return this.events;}
     public void setEvents(Integer events) {this.events = events;}
 
-    public boolean getLoggerState() {return this.loggerState;}
-    public void setLoggerState(boolean isLogger) {this.loggerState = isLogger;}
+    public boolean getLoggingState() {return this.loggerState;}
+    public void setLoggingState(boolean isLogger) {this.loggerState = isLogger;}
 }

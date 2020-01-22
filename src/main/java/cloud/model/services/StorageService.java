@@ -15,7 +15,7 @@ public class StorageService extends Service {
         setCategory("Storage");
         setDisplayName(storageType);
         setStorageType(storageType);
-        setMode(mode);
+        setStorageMode(mode);
         setCapacity(capacity);
         setData(data);
         setRequests(requests);
@@ -30,14 +30,14 @@ public class StorageService extends Service {
         this.storageType = type;
     }
 
-    public String getMode() {
+    public String getStorageMode() {
         return mode;
     }
-    public void setMode(String mode) {
+    public void setStorageMode(String mode) {
         this.mode = mode;
     }
 
-    public Integer Integer() {
+    public Integer getCapacity() {
         return capacity;
     }
     public void setCapacity(Integer capacity) {

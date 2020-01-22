@@ -44,8 +44,8 @@ public class PaneIntegrationService extends PaneServiceProperties {
         });
     }
 
-    public String getType() {return this.integrationTypeBox.getValue();}
-    public void setType(String item) {this.integrationTypeBox.getSelectionModel().select(item);}
+    public String getIntegrationType() {return this.integrationTypeBox.getValue();}
+    public void setIntegrationType(String item) {this.integrationTypeBox.getSelectionModel().select(item);}
     public Integer getData() {return this.dataSpinner.getValue();}
     public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
     public Integer getRequests() {return this.requestsSpinner.getValue();}
