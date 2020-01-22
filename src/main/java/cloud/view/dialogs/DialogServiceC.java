@@ -20,6 +20,7 @@ public class DialogServiceC {
 
     public void newDialog() {
         dialogService = new DialogService();
+        serviceData = null;
         serviceUsagePane = dialogService.getServiceUsagePropertiesPane();
         serviceUsagePane.setRegionItem(DesignManager.getInstance().getDesign().getPrimaryRegion());
 
@@ -31,20 +32,26 @@ public class DialogServiceC {
         });
     }
 
-    public void showDialog() {
+    public boolean showDialog() {
         dialogService.showAndWait().ifPresent(response -> {
             serviceData = createService(response);
-            setServiceUsageProperties();
         });
+
+        if (serviceData != null) {
+            setServiceUsageProperties();
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void showPresetDialog(Service data) {
+    public boolean showPresetDialog(Service data) {
         serviceData = data;
         dialogService.selectServiceType(serviceData.getCategory());
         dialogService.getServiceTypeBox().setDisable(true);
         setServiceUsagePane();
         setServicePropertiesPane();
-        showDialog();
+        return showDialog();
     }
 
     public Service getServiceData() {

@@ -57,8 +57,9 @@ public class DialogService extends Dialog<String> {
         setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
                 return getServiceTypeBoxItem();
+            } else {
+                return "";
             }
-            return null;
         });
     }
 
