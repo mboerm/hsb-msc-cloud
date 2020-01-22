@@ -1,10 +1,10 @@
 package cloud.model.services;
 
-class IntegrationService extends Service {
+public class IntegrationService extends Service {
 
     private String integrationType;
-    private String data;
-    private String requests;
+    private Integer data;
+    private Integer requests;
 
     /**
      * 0 = number of push messages
@@ -12,9 +12,9 @@ class IntegrationService extends Service {
      * 2 = number of mail messages
      * 3 = number of sms messages
      */
-    private String[] messages = new String[4];
+    private Integer[] messages = new Integer[4];
 
-    public IntegrationService(String name, String type, String data, String requests, String[] messages) {
+    public IntegrationService(String name, String type, Integer data, Integer requests, Integer[] messages) {
         setName(name);
         setCategory("Integration");
         setDisplayName(type);
@@ -31,16 +31,16 @@ class IntegrationService extends Service {
         this.integrationType = type;
     }
 
-    public String getData() {return this.data;}
-    public void setData(String data) {this.data = data;}
+    public Integer getData() {return this.data;}
+    public void setData(Integer data) {this.data = data;}
 
-    public String getRequests() {return this.requests;}
-    public void setRequests(String requests) {this.requests = requests;}
+    public Integer getRequests() {return this.requests;}
+    public void setRequests(Integer requests) {this.requests = requests;}
 
-    public String[] getMessages() {
+    public Integer[] getMessages() {
         return messages;
     }
-    public void setMessages(String[] messages) {
+    public void setMessages(Integer[] messages) {
         this.messages = messages;
     }
 }

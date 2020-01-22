@@ -2,16 +2,16 @@ package cloud.model.services;
 
 import javafx.util.Pair;
 
-class AnalyticService extends Service {
+public class AnalyticService extends Service {
 
     private String analyticType;
-    private String data;
-    private String dataOut;
-    private Pair<String,String> activities;
-    private String units;
+    private Integer data;
+    private Integer dataOut;
+    private Pair<Integer,Integer> activities;
+    private Integer units;
     private String instanceSize;
 
-    public AnalyticService(String name, String type, String data, String dataOut, Pair<String,String> activities, String units, String instanceSize) {
+    public AnalyticService(String name, String type, Integer data, Integer dataOut, Pair<Integer,Integer> activities, Integer units, String instanceSize) {
         setName(name);
         setCategory("Analytics");
         setDisplayName(type);
@@ -30,31 +30,31 @@ class AnalyticService extends Service {
         this.analyticType = type;
     }
 
-    public String getData() {
+    public Integer getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(Integer data) {
         this.data = data;
     }
 
-    public String getDataOut() {
+    public Integer getDataOut() {
         return dataOut;
     }
-    public void setDataOut(String dataOut) {
+    public void setDataOut(Integer dataOut) {
         this.dataOut = dataOut;
     }
 
-    public Pair<String, String> getActivities() {
+    public Pair<Integer, Integer> getActivities() {
         return activities;
     }
-    public void setActivities(Pair<String, String> activities) {
+    public void setActivities(Pair<Integer, Integer> activities) {
         this.activities = activities;
     }
 
-    public String getUnits() {
+    public Integer getUnits() {
         return units;
     }
-    public void setUnits(String units) {
+    public void setUnits(Integer units) {
         this.units = units;
     }
 

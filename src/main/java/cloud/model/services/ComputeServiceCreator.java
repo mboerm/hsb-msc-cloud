@@ -11,15 +11,15 @@ public class ComputeServiceCreator implements ServiceAbstractCreator {
     private String computeInstance;
     private String storageInstance;
     private String system;
-    private String cpu;
-    private String storage;
-    private String data;
-    private String numOne;
-    private String numTwo;
+    private Integer cpu;
+    private Integer storage;
+    private Integer data;
+    private Integer numOne;
+    private Integer numTwo;
 
     public ComputeServiceCreator(String name, String computeType, String instanceType, String instanceSize, String system,
-                                 String computeInstance, String storageInstance, String cpu, String storage,
-                                 String data, String numOne, String numTwo) {
+                                 String computeInstance, String storageInstance, Integer cpu, Integer storage,
+                                 Integer data, Integer numOne, Integer numTwo) {
         this.name = name;
         this.computeType = computeType;
         this.instanceType = instanceType;
@@ -41,7 +41,7 @@ public class ComputeServiceCreator implements ServiceAbstractCreator {
         if (computeType.equals(types[0])) {
             /* VM */
             return new ComputeService(name, computeType, instanceType, instanceSize, "", "",
-                    system, "", "", "", "", "");
+                    system, 0, 0, 0, 0, 0);
         } else if (computeType.equals(types[1])) {
             /* Container */
             return new ComputeService(name, computeType, "", "", "", "",
@@ -49,19 +49,19 @@ public class ComputeServiceCreator implements ServiceAbstractCreator {
         } else if (computeType.equals(types[2])) {
             /* App */
             return new ComputeService(name, computeType, "", "", computeInstance, storageInstance,
-                    system, "", "", "", "", "");
+                    system, 0, 0, 0, 0, 0);
         } else if (computeType.equals(types[3])) {
             /* Batch */
             return new ComputeService(name, computeType, "", "", computeInstance, "",
-                    "", "", "", "", "", "");
+                    "", 0, 0, 0, 0, 0);
         } else if (computeType.equals(types[4])) {
             /* Code */
             return new ComputeService(name, computeType, "", "", "", "",
-                    "", cpu, storage, "", numOne, numTwo);
+                    "", cpu, storage, 0, numOne, numTwo);
         } else if (computeType.equals(types[5])) {
             /* Load Balancing */
             return new ComputeService(name, computeType, "", "", computeInstance, "",
-                    system, "", "", data, numOne, "");
+                    system, 0, 0, data, numOne, 0);
         } else {
             return null;
         }

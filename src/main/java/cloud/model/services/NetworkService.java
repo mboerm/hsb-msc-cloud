@@ -1,14 +1,14 @@
 package cloud.model.services;
 
-class NetworkService extends Service {
+public class NetworkService extends Service {
 
     private String networkType;
-    private String requests;
-    private String data;
-    private String dataOut;
-    private String zones;
+    private Integer requests;
+    private Integer data;
+    private Integer dataOut;
+    private Integer zones;
 
-    public NetworkService(String name, String type, String requests, String data, String dataOut, String zones) {
+    public NetworkService(String name, String type, Integer requests, Integer data, Integer dataOut, Integer zones) {
         setName(name);
         setCategory("Network");
         setDisplayName(type);
@@ -26,31 +26,31 @@ class NetworkService extends Service {
         this.networkType = type;
     }
 
-    public String getRequests() {
+    public Integer getRequests() {
         return requests;
     }
-    public void setRequests(String requests) {
+    public void setRequests(Integer requests) {
         this.requests = requests;
     }
 
-    public String getData() {
+    public Integer getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(Integer data) {
         this.data = data;
     }
 
-    public String getDataOut() {
+    public Integer getDataOut() {
         return dataOut;
     }
-    public void setDataOut(String dataOut) {
+    public void setDataOut(Integer dataOut) {
         this.dataOut = dataOut;
     }
 
-    public String getZones() {
+    public Integer getZones() {
         return zones;
     }
-    public void setZones(String zones) {
+    public void setZones(Integer zones) {
         this.zones = zones;
     }
 }

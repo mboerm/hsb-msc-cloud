@@ -1,16 +1,16 @@
 package cloud.model.services;
 
-class StorageService extends Service {
+public class StorageService extends Service {
 
     private String storageType;
     private String mode;
-    private String capacity;
-    private String data;
-    private String requests;
-    private String queries;
-    private String rate;
+    private Integer capacity;
+    private Integer data;
+    private Integer requests;
+    private Integer queries;
+    private Integer rate;
 
-    public StorageService(String name, String storageType, String mode, String capacity, String data, String requests, String queries, String rate) {
+    public StorageService(String name, String storageType, String mode, Integer capacity, Integer data, Integer requests, Integer queries, Integer rate) {
         setName(name);
         setCategory("Storage");
         setDisplayName(storageType);
@@ -37,38 +37,38 @@ class StorageService extends Service {
         this.mode = mode;
     }
 
-    public String getCapacity() {
+    public Integer Integer() {
         return capacity;
     }
-    public void setCapacity(String capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 
-    public String getData() {
+    public Integer getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(Integer data) {
         this.data = data;
     }
 
-    public String getRequests() {
+    public Integer getRequests() {
         return requests;
     }
-    public void setRequests(String requests) {
+    public void setRequests(Integer requests) {
         this.requests = requests;
     }
 
-    public String getQueries() {
+    public Integer getQueries() {
         return queries;
     }
-    public void setQueries(String queries) {
+    public void setQueries(Integer queries) {
         this.queries = queries;
     }
 
-    public String getRate() {
+    public Integer getRate() {
         return rate;
     }
-    public void setRate(String rate) {
+    public void setRate(Integer rate) {
         this.rate = rate;
     }
 }

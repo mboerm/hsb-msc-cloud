@@ -6,11 +6,11 @@ public class IntegrationServiceCreator implements ServiceAbstractCreator {
 
     private String name;
     private String type;
-    private String data;
-    private String requests;
-    private String[] messages;
+    private Integer data;
+    private Integer requests;
+    private Integer[] messages;
 
-    public IntegrationServiceCreator(String name, String type, String data, String requests, String[] messages) {
+    public IntegrationServiceCreator(String name, String type, Integer data, Integer requests, Integer[] messages) {
         this.name = name;
         this.type = type;
         this.data = data;

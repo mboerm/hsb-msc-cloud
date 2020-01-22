@@ -2,21 +2,21 @@ package cloud.model.services;
 
 import javafx.util.Pair;
 
-class DatabaseService extends Service {
+public class DatabaseService extends Service {
 
     private String databaseType;
     private String databaseScheme;
     private String instanceType;
     private String instanceSize;
-    private String duration;
-    private String storage;
-    private String backup;
-    private String data;
-    private Pair<String,String> queries;
+    private Integer duration;
+    private Integer storage;
+    private Integer backup;
+    private Integer data;
+    private Pair<Integer,Integer> queries;
 
     public DatabaseService(String name, String databaseType, String databaseScheme,
-                           String instanceType, String instanceSize, String duration,
-                           String storage, String backup, String data, Pair<String,String> queries) {
+                           String instanceType, String instanceSize, Integer duration,
+                           Integer storage, Integer backup, Integer data, Pair<Integer,Integer> queries) {
         setName(name);
         setCategory("Database");
         setDisplayName(databaseType);
@@ -59,38 +59,38 @@ class DatabaseService extends Service {
         this.instanceSize = systemType;
     }
 
-    public String getDuration() {
+    public Integer getDuration() {
         return duration;
     }
-    public void setDuration(String duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    public String getStorage() {
+    public Integer getStorage() {
         return storage;
     }
-    public void setStorage(String storage) {
+    public void setStorage(Integer storage) {
         this.storage = storage;
     }
 
-    public String getBackup() {
+    public Integer getBackup() {
         return backup;
     }
-    public void setBackup(String backup) {
+    public void setBackup(Integer backup) {
         this.backup = backup;
     }
 
-    public String getData() {
+    public Integer getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(Integer data) {
         this.data = data;
     }
 
-    public Pair<String, String> getQueries() {
+    public Pair<Integer, Integer> getQueries() {
         return queries;
     }
-    public void setQueries(Pair<String, String> queries) {
+    public void setQueries(Pair<Integer, Integer> queries) {
         this.queries = queries;
     }
 }

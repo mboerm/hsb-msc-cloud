@@ -6,12 +6,12 @@ public class NetworkServiceCreator implements ServiceAbstractCreator {
 
     private String name;
     private String type;
-    private String requests;
-    private String data;
-    private String dataOut;
-    private String zones;
+    private Integer requests;
+    private Integer data;
+    private Integer dataOut;
+    private Integer zones;
 
-    public NetworkServiceCreator(String name, String type, String requests, String data, String dataOut, String zones) {
+    public NetworkServiceCreator(String name, String type, Integer requests, Integer data, Integer dataOut, Integer zones) {
         this.name = name;
         this.type = type;
         this.requests = requests;
@@ -25,11 +25,11 @@ public class NetworkServiceCreator implements ServiceAbstractCreator {
         String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
 
         if (type.equals(types[0]) || type.equals(types[1]) || type.equals(types[2])) {
-            return new NetworkService(name, type, requests, data, "", "");
+            return new NetworkService(name, type, requests, data, 0, 0);
         } else if (type.equals(types[3])) {
-            return new NetworkService(name, type, requests, data, dataOut, "");
+            return new NetworkService(name, type, requests, data, dataOut, 0);
         } else if (type.equals(types[4])) {
-            return new NetworkService(name, type, requests, "", "", zones);
+            return new NetworkService(name, type, requests, 0, 0, zones);
         } else {
             return null;
         }

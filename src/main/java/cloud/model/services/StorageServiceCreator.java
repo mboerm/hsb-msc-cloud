@@ -7,13 +7,13 @@ public class StorageServiceCreator implements ServiceAbstractCreator {
     private String name;
     private String type;
     private String mode;
-    private String capacity;
-    private String data;
-    private String requests;
-    private String queries;
-    private String rate;
+    private Integer capacity;
+    private Integer data;
+    private Integer requests;
+    private Integer queries;
+    private Integer rate;
 
-    public StorageServiceCreator(String name, String type, String mode, String capacity, String data, String requests, String queries, String rate) {
+    public StorageServiceCreator(String name, String type, String mode, Integer capacity, Integer data, Integer requests, Integer queries, Integer rate) {
         this.name = name;
         this.type = type;
         this.mode = mode;
@@ -29,13 +29,13 @@ public class StorageServiceCreator implements ServiceAbstractCreator {
         String[] types = Config.getInstance().getConfigValuesAsArray("storage-type");
 
         if (type.equals(types[0])) {
-            StorageService storageService = new StorageService(name, type, mode, capacity, data, requests, queries, "");
+            StorageService storageService = new StorageService(name, type, mode, capacity, data, requests, queries, 0);
             storageService.setDisplayName(type + " (" + mode + ")");
             return storageService;
         } else if (type.equals(types[1])) {
-            return new StorageService(name, type, mode, capacity, data, "", "", "");
+            return new StorageService(name, type, mode, capacity, data, 0, 0, 0);
         } else if (type.equals(types[2])) {
-            return new StorageService(name, type, mode, capacity, data, "", "", rate);
+            return new StorageService(name, type, mode, capacity, data, 0, 0, rate);
         } else {
             return null;
         }

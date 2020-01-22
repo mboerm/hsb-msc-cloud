@@ -1,6 +1,6 @@
 package cloud.model.services;
 
-class ComputeService extends Service {
+public class ComputeService extends Service {
 
     private String computeType;
     private String instanceType;
@@ -8,15 +8,15 @@ class ComputeService extends Service {
     private String computeInstance;
     private String storageInstance;
     private String system;
-    private String cpu;
-    private String storage;
-    private String data;
-    private String numOne;
-    private String numTwo;
+    private Integer cpu;
+    private Integer storage;
+    private Integer data;
+    private Integer numOne;
+    private Integer numTwo;
 
     public ComputeService(String name, String computeType, String instanceType, String instanceSize,
                           String computeInstance, String storageInstance, String system,
-                          String cpu, String storage, String data, String numOne, String numTwo) {
+                          Integer cpu, Integer storage, Integer data, Integer numOne, Integer numTwo) {
         setName(name);
         setDisplayName(computeType);
         setCategory("Compute");
@@ -75,38 +75,38 @@ class ComputeService extends Service {
         this.system = system;
     }
 
-    public String getCPU() {
+    public Integer getCPU() {
         return cpu;
     }
-    public void setCPU(String cpu) {
+    public void setCPU(Integer cpu) {
         this.cpu = cpu;
     }
 
-    public String getStorage() {
+    public Integer getStorage() {
         return storage;
     }
-    public void setStorage(String storage) {
+    public void setStorage(Integer storage) {
         this.storage = storage;
     }
 
-    public String getData() {
+    public Integer getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(Integer data) {
         this.data = data;
     }
 
-    public String getNumOne() {
+    public Integer getNumOne() {
         return numOne;
     }
-    public void setNumOne(String numOne) {
+    public void setNumOne(Integer numOne) {
         this.numOne = numOne;
     }
 
-    public String getNumTwo() {
+    public Integer getNumTwo() {
         return numTwo;
     }
-    public void setNumTwo(String numTwo) {
+    public void setNumTwo(Integer numTwo) {
         this.numTwo = numTwo;
     }
 }

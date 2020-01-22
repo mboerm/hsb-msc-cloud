@@ -10,15 +10,15 @@ public class DatabaseServiceCreator implements ServiceAbstractCreator {
     private String databaseScheme;
     private String instanceType;
     private String instanceSize;
-    private String duration;
-    private String storage;
-    private String backup;
-    private String data;
-    private Pair<String,String> queries;
+    private Integer duration;
+    private Integer storage;
+    private Integer backup;
+    private Integer data;
+    private Pair<Integer,Integer> queries;
 
     public DatabaseServiceCreator(String name, String databaseType, String databaseScheme,
-                                  String instanceType, String instanceSize, String duration,
-                                  String storage, String backup, String data, Pair<String,String> queries) {
+                                  String instanceType, String instanceSize, Integer duration,
+                                  Integer storage, Integer backup, Integer data, Pair<Integer,Integer> queries) {
         this.name = name;
         this.databaseType = databaseType;
         this.databaseScheme = databaseScheme;
@@ -37,18 +37,18 @@ public class DatabaseServiceCreator implements ServiceAbstractCreator {
 
         if (databaseType.equals(types[0])) {
             DatabaseService dbService = new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
-                    duration, storage, backup, data, new Pair<>("",""));
+                    duration, storage, backup, data, new Pair<>(0,0));
             dbService.setDisplayName(databaseType + " (" + databaseScheme + ")");
             return dbService;
         } else if (databaseType.equals(types[1])) {
             return new DatabaseService(name, databaseType, "", "", "",
-                    "", storage, "", data, queries);
+                    0, storage, 0, data, queries);
         } else if (databaseType.equals(types[2])) {
             return new DatabaseService(name, databaseType, "", "", "",
-                    duration, storage, backup, data, new Pair<>("",""));
+                    duration, storage, backup, data, new Pair<>(0,0));
         } else if (databaseType.equals(types[3])) {
             return new DatabaseService(name, databaseType, "", instanceType, instanceSize,
-                    duration, "", "", data, new Pair<>("",""));
+                    duration, 0, 0, data, new Pair<>(0,0));
         } else {
             return null;
         }
