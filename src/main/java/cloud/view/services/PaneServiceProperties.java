@@ -30,7 +30,6 @@ public class PaneServiceProperties extends GridPane {
         setControls();
     }
 
-    public TextField getNameTFld() {return this.nameTFld;}
     public String getName() {
         return this.nameTFld.getText();
     }

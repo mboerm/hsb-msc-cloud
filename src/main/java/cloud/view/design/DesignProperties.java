@@ -83,7 +83,4 @@ public class DesignProperties extends GridPane {
     public ComboBox<String> getPeriodOfCapacityBox() {
         return this.periodOfCapacityBox;
     }
-
-    public String getProvider() {return this.providerBox.getValue();}
-    public String getPrimaryRegion() {return this.regionBox.getValue();}
 }

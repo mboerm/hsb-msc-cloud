@@ -33,9 +33,7 @@ public class DialogServiceC {
     }
 
     public boolean showDialog() {
-        dialogService.showAndWait().ifPresent(response -> {
-            serviceData = createService(response);
-        });
+        dialogService.showAndWait().ifPresent(response -> serviceData = createService(response));
 
         if (serviceData != null) {
             setServiceUsageProperties();

@@ -20,6 +20,12 @@ public class Design {
     private Integer numOfCapacity;
     private String periodOfCapacity;
 
+    public void addService(Service service) {
+        this.servicesList.add(service);
+    }
+    public void removeService(Service service) {
+        this.servicesList.remove(service);
+    }
     public Service getService(String name) {
         for (Service service : this.servicesList) {
             if (service.getName().equals(name)) {
@@ -27,13 +33,6 @@ public class Design {
             }
         }
         return null;
-    }
-
-    public void addService(Service service) {
-        this.servicesList.add(service);
-    }
-    public void removeService(Service service) {
-        this.servicesList.remove(service);
     }
     public ObservableList<Service> getServicesList() {
         return this.servicesList;

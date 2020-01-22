@@ -16,7 +16,7 @@ public class CloudApp extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         Locale.setDefault(new Locale("en"));
 
         // set primarystage in stage manager
