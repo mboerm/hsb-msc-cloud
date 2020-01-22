@@ -17,9 +17,9 @@ public class ComputeServiceCreator implements ServiceAbstractCreator {
     private Integer numOne;
     private Integer numTwo;
 
-    public ComputeServiceCreator(String name, String computeType, String instanceType, String instanceSize, String system,
-                                 String computeInstance, String storageInstance, Integer cpu, Integer storage,
-                                 Integer data, Integer numOne, Integer numTwo) {
+    public ComputeServiceCreator(String name, String computeType, String instanceType, String instanceSize,
+                                 String computeInstance, String storageInstance, String system,
+                                 Integer cpu, Integer storage, Integer data, Integer numOne, Integer numTwo) {
         this.name = name;
         this.computeType = computeType;
         this.instanceType = instanceType;
