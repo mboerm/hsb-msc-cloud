@@ -44,8 +44,10 @@ public class ComputeServiceCreator implements ServiceAbstractCreator {
                     system, 0, 0, 0, 0, 0);
         } else if (computeType.equals(types[1])) {
             /* Container */
-            return new ComputeService(name, computeType, "", "", "", "",
-                    "", cpu, storage, data, numOne, numTwo);
+			ComputeService computeService = new ComputeService(name, computeType, "", "", "", "",
+                    system, cpu, storage, data, numOne, numTwo);
+			computeService.setDisplayName(computeType + " (" + system + ")");
+            return computeService;
         } else if (computeType.equals(types[2])) {
             /* App */
             return new ComputeService(name, computeType, "", "", computeInstance, storageInstance,

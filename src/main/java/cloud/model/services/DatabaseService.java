@@ -1,5 +1,6 @@
 package cloud.model.services;
 
+import cloud.configuration.Config;
 import javafx.util.Pair;
 
 public class DatabaseService extends Service {
@@ -18,7 +19,7 @@ public class DatabaseService extends Service {
                            String instanceType, String instanceSize, Integer duration,
                            Integer storage, Integer backup, Integer data, Pair<Integer,Integer> queries) {
         setName(name);
-        setCategory("Database");
+        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[1]);
         setDisplayName(databaseType);
         setDatabaseType(databaseType);
         setDatabaseScheme(databaseScheme);

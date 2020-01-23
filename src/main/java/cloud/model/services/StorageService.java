@@ -1,5 +1,7 @@
 package cloud.model.services;
 
+import cloud.configuration.Config;
+
 public class StorageService extends Service {
 
     private String storageType;
@@ -12,7 +14,7 @@ public class StorageService extends Service {
 
     public StorageService(String name, String storageType, String mode, Integer capacity, Integer data, Integer requests, Integer queries, Integer rate) {
         setName(name);
-        setCategory("Storage");
+        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[2]);
         setDisplayName(storageType);
         setStorageType(storageType);
         setStorageMode(mode);

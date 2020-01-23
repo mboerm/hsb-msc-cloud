@@ -106,16 +106,19 @@ public class PaneComputeService extends PaneServiceProperties {
     }
 
     private void setContainerControls() {
-        add(new Label("# of vCPU:"), 0, 3);
-        add(cpuSpinner, 1, 3);
-        add(new Label("# of storage hours:"), 0, 4);
-        add(storageSpinner, 1, 4);
-        add(new Label("# of compute instances:"), 0, 5);
-        add(numOneSpinner, 1, 5);
-        add(new Label("# of container groups:"), 0, 6);
-        add(numTwoSpinner, 1, 6);
-        add(new Label("Transferred data in GB:"), 0, 7);
-        add(dataSpinner, 1, 7);
+		add(new Label("Container type:"), 0, 3);
+		systemBox.setItems(Config.getInstance().getConfigValues("compute-container-type"));
+		add(systemBox, 1, 3);
+        add(new Label("# of vCPU:"), 0, 4);
+        add(cpuSpinner, 1, 4);
+        add(new Label("# of storage hours:"), 0, 5);
+        add(storageSpinner, 1, 5);
+        add(new Label("# of compute instances:"), 0, 6);
+        add(numOneSpinner, 1, 6);
+        add(new Label("# of container groups:"), 0, 7);
+        add(numTwoSpinner, 1, 7);
+        add(new Label("Transferred data in GB:"), 0, 8);
+        add(dataSpinner, 1, 8);
     }
 
     private void setAppControls() {

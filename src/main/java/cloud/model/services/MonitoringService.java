@@ -1,5 +1,7 @@
 package cloud.model.services;
 
+import cloud.configuration.Config;
+
 public class MonitoringService extends Service {
 
     private Integer metrics;
@@ -10,7 +12,7 @@ public class MonitoringService extends Service {
 
     public MonitoringService(String name, Integer metrics, Integer apiRequests, Integer data, Integer events, boolean loggerState) {
         setName(name);
-        setCategory("Monitoring");
+        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
         setMetrics(metrics);
         setRequests(apiRequests);
         setData(data);

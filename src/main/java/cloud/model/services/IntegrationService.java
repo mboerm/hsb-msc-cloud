@@ -1,5 +1,7 @@
 package cloud.model.services;
 
+import cloud.configuration.Config;
+
 public class IntegrationService extends Service {
 
     private String integrationType;
@@ -16,7 +18,7 @@ public class IntegrationService extends Service {
 
     public IntegrationService(String name, String type, Integer data, Integer requests, Integer[] messages) {
         setName(name);
-        setCategory("Integration");
+        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[5]);
         setDisplayName(type);
         setIntegrationType(type);
         setData(data);
