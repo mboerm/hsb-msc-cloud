@@ -13,6 +13,7 @@
 
     <entry key="compute-type">VM;Container;App;Batch;Code;Load Balancing</entry>
     <entry key="compute-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
+	<entry key="compute-container-type">Standard;Kubernetes</entry>
     <entry key="compute-os">Windows;Linux;CentOS;Ubuntu;Red Hat;SUSE;Debian</entry>
     <entry key="compute-app-language">Python;Java;PHP;Ruby;Node.js;.NET;Go;C#;C</entry>
     <entry key="compute-balancer-type">Internal;External</entry>
