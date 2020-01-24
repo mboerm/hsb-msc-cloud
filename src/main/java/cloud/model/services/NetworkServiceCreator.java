@@ -2,7 +2,7 @@ package cloud.model.services;
 
 import cloud.configuration.Config;
 
-public class NetworkServiceCreator implements ServiceAbstractCreator {
+public class NetworkServiceCreator implements IServiceCreator {
 
     private String name;
     private String type;

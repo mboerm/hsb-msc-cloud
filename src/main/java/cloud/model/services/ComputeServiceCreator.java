@@ -2,7 +2,7 @@ package cloud.model.services;
 
 import cloud.configuration.Config;
 
-public class ComputeServiceCreator implements ServiceAbstractCreator {
+public class ComputeServiceCreator implements IServiceCreator {
 
     private String name;
     private String computeType;

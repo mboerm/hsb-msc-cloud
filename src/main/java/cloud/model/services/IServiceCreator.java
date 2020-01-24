@@ -1,5 +1,5 @@
 package cloud.model.services;
 
-public interface ServiceAbstractCreator {
+public interface IServiceCreator {
     Service createService();
 }

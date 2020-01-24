@@ -3,7 +3,7 @@ package cloud.model.services;
 import cloud.configuration.Config;
 import javafx.util.Pair;
 
-public class AnalyticServiceCreator implements ServiceAbstractCreator {
+public class AnalyticServiceCreator implements IServiceCreator {
 
     private String name;
     private String type;
