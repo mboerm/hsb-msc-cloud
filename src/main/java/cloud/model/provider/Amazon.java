@@ -6,7 +6,7 @@ class Amazon extends Provider implements Costs {
 
     Amazon() {
         setServiceName("Amazon Web Services");
-        setShortName("aws");
+        setServiceShortName("aws");
         setPriceFile(Config.getInstance().getConfigValue("aws-prices"));
         setFreeFile(Config.getInstance().getConfigValue("aws-free-tier"));
     }

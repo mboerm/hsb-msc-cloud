@@ -95,41 +95,41 @@ public class ServiceDialogC {
 
     private Service createService(String item) {
         if (ServiceChecker.isComputeItem(item)) {
-            return ServiceCreator.getService(new ComputeServiceCreator(
+            return ServiceFactory.getService(new ComputeServiceCreator(
                     computePane.getName(), computePane.getComputeType(), computePane.getInstanceType(), computePane.getInstanceSize(),
                     computePane.getComputeInstanceRef(), computePane.getStorageInstanceRef(), computePane.getSystem(),
                     computePane.getCPU(), computePane.getStorage(), computePane.getData(), computePane.getNumOne(), computePane.getNumTwo()
             ));
         } else if (ServiceChecker.isDatabaseItem(item)) {
-            return ServiceCreator.getService(new DatabaseServiceCreator(
+            return ServiceFactory.getService(new DatabaseServiceCreator(
                     databasePane.getName(), databasePane.getDatabaseType(), databasePane.getDatabaseScheme(),
                     databasePane.getInstanceType(), databasePane.getInstanceSize(), databasePane.getDuration(),
                     databasePane.getStorage(), databasePane.getBackup(), databasePane.getData(), databasePane.getQueries()
             ));
         } else if (ServiceChecker.isStorageItem(item)) {
-            return ServiceCreator.getService(new StorageServiceCreator(
+            return ServiceFactory.getService(new StorageServiceCreator(
                     storagePane.getName(), storagePane.getStorageType(), storagePane.getStorageMode(),
                     storagePane.getCapacity(), storagePane.getData(), storagePane.getRequests(),
                     storagePane.getQueries(), storagePane.getRate()
             ));
         } else if (ServiceChecker.isAnalyticItem(item)) {
-            return ServiceCreator.getService(new AnalyticServiceCreator(
+            return ServiceFactory.getService(new AnalyticServiceCreator(
                     analyticPane.getName(), analyticPane.getAnalyticType(), analyticPane.getData(),
                     analyticPane.getDataOut(), analyticPane.getActivities(), analyticPane.getUnits(),
                     analyticPane.getInstanceSize()
             ));
         } else if (ServiceChecker.isNetworkItem(item)) {
-            return ServiceCreator.getService(new NetworkServiceCreator(
+            return ServiceFactory.getService(new NetworkServiceCreator(
                     networkPane.getName(), networkPane.getNetworkType(), networkPane.getRequests(),
                     networkPane.getData(), networkPane.getDataOut(), networkPane.getZones()
             ));
         } else if (ServiceChecker.isIntegrationItem(item)) {
-            return ServiceCreator.getService(new IntegrationServiceCreator(
+            return ServiceFactory.getService(new IntegrationServiceCreator(
                     integrationPane.getName(), integrationPane.getIntegrationType(), integrationPane.getData(),
                     integrationPane.getRequests(), integrationPane.getMessages()
             ));
         } else if (ServiceChecker.isMonitoringItem(item)) {
-            return ServiceCreator.getService(new MonitoringServiceCreator(
+            return ServiceFactory.getService(new MonitoringServiceCreator(
                     monitoringPane.getName(), monitoringPane.getMetrics(), monitoringPane.getRequests(),
                     monitoringPane.getData(), monitoringPane.getEvents(), monitoringPane.getLoggingState()
             ));

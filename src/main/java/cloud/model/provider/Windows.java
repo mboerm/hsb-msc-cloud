@@ -6,7 +6,7 @@ class Windows extends Provider implements Costs {
 
     Windows() {
         setServiceName("Windows Azure");
-        setShortName("azure");
+        setServiceShortName("azure");
         setPriceFile(Config.getInstance().getConfigValue("azure-prices"));
         setFreeFile(Config.getInstance().getConfigValue("azure-free-tier"));
     }

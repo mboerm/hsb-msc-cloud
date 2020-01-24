@@ -6,7 +6,7 @@ class Google extends Provider implements Costs {
 
     Google() {
         setServiceName("Google Cloud Platform");
-        setShortName("gcp");
+        setServiceShortName("gcp");
         setPriceFile(Config.getInstance().getConfigValue("gcp-prices"));
         setFreeFile(Config.getInstance().getConfigValue("gcp-free-tier"));
     }
