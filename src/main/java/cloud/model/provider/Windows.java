@@ -2,7 +2,7 @@ package cloud.model.provider;
 
 import cloud.configuration.Config;
 
-class Windows extends Provider implements Costs {
+class Windows extends Provider implements Pricing {
 
     Windows() {
         setServiceName("Windows Azure");

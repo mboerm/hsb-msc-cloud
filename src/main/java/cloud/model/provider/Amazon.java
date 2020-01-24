@@ -2,7 +2,7 @@ package cloud.model.provider;
 
 import cloud.configuration.Config;
 
-class Amazon extends Provider implements Costs {
+class Amazon extends Provider implements Pricing {
 
     Amazon() {
         setServiceName("Amazon Web Services");

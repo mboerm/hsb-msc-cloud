@@ -1,6 +1,6 @@
 package cloud.model.provider;
 
-public interface Costs {
+public interface Pricing {
     void calculateCosts();
     void optimizeCosts();
     void scaleCosts();

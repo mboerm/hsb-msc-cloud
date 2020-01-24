@@ -2,7 +2,7 @@ package cloud.model.provider;
 
 import cloud.configuration.Config;
 
-class Google extends Provider implements Costs {
+class Google extends Provider implements Pricing {
 
     Google() {
         setServiceName("Google Cloud Platform");
