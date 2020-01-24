@@ -1,7 +1,6 @@
 package cloud.model.design;
 
 import cloud.model.provider.Provider;
-import cloud.model.provider.ProviderServices;
 import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
