@@ -7,14 +7,14 @@ import cloud.view.services.*;
 public class DialogServiceC {
     DialogService dialogService;
 
-    private PaneServiceUsageProperties serviceUsagePane;
-    private PaneComputeService computePane;
-    private PaneDatabaseService databasePane;
-    private PaneStorageService storagePane;
-    private PaneAnalyticService analyticPane;
-    private PaneNetworkService networkPane;
-    private PaneIntegrationService integrationPane;
-    private PaneMonitoringService monitoringPane;
+    private ServiceUsagePropertiesPane serviceUsagePane;
+    private ComputeServicePane computePane;
+    private DatabaseServicePane databasePane;
+    private StorageServicePane storagePane;
+    private AnalyticServicePane analyticPane;
+    private NetworkServicePane networkPane;
+    private IntegrationServicePane integrationPane;
+    private MonitoringServicePane monitoringPane;
 
     private Service serviceData;
 
@@ -56,30 +56,30 @@ public class DialogServiceC {
         return serviceData;
     }
 
-    private PaneServiceProperties switchServicePropertiesPane(String item) {
+    private ServicePropertiesPane switchServicePropertiesPane(String item) {
         if (ServiceChecker.isComputeItem(item)) {
-            computePane = new PaneComputeService();
+            computePane = new ComputeServicePane();
             return computePane;
         } else if (ServiceChecker.isDatabaseItem(item)) {
-            databasePane = new PaneDatabaseService();
+            databasePane = new DatabaseServicePane();
             return databasePane;
         } else if (ServiceChecker.isStorageItem(item)) {
-            storagePane = new PaneStorageService();
+            storagePane = new StorageServicePane();
             return storagePane;
         } else if (ServiceChecker.isAnalyticItem(item)) {
-            analyticPane = new PaneAnalyticService();
+            analyticPane = new AnalyticServicePane();
             return analyticPane;
         } else if (ServiceChecker.isNetworkItem(item)) {
-            networkPane = new PaneNetworkService();
+            networkPane = new NetworkServicePane();
             return networkPane;
         } else if (ServiceChecker.isIntegrationItem(item)) {
-            integrationPane = new PaneIntegrationService();
+            integrationPane = new IntegrationServicePane();
             return integrationPane;
         } else if (ServiceChecker.isMonitoringItem(item)) {
-            monitoringPane = new PaneMonitoringService();
+            monitoringPane = new MonitoringServicePane();
             return monitoringPane;
         } else {
-            return new PaneServiceProperties();
+            return null;
         }
     }
 
