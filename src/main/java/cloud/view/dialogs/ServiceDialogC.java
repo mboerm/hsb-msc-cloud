@@ -29,7 +29,7 @@ public class ServiceDialogC {
             try {
                 dialogService.getServiceDialogPane().setRight(switchServicePropertiesPane(newItem));
             } catch (IllegalArgumentException e) {
-                System.out.println("Invalid service item to switch panes!");
+                System.err.println("Invalid service item to switch panes!");
             }
             dialogService.getDialogPane().getScene().getWindow().sizeToScene();
             dialogService.enableOKButton();
@@ -41,7 +41,7 @@ public class ServiceDialogC {
             try {
                 serviceData = createService(response);
             } catch (IllegalArgumentException e) {
-                System.out.println("Invalid service item to create service!");
+                System.err.println("Invalid service item to create service!");
             }
         });
 

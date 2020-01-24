@@ -64,8 +64,12 @@ public class CloudViewC {
 
     private void initDesignPropertyHandler() {
         view.getPaneDesignProperties().getProviderBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            design.setProvider(providerFactory.getProvider(newValue));
-            view.getMenuDesignMatch().setDisable(false);
+            try {
+                design.setProvider(providerFactory.getProvider(newValue));
+                view.getMenuDesignMatch().setDisable(false);
+            } catch (IllegalArgumentException e) {
+                System.err.println("Invalid provider!");
+            }
         });
 
         view.getPaneDesignProperties().getUsagePeriodField().textProperty().addListener((obs, oldValue, newValue) ->

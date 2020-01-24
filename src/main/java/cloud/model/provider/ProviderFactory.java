@@ -1,17 +1,19 @@
 package cloud.model.provider;
 
+import cloud.configuration.Config;
+
 public class ProviderFactory {
 
     public Provider getProvider(String provider) {
-        if (provider.equals("Amazon Web Services")) {
+        String[] providerNames = Config.getInstance().getConfigValuesAsArray("provider-services");
+        if (provider.equals(providerNames[0])) {
             return new Amazon();
-        } else if (provider.equals("Windows Azure")) {
+        } else if (provider.equals(providerNames[1])) {
             return new Windows();
-        } else if (provider.equals("Google Cloud Platform")) {
+        } else if (provider.equals(providerNames[2])) {
             return new Google();
         } else {
-            System.err.println("Not valid!");
-            return null;
+            throw new IllegalArgumentException("Invalid provider name!");
         }
     }
 }
