@@ -4,8 +4,8 @@ import cloud.model.design.DesignManager;
 import cloud.model.services.*;
 import cloud.view.services.*;
 
-public class DialogServiceC {
-    DialogService dialogService;
+public class ServiceDialogC {
+    ServiceDialog dialogService;
 
     private ServiceUsagePropertiesPane serviceUsagePane;
     private ComputeServicePane computePane;
@@ -19,7 +19,7 @@ public class DialogServiceC {
     private Service serviceData;
 
     public void newDialog() {
-        dialogService = new DialogService();
+        dialogService = new ServiceDialog();
         serviceData = null;
         serviceUsagePane = dialogService.getServiceUsagePropertiesPane();
         serviceUsagePane.setRegionItem(DesignManager.getInstance().getDesign().getPrimaryRegion());

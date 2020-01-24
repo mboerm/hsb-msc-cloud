@@ -5,7 +5,7 @@ import cloud.model.StageManager;
 import cloud.model.design.DesignManager;
 import cloud.model.services.Service;
 import cloud.model.provider.ProviderFactory;
-import cloud.view.dialogs.DialogServiceC;
+import cloud.view.dialogs.ServiceDialogC;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -24,13 +24,13 @@ public class CloudViewC {
     private ProviderFactory providerFactory;
 
     // Controller
-    private DialogServiceC dialogServiceC;
+    private ServiceDialogC dialogServiceC;
 
     public CloudViewC() {
         this.view = new CloudView();
         this.design = DesignManager.getInstance().getDesign();
         this.providerFactory = new ProviderFactory();
-        this.dialogServiceC = new DialogServiceC();
+        this.dialogServiceC = new ServiceDialogC();
 
         initMenuHandler();
         initDesignPropertyHandler();
