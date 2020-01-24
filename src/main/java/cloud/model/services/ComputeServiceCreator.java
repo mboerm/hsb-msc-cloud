@@ -65,7 +65,7 @@ public class ComputeServiceCreator implements IServiceCreator {
             return new ComputeService(name, computeType, "", "", computeInstance, "",
                     system, 0, 0, data, numOne, 0);
         } else {
-            return null;
+            throw new IllegalArgumentException("Invalid compute type");
         }
     }
 }

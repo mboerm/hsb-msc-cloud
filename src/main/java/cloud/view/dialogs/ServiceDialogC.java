@@ -26,14 +26,24 @@ public class ServiceDialogC {
 
         dialogService.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             dialogService.setSeparator();
-            dialogService.getServiceDialogPane().setRight(switchServicePropertiesPane(newItem));
+            try {
+                dialogService.getServiceDialogPane().setRight(switchServicePropertiesPane(newItem));
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid service item to switch panes!");
+            }
             dialogService.getDialogPane().getScene().getWindow().sizeToScene();
             dialogService.enableOKButton();
         });
     }
 
     public boolean showDialog() {
-        dialogService.showAndWait().ifPresent(response -> serviceData = createService(response));
+        dialogService.showAndWait().ifPresent(response ->  {
+            try {
+                serviceData = createService(response);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid service item to create service!");
+            }
+        });
 
         if (serviceData != null) {
             setServiceUsageProperties();
@@ -79,7 +89,7 @@ public class ServiceDialogC {
             monitoringPane = new MonitoringServicePane();
             return monitoringPane;
         } else {
-            return null;
+            throw new IllegalArgumentException("Invalid service item");
         }
     }
 
@@ -124,7 +134,7 @@ public class ServiceDialogC {
                     monitoringPane.getData(), monitoringPane.getEvents(), monitoringPane.getLoggingState()
             ));
         } else {
-            return null;
+            throw new IllegalArgumentException("Invalid service type");
         }
     }
 
