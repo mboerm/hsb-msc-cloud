@@ -48,8 +48,7 @@ public class Design {
 
     public void setMatchedServicesForDesign() {
         for (Service service : servicesList) {
-            service.setProviderService(ProviderServices.getInstance().getProviderServiceForName(
-                            service.getDisplayName(), provider.getShortName()));
+            service.setProviderService(getProvider().getMatchingServiceForName(service.getDisplayName()));
         }
     }
 
