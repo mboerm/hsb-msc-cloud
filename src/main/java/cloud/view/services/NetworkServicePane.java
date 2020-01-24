@@ -5,7 +5,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-public class PaneNetworkService extends PaneServiceProperties {
+public class NetworkServicePane extends ServicePropertiesPane {
 
     private Label networkTypeLbl;
     private ComboBox<String> networkTypeBox;
@@ -14,7 +14,7 @@ public class PaneNetworkService extends PaneServiceProperties {
     private Spinner<Integer> dataOutSpinner;
     private Spinner<Integer> zonesSpinner;
 
-    public PaneNetworkService() {
+    public NetworkServicePane() {
         networkTypeLbl = new Label("Type:");
         networkTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("network-type"));
 

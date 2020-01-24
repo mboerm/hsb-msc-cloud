@@ -5,7 +5,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-public class PaneStorageService extends PaneServiceProperties {
+public class StorageServicePane extends ServicePropertiesPane {
 
     private Label storageTypeLbl;
     private Label storageModeLbl;
@@ -18,7 +18,7 @@ public class PaneStorageService extends PaneServiceProperties {
     private Spinner<Integer> queriesSpinner;
     private Spinner<Integer> rateSpinner;
 
-    public PaneStorageService() {
+    public StorageServicePane() {
         storageTypeLbl = new Label("Type:");
         storageTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("storage-type"));
         storageModeLbl = new Label("Mode:");

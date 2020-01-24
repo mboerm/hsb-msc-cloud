@@ -5,7 +5,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-public class PaneComputeService extends PaneServiceProperties {
+public class ComputeServicePane extends ServicePropertiesPane {
 
     private Label computeTypeLbl;
 
@@ -21,7 +21,7 @@ public class PaneComputeService extends PaneServiceProperties {
     private Spinner<Integer> numOneSpinner;
     private Spinner<Integer> numTwoSpinner;
 
-    public PaneComputeService() {
+    public ComputeServicePane() {
         computeTypeLbl = new Label("Type:");
         computeTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("compute-type"));
         instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("compute-instance-type"));

@@ -4,7 +4,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-public class PaneMonitoringService extends PaneServiceProperties {
+public class MonitoringServicePane extends ServicePropertiesPane {
 
     private Spinner<Integer> metricsSpinner;
     private Spinner<Integer> requestsSpinner;
@@ -12,7 +12,7 @@ public class PaneMonitoringService extends PaneServiceProperties {
     private Spinner<Integer> eventsSpinner;
     private CheckBox isLoggingBox;
 
-    public PaneMonitoringService() {
+    public MonitoringServicePane() {
         metricsSpinner = new Spinner<>(1, 1000000, 1);
         requestsSpinner = new Spinner<>(1, 1000000, 1);
         dataSpinner = new Spinner<>(1, 1000000, 1);

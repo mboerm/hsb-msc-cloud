@@ -5,7 +5,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
-public class PaneIntegrationService extends PaneServiceProperties {
+public class IntegrationServicePane extends ServicePropertiesPane {
     private Label integrationTypeLbl;
     private ComboBox<String> integrationTypeBox;
     private Spinner<Integer> dataSpinner;
@@ -15,7 +15,7 @@ public class PaneIntegrationService extends PaneServiceProperties {
     private Spinner<Integer> mailSpinner;
     private Spinner<Integer> smsSpinner;
 
-    public PaneIntegrationService() {
+    public IntegrationServicePane() {
         integrationTypeLbl = new Label("Type:");
         integrationTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("integration-type"));
         dataSpinner = new Spinner<>(1, 10000, 1);

@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.util.Pair;
 
-public class PaneAnalyticService extends PaneServiceProperties {
+public class AnalyticServicePane extends ServicePropertiesPane {
 
     private Label analyticTypeLbl;
 
@@ -18,7 +18,7 @@ public class PaneAnalyticService extends PaneServiceProperties {
     private Spinner<Integer> activitiesOffSpinner;
     private Spinner<Integer> unitsSpinner;
 
-    public PaneAnalyticService() {
+    public AnalyticServicePane() {
         analyticTypeLbl = new Label("Type:");
         analyticTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("analytic-type"));
 

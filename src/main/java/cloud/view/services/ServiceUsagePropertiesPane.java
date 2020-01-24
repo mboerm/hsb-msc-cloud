@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
-public class PaneServiceUsageProperties extends GridPane {
+public class ServiceUsagePropertiesPane extends GridPane {
 
     private Label serviceUsageLbl;
     private ComboBox<String> regionBox;
@@ -20,7 +20,7 @@ public class PaneServiceUsageProperties extends GridPane {
     private ComboBox<String> usagePrepayBox;
     private ComboBox<String> opModeBox;
 
-    public PaneServiceUsageProperties() {
+    public ServiceUsagePropertiesPane() {
         setPadding(new Insets(10, 10, 10, 10));
         setHgap(10);
         setVgap(10);

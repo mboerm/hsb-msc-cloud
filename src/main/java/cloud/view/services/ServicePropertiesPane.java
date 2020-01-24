@@ -9,13 +9,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
-public class PaneServiceProperties extends GridPane {
+public abstract class ServicePropertiesPane extends GridPane {
 
     private Label servicePropertiesLbl;
     private Label nameLbl;
     private TextField nameTFld;
 
-    public PaneServiceProperties() {
+    public ServicePropertiesPane() {
         setPadding(new Insets(10, 10, 10, 10));
         setHgap(10);
         setVgap(10);

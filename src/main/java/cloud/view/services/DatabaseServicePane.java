@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.util.Pair;
 
-public class PaneDatabaseService extends PaneServiceProperties {
+public class DatabaseServicePane extends ServicePropertiesPane {
 
     private Label databaseTypeLbl;
 
@@ -21,7 +21,7 @@ public class PaneDatabaseService extends PaneServiceProperties {
     private Spinner<Integer> queriesReadSpinner;
     private Spinner<Integer> queriesWriteSpinner;
 
-    public PaneDatabaseService() {
+    public DatabaseServicePane() {
         databaseTypeLbl = new Label("Type:");
         databaseTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-system-type"));
         databaseSchemeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-sql-scheme"));
