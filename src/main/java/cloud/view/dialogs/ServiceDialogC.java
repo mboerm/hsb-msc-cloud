@@ -7,6 +7,7 @@ import cloud.view.services.*;
 public class ServiceDialogC {
     ServiceDialog dialogService;
 
+    private ServicePaneFactory servicePaneFactory;
     private ServiceUsagePropertiesPane serviceUsagePane;
     private ComputeServicePane computePane;
     private DatabaseServicePane databasePane;
@@ -20,7 +21,7 @@ public class ServiceDialogC {
 
     public void newDialog() {
         dialogService = new ServiceDialog();
-        serviceData = null;
+        servicePaneFactory = new ServicePaneFactory();
         serviceUsagePane = dialogService.getServiceUsagePropertiesPane();
         serviceUsagePane.setRegionItem(DesignManager.getInstance().getDesign().getPrimaryRegion());
 
@@ -68,26 +69,19 @@ public class ServiceDialogC {
 
     private ServicePropertiesPane switchServicePropertiesPane(String item) {
         if (ServiceChecker.isComputeItem(item)) {
-            computePane = new ComputeServicePane();
-            return computePane;
+            return computePane = (ComputeServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isDatabaseItem(item)) {
-            databasePane = new DatabaseServicePane();
-            return databasePane;
+            return databasePane = (DatabaseServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isStorageItem(item)) {
-            storagePane = new StorageServicePane();
-            return storagePane;
+            return storagePane = (StorageServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isAnalyticItem(item)) {
-            analyticPane = new AnalyticServicePane();
-            return analyticPane;
+            return analyticPane = (AnalyticServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isNetworkItem(item)) {
-            networkPane = new NetworkServicePane();
-            return networkPane;
+            return networkPane = (NetworkServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isIntegrationItem(item)) {
-            integrationPane = new IntegrationServicePane();
-            return integrationPane;
+            return integrationPane = (IntegrationServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isMonitoringItem(item)) {
-            monitoringPane = new MonitoringServicePane();
-            return monitoringPane;
+            return monitoringPane = (MonitoringServicePane) servicePaneFactory.getServicePane(item);
         } else {
             throw new IllegalArgumentException("Invalid service item");
         }
