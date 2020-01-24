@@ -1,7 +1,7 @@
 package cloud.view.dialogs;
 
 import cloud.configuration.Config;
-import cloud.view.services.PaneServiceUsageProperties;
+import cloud.view.services.ServiceUsagePropertiesPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class DialogService extends Dialog<String> {
 
-    private PaneServiceUsageProperties serviceUsagePropertiesPane;
+    private ServiceUsagePropertiesPane serviceUsagePropertiesPane;
     private ComboBox<String> serviceTypeBox;
     private BorderPane serviceDialogPane;
 
@@ -41,7 +41,7 @@ public class DialogService extends Dialog<String> {
         serviceDialogPane = new BorderPane();
         serviceDialogPane.setPadding(new Insets(10, 10, 10, 10));
         serviceDialogPane.setTop(serviceTypeBoxPane);
-        serviceDialogPane.setLeft(serviceUsagePropertiesPane = new PaneServiceUsageProperties());
+        serviceDialogPane.setLeft(serviceUsagePropertiesPane = new ServiceUsagePropertiesPane());
 
         sepVert = new Separator();
         sepVert.setOrientation(Orientation.VERTICAL);
@@ -64,7 +64,7 @@ public class DialogService extends Dialog<String> {
     }
 
     public BorderPane getServiceDialogPane() {return this.serviceDialogPane;}
-    public PaneServiceUsageProperties getServiceUsagePropertiesPane() {return this.serviceUsagePropertiesPane;}
+    public ServiceUsagePropertiesPane getServiceUsagePropertiesPane() {return this.serviceUsagePropertiesPane;}
     public ComboBox<String> getServiceTypeBox() {return this.serviceTypeBox;}
 
     public void setSeparator() {

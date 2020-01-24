@@ -2,7 +2,7 @@ package cloud.model.services;
 
 import cloud.configuration.Config;
 
-public class MonitoringServiceCreator implements ServiceAbstractCreator {
+public class MonitoringServiceCreator implements IServiceCreator {
 
     private String name;
     private Integer metrics;

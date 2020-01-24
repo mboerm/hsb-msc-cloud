@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<prices>
+	<currency>USD</currency>
+	<service name="AWS Lambda">
+		<region>EU-Frankfurt</region>
+		<requests>0,20</requests>
+		<requests-per>1000000</requests-per>
+		<duration>0,000016667</duration>
+		<duration-per>GB-second</duration-per>
+	</service>
+</prices>
