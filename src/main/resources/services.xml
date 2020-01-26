@@ -107,6 +107,11 @@
 		<azure>Azure Data Factory</azure>
 		<gcp>Cloud Composer</gcp>
 	</service>
+	<service name="Data Stream">
+		<aws>Amazon Kinesis</aws>
+		<azure>Azure Stream Analytics</azure>
+		<gcp>Cloud Dataflow</gcp>
+	</service>
 	<service name="Data Catalog">
 		<aws>AWS Glue</aws>
 		<azure>Azure Data Catalog</azure>

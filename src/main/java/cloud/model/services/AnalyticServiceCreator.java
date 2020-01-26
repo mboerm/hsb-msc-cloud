@@ -31,9 +31,11 @@ public class AnalyticServiceCreator implements IServiceCreator {
             return new AnalyticService(name, type, data, 0, new Pair<>(0, 0), 0, "");
         } else if (type.equals(types[2])) {
             return new AnalyticService(name, type, 0, 0, activities, 0, "");
-        } else if (type.equals(types[3]) || type.equals(types[4])) {
+        } else if (type.equals(types[3])) {
+            return new AnalyticService(name, type, data, dataOut, new Pair<>(0, 0), units, "");
+        } else if (type.equals(types[4]) || type.equals(types[5])) {
             return new AnalyticService(name, type, data, 0, new Pair<>(0,0), units, "");
-        } else if (type.equals(types[5])) {
+        } else if (type.equals(types[6])) {
             return new AnalyticService(name, type, data, dataOut, new Pair<>(0,0), units, instanceSize);
         } else {
             return null;

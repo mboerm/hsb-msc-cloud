@@ -30,7 +30,7 @@
     <entry key="integration-type">Messaging;Queueing</entry>
     <entry key="monitoring-type">User Monitor;System Monitor</entry>
     <entry key="network-type">VPC;VPN;API;CDN;DNS</entry>
-    <entry key="analytic-type">Data Query;Data Share;Data Transfer;Data Catalog;Data Lake;Search Engine</entry>
+    <entry key="analytic-type">Data Query;Data Share;Data Transfer;Data Stream;Data Catalog;Data Lake;Search Engine</entry>
 
     <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
 

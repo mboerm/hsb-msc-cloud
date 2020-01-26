@@ -4,6 +4,7 @@ import cloud.configuration.Config;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.util.Pair;
 
 public class AnalyticServicePane extends ServicePropertiesPane {
@@ -47,10 +48,12 @@ public class AnalyticServicePane extends ServicePropertiesPane {
             } else if (newItem.equals(type[2])) {
                 setDataTransferControls();
             } else if (newItem.equals(type[3])) {
-                setDataCatalogControls();
+                setDataStreamControls();
             } else if (newItem.equals(type[4])) {
-                setDataLakeControls();
+                setDataCatalogControls();
             } else if (newItem.equals(type[5])) {
+                setDataLakeControls();
+            } else if (newItem.equals(type[6])) {
                 setSearchControls();
             }
             getScene().getWindow().sizeToScene();
@@ -98,6 +101,16 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(activitiesOnSpinner, 1, 3);
         add(new Label("# of off-premise activities:"), 0, 4);
         add(activitiesOffSpinner, 1, 4);
+    }
+
+    private void setDataStreamControls() {
+        add(new Label("# of hours:"), 0, 3);
+        add(dataSpinner, 1, 3);
+        add(new Label("# of units:"), 0, 4);
+        unitsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(500000, 100000000, 1000000));
+        add(unitsSpinner, 1, 4);
+        add(new Label("# of transferred data in GB:"), 0, 5);
+        add(dataOutSpinner, 1, 5);
     }
 
     private void setDataCatalogControls() {
