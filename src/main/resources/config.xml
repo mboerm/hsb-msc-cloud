@@ -7,7 +7,7 @@
     <entry key="service-usage-type">On-Demand;Reserved;Spot</entry>
     <entry key="service-usage-period">Hourly;Monthly;One Year;Three Years</entry>
     <entry key="service-usage-prepay">None;Partial;Full</entry>
-    <entry key="service-regions">US-California;US-Virginia;Brasil-Sao Paulo;CA-Central;EU-Ireland;EU-London;EU-Frankfurt;Asia-Hong Kong;Asia-Singapur;Asia-Tokyo;Asia-Mumbai;Asia-Seoul</entry>
+    <entry key="service-regions">US-California;US-North Virginia;Brasil-São Paulo;CA-Central;EU-Ireland;EU-London;EU-Frankfurt;Asia-Hong Kong;Asia-Singapur;Asia-Tokyo;Asia-Mumbai;Asia-Seoul</entry>
     <entry key="service-property-period">Per Hour;Per Day;Per Month</entry>
     <entry key="service-operating-mode">On-Premise;Off-Premise;Optional</entry>
 
