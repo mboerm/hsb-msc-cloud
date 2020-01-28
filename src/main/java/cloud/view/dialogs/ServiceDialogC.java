@@ -109,8 +109,8 @@ public class ServiceDialogC {
         } else if (ServiceChecker.isAnalyticItem(item)) {
             return ServiceFactory.getService(new AnalyticServiceCreator(
                     analyticPane.getName(), analyticPane.getAnalyticType(), analyticPane.getData(),
-                    analyticPane.getDataOut(), analyticPane.getActivities(), analyticPane.getUnits(),
-                    analyticPane.getInstanceSize()
+                    analyticPane.getDataOut(), analyticPane.getNum(), analyticPane.getUnits(),
+                    analyticPane.getInstanceType(), analyticPane.getInstanceSize()
             ));
         } else if (ServiceChecker.isNetworkItem(item)) {
             return ServiceFactory.getService(new NetworkServiceCreator(
@@ -171,8 +171,9 @@ public class ServiceDialogC {
             analyticPane.setAnalyticType(((AnalyticService) serviceData).getAnalyticType());
             analyticPane.setData(((AnalyticService) serviceData).getData());
             analyticPane.setDataOut(((AnalyticService) serviceData).getDataOut());
-            analyticPane.setActivities(((AnalyticService) serviceData).getActivities());
+            analyticPane.setNum(((AnalyticService) serviceData).getNum());
             analyticPane.setUnits(((AnalyticService) serviceData).getUnits());
+            analyticPane.setInstanceType(((AnalyticService) serviceData).getInstanceType());
             analyticPane.setInstanceSize(((AnalyticService) serviceData).getInstanceSize());
         } else if (ServiceChecker.isNetworkItem(serviceData.getCategory()) && serviceData instanceof NetworkService) {
             networkPane.setName(serviceData.getName());
