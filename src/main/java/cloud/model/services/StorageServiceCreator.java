@@ -1,6 +1,7 @@
 package cloud.model.services;
 
 import cloud.configuration.Config;
+import javafx.util.Pair;
 
 public class StorageServiceCreator implements IServiceCreator {
 
@@ -9,11 +10,11 @@ public class StorageServiceCreator implements IServiceCreator {
     private String mode;
     private Integer capacity;
     private Integer data;
-    private Integer requests;
+    private Pair<Integer, Integer> requests;
     private Integer queries;
     private Integer rate;
 
-    public StorageServiceCreator(String name, String type, String mode, Integer capacity, Integer data, Integer requests, Integer queries, Integer rate) {
+    public StorageServiceCreator(String name, String type, String mode, Integer capacity, Integer data, Pair<Integer, Integer> requests, Integer queries, Integer rate) {
         this.name = name;
         this.type = type;
         this.mode = mode;
@@ -33,9 +34,9 @@ public class StorageServiceCreator implements IServiceCreator {
             storageService.setDisplayName(type + " (" + mode + ")");
             return storageService;
         } else if (type.equals(types[1])) {
-            return new StorageService(name, type, mode, capacity, data, 0, 0, 0);
+            return new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, 0);
         } else if (type.equals(types[2])) {
-            return new StorageService(name, type, mode, capacity, data, 0, 0, rate);
+            return new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, rate);
         } else {
             return null;
         }

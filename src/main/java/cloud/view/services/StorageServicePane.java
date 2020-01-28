@@ -4,6 +4,7 @@ import cloud.configuration.Config;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.util.Pair;
 
 public class StorageServicePane extends ServicePropertiesPane {
 
@@ -14,7 +15,8 @@ public class StorageServicePane extends ServicePropertiesPane {
     private ComboBox<String> storageModeBox;
     private Spinner<Integer> capacitySpinner;
     private Spinner<Integer> dataSpinner;
-    private Spinner<Integer> requestsSpinner;
+    private Spinner<Integer> requestsReadSpinner;
+    private Spinner<Integer> requestsWriteSpinner;
     private Spinner<Integer> queriesSpinner;
     private Spinner<Integer> rateSpinner;
 
@@ -25,13 +27,15 @@ public class StorageServicePane extends ServicePropertiesPane {
         storageModeBox = new ComboBox<>();
 
         capacitySpinner = new Spinner<>(1, 1000000, 1);
-        requestsSpinner = new Spinner<>(1, 1000000, 1);
+        requestsReadSpinner = new Spinner<>(1, 1000000, 1);
+        requestsWriteSpinner = new Spinner<>(1, 1000000, 1);
         dataSpinner = new Spinner<>(1, 1000000, 1);
         queriesSpinner = new Spinner<>(1, 1000000, 1);
         rateSpinner = new Spinner<>(1, 1000000, 1);
 
         capacitySpinner.setEditable(true);
-        requestsSpinner.setEditable(true);
+        requestsReadSpinner.setEditable(true);
+        requestsWriteSpinner.setEditable(true);
         dataSpinner.setEditable(true);
         queriesSpinner.setEditable(true);
         rateSpinner.setEditable(true);
@@ -67,10 +71,14 @@ public class StorageServicePane extends ServicePropertiesPane {
         return capacitySpinner.getValue();
     }
     public void setCapacity(Integer value) {this.capacitySpinner.getValueFactory().setValue(value);}
-    public Integer getRequests() {
-        return requestsSpinner.getValue();
+    public Pair<Integer,Integer> getRequests() {return new Pair<>(
+        this.requestsReadSpinner.getValue(),
+        this.requestsWriteSpinner.getValue());
     }
-    public void setRequests(Integer value) {this.requestsSpinner.getValueFactory().setValue(value);}
+    public void setRequests(Pair<Integer,Integer> values) {
+        this.requestsReadSpinner.getValueFactory().setValue(values.getKey());
+        this.requestsWriteSpinner.getValueFactory().setValue(values.getValue());
+    }
     public Integer getData() {
         return dataSpinner.getValue();
     }
@@ -97,13 +105,15 @@ public class StorageServicePane extends ServicePropertiesPane {
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-object-mode"));
         add(new Label("Storage in GB:"), 0, 4);
         add(capacitySpinner, 1, 4);
-        add(new Label("# of requests:"), 0, 5);
-        add(requestsSpinner, 1, 5);
-        add(new Label("# of data queries:"), 0, 6);
-        add(queriesSpinner, 1, 6);
-        add(new Label("Transferred data in GB:"), 0, 7);
-        add(dataSpinner, 1, 7);
-        add(new Label("per month"), 2, 7);
+        add(new Label("# of read requests:"), 0, 5);
+        add(requestsReadSpinner, 1, 5);
+        add(new Label("# of write requests:"), 0, 6);
+        add(requestsWriteSpinner, 1, 6);
+        add(new Label("# of data queries:"), 0, 7);
+        add(queriesSpinner, 1, 7);
+        add(new Label("Transferred data in GB:"), 0, 8);
+        add(dataSpinner, 1, 8);
+        add(new Label("per month"), 2, 8);
     }
 
     private void setBlockStorageControls() {

@@ -1,6 +1,7 @@
 package cloud.model.services;
 
 import cloud.configuration.Config;
+import javafx.util.Pair;
 
 public class StorageService extends Service {
 
@@ -8,11 +9,11 @@ public class StorageService extends Service {
     private String mode;
     private Integer capacity;
     private Integer data;
-    private Integer requests;
+    private Pair<Integer, Integer> requests;
     private Integer queries;
     private Integer rate;
 
-    public StorageService(String name, String storageType, String mode, Integer capacity, Integer data, Integer requests, Integer queries, Integer rate) {
+    public StorageService(String name, String storageType, String mode, Integer capacity, Integer data, Pair<Integer, Integer> requests, Integer queries, Integer rate) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[2]);
         setDisplayName(storageType);
@@ -53,10 +54,10 @@ public class StorageService extends Service {
         this.data = data;
     }
 
-    public Integer getRequests() {
+    public Pair<Integer, Integer> getRequests() {
         return requests;
     }
-    public void setRequests(Integer requests) {
+    public void setRequests(Pair<Integer, Integer> requests) {
         this.requests = requests;
     }
 
