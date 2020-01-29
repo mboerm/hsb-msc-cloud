@@ -42,7 +42,7 @@ public class ServiceDialogC {
             try {
                 serviceData = createService(response);
             } catch (IllegalArgumentException e) {
-                System.err.println("Invalid service item to create service!");
+                System.out.println("Service creation cancelled");
             }
         });
 
@@ -98,7 +98,7 @@ public class ServiceDialogC {
             return ServiceFactory.getService(new DatabaseServiceCreator(
                     databasePane.getName(), databasePane.getDatabaseType(), databasePane.getDatabaseScheme(),
                     databasePane.getInstanceType(), databasePane.getInstanceSize(), databasePane.getDuration(),
-                    databasePane.getStorage(), databasePane.getBackup(), databasePane.getData(), databasePane.getQueries()
+                    databasePane.getStorage(), databasePane.getBackup(), databasePane.getData(), databasePane.getNum()
             ));
         } else if (ServiceChecker.isStorageItem(item)) {
             return ServiceFactory.getService(new StorageServiceCreator(
@@ -156,7 +156,7 @@ public class ServiceDialogC {
             databasePane.setStorage(((DatabaseService) serviceData).getStorage());
             databasePane.setBackup(((DatabaseService) serviceData).getBackup());
             databasePane.setData(((DatabaseService) serviceData).getData());
-            databasePane.setQueries(((DatabaseService) serviceData).getQueries());
+            databasePane.setNum(((DatabaseService) serviceData).getNum());
         } else if (ServiceChecker.isStorageItem(serviceData.getCategory()) && serviceData instanceof StorageService) {
             storagePane.setName(serviceData.getName());
             storagePane.setStorageType(((StorageService) serviceData).getStorageType());
