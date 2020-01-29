@@ -14,10 +14,10 @@ import javafx.scene.input.MouseButton;
 
 import static cloud.configuration.Constants.*;
 
-public class CloudViewC {
+public class DesignViewC {
 
     // View
-    private CloudView view;
+    private DesignView view;
 
     // Model
     private Design design;
@@ -26,8 +26,8 @@ public class CloudViewC {
     // Controller
     private ServiceDialogC dialogServiceC;
 
-    public CloudViewC() {
-        this.view = new CloudView();
+    public DesignViewC() {
+        this.view = new DesignView();
         this.design = DesignManager.getInstance().getDesign();
         this.providerFactory = new ProviderFactory();
         this.dialogServiceC = new ServiceDialogC();

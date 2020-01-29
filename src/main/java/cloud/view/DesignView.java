@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import static cloud.configuration.Constants.*;
 
-public class CloudView {
+public class DesignView {
     private Scene scene;
 
     private MenuItem menuFileExit;
@@ -28,7 +28,7 @@ public class CloudView {
     private DesignArea paneDesignArea;
     private DesignControls paneDesignControls;
 
-    public CloudView() {
+    public DesignView() {
         BorderPane rootPane = new BorderPane();
         rootPane.setTop(initMenuBar());
         rootPane.setLeft(paneDesignProperties = new DesignProperties());

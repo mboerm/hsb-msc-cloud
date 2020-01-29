@@ -2,7 +2,7 @@ package cloud.main;
 
 import cloud.model.design.DesignManager;
 import cloud.model.design.Design;
-import cloud.view.CloudViewC;
+import cloud.view.DesignViewC;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import cloud.model.*;
@@ -26,7 +26,7 @@ public class CloudApp extends Application {
         DesignManager.getInstance().setDesign(new Design());
 
         // create view controller and show ui
-        CloudViewC vc = new CloudViewC();
+        DesignViewC vc = new DesignViewC();
         vc.show();
     }
 }
