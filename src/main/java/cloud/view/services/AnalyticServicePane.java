@@ -136,11 +136,10 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(instanceTypeBox, 1, 3);
         add(new Label("Instance size:"), 0, 4);
         add(instanceSizeBox, 1, 4);
-        add(new Label("vCPU:"), 0, 5);
+        add(new Label("# of CPU:"), 0, 5);
         add(numOneSpinner, 1, 5);
-        add(new Label("RAM:"), 0, 6);
+        add(new Label("# of RAM in GB:"), 0, 6);
         add(numTwoSpinner, 1, 6);
-        add(new Label("in GB"), 2, 6);
         add(new Label("# of instance-hours"), 0, 7);
         add(unitsSpinner, 1, 7);
         add(new Label("# of processed data in GB:"), 0, 8);

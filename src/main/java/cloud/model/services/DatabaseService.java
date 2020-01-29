@@ -13,11 +13,11 @@ public class DatabaseService extends Service {
     private Integer storage;
     private Integer backup;
     private Integer data;
-    private Pair<Integer,Integer> queries;
+    private Pair<Integer,Integer> num;
 
     public DatabaseService(String name, String databaseType, String databaseScheme,
                            String instanceType, String instanceSize, Integer duration,
-                           Integer storage, Integer backup, Integer data, Pair<Integer,Integer> queries) {
+                           Integer storage, Integer backup, Integer data, Pair<Integer,Integer> num) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[1]);
         setDisplayName(databaseType);
@@ -29,7 +29,7 @@ public class DatabaseService extends Service {
         setStorage(storage);
         setBackup(backup);
         setData(data);
-        setQueries(queries);
+        setNum(num);
     }
 
     public String getDatabaseType() {
@@ -88,10 +88,10 @@ public class DatabaseService extends Service {
         this.data = data;
     }
 
-    public Pair<Integer, Integer> getQueries() {
-        return queries;
+    public Pair<Integer, Integer> getNum() {
+        return num;
     }
-    public void setQueries(Pair<Integer, Integer> queries) {
-        this.queries = queries;
+    public void setNum(Pair<Integer, Integer> num) {
+        this.num = num;
     }
 }

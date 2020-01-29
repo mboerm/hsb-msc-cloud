@@ -18,8 +18,8 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     private Spinner<Integer> storageSpinner;
     private Spinner<Integer> backupSpinner;
     private Spinner<Integer> dataSpinner;
-    private Spinner<Integer> queriesReadSpinner;
-    private Spinner<Integer> queriesWriteSpinner;
+    private Spinner<Integer> numOneSpinner;
+    private Spinner<Integer> numTwoSpinner;
 
     public DatabaseServicePane() {
         databaseTypeLbl = new Label("Type:");
@@ -32,15 +32,15 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         storageSpinner = new Spinner<>(1, 1000000, 1);
         backupSpinner = new Spinner<>(1, 1000000, 1);
         dataSpinner = new Spinner<>(1, 1000000, 1);
-        queriesReadSpinner = new Spinner<>(1, 1000000, 1);
-        queriesWriteSpinner = new Spinner<>(1, 1000000, 1);
+        numOneSpinner = new Spinner<>(1, 1000000, 1);
+        numTwoSpinner = new Spinner<>(1, 1000000, 1);
 
         durationSpinner.setEditable(true);
         storageSpinner.setEditable(true);
         backupSpinner.setEditable(true);
         dataSpinner.setEditable(true);
-        queriesReadSpinner.setEditable(true);
-        queriesWriteSpinner.setEditable(true);
+        numOneSpinner.setEditable(true);
+        numTwoSpinner.setEditable(true);
 
         add(databaseTypeLbl, 0, 2);
         add(databaseTypeBox, 1, 2);
@@ -77,13 +77,13 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     public void setBackup(Integer value) {this.backupSpinner.getValueFactory().setValue(value);}
     public Integer getData() {return this.dataSpinner.getValue();}
     public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
-    public Pair<Integer,Integer> getQueries() {return new Pair<>(
-        this.queriesReadSpinner.getValue(),
-        this.queriesWriteSpinner.getValue());
+    public Pair<Integer,Integer> getNum() {return new Pair<>(
+        this.numOneSpinner.getValue(),
+        this.numTwoSpinner.getValue());
     }
-    public void setQueries(Pair<Integer,Integer> values) {
-        this.queriesReadSpinner.getValueFactory().setValue(values.getKey());
-        this.queriesWriteSpinner.getValueFactory().setValue(values.getValue());
+    public void setNum(Pair<Integer,Integer> values) {
+        this.numOneSpinner.getValueFactory().setValue(values.getKey());
+        this.numTwoSpinner.getValueFactory().setValue(values.getValue());
     }
 
     private void recoverControls() {
@@ -100,25 +100,29 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(instanceTypeBox, 1, 4);
         add(new Label("Instance size:"), 0, 5);
         add(instanceSizeBox, 1, 5);
-        add(new Label("Instance hours:"), 0, 6);
-        add(durationSpinner, 1, 6);
-        add(new Label("per month"), 2, 6);
-        add(new Label("Storage in GB:"), 0, 7);
-        add(storageSpinner, 1, 7);
-        add(new Label("per month"), 2, 7);
-        add(new Label("Backup storage in GB:"), 0, 8);
-        add(backupSpinner, 1, 8);
+        add(new Label("# of CPU:"), 0, 6);
+        add(numOneSpinner, 1, 6);
+        add(new Label("# of  in GB:"), 0, 7);
+        add(numTwoSpinner, 1, 7);
+        add(new Label("Instance hours:"), 0, 8);
+        add(durationSpinner, 1, 8);
         add(new Label("per month"), 2, 8);
-        add(new Label("Transferred data in GB:"), 0, 9);
-        add(dataSpinner, 1, 9);
+        add(new Label("Storage in GB:"), 0, 9);
+        add(storageSpinner, 1, 9);
         add(new Label("per month"), 2, 9);
+        add(new Label("Backup storage in GB:"), 0, 10);
+        add(backupSpinner, 1, 10);
+        add(new Label("per month"), 2, 10);
+        add(new Label("Transferred data in GB:"), 0, 11);
+        add(dataSpinner, 1, 11);
+        add(new Label("per month"), 2, 11);
     }
 
     private void setNoSQLControls() {
         add(new Label("Read queries:"), 0, 3);
-        add(queriesReadSpinner, 1, 3);
+        add(numOneSpinner, 1, 3);
         add(new Label("Write queries:"), 0, 4);
-        add(queriesWriteSpinner, 1, 4);
+        add(numTwoSpinner, 1, 4);
         add(new Label("Storage in GB:"), 0, 5);
         add(storageSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
@@ -147,11 +151,15 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(instanceTypeBox, 1, 3);
         add(new Label("Instance size:"), 0, 4);
         add(instanceSizeBox, 1, 4);
-        add(new Label("Hours:"), 0, 5);
-        add(durationSpinner, 1, 5);
-        add(new Label("per month"), 2, 5);
-        add(new Label("Transferred data in GB:"), 0, 6);
-        add(dataSpinner, 1, 6);
+        add(new Label("# of CPU:"), 0, 4);
+        add(numOneSpinner, 1, 4);
+        add(new Label("# of RAM in GB:"), 0, 5);
+        add(numTwoSpinner, 1, 5);
+        add(new Label("Hours:"), 0, 6);
+        add(durationSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
+        add(new Label("Transferred data in GB:"), 0, 7);
+        add(dataSpinner, 1, 7);
+        add(new Label("per month"), 2, 7);
     }
 }
