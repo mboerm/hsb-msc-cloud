@@ -157,9 +157,9 @@ public class ComputeServicePane extends ServicePropertiesPane {
     private void setBalancerControls() {
         add(new Label("Compute instance reference:"), 0, 3);
         add(computeInstanceBox, 1, 3);
-        add(new Label("Transferred data in GB:"), 0, 5);
-        add(dataSpinner, 1, 5);
-        add(new Label("# of alarms:"), 0, 6);
-        add(numOneSpinner, 1, 6);
+        add(new Label("Transferred data in GB:"), 0, 4);
+        add(dataSpinner, 1, 4);
+        add(new Label("# of alarms:"), 0, 5);
+        add(numOneSpinner, 1, 5);
     }
 }
