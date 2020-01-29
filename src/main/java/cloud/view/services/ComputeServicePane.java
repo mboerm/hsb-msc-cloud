@@ -100,16 +100,20 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(instanceTypeBox, 1, 3);
         add(new Label("Instance size:"), 0, 4);
         add(instanceSizeBox, 1, 4);
-        add(new Label("Operating system:"), 0, 5);
+        add(new Label("# of CPU:"), 0, 5);
+        add(cpuSpinner, 1, 5);
+        add(new Label("# of RAM in GB:"), 0, 6);
+        add(storageSpinner, 1, 6);
+        add(new Label("Operating system:"), 0, 7);
         systemBox.setItems(Config.getInstance().getConfigValues("compute-os"));
-        add(systemBox, 1, 5);
+        add(systemBox, 1, 7);
     }
 
     private void setContainerControls() {
 		add(new Label("Container type:"), 0, 3);
 		systemBox.setItems(Config.getInstance().getConfigValues("compute-container-type"));
 		add(systemBox, 1, 3);
-        add(new Label("# of vCPU:"), 0, 4);
+        add(new Label("# of CPU:"), 0, 4);
         add(cpuSpinner, 1, 4);
 		add(new Label("per hour"), 2, 4);
         add(new Label("# of storage in GB:"), 0, 5);
@@ -139,9 +143,9 @@ public class ComputeServicePane extends ServicePropertiesPane {
     }
 
     private void setCodeControls() {
-        add(new Label("CPU:"), 0, 3);
+        add(new Label("# of CPU:"), 0, 3);
         add(cpuSpinner, 1, 3);
-        add(new Label("RAM:"), 0, 4);
+        add(new Label("# of RAM in GB:"), 0, 4);
         add(storageSpinner, 1, 4);
         add(new Label("# of invocations:"), 0, 5);
         add(numOneSpinner, 1, 5);
@@ -153,7 +157,6 @@ public class ComputeServicePane extends ServicePropertiesPane {
     private void setBalancerControls() {
         add(new Label("Compute instance reference:"), 0, 3);
         add(computeInstanceBox, 1, 3);
-        add(systemBox, 1, 4);
         add(new Label("Transferred data in GB:"), 0, 5);
         add(dataSpinner, 1, 5);
         add(new Label("# of alarms:"), 0, 6);
