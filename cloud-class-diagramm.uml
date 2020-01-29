@@ -5,9 +5,9 @@
   <nodes>
     <node x="1150.7090525793644" y="745.0">cloud.main.CloudApp</node>
     <node x="1915.3749999999995" y="219.0">cloud.view.services.ServiceUsagePropertiesPane</node>
-    <node x="3644.111830357142" y="219.0">cloud.model.services.MonitoringService</node>
     <node x="1747.2499999999995" y="328.0">cloud.view.services.AnalyticServicePane</node>
     <node x="506.24999999999955" y="328.0">cloud.view.services.ComputeServicePane</node>
+    <node x="3644.111830357142" y="219.0">cloud.model.services.MonitoringService</node>
     <node x="2399.479166666666" y="219.0">cloud.model.services.ComputeService</node>
     <node x="2896.861830357142" y="328.0">cloud.model.services.StorageServiceCreator</node>
     <node x="2008.3618303571423" y="567.0">cloud.view.dialogs.ServiceDialogC</node>
@@ -17,26 +17,24 @@
     <node x="369.3523809523808" y="219.0">cloud.model.design.Design</node>
     <node x="3551.111830357142" y="328.0">cloud.model.services.MonitoringServiceCreator</node>
     <node x="1105.2499999999995" y="328.0">cloud.view.services.StorageServicePane</node>
-    <node x="232.24999999999955" y="328.0">cloud.model.provider.Google</node>
     <node x="2669.861830357142" y="328.0">cloud.model.services.AnalyticServiceCreator</node>
     <node x="4433.656274801587" y="328.0">cloud.view.design.DesignArea</node>
+    <node x="232.24999999999955" y="328.0">cloud.model.provider.Google</node>
     <node x="3906.278497023809" y="219.0">cloud.model.services.NetworkService</node>
     <node x="78.37499999999955" y="567.0">cloud.model.provider.ProviderFactory</node>
     <node x="3118.19078207672" y="0.0">cloud.model.services.Service</node>
     <node x="3796.278497023809" y="328.0">cloud.model.services.NetworkServiceCreator</node>
     <node x="0.0" y="328.0">cloud.model.provider.Windows</node>
-    <node x="1985.3618303571423" y="666.0">cloud.view.CloudViewC</node>
     <node x="3283.861830357142" y="328.0">cloud.model.services.IntegrationServiceCreator</node>
     <node x="59.73683035714248" y="219.0">cloud.model.provider.Pricing</node>
     <node x="2607.361830357142" y="219.0">cloud.model.services.AnalyticService</node>
     <node x="3063.518080357142" y="219.0">cloud.model.services.IServiceCreator</node>
     <node x="1951.2499999999995" y="328.0">cloud.view.dialogs.ServiceDialog</node>
     <node x="2209.611830357142" y="328.0">cloud.model.services.DatabaseServiceCreator</node>
-    <node x="3407.861830357142" y="219.0">cloud.model.services.IntegrationService</node>
-    <node x="3115.861830357142" y="328.0">cloud.model.services.ServiceFactory</node>
     <node x="4250.656274801587" y="328.0">cloud.view.design.DesignProperties</node>
+    <node x="3407.861830357142" y="219.0">cloud.model.services.IntegrationService</node>
     <node x="704.2499999999995" y="328.0">cloud.view.services.DatabaseServicePane</node>
-    <node x="4264.23287037037" y="567.0">cloud.view.CloudView</node>
+    <node x="3115.861830357142" y="328.0">cloud.model.services.ServiceFactory</node>
     <node x="1521.2499999999995" y="328.0">cloud.view.services.IntegrationServicePane</node>
     <node x="344.24999999999955" y="328.0">cloud.model.design.DesignManager</node>
     <node x="2859.729166666666" y="219.0">cloud.model.services.StorageService</node>
@@ -60,75 +58,11 @@
       <point x="972.9720320767201" y="278.0" />
       <point x="-87.0625" y="14.5" />
     </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.ServicePropertiesPane">
-      <point x="-59.611111111111086" y="-14.5" />
-      <point x="2022.7507192460312" y="517.0" />
-      <point x="693.7499999999995" y="517.0" />
-      <point x="693.7499999999995" y="288.0" />
-      <point x="997.8470320767201" y="288.0" />
-      <point x="-62.1875" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudView" target="cloud.view.design.DesignArea">
-      <point x="37.33333333333303" y="-14.5" />
-      <point x="4357.566203703704" y="537.0" />
-      <point x="4493.656274801587" y="537.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.IServiceCreator" target="cloud.model.services.Service">
-      <point x="0.0" y="-14.5" />
-      <point x="3141.018080357142" y="199.0" />
-      <point x="3165.557448743387" y="199.0" />
-      <point x="-1.633333333333212" y="14.5" />
-    </edge>
     <edge source="cloud.model.services.StorageServiceCreator" target="cloud.model.services.IServiceCreator">
       <point x="74.625" y="-14.5" />
       <point x="3070.986830357142" y="308.0" />
       <point x="3131.330580357142" y="308.0" />
       <point x="-9.6875" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.ComputeServiceCreator" target="cloud.model.services.Service">
-      <point x="24.875" y="-14.5" />
-      <point x="2560.986830357142" y="268.0" />
-      <point x="2558.4999999999995" y="268.0" />
-      <point x="2558.4999999999995" y="129.0" />
-      <point x="3142.69078207672" y="129.0" />
-      <point x="-24.5" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.DatabaseServiceCreator" target="cloud.model.services.Service">
-      <point x="25.75" y="-14.5" />
-      <point x="2338.361830357142" y="308.0" />
-      <point x="2335.8749999999995" y="308.0" />
-      <point x="2335.8749999999995" y="99.0" />
-      <point x="3132.89078207672" y="99.0" />
-      <point x="-34.30000000000018" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudViewC" target="cloud.model.services.Service">
-      <point x="26.666666666666515" y="-14.5" />
-      <point x="2072.028497023809" y="626.0" />
-      <point x="4072.1562748015867" y="626.0" />
-      <point x="4072.1562748015867" y="69.0" />
-      <point x="3208.0241154100536" y="69.0" />
-      <point x="40.8333333333336" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.NetworkServicePane">
-      <point x="-43.16666666666674" y="-14.5" />
-      <point x="2039.1951636904755" y="477.0" />
-      <point x="1040.9999999999995" y="477.0" />
-      <point x="44.25" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudViewC" target="cloud.model.provider.ProviderFactory">
-      <point x="-40.0" y="-14.5" />
-      <point x="2005.3618303571423" y="636.0" />
-      <point x="194.62499999999955" y="636.0" />
-      <point x="38.75" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.StorageService">
-      <point x="30.833333333333485" y="-14.5" />
-      <point x="2113.195163690476" y="447.0" />
-      <point x="2886.361830357142" y="447.0" />
-      <point x="2886.361830357142" y="268.0" />
-      <point x="2884.3958333333326" y="268.0" />
-      <point x="-49.333333333333485" y="14.5" />
     </edge>
     <edge source="cloud.model.provider.Windows" target="cloud.model.provider.Provider">
       <point x="0.0" y="-14.5" />
@@ -138,55 +72,17 @@
       <point x="152.5607142857143" y="199.0" />
       <point x="-35.0" y="14.5" />
     </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.IntegrationService">
-      <point x="47.27777777777783" y="-14.5" />
-      <point x="2129.6396081349203" y="487.0" />
-      <point x="3540.611830357142" y="487.0" />
-      <point x="44.25" y="14.5" />
-    </edge>
     <edge source="cloud.view.services.DatabaseServicePane" target="cloud.view.services.ServicePropertiesPane">
       <point x="0.0" y="-14.5" />
       <point x="796.2499999999995" y="298.0" />
       <point x="1022.7220320767201" y="298.0" />
       <point x="-37.3125" y="14.5" />
     </edge>
-    <edge source="cloud.model.services.StorageServiceCreator" target="cloud.model.services.StorageService">
-      <point x="-24.875" y="-14.5" />
-      <point x="2971.486830357142" y="268.0" />
-      <point x="2983.0624999999995" y="268.0" />
-      <point x="49.333333333333485" y="14.5" />
-    </edge>
     <edge source="cloud.model.services.IntegrationServiceCreator" target="cloud.model.services.IServiceCreator">
       <point x="-75.66666666666652" y="-14.5" />
       <point x="3321.695163690476" y="298.0" />
       <point x="3170.080580357142" y="298.0" />
       <point x="29.0625" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.DatabaseServicePane">
-      <point x="-55.5" y="-14.5" />
-      <point x="2026.8618303571423" y="507.0" />
-      <point x="750.2499999999995" y="507.0" />
-      <point x="-46.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.DatabaseService">
-      <point x="6.166666666666515" y="-14.5" />
-      <point x="2088.528497023809" y="387.0" />
-      <point x="2142.4097222222217" y="387.0" />
-      <point x="2142.4097222222217" y="308.0" />
-      <point x="2196.208333333333" y="308.0" />
-      <point x="-51.666666666666515" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.ServiceFactory">
-      <point x="39.05555555555566" y="-14.5" />
-      <point x="2121.4173859126977" y="467.0" />
-      <point x="3189.861830357142" y="467.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudView" target="cloud.view.design.DesignControls">
-      <point x="-24.888888888888687" y="-14.5" />
-      <point x="4295.343981481481" y="527.0" />
-      <point x="4205.98960813492" y="527.0" />
-      <point x="49.33333333333303" y="14.5" />
     </edge>
     <edge source="cloud.model.provider.Google" target="cloud.model.provider.Provider">
       <point x="30.333333333333258" y="-14.5" />
@@ -202,29 +98,11 @@
       <point x="108.73683035714248" y="308.0" />
       <point x="0.0" y="14.5" />
     </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.MonitoringService">
-      <point x="55.5" y="-14.5" />
-      <point x="2137.861830357142" y="507.0" />
-      <point x="3785.778497023809" y="507.0" />
-      <point x="56.666666666666515" y="14.5" />
-    </edge>
     <edge source="cloud.view.services.AnalyticServicePane" target="cloud.view.services.ServicePropertiesPane">
       <point x="0.0" y="-14.5" />
       <point x="1839.2499999999995" y="278.0" />
       <point x="1147.09703207672" y="278.0" />
       <point x="87.0625" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.MonitoringService" target="cloud.model.services.Service">
-      <point x="-42.5" y="-14.5" />
-      <point x="3686.611830357142" y="139.0" />
-      <point x="3185.157448743387" y="139.0" />
-      <point x="17.966666666666697" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.ComputeServiceCreator">
-      <point x="18.5" y="-14.5" />
-      <point x="2100.861830357142" y="417.0" />
-      <point x="2536.111830357142" y="417.0" />
-      <point x="0.0" y="14.5" />
     </edge>
     <edge source="cloud.view.services.MonitoringServicePane" target="cloud.view.services.ServicePropertiesPane">
       <point x="0.0" y="-14.5" />
@@ -232,49 +110,17 @@
       <point x="1097.34703207672" y="298.0" />
       <point x="37.3125" y="14.5" />
     </edge>
+    <edge source="cloud.model.services.MonitoringService" target="cloud.model.services.Service">
+      <point x="-42.5" y="-14.5" />
+      <point x="3686.611830357142" y="139.0" />
+      <point x="3185.157448743387" y="139.0" />
+      <point x="17.966666666666697" y="14.5" />
+    </edge>
     <edge source="cloud.model.services.MonitoringServiceCreator" target="cloud.model.services.IServiceCreator">
       <point x="-82.5" y="-14.5" />
       <point x="3578.611830357142" y="288.0" />
       <point x="3189.455580357142" y="288.0" />
       <point x="48.4375" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.AnalyticServicePane">
-      <point x="-10.277777777777828" y="-14.5" />
-      <point x="2072.0840525793647" y="397.0" />
-      <point x="1885.2499999999995" y="397.0" />
-      <point x="46.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.NetworkServiceCreator">
-      <point x="59.61111111111131" y="-14.5" />
-      <point x="2141.9729414682533" y="517.0" />
-      <point x="3895.778497023809" y="517.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.AnalyticServiceCreator" target="cloud.model.services.Service">
-      <point x="0.0" y="-14.5" />
-      <point x="2772.861830357142" y="159.0" />
-      <point x="3152.4907820767203" y="159.0" />
-      <point x="-14.699999999999818" y="14.5" />
-    </edge>
-    <edge source="cloud.model.provider.ProviderFactory" target="cloud.model.provider.Windows">
-      <point x="-58.125" y="-14.5" />
-      <point x="97.74999999999955" y="547.0" />
-      <point x="49.0" y="547.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.ServiceFactory" target="cloud.model.services.IServiceCreator">
-      <point x="-37.0" y="-14.5" />
-      <point x="3152.861830357142" y="308.0" />
-      <point x="3150.705580357142" y="308.0" />
-      <point x="9.6875" y="14.5" />
-    </edge>
-    <edge source="cloud.view.design.DesignArea" target="cloud.model.services.Service">
-      <point x="-30.0" y="-14.5" />
-      <point x="4463.656274801587" y="308.0" />
-      <point x="4488.156274801587" y="308.0" />
-      <point x="4488.156274801587" y="59.0" />
-      <point x="3211.29078207672" y="59.0" />
-      <point x="44.10000000000002" y="14.5" />
     </edge>
     <edge source="cloud.model.services.StorageService" target="cloud.model.services.Service">
       <point x="37.0" y="-14.5" />
@@ -282,91 +128,11 @@
       <point x="3159.0241154100536" y="179.0" />
       <point x="-8.166666666666515" y="14.5" />
     </edge>
-    <edge source="cloud.model.services.NetworkServiceCreator" target="cloud.model.services.NetworkService">
-      <point x="66.33333333333348" y="-14.5" />
-      <point x="3962.111830357142" y="308.0" />
-      <point x="3943.278497023809" y="308.0" />
-      <point x="-37.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudViewC" target="cloud.view.CloudView">
-      <point x="40.0" y="-14.5" />
-      <point x="2085.361830357142" y="636.0" />
-      <point x="4292.23287037037" y="636.0" />
-      <point x="-28.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.IntegrationServiceCreator">
-      <point x="43.166666666666515" y="-14.5" />
-      <point x="2125.528497023809" y="477.0" />
-      <point x="3397.361830357142" y="477.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.MonitoringServiceCreator">
-      <point x="51.38888888888869" y="-14.5" />
-      <point x="2133.7507192460307" y="497.0" />
-      <point x="3661.111830357142" y="497.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.AnalyticService">
-      <point x="22.611111111111313" y="-14.5" />
-      <point x="2104.9729414682533" y="427.0" />
-      <point x="2646.111830357142" y="427.0" />
-      <point x="-38.75" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialog" target="cloud.view.services.ServiceUsagePropertiesPane">
-      <point x="47.0" y="-14.5" />
-      <point x="2068.7499999999995" y="308.0" />
-      <point x="2062.2499999999995" y="308.0" />
-      <point x="29.375" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.MonitoringServiceCreator" target="cloud.model.services.MonitoringService">
-      <point x="82.5" y="-14.5" />
-      <point x="3743.611830357142" y="308.0" />
-      <point x="3729.111830357142" y="308.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.main.CloudApp" target="cloud.view.CloudViewC">
-      <point x="39.375" y="-14.5" />
-      <point x="1242.5840525793644" y="725.0" />
-      <point x="2075.361830357142" y="725.0" />
-      <point x="30.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.AnalyticServiceCreator" target="cloud.model.services.AnalyticService">
-      <point x="-68.66666666666652" y="-14.5" />
-      <point x="2704.195163690476" y="268.0" />
-      <point x="2723.611830357142" y="268.0" />
-      <point x="38.75" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.IntegrationServicePane">
-      <point x="-18.5" y="-14.5" />
-      <point x="2063.861830357142" y="417.0" />
-      <point x="1675.7499999999995" y="417.0" />
-      <point x="51.5" y="14.5" />
-    </edge>
     <edge source="cloud.model.services.AnalyticService" target="cloud.model.services.Service">
       <point x="-38.75" y="-14.5" />
       <point x="2646.111830357142" y="139.0" />
       <point x="3145.957448743387" y="139.0" />
       <point x="-21.23333333333312" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.NetworkService">
-      <point x="63.72222222222217" y="-14.5" />
-      <point x="2146.0840525793647" y="527.0" />
-      <point x="4017.278497023809" y="527.0" />
-      <point x="37.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.design.Design" target="cloud.model.services.Service">
-      <point x="11.375" y="-14.5" />
-      <point x="426.2273809523808" y="59.0" />
-      <point x="3119.8241154100533" y="59.0" />
-      <point x="-47.36666666666679" y="14.5" />
-    </edge>
-    <edge source="cloud.main.CloudApp" target="cloud.model.design.Design">
-      <point x="-39.375" y="-14.5" />
-      <point x="1163.8340525793644" y="725.0" />
-      <point x="333.74999999999955" y="725.0" />
-      <point x="333.74999999999955" y="298.0" />
-      <point x="380.7273809523808" y="298.0" />
-      <point x="-34.125" y="14.5" />
     </edge>
     <edge source="cloud.model.provider.Google" target="cloud.model.provider.Pricing">
       <point x="-30.33333333333333" y="-14.5" />
@@ -380,37 +146,11 @@
       <point x="3073.205580357142" y="278.0" />
       <point x="-67.8125" y="14.5" />
     </edge>
-    <edge source="cloud.model.services.DatabaseServiceCreator" target="cloud.model.services.DatabaseService">
-      <point x="-77.25" y="-14.5" />
-      <point x="2235.361830357142" y="308.0" />
-      <point x="2247.8749999999995" y="308.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudView" target="cloud.view.design.DesignProperties">
-      <point x="-12.444444444444343" y="-14.5" />
-      <point x="4307.788425925926" y="517.0" />
-      <point x="4277.822941468254" y="517.0" />
-      <point x="-54.33333333333303" y="14.5" />
-    </edge>
     <edge source="cloud.model.services.ComputeServiceCreator" target="cloud.model.services.IServiceCreator">
       <point x="74.625" y="-14.5" />
       <point x="2610.736830357142" y="288.0" />
       <point x="3092.580580357142" y="288.0" />
       <point x="-48.4375" y="14.5" />
-    </edge>
-    <edge source="cloud.model.provider.ProviderFactory" target="cloud.model.provider.Provider">
-      <point x="19.375" y="-14.5" />
-      <point x="175.24999999999955" y="537.0" />
-      <point x="221.74999999999955" y="537.0" />
-      <point x="221.74999999999955" y="189.0" />
-      <point x="187.5607142857143" y="189.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.dialogs.ServiceDialog">
-      <point x="-6.166666666666515" y="-14.5" />
-      <point x="2076.195163690476" y="387.0" />
-      <point x="1986.4999999999995" y="387.0" />
-      <point x="-35.25" y="14.5" />
     </edge>
     <edge source="cloud.view.services.StorageServicePane" target="cloud.view.services.ServicePropertiesPane">
       <point x="0.0" y="-14.5" />
@@ -424,14 +164,6 @@
       <point x="3111.955580357142" y="298.0" />
       <point x="-29.0625" y="14.5" />
     </edge>
-    <edge source="cloud.model.services.ServiceFactory" target="cloud.model.services.Service">
-      <point x="37.0" y="-14.5" />
-      <point x="3226.861830357142" y="308.0" />
-      <point x="3229.018080357142" y="308.0" />
-      <point x="3229.018080357142" y="189.0" />
-      <point x="3168.8241154100533" y="189.0" />
-      <point x="1.633333333333212" y="14.5" />
-    </edge>
     <edge source="cloud.model.provider.Amazon" target="cloud.model.provider.Provider">
       <point x="30.333333333333258" y="-14.5" />
       <point x="196.23683035714248" y="199.0" />
@@ -444,31 +176,11 @@
       <point x="3129.6241154100535" y="89.0" />
       <point x="-37.566666666666606" y="14.5" />
     </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.DatabaseServiceCreator">
-      <point x="10.277777777777828" y="-14.5" />
-      <point x="2092.6396081349203" y="397.0" />
-      <point x="2312.611830357142" y="397.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.ComputeServiceCreator" target="cloud.model.services.ComputeService">
-      <point x="-74.625" y="-14.5" />
-      <point x="2461.486830357142" y="268.0" />
-      <point x="2473.479166666666" y="268.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
     <edge source="cloud.model.services.NetworkServiceCreator" target="cloud.model.services.IServiceCreator">
       <point x="-66.33333333333348" y="-14.5" />
       <point x="3829.445163690475" y="278.0" />
       <point x="3208.830580357142" y="278.0" />
       <point x="67.8125" y="14.5" />
-    </edge>
-    <edge source="cloud.main.CloudApp" target="cloud.model.design.DesignManager">
-      <point x="-13.125" y="-14.5" />
-      <point x="1190.0840525793644" y="715.0" />
-      <point x="374.24999999999955" y="715.0" />
-      <point x="374.24999999999955" y="547.0" />
-      <point x="367.74999999999955" y="547.0" />
-      <point x="-47.0" y="14.5" />
     </edge>
     <edge source="cloud.model.provider.Windows" target="cloud.model.provider.Pricing">
       <point x="32.666666666666686" y="-14.5" />
@@ -476,29 +188,11 @@
       <point x="76.07016369047597" y="308.0" />
       <point x="-32.66666666666666" y="14.5" />
     </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.MonitoringServicePane">
-      <point x="-30.833333333333485" y="-14.5" />
-      <point x="2051.528497023809" y="447.0" />
-      <point x="1351.9999999999995" y="447.0" />
-      <point x="-49.75" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.IntegrationServiceCreator" target="cloud.model.services.IntegrationService">
-      <point x="75.66666666666652" y="-14.5" />
-      <point x="3473.028497023809" y="308.0" />
-      <point x="3452.111830357142" y="308.0" />
-      <point x="-44.25" y="14.5" />
-    </edge>
     <edge source="cloud.model.services.IntegrationService" target="cloud.model.services.Service">
       <point x="44.25" y="-14.5" />
       <point x="3540.611830357142" y="159.0" />
       <point x="3178.6241154100535" y="159.0" />
       <point x="11.433333333333394" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.NetworkServiceCreator" target="cloud.model.services.Service">
-      <point x="0.0" y="-14.5" />
-      <point x="3895.778497023809" y="119.0" />
-      <point x="3191.69078207672" y="119.0" />
-      <point x="24.500000000000114" y="14.5" />
     </edge>
     <edge source="cloud.view.services.IntegrationServicePane" target="cloud.view.services.ServicePropertiesPane">
       <point x="0.0" y="-14.5" />
@@ -506,123 +200,11 @@
       <point x="1122.22203207672" y="288.0" />
       <point x="62.1875" y="14.5" />
     </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.ServiceUsagePropertiesPane">
-      <point x="2.0555555555556566" y="-14.5" />
-      <point x="2084.4173859126977" y="377.0" />
-      <point x="2115.6664765211644" y="377.0" />
-      <point x="2115.6664765211644" y="308.0" />
-      <point x="2120.9999999999995" y="308.0" />
-      <point x="88.125" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.design.DesignManager">
-      <point x="-71.94444444444457" y="-14.5" />
-      <point x="2010.4173859126977" y="547.0" />
-      <point x="461.74999999999955" y="547.0" />
-      <point x="47.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.ComputeServicePane">
-      <point x="-63.72222222222217" y="-14.5" />
-      <point x="2018.63960813492" y="527.0" />
-      <point x="638.9999999999995" y="527.0" />
-      <point x="44.25" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.StorageServiceCreator">
-      <point x="34.94444444444434" y="-14.5" />
-      <point x="2117.3062748015864" y="457.0" />
-      <point x="2996.361830357142" y="457.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.design.DesignManager" target="cloud.model.design.Design">
-      <point x="-35.25" y="-14.5" />
-      <point x="379.49999999999955" y="308.0" />
-      <point x="403.4773809523808" y="308.0" />
-      <point x="-11.375" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudViewC" target="cloud.view.dialogs.ServiceDialogC">
-      <point x="0.0" y="-14.5" />
-      <point x="-37.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.provider.ProviderFactory" target="cloud.model.provider.Google">
-      <point x="58.125" y="-14.5" />
-      <point x="213.99999999999955" y="547.0" />
-      <point x="277.74999999999955" y="547.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.ComputeService">
-      <point x="14.388888888888687" y="-14.5" />
-      <point x="2096.7507192460307" y="407.0" />
-      <point x="2426.111830357142" y="407.0" />
-      <point x="2426.111830357142" y="268.0" />
-      <point x="2424.1458333333326" y="268.0" />
-      <point x="-49.333333333333485" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.MonitoringServiceCreator" target="cloud.model.services.Service">
-      <point x="-27.5" y="-14.5" />
-      <point x="3633.611830357142" y="149.0" />
-      <point x="3181.89078207672" y="149.0" />
-      <point x="14.699999999999818" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudViewC" target="cloud.model.design.DesignManager">
-      <point x="-26.666666666666742" y="-14.5" />
-      <point x="2018.6951636904755" y="626.0" />
-      <point x="399.23683035714225" y="626.0" />
-      <point x="399.23683035714225" y="547.0" />
-      <point x="414.74999999999955" y="547.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.Service">
-      <point x="71.94444444444434" y="-14.5" />
-      <point x="2154.3062748015864" y="547.0" />
-      <point x="4068.8896081349194" y="547.0" />
-      <point x="4068.8896081349194" y="79.0" />
-      <point x="3204.7574487433867" y="79.0" />
-      <point x="37.56666666666672" y="14.5" />
-    </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.model.services.AnalyticServiceCreator">
-      <point x="26.72222222222217" y="-14.5" />
-      <point x="2109.0840525793647" y="437.0" />
-      <point x="2772.861830357142" y="437.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.IntegrationServiceCreator" target="cloud.model.services.Service">
-      <point x="0.0" y="-14.5" />
-      <point x="3397.361830357142" y="179.0" />
-      <point x="3172.09078207672" y="179.0" />
-      <point x="4.900000000000091" y="14.5" />
-    </edge>
-    <edge source="cloud.view.CloudViewC" target="cloud.model.design.Design">
-      <point x="-13.333333333333258" y="-14.5" />
-      <point x="2032.028497023809" y="616.0" />
-      <point x="495.74999999999955" y="616.0" />
-      <point x="495.74999999999955" y="298.0" />
-      <point x="448.9773809523808" y="298.0" />
-      <point x="34.125" y="14.5" />
-    </edge>
-    <edge source="cloud.model.services.StorageServiceCreator" target="cloud.model.services.Service">
-      <point x="24.875" y="-14.5" />
-      <point x="3021.236830357142" y="268.0" />
-      <point x="3018.7499999999995" y="268.0" />
-      <point x="3018.7499999999995" y="189.0" />
-      <point x="3162.29078207672" y="189.0" />
-      <point x="-4.900000000000091" y="14.5" />
-    </edge>
     <edge source="cloud.model.services.NetworkService" target="cloud.model.services.Service">
       <point x="37.0" y="-14.5" />
       <point x="4017.278497023809" y="99.0" />
       <point x="3198.2241154100534" y="99.0" />
       <point x="31.033333333333303" y="14.5" />
-    </edge>
-    <edge source="cloud.model.design.Design" target="cloud.model.provider.Provider">
-      <point x="-11.375" y="-14.5" />
-      <point x="403.4773809523808" y="149.0" />
-      <point x="234.22738095238083" y="149.0" />
-      <point x="46.66666666666663" y="14.5" />
-    </edge>
-    <edge source="cloud.model.provider.ProviderFactory" target="cloud.model.provider.Amazon">
-      <point x="-19.375" y="-14.5" />
-      <point x="136.49999999999955" y="547.0" />
-      <point x="165.74999999999955" y="547.0" />
-      <point x="0.0" y="14.5" />
     </edge>
     <edge source="cloud.view.services.NetworkServicePane" target="cloud.view.services.ServicePropertiesPane">
       <point x="0.0" y="-14.5" />
@@ -630,15 +212,11 @@
       <point x="1047.59703207672" y="308.0" />
       <point x="-12.4375" y="14.5" />
     </edge>
-    <edge source="cloud.view.dialogs.ServiceDialogC" target="cloud.view.services.StorageServicePane">
-      <point x="-34.94444444444434" y="-14.5" />
-      <point x="2047.417385912698" y="457.0" />
-      <point x="1237.9999999999995" y="457.0" />
-      <point x="44.25" y="14.5" />
-    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="3172.0" y="320.0" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.2942719720157411" x="2277.0" y="387.0" />
+  <SelectedNodes>
+    <node>cloud.main.CloudApp</node>
+  </SelectedNodes>
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
