@@ -10,7 +10,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
-public abstract class Provider {
+public abstract class Provider implements IPricing {
 
     private String serviceName;
     private String serviceShortName;
