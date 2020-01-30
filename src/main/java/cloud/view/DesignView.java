@@ -1,6 +1,5 @@
 package cloud.view;
 
-import cloud.configuration.Config;
 import cloud.view.design.DesignArea;
 import cloud.view.design.DesignControls;
 import cloud.view.design.DesignProperties;
@@ -20,7 +19,11 @@ public class DesignView {
     private MenuItem menuFileExit;
     private MenuItem menuDesignMatch;
     private MenuItem menuDesignCalculate;
+    private MenuItem menuDesignScale;
+    private MenuItem menuDesignOptimize;
+    private MenuItem menuDesignCompare;
     private MenuItem menuDesignReset;
+    private MenuItem menuViewSwitch;
     private MenuItem menuHelpAbout;
     private Label taskLbl;
 
@@ -68,20 +71,30 @@ public class DesignView {
         return new Menu("Edit");
     }
 
-    private Menu initMenuView() {
-        return new Menu("View");
-    }
-
     private Menu initMenuDesign() {
         Menu menuDesign = new Menu("Design");
         menuDesignMatch = new MenuItem("Match Services");
-        menuDesignMatch.setDisable(true);
         menuDesignCalculate = new MenuItem("Calculate Costs");
-        menuDesignCalculate.setDisable(true);
+        menuDesignScale = new MenuItem("Scale Costs");
+        menuDesignOptimize = new MenuItem("Optimize Costs");
+        menuDesignCompare = new MenuItem("Compare Design");
         menuDesignReset = new MenuItem("Reset Design");
+        menuDesignMatch.setDisable(true);
+        menuDesignCalculate.setDisable(true);
+        menuDesignScale.setDisable(true);
+        menuDesignOptimize.setDisable(true);
+        menuDesignCompare.setDisable(true);
 
-        menuDesign.getItems().addAll(menuDesignMatch, menuDesignCalculate, menuDesignReset);
+        menuDesign.getItems().addAll(menuDesignMatch, menuDesignCalculate, menuDesignScale, menuDesignOptimize, menuDesignCompare, menuDesignReset);
         return menuDesign;
+    }
+
+    private Menu initMenuView() {
+        Menu menuView = new Menu("View");
+        menuViewSwitch = new MenuItem("Switch Design View");
+        menuViewSwitch.setDisable(true);
+        menuView.getItems().add(menuViewSwitch);
+        return menuView;
     }
 
     private Menu initMenuHelp() {
@@ -111,9 +124,13 @@ public class DesignView {
     public MenuItem getMenuDesignCalculate() {
         return this.menuDesignCalculate;
     }
+    public MenuItem getMenuDesignScale() {return this.menuDesignScale;}
+    public MenuItem getMenuDesignOptimize() {return this.menuDesignOptimize;}
+    public MenuItem getMenuDesignCompare() {return this.menuDesignCompare;}
     public MenuItem getMenuDesignReset() {
         return this.menuDesignReset;
     }
+    public MenuItem getMenuViewSwitch() {return menuViewSwitch;}
     public MenuItem getMenuHelpAbout() {
         return this.menuHelpAbout;
     }
