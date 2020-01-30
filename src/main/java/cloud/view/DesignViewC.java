@@ -57,7 +57,9 @@ public class DesignViewC {
             view.getMenuDesignCalculate().setDisable(false);
         });
 
-        view.getMenuDesignCalculate().setOnAction(actionEvent -> {});
+        view.getMenuDesignCalculate().setOnAction(actionEvent -> {
+            design.getProvider().calculateCosts();
+        });
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
     }
