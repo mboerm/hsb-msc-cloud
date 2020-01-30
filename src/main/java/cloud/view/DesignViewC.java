@@ -48,6 +48,7 @@ public class DesignViewC {
         view.getMenuDesignReset().setOnAction(actionEvent -> {
             view.getPaneDesignArea().getServicesTable().getItems().removeAll();
             design.clearServicesList();
+            design.clearServicesCosts();
         });
 
         view.getMenuDesignMatch().setOnAction(actionEvent -> {
@@ -58,6 +59,7 @@ public class DesignViewC {
         });
 
         view.getMenuDesignCalculate().setOnAction(actionEvent -> {
+            design.clearServicesCosts();
             design.getProvider().calculateCosts();
         });
 
