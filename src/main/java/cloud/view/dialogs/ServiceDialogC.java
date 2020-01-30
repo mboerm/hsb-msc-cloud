@@ -67,6 +67,8 @@ public class ServiceDialogC {
         return serviceData;
     }
 
+    public void resetServiceData() {this.serviceData = null;}
+
     private ServicePropertiesPane switchServicePropertiesPane(String item) {
         if (ServiceChecker.isComputeItem(item)) {
             return computePane = (ComputeServicePane) servicePaneFactory.getServicePane(item);

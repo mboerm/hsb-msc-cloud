@@ -133,6 +133,7 @@ public class DesignViewC {
                 /* add created service to services list */
                 design.addService(dialogServiceC.getServiceData());
             }
+            dialogServiceC.resetServiceData();
         });
 
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
