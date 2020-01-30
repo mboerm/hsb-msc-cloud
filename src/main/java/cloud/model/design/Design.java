@@ -1,14 +1,17 @@
 package cloud.model.design;
 
+import cloud.model.pricing.Rate;
 import cloud.model.provider.Provider;
 import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 public class Design {
 
     private int selectedService;
     private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
+    private final ObservableList<Pair<Service, Rate>> servicesCosts = FXCollections.observableArrayList();
 
     private Provider provider;
     private String usagePeriod;
@@ -29,14 +32,16 @@ public class Design {
         int index = this.servicesList.indexOf(oldService);
         this.servicesList.set(index, newService);
     }
-
-    public ObservableList<Service> getServicesList() {
-        return this.servicesList;
-    }
-
+    public ObservableList<Service> getServicesList() {return this.servicesList;}
     public void clearServicesList() {
         this.servicesList.clear();
     }
+
+    public void addServiceCost(Service service, Rate rate) {
+        this.servicesCosts.add(new Pair<>(service, rate));
+    }
+    public ObservableList<Pair<Service, Rate>> getServicesCosts() {return this.servicesCosts;}
+    public void clearServicesCosts() {this.servicesCosts.clear();}
 
     public int getSelectedService() {
         return this.selectedService;
