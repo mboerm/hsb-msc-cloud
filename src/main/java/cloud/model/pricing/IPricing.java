@@ -1,8 +1,6 @@
-package cloud.model.provider;
+package cloud.model.pricing;
 
 public interface IPricing {
     void calculateCosts();
     void optimizeCosts();
-    void scaleCosts();
-    void compareCosts();
 }

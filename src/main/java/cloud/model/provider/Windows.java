@@ -1,6 +1,7 @@
 package cloud.model.provider;
 
 import cloud.configuration.Config;
+import cloud.model.pricing.IPricing;
 
 class Windows extends Provider implements IPricing {
 
@@ -18,16 +19,6 @@ class Windows extends Provider implements IPricing {
 
     @Override
     public void optimizeCosts() {
-
-    }
-
-    @Override
-    public void scaleCosts() {
-
-    }
-
-    @Override
-    public void compareCosts() {
 
     }
 }
