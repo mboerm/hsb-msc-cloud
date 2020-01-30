@@ -2,7 +2,7 @@ package cloud.model.provider;
 
 import cloud.configuration.Config;
 
-class Windows extends Provider implements Pricing {
+class Windows extends Provider implements IPricing {
 
     Windows() {
         setServiceName("Windows Azure");
@@ -13,7 +13,7 @@ class Windows extends Provider implements Pricing {
 
     @Override
     public void calculateCosts() {
-
+        System.out.println(getServiceName() + " -> " + "None!");
     }
 
     @Override

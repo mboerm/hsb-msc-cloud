@@ -2,7 +2,7 @@ package cloud.model.provider;
 
 import cloud.configuration.Config;
 
-class Amazon extends Provider implements Pricing {
+class Amazon extends Provider implements IPricing {
 
     Amazon() {
         setServiceName("Amazon Web Services");
@@ -13,7 +13,7 @@ class Amazon extends Provider implements Pricing {
 
     @Override
     public void calculateCosts() {
-
+        System.out.println(getServiceName() + " -> " + "Static Cost Calculation!");
     }
 
     @Override

@@ -2,7 +2,7 @@ package cloud.model.provider;
 
 import cloud.configuration.Config;
 
-class Google extends Provider implements Pricing {
+class Google extends Provider implements IPricing {
 
     Google() {
         setServiceName("Google Cloud Platform");
@@ -13,7 +13,7 @@ class Google extends Provider implements Pricing {
 
     @Override
     public void calculateCosts() {
-
+        System.out.println(getServiceName() + " -> " + "None!");
     }
 
     @Override

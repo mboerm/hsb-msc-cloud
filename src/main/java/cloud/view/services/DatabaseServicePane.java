@@ -102,7 +102,7 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(instanceSizeBox, 1, 5);
         add(new Label("# of CPU:"), 0, 6);
         add(numOneSpinner, 1, 6);
-        add(new Label("# of  in GB:"), 0, 7);
+        add(new Label("# of RAM in GB:"), 0, 7);
         add(numTwoSpinner, 1, 7);
         add(new Label("Instance hours:"), 0, 8);
         add(durationSpinner, 1, 8);
