@@ -2,14 +2,14 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.model.StageManager;
-import cloud.model.design.DesignManager;
 import cloud.model.services.Service;
+import cloud.model.design.*;
 import cloud.model.provider.ProviderFactory;
+
 import cloud.view.dialogs.ServiceDialogC;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import cloud.model.design.Design;
 import javafx.scene.input.MouseButton;
 
 import static cloud.configuration.Constants.*;
@@ -22,6 +22,7 @@ public class DesignViewC {
     // Model
     private Design design;
     private ProviderFactory providerFactory;
+    private int selectedServiceID;
 
     // Controller
     private ServiceDialogC dialogServiceC;
@@ -52,7 +53,7 @@ public class DesignViewC {
         });
 
         view.getMenuDesignMatch().setOnAction(actionEvent -> {
-            design.setMatchedServicesForDesign();
+            design.matchServices();
             view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
             view.getPaneDesignArea().getServicesTable().refresh();
             view.getMenuDesignCalculate().setDisable(false);
@@ -103,7 +104,7 @@ public class DesignViewC {
 
         ObservableList<Service> selectedItems = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItems();
         selectedItems.addListener((ListChangeListener<Service>) change -> {
-            design.setSelectedService(view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedIndex());
+            selectedServiceID = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedIndex();
             view.getPaneDesignControls().getControlRemove().setDisable(false);
         });
 
@@ -140,7 +141,7 @@ public class DesignViewC {
 
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
             /* remove selected service from services list */
-            Service selectedService = view.getPaneDesignArea().getServicesTable().getItems().get(design.getSelectedService());
+            Service selectedService = view.getPaneDesignArea().getServicesTable().getItems().get(selectedServiceID);
             design.removeService(selectedService);
             /* clear selection */
             view.getPaneDesignArea().getServicesTable().getSelectionModel().clearSelection();

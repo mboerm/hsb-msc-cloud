@@ -9,7 +9,6 @@ import javafx.util.Pair;
 
 public class Design {
 
-    private int selectedService;
     private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
     private final ObservableList<Pair<Service, Price>> servicesCosts = FXCollections.observableArrayList();
 
@@ -43,14 +42,7 @@ public class Design {
     public ObservableList<Pair<Service, Price>> getServicesCosts() {return this.servicesCosts;}
     public void clearServicesCosts() {this.servicesCosts.clear();}
 
-    public int getSelectedService() {
-        return this.selectedService;
-    }
-    public void setSelectedService(int id) {
-        this.selectedService = id;
-    }
-
-    public void setMatchedServicesForDesign() {
+    public void matchServices() {
         for (Service service : servicesList) {
             service.setProviderService(getProvider().getMatchingServiceForName(service.getDisplayName()));
         }
