@@ -1,6 +1,6 @@
 package cloud.model.design;
 
-import cloud.model.pricing.Rate;
+import cloud.model.pricing.Price;
 import cloud.model.provider.Provider;
 import cloud.model.services.Service;
 import javafx.collections.FXCollections;
@@ -37,10 +37,10 @@ public class Design {
         this.servicesList.clear();
     }
 
-    public void addServiceCost(Service service, Rate rate) {
-        this.servicesCosts.add(new Pair<>(service, rate));
+    public void addServiceCost(Service service, Price charge) {
+        this.servicesCosts.add(new Pair<>(service, charge));
     }
-    public ObservableList<Pair<Service, Rate>> getServicesCosts() {return this.servicesCosts;}
+    public ObservableList<Pair<Service, Price>> getServicesCosts() {return this.servicesCosts;}
     public void clearServicesCosts() {this.servicesCosts.clear();}
 
     public int getSelectedService() {

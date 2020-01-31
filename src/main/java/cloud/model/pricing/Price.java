@@ -1,10 +1,10 @@
 package cloud.model.pricing;
 
-public class Rate {
+public class Price {
     private Double originalPrice;
     private Double scaledPrice;
 
-    public Rate(Double originalPrice) {
+    public Price(Double originalPrice) {
         setOriginalPrice(originalPrice);
         setScaledPrice(0.0);
     }
