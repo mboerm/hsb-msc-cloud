@@ -4,6 +4,7 @@ import cloud.configuration.Config;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
 
 public class ComputeServicePane extends ServicePropertiesPane {
 
@@ -12,8 +13,8 @@ public class ComputeServicePane extends ServicePropertiesPane {
     private ComboBox<String> computeTypeBox;
     private ComboBox<String> instanceTypeBox;
     private ComboBox<String> instanceSizeBox;
-    private ComboBox<String> computeInstanceBox;
-    private ComboBox<String> storageInstanceBox;
+    private TextField computeInstanceField;
+    private TextField storageInstanceField;
     private ComboBox<String> systemBox;
     private Spinner<Integer> cpuSpinner;
     private Spinner<Integer> storageSpinner;
@@ -27,8 +28,8 @@ public class ComputeServicePane extends ServicePropertiesPane {
         instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("compute-instance-type"));
         instanceSizeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-instance-size"));
         systemBox = new ComboBox<>();
-        computeInstanceBox = new ComboBox<>();
-        storageInstanceBox = new ComboBox<>();
+        computeInstanceField = new TextField();
+        storageInstanceField = new TextField();
 
         cpuSpinner = new Spinner<>(1, 1000000, 1);
         storageSpinner = new Spinner<>(1, 1000000, 1);
@@ -71,10 +72,10 @@ public class ComputeServicePane extends ServicePropertiesPane {
     public void setInstanceType(String item) {this.instanceTypeBox.getSelectionModel().select(item);}
     public String getInstanceSize() {return this.instanceSizeBox.getValue();}
     public void setInstanceSize(String item) {this.instanceSizeBox.getSelectionModel().select(item);}
-    public String getComputeInstanceRef() {return this.computeInstanceBox.getValue();}
-    public void setComputeInstanceRef(String item) {this.computeInstanceBox.getSelectionModel().select(item);}
-    public String getStorageInstanceRef() {return this.storageInstanceBox.getValue();}
-    public void setStorageInstanceRef(String item) {this.storageInstanceBox.getSelectionModel().select(item);}
+    public String getComputeInstanceRef() {return this.computeInstanceField.getText();}
+    public void setComputeInstanceRef(String item) {this.computeInstanceField.setText(item);}
+    public String getStorageInstanceRef() {return this.storageInstanceField.getText();}
+    public void setStorageInstanceRef(String item) {this.storageInstanceField.setText(item);}
     public String getSystem() {return this.systemBox.getValue();}
     public void setSystem(String item) {this.systemBox.getSelectionModel().select(item);}
     public Integer getCPU() {return this.cpuSpinner.getValue();}
@@ -107,6 +108,8 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(new Label("Operating system:"), 0, 7);
         systemBox.setItems(Config.getInstance().getConfigValues("compute-os"));
         add(systemBox, 1, 7);
+        add(new Label("Transferred data in GB:"), 0, 8);
+        add(dataSpinner, 1, 8);
     }
 
     private void setContainerControls() {
@@ -132,31 +135,29 @@ public class ComputeServicePane extends ServicePropertiesPane {
         systemBox.setItems(Config.getInstance().getConfigValues("compute-app-language"));
         add(systemBox, 1, 3);
         add(new Label("Compute instance reference:"), 0, 4);
-        add(computeInstanceBox, 1, 4);
+        add(computeInstanceField, 1, 4);
         add(new Label("Storage instance reference:"), 0, 5);
-        add(storageInstanceBox, 1, 5);
+        add(storageInstanceField, 1, 5);
     }
 
     private void setBatchControls() {
         add(new Label("Compute instance reference:"), 0, 3);
-        add(computeInstanceBox, 1, 3);
+        add(computeInstanceField, 1, 3);
     }
 
     private void setCodeControls() {
-        add(new Label("# of CPU:"), 0, 3);
-        add(cpuSpinner, 1, 3);
-        add(new Label("# of RAM in GB:"), 0, 4);
-        add(storageSpinner, 1, 4);
-        add(new Label("# of invocations:"), 0, 5);
-        add(numOneSpinner, 1, 5);
-        add(new Label("per month"), 2, 5);
-        add(new Label("Duration per invocation:"), 0, 6);
-        add(numTwoSpinner, 1, 6);
+        add(new Label("# of invocations:"), 0, 3);
+        add(numOneSpinner, 1, 3);
+        add(new Label("per month"), 2, 3);
+        add(new Label("Duration per invocation in 100ms-steps:"), 0, 4);
+        add(numTwoSpinner, 1, 4);
+        add(new Label("# of storage in MB:"), 0, 5);
+        add(storageSpinner, 1, 5);
     }
 
     private void setBalancerControls() {
         add(new Label("Compute instance reference:"), 0, 3);
-        add(computeInstanceBox, 1, 3);
+        add(computeInstanceField, 1, 3);
         add(new Label("Transferred data in GB:"), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("# of alarms:"), 0, 5);

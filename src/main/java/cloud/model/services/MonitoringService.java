@@ -1,16 +1,17 @@
 package cloud.model.services;
 
 import cloud.configuration.Config;
+import javafx.util.Pair;
 
 public class MonitoringService extends Service {
 
     private Integer metrics;
     private Integer apiRequests;
-    private Integer data;
+    private Pair<Integer, Integer> data;
     private Integer events;
     private boolean loggerState;
 
-    public MonitoringService(String name, Integer metrics, Integer apiRequests, Integer data, Integer events, boolean loggerState) {
+    public MonitoringService(String name, Integer metrics, Integer apiRequests, Pair<Integer, Integer> data, Integer events, boolean loggerState) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
         setMetrics(metrics);
@@ -26,8 +27,8 @@ public class MonitoringService extends Service {
     public Integer getRequests() {return this.apiRequests;}
     public void setRequests(Integer requests) {this.apiRequests = requests;}
 
-    public Integer getData() {return this.data;}
-    public void setData(Integer data) {this.data = data;}
+    public Pair<Integer, Integer> getData() {return this.data;}
+    public void setData(Pair<Integer, Integer> data) {this.data = data;}
 
     public Integer getEvents() {return this.events;}
     public void setEvents(Integer events) {this.events = events;}

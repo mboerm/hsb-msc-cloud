@@ -41,7 +41,7 @@ public class ComputeServiceCreator implements IServiceCreator {
         if (computeType.equals(types[0])) {
             /* VM */
             return new ComputeService(name, computeType, instanceType, instanceSize, "", "",
-                    system, cpu, storage, 0, 0, 0);
+                    system, cpu, storage, data, 0, 0);
         } else if (computeType.equals(types[1])) {
             /* Container */
 			ComputeService computeService = new ComputeService(name, computeType, "", "", "", "",

@@ -1,17 +1,18 @@
 package cloud.model.services;
 
 import cloud.configuration.Config;
+import javafx.util.Pair;
 
 public class MonitoringServiceCreator implements IServiceCreator {
 
     private String name;
     private Integer metrics;
     private Integer apiRequests;
-    private Integer data;
+    private Pair<Integer, Integer> data;
     private Integer events;
     private boolean loggerState;
 
-    public MonitoringServiceCreator(String name, Integer metrics, Integer apiRequests, Integer data, Integer events, boolean loggerState) {
+    public MonitoringServiceCreator(String name, Integer metrics, Integer apiRequests, Pair<Integer, Integer> data, Integer events, boolean loggerState) {
         this.name = name;
         this.metrics = metrics;
         this.apiRequests = apiRequests;
