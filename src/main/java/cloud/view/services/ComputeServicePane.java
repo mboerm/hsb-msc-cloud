@@ -101,15 +101,17 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(instanceTypeBox, 1, 3);
         add(new Label("Instance size:"), 0, 4);
         add(instanceSizeBox, 1, 4);
-        add(new Label("# of CPU:"), 0, 5);
-        add(cpuSpinner, 1, 5);
-        add(new Label("# of RAM in GB:"), 0, 6);
-        add(storageSpinner, 1, 6);
-        add(new Label("Operating system:"), 0, 7);
+        add(new Label("Instance hours:"), 0, 5);
+        add(numOneSpinner, 1, 5);
+        add(new Label("# of CPU:"), 0, 6);
+        add(cpuSpinner, 1, 6);
+        add(new Label("# of RAM in GB:"), 0, 7);
+        add(storageSpinner, 1, 7);
+        add(new Label("Operating system:"), 0, 8);
         systemBox.setItems(Config.getInstance().getConfigValues("compute-os"));
-        add(systemBox, 1, 7);
-        add(new Label("Transferred data in GB:"), 0, 8);
-        add(dataSpinner, 1, 8);
+        add(systemBox, 1, 8);
+        add(new Label("Transferred data in GB:"), 0, 9);
+        add(dataSpinner, 1, 9);
     }
 
     private void setContainerControls() {
