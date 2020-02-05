@@ -34,7 +34,7 @@
 
     <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
 
-    <entry key="services-file">services.xml</entry>
+    <entry key="services-file">xml/services.xml</entry>
 
     <entry key="aws-prices">aws-prices.xml</entry>
     <entry key="azure-prices">azure-prices.xml</entry>
