@@ -13,6 +13,6 @@ public final class Constants {
     public static final int WINDOW_MIN_WIDTH = 900;
     public static final int WINDOW_MIN_HEIGHT = 500;
 
-    public static final String CONFIG_FILE = "config.xml";
+    public static final String CONFIG_FILE = "xml/config.xml";
     public static final String CONFIG_SEPARATOR = ";";
 }
