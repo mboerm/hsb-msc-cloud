@@ -2,249 +2,235 @@
 <services>
 	<service name="Amazon EC2">
 		<region name="EU-Frankfurt">
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0,012</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0,024</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0,048</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0,096</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0,192</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0,097</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0,194</instance>
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0,0212</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0,0424</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0,0664</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0,1236</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0,2656</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0,189</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0,378</instance>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,09</dataOut>
-			<dataOut range="50000">0,085</dataOut>
-			<dataOut range="150000">0,07</dataOut>
-			<dataOut range="300000">0,05</dataOut>
+			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0.012</instance>
+			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0.024</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0.048</instance>
+			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0.096</instance>
+			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0.192</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0.097</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0.194</instance>
+			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0.0212</instance>
+			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0.0424</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0.0664</instance>
+			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0.1236</instance>
+			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0.2656</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0.189</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0.378</instance>
+			<dataOut min="1" max="10000">0.09</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.07</dataOut>
+			<dataOut min="150000" max="500000">0.05</dataOut>
 		</region>
 		<region name="Asia-Tokyo">
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0,0136</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0,0272</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0,0544</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0,1088</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0,2176</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0,107</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0,214</instance>
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0,0228</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0,0456</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0,0728</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0,1364</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0,2912</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0,199</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0,398</instance>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,114</dataOut>
-			<dataOut range="50000">0,089</dataOut>
-			<dataOut range="150000">0,086</dataOut>
-			<dataOut range="300000">0,084</dataOut>
+			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0.0136</instance>
+			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0.0272</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0.0544</instance>
+			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0.1088</instance>
+			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0.2176</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0.107</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0.214</instance>
+			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0.0228</instance>
+			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0.0456</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0.0728</instance>
+			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0.1364</instance>
+			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0.2912</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0.199</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0.398</instance>
+			<dataOut min="1" max="10000">0.114</dataOut>
+			<dataOut min="10000" max="50000">0.089</dataOut>
+			<dataOut min="50000" max="150000">0.086</dataOut>
+			<dataOut min="150000" max="500000">0.084</dataOut>
 		</region>
 		<region name="Brasil-São Paulo">
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0,0168</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0,0336</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0,0672</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0,1344</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0,2688</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0,131</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0,262</instance>
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0,026</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0,052</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0,0856</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0,162</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0,3424</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0,223</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0,446</instance>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,25</dataOut>
-			<dataOut range="50000">0,23</dataOut>
-			<dataOut range="150000">0,21</dataOut>
-			<dataOut range="300000">0,19</dataOut>
+			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0.0168</instance>
+			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0.0336</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0.0672</instance>
+			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0.1344</instance>
+			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0.2688</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0.131</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0.262</instance>
+			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0.026</instance>
+			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0.052</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0.0856</instance>
+			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0.162</instance>
+			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0.3424</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0.223</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0.446</instance>
+			<dataOut min="1" max="10000">0.25</dataOut>
+			<dataOut min="10000" max="50000">0.23</dataOut>
+			<dataOut min="50000" max="150000">0.21</dataOut>
+			<dataOut min="150000" max="500000">0.19</dataOut>
 		</region>
 	</service>
 
 	<service name="Elastic Load Balancing">
 		<region name="EU-Frankfurt">
-			<hour>0,03</hour>
-			<data>0,008</data>
+			<hour>0.03</hour>
+			<data>0.008</data>
 		</region>
 		<region name="Asia-Tokyo">
-			<hour>0,027</hour>
-			<data>0,008</data>
+			<hour>0.027</hour>
+			<data>0.008</data>
 		</region>
 		<region name="Brasil-São Paulo">
-			<hour>0,034</hour>
-			<data>0,011</data>
+			<hour>0.034</hour>
+			<data>0.011</data>
 		</region>
 	</service>
 	
 	<service name="Amazon Simple Storage Service">
 		<region name="EU-Frankfurt">
-			<capacity range="50000">0,0245</capacity>
-			<capacity range="500000">0,0235</capacity>
-			<capacity range="500001">0,0225</capacity>
-			<requests quantity="1000" type="read">0,00043</requests>
-			<requests quantity="1000" type="read">0,0054</requests>
-			<queries>0</queries>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,09</dataOut>
-			<dataOut range="50000">0,085</dataOut>
-			<dataOut range="150000">0,07</dataOut>
-			<dataOut range="300000">0,05</dataOut>
+			<capacity min="1" max="50000">0.0245</capacity>
+			<capacity min="50000" max="500000">0.0235</capacity>
+			<capacity min="500000" max="999999">0.0225</capacity>
+			<requests factor="1000" type="read">0.00043</requests>
+			<requests factor="1000" type="write">0.0054</requests>
+			<dataOut min="1" max="10000">0.09</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.07</dataOut>
+			<dataOut min="150000" max="500000">0.05</dataOut>
 		</region>
 		<region name="Asia-Tokyo">
-			<capacity range="50000">0,025</capacity>
-			<capacity range="500000">0,024</capacity>
-			<capacity range="500001">0,023</capacity>
-			<requests quantity="1000" type="read">0,00037</requests>
-			<requests quantity="1000" type="read">0,0047</requests>
-			<queries>0</queries>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,114</dataOut>
-			<dataOut range="50000">0,089</dataOut>
-			<dataOut range="150000">0,086</dataOut>
-			<dataOut range="300000">0,084</dataOut>
+			<capacity min="1" max="50000">0.025</capacity>
+			<capacity min="50000" max="500000">0.024</capacity>
+			<capacity min="500000" max="999999">0.023</capacity>
+			<requests factor="1000" type="read">0.00037</requests>
+			<requests factor="1000" type="write">0.0047</requests>
+			<dataOut min="1" max="10000">0.114</dataOut>
+			<dataOut min="10000" max="50000">0.089</dataOut>
+			<dataOut min="50000" max="150000">0.086</dataOut>
+			<dataOut min="150000" max="500000">0.084</dataOut>
 		</region>
 		<region name="Brasil-São Paulo">
-			<capacity range="50000">0,0405</capacity>
-			<capacity range="500000">0,039</capacity>
-			<capacity range="500001">0,037</capacity>
-			<requests quantity="1000" type="read">0,00056</requests>
-			<requests quantity="1000" type="write">0,007</requests>
-			<queries>0</queries>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,25</dataOut>
-			<dataOut range="50000">0,23</dataOut>
-			<dataOut range="150000">0,21</dataOut>
-			<dataOut range="300000">0,19</dataOut>
+			<capacity min="1" max="50000">0.0405</capacity>
+			<capacity min="50000" max="500000">0.039</capacity>
+			<capacity min="500000" max="999999">0.037</capacity>
+			<requests factor="1000" type="read">0.00056</requests>
+			<requests factor="1000" type="write">0.007</requests>
+			<dataOut min="1" max="10000">0.25</dataOut>
+			<dataOut min="10000" max="50000">0.23</dataOut>
+			<dataOut min="50000" max="150000">0.21</dataOut>
+			<dataOut min="150000" max="500000">0.19</dataOut>
 		</region>
 	</service>
 
 	<service name="Amazon Elasticsearch Service">
 		<region name="EU-Frankfurt">
-			<instance type="General" size="Micro" cpu="1" ram="1">0,021</instance>
-			<instance type="General" size="Small" cpu="1" ram="2">0,042</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4">0,084</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0,143</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0,286</instance>
-			<data>0,02</data>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,09</dataOut>
-			<dataOut range="50000">0,085</dataOut>
-			<dataOut range="150000">0,07</dataOut>
-			<dataOut range="300000">0,05</dataOut>
+			<instance type="General" size="Micro" cpu="1" ram="1">0.021</instance>
+			<instance type="General" size="Small" cpu="1" ram="2">0.042</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4">0.084</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0.143</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0.286</instance>
+			<instance type="RAM-optimized" size="Large" cpu="2" ram="16">0.224</instance>
+			<instance type="RAM-optimized" size="Xlarge" cpu="4" ram="32">0.448</instance>
+			<data>0.02</data>
+			<dataOut min="1" max="10000">0.09</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.07</dataOut>
+			<dataOut min="150000" max="500000">0.05</dataOut>
 		</region>
 		<region name="Asia-Tokyo">
-			<instance type="General" size="Micro" cpu="1" ram="1">0,028</instance>
-			<instance type="General" size="Small" cpu="1" ram="2">0,056</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4">0,112</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0,158</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0,316</instance>
-			<data>0,09</data>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,114</dataOut>
-			<dataOut range="50000">0,089</dataOut>
-			<dataOut range="150000">0,086</dataOut>
-			<dataOut range="300000">0,084</dataOut>
+			<instance type="General" size="Micro" cpu="1" ram="1">0.028</instance>
+			<instance type="General" size="Small" cpu="1" ram="2">0.056</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4">0.112</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0.158</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0.316</instance>
+			<instance type="RAM-optimized" size="Large" cpu="2" ram="16">0.224</instance>
+			<instance type="RAM-optimized" size="Xlarge" cpu="4" ram="32">0.448</instance>
+			<data>0.09</data>
+			<dataOut min="1" max="10000">0.114</dataOut>
+			<dataOut min="10000" max="50000">0.089</dataOut>
+			<dataOut min="50000" max="150000">0.086</dataOut>
+			<dataOut min="150000" max="500000">0.084</dataOut>
 		</region>
 		<region name="Brasil-São Paulo">
-			<instance type="General" size="Micro" cpu="1" ram="1">0,038</instance>
-			<instance type="General" size="Small" cpu="1" ram="2">0,076</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4">0,152</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0,193</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0,386</instance>
-			<data>0,16</data>
-			<dataOut range="1">0</dataOut>
-			<dataOut range="10000">0,25</dataOut>
-			<dataOut range="50000">0,23</dataOut>
-			<dataOut range="150000">0,21</dataOut>
-			<dataOut range="300000">0,19</dataOut>
+			<instance type="General" size="Micro" cpu="1" ram="1">0.038</instance>
+			<instance type="General" size="Small" cpu="1" ram="2">0.076</instance>
+			<instance type="General" size="Medium" cpu="2" ram="4">0.152</instance>
+			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0.193</instance>
+			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0.386</instance>
+			<data>0.16</data>
+			<dataOut min="1" max="10000">0.25</dataOut>
+			<dataOut min="10000" max="50000">0.23</dataOut>
+			<dataOut min="50000" max="150000">0.21</dataOut>
+			<dataOut min="150000" max="500000">0.19</dataOut>
 		</region>
 	</service>
 
 	<service name="Amazon Kinesis">
 		<region name="EU-Frankfurt">
-			<hour>0,018</hour>
-			<unit>0,0175</unit>
+			<data size="1">0.018</data>
+			<unit size="25">0.0175</unit>
 		</region>
 		<region name="Asia-Tokyo">
-			<hour>0,0195</hour>
-			<unit>0,0215</unit>
+			<data>0.0195</data>
+			<unit>0.0215</unit>
 		</region>
 		<region name="Brasil-São Paulo">
-			<hour>0,03</hour>
-			<unit>0,028</unit>
+			<data>0.03</data>
+			<unit>0.028</unit>
 		</region>
 	</service>
 
 	<service name="AWS Lambda">
-		<requests quantity="1000000">0,20</requests>
-		<duration>0,000016667</duration>
-		<storage range="128">0,000000208</storage>
-		<storage range="512">0,000000833</storage>
-		<storage range="1024">0,000001667</storage>
-		<storage range="1536">0,000002500</storage>
-		<storage range="2048">0,000003333</storage>
-		<storage range="3008">0,000004896</storage>
+		<requests>0.20</requests>
+		<duration factor="1000000">0.000016667</duration>
 	</service>
 
 	<service name="Amazon CloudWatch">
-		<metrics range="10000">0,30</metrics>
-		<metrics range="250000">0,10</metrics>
-		<metrics range="1000000">0,05</metrics>
-		<metrics range="1000001">0,02</metrics>
-		<events quantity="1000000">1,00</events>
-		<requests quantity="1000">0,01</requests>
+		<metrics min="1" max="10000">0.30</metrics>
+		<metrics min="10000" max="250000">0.10</metrics>
+		<metrics min="250000" max="1000000">0.05</metrics>
+		<metrics min="1000000" max="10000000">0.02</metrics>
+		<events factor="1000000">1.00</events>
+		<requests factor="1000">0.01</requests>
 		<region name="EU-Frankfurt">
-			<data type="collect">0,63</data>
-			<data type="save">0,0324</data>
+			<data type="collect">0.63</data>
+			<data type="save">0.0324</data>
 		</region>
 		<region name="Asia-Tokyo">
-			<data type="collect">0,76</data>
-			<data type="save">0,033</data>
+			<data type="collect">0.76</data>
+			<data type="save">0.033</data>
 		</region>
 		<region name="Brasil-São Paulo">
-			<data type="collect">0,90</data>
-			<data type="save">0,0408</data>
+			<data type="collect">0.90</data>
+			<data type="save">0.0408</data>
 		</region>
 	</service>
 
 	<service name="Amazon CloudFront">
 		<region name="EU-Frankfurt">
-			<data>0,020</data>
-			<dataOut range="10000">0,085</dataOut>
-			<dataOut range="50000">0,080</dataOut>
-			<dataOut range="150000">0,060</dataOut>
-			<dataOut range="500000">0,040</dataOut>
-			<dataOut range="1024000">0,030</dataOut>
-			<dataOut range="5000000">0,025</dataOut>
-			<dataOut range="5000001">0,020</dataOut>
-			<http quantity="10000">0,0075</http>
+			<data>0.020</data>
+			<dataOut min="1" max="10">0.085</dataOut>
+			<dataOut min="10" max="50">0.080</dataOut>
+			<dataOut min="50" max="150">0.060</dataOut>
+			<dataOut min="150" max="500">0.040</dataOut>
+			<dataOut min="500" max="1024">0.030</dataOut>
+			<dataOut min="1024" max="5024">0.025</dataOut>
+			<dataOut min="5024" max="9999">0.020</dataOut>
+			<http factor="10000">0.0075</http>
 		</region>
 		<region name="Asia-Tokyo">
-			<data>0,060</data>
-			<dataOut range="10000">0,114</dataOut>
-			<dataOut range="50000">0,089</dataOut>
-			<dataOut range="150000">0,086</dataOut>
-			<dataOut range="500000">0,084</dataOut>
-			<dataOut range="1024000">0,080</dataOut>
-			<dataOut range="5000000">0,070</dataOut>
-			<dataOut range="5000001">0,060</dataOut>
-			<http quantity="10000">0,0090</http>
+			<data>0.060</data>
+			<dataOut min="1" max="10">0.114</dataOut>
+			<dataOut min="10" max="50">0.089</dataOut>
+			<dataOut min="50" max="150">0.086</dataOut>
+			<dataOut min="150" max="500">0.084</dataOut>
+			<dataOut min="500" max="1024">0.080</dataOut>
+			<dataOut min="1024" max="5024">0.070</dataOut>
+			<dataOut min="5024" max="9999">0.060</dataOut>
+			<http factor="10000">0.0090</http>
 		</region>
 		<region name="Brasil-São Paulo">
-			<data>0,125</data>
-			<dataOut range="10000">0,110</dataOut>
-			<dataOut range="50000">0,105</dataOut>
-			<dataOut range="150000">0,090</dataOut>
-			<dataOut range="500000">0,080</dataOut>
-			<dataOut range="1024000">0,060</dataOut>
-			<dataOut range="5000000">0,050</dataOut>
-			<dataOut range="5000001">0,040</dataOut>
-			<http quantity="10000">0,0160</http>
+			<data>0.125</data>
+			<dataOut min="1" max="10">0.110</dataOut>
+			<dataOut min="10" max="50">0.105</dataOut>
+			<dataOut min="50" max="150">0.090</dataOut>
+			<dataOut min="150" max="500">0.080</dataOut>
+			<dataOut min="500" max="1024">0.060</dataOut>
+			<dataOut min="1024" max="5024">0.050</dataOut>
+			<dataOut min="5024" max="9999">0.040</dataOut>
+			<http factor="10000">0.0160</http>
 		</region>
 	</service>
 </services>
