@@ -61,7 +61,7 @@ public class MonitoringServicePane extends ServicePropertiesPane {
         add(new Label("# of data to save in GB:"), 0, 5);
         add(dataSaveSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
-        add(new Label("# of events:"), 0, 6);
+        add(new Label("# of events in Mio.:"), 0, 6);
         add(eventsSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
         add(new Label("Logging:"), 0, 7);

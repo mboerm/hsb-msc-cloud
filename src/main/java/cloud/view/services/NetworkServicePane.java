@@ -87,10 +87,10 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(new Label("# of transferred data in GB:"), 0, 3);
         add(dataSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("# of transferred data in GB into internet:"), 0, 4);
+        add(new Label("# of transferred data in TB into internet:"), 0, 4);
         add(dataOutSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("# of http-requests:"), 0, 5);
+        add(new Label("# of http-requests in 10.000:"), 0, 5);
         add(requestsSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
     }

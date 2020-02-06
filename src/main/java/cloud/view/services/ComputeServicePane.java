@@ -148,21 +148,20 @@ public class ComputeServicePane extends ServicePropertiesPane {
     }
 
     private void setCodeControls() {
-        add(new Label("# of invocations:"), 0, 3);
+        add(new Label("# of invocations in Mio.:"), 0, 3);
         add(numOneSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("Duration per invocation in 100ms-steps:"), 0, 4);
+        add(new Label("Duration per invocation in seconds:"), 0, 4);
         add(numTwoSpinner, 1, 4);
         add(new Label("# of storage in MB:"), 0, 5);
         add(storageSpinner, 1, 5);
     }
 
     private void setBalancerControls() {
-        add(new Label("Compute instance reference:"), 0, 3);
-        add(computeInstanceField, 1, 3);
+        add(new Label("# of Load Balancer Units:"), 0, 3);
+        add(numOneSpinner, 1, 3);
         add(new Label("Transferred data in GB:"), 0, 4);
         add(dataSpinner, 1, 4);
-        add(new Label("# of alarms:"), 0, 5);
-        add(numOneSpinner, 1, 5);
+        add(new Label("per month"), 2, 4);
     }
 }

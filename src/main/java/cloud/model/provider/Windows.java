@@ -19,6 +19,8 @@ class Windows extends Provider implements IPricing {
 
     @Override
     public void optimizeCosts() {
-
+        /*
+         * TODO: implement function to optimize costs of services for windows azure
+         */
     }
 }

@@ -59,10 +59,10 @@ public class ComputeServiceCreator implements IServiceCreator {
         } else if (computeType.equals(types[4])) {
             /* Code */
             return new ComputeService(name, computeType, "", "", "", "",
-                    "", cpu, storage, 0, numOne, numTwo);
+                    "", 0, storage, 0, numOne, numTwo);
         } else if (computeType.equals(types[5])) {
             /* Load Balancing */
-            return new ComputeService(name, computeType, "", "", computeInstance, "",
+            return new ComputeService(name, computeType, "", "", "", "",
                     "", 0, 0, data, numOne, 0);
         } else {
             throw new IllegalArgumentException("Invalid compute type");

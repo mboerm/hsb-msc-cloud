@@ -1,6 +1,6 @@
 package cloud.model.design;
 
-import cloud.model.pricing.Price;
+import cloud.model.pricing.Costs;
 import cloud.model.provider.Provider;
 import cloud.model.services.Service;
 import javafx.collections.FXCollections;
@@ -10,7 +10,7 @@ import javafx.util.Pair;
 public class Design {
 
     private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
-    private final ObservableList<Pair<Service, Price>> servicesCosts = FXCollections.observableArrayList();
+    private final ObservableList<Pair<Service, Costs>> servicesCosts = FXCollections.observableArrayList();
 
     private Provider provider;
     private String usagePeriod;
@@ -36,10 +36,10 @@ public class Design {
         this.servicesList.clear();
     }
 
-    public void addServiceCost(Service service, Price charge) {
+    public void addServiceCost(Service service, Costs charge) {
         this.servicesCosts.add(new Pair<>(service, charge));
     }
-    public ObservableList<Pair<Service, Price>> getServicesCosts() {return this.servicesCosts;}
+    public ObservableList<Pair<Service, Costs>> getServicesCosts() {return this.servicesCosts;}
     public void clearServicesCosts() {this.servicesCosts.clear();}
 
     public void matchServices() {

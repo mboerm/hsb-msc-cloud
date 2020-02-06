@@ -5,7 +5,6 @@ import cloud.model.design.Design;
 import cloud.view.DesignViewC;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import cloud.model.*;
 
 import java.util.Locale;
 

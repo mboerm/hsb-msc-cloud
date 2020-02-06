@@ -107,11 +107,11 @@ public class AnalyticServicePane extends ServicePropertiesPane {
     }
 
     private void setDataStreamControls() {
-        add(new Label("# of hours:"), 0, 3);
-        add(dataSpinner, 1, 3);
-        add(new Label("# of units in Mio.:"), 0, 4);
-        unitsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 1));
-        add(unitsSpinner, 1, 4);
+        add(new Label("# of datasets:"), 0, 3);
+        add(numOneSpinner, 1, 3);
+        add(new Label("per second"),2 , 3);
+        add(new Label("size of dataset in KB:"), 0, 4);
+        add(numTwoSpinner, 1, 4);
     }
 
     private void setDataCatalogControls() {

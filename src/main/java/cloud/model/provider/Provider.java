@@ -15,12 +15,13 @@ public abstract class Provider implements IPricing {
 
     private String serviceName;
     private String serviceShortName;
+    private String servicesFile;
     private String priceFile;
     private String freeFile;
     private Document doc;
 
     public Provider() {
-        setServicesDocument();
+        setServicesFile(Config.getInstance().getConfigValue("services-file"));
     }
 
     public String getServiceName() {
@@ -35,6 +36,11 @@ public abstract class Provider implements IPricing {
     }
     public void setServiceShortName(String serviceShortName) {
         this.serviceShortName = serviceShortName;
+    }
+
+    public String getServicesFile() {return servicesFile;}
+    public void setServicesFile(String servicesFile) {
+        this.servicesFile = servicesFile;
     }
 
     public String getPriceFile() {
@@ -52,8 +58,9 @@ public abstract class Provider implements IPricing {
     }
 
     public String getMatchingServiceForName(String nameValue) {
-        NodeList servicesNodeList = doc.getElementsByTagName("service");
+        setDocument(servicesFile);
 
+        NodeList servicesNodeList = doc.getElementsByTagName("service");
         for(int i=0; i<servicesNodeList.getLength(); i++) {
             Node serviceNode = servicesNodeList.item(i);
             if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -66,10 +73,10 @@ public abstract class Provider implements IPricing {
         return "";
     }
 
-    private void setServicesDocument() {
-        String servicesFile = Config.getInstance().getConfigValue("services-file");
+    protected Document getDocument() {return doc;}
+    protected void setDocument(String fileName) {
         try {
-            File file = new File(getClass().getClassLoader().getResource(servicesFile).getFile());
+            File file = new File(getClass().getClassLoader().getResource(fileName).getFile());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(file);

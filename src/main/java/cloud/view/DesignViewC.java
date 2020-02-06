@@ -1,7 +1,7 @@
 package cloud.view;
 
 import cloud.configuration.Config;
-import cloud.model.StageManager;
+import cloud.main.StageManager;
 import cloud.model.services.Service;
 import cloud.model.design.*;
 import cloud.model.provider.ProviderFactory;

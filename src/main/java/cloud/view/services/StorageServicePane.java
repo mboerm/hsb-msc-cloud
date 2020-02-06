@@ -103,8 +103,9 @@ public class StorageServicePane extends ServicePropertiesPane {
 
     private void setObjectStorageControls() {
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-object-mode"));
-        add(new Label("Storage in GB:"), 0, 4);
+        add(new Label("Storage in TB:"), 0, 4);
         add(capacitySpinner, 1, 4);
+        add(new Label("per month"), 2, 4);
         add(new Label("# of read requests:"), 0, 5);
         add(requestsReadSpinner, 1, 5);
         add(new Label("# of write requests:"), 0, 6);

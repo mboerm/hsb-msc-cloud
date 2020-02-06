@@ -1,4 +1,4 @@
-package cloud.model;
+package cloud.main;
 
 import javafx.stage.Stage;
 
