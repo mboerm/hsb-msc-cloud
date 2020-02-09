@@ -53,6 +53,9 @@ public class DesignViewC {
             view.getPaneDesignArea().getServicesTable().getItems().removeAll();
             design.clearServicesList();
             design.clearServicesCosts();
+            view.getMenuDesignMatch().setDisable(true);
+            view.getMenuDesignCalculate().setDisable(true);
+            view.getMenuDesignOptimize().setDisable(true);
         });
 
         view.getMenuDesignMatch().setOnAction(actionEvent -> {
