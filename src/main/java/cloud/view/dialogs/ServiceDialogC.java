@@ -5,7 +5,7 @@ import cloud.model.services.*;
 import cloud.view.services.*;
 
 public class ServiceDialogC {
-    ServiceDialog dialogService;
+    private ServiceDialog dialogService;
 
     private ServicePaneFactory servicePaneFactory;
     private ServiceUsagePropertiesPane serviceUsagePane;
@@ -49,9 +49,8 @@ public class ServiceDialogC {
         if (serviceData != null) {
             setServiceUsageProperties();
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean showPresetDialog(Service data) {
