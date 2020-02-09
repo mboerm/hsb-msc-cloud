@@ -6,6 +6,7 @@ import cloud.model.services.Service;
 import cloud.model.design.*;
 import cloud.model.provider.ProviderFactory;
 
+import cloud.view.dialogs.CostReportC;
 import cloud.view.dialogs.ServiceDialogC;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -26,12 +27,14 @@ public class DesignViewC {
 
     // Controller
     private ServiceDialogC dialogServiceC;
+    private CostReportC costReportC;
 
     public DesignViewC() {
         this.view = new DesignView();
         this.design = DesignManager.getInstance().getDesign();
         this.providerFactory = new ProviderFactory();
         this.dialogServiceC = new ServiceDialogC();
+        this.costReportC = new CostReportC();
 
         initMenuHandler();
         initDesignPropertyHandler();
@@ -62,6 +65,9 @@ public class DesignViewC {
         view.getMenuDesignCalculate().setOnAction(actionEvent -> {
             design.clearServicesCosts();
             design.getProvider().calculateCosts();
+            if (costReportC.showCostReport()) {
+                System.out.println("create cost report");
+            }
         });
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
