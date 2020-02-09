@@ -8,8 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ButtonType;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class CostReportC {
@@ -26,20 +24,18 @@ public class CostReportC {
 
     private void setCostsData() {
         ObservableList<Pair<Service, Costs>> costs = DesignManager.getInstance().getDesign().getServicesCosts();
-        List list = new ArrayList();
+        ObservableList<CostReport.Row> rowList = FXCollections.observableArrayList();
         double totalCosts = 0;
 
         for (Pair<Service, Costs> cost : costs) {
-            list.add(new String[]{
+            rowList.add(new CostReport.Row(
                     cost.getKey().getName(),
-                    cost.getKey().getDisplayName(),
                     cost.getKey().getProviderService(),
-                    cost.getValue().getPrice().toString() + " USD"
-            });
+                    cost.getValue().getPrice().toString() + " USD")
+            );
             totalCosts += cost.getValue().getPrice();
         }
-        costReport.getCostsTable().setItems(FXCollections.observableList(list));
-        costReport.getCostsTable().refresh();
+        costReport.getCostsTable().setItems(rowList);
         costReport.getTotalCostsValueLabel().setText(totalCosts + " USD");
     }
 }

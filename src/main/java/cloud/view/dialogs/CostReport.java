@@ -1,17 +1,18 @@
 package cloud.view.dialogs;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class CostReport extends Dialog<ButtonType> {
 
-    private TableView<String> costsTable = new TableView<>();
+    private TableView<Row> costsTable = new TableView<>();
     private Label totalCostsValueLabel;
     private ButtonType buttonTypeCreate;
 
@@ -45,23 +46,47 @@ public class CostReport extends Dialog<ButtonType> {
     }
 
     private void initCostsTable() {
-        TableColumn serviceNameCol = new TableColumn("Name");
-        TableColumn serviceDisplayCol = new TableColumn("Service");
-        TableColumn serviceProviderNameCol = new TableColumn("Provider-Service");
-        TableColumn serviceCostsCol = new TableColumn("Costs");
+        TableColumn<Row, String> serviceNameCol = new TableColumn<>("Name");
+        TableColumn<Row, String> serviceProviderNameCol = new TableColumn<>("Provider-Service");
+        TableColumn<Row, String> serviceCostsCol = new TableColumn<>("Costs");
+
+        serviceNameCol.setCellValueFactory(new PropertyValueFactory<>("fieldName"));
+        serviceProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("fieldProviderService"));
+        serviceCostsCol.setCellValueFactory(new PropertyValueFactory<>("fieldCost"));
 
         serviceNameCol.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
-        serviceDisplayCol.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
         serviceProviderNameCol.setMaxWidth(1f * Integer.MAX_VALUE * 30);
         serviceCostsCol.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
 
         costsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        costsTable.getColumns().addAll(serviceNameCol, serviceDisplayCol, serviceProviderNameCol, serviceCostsCol);
+        costsTable.getColumns().addAll(serviceNameCol, serviceProviderNameCol, serviceCostsCol);
     }
 
-    public TableView<String> getCostsTable() {
-        return this.costsTable;
+    public TableView<Row> getCostsTable() {
+        return costsTable;
     }
     public ButtonType getButtonTypeCreate() {return this.buttonTypeCreate;}
     public Label getTotalCostsValueLabel() {return this.totalCostsValueLabel;}
+
+    public static class Row {
+        private SimpleStringProperty fieldName;
+        private SimpleStringProperty fieldProviderService;
+        private SimpleStringProperty fieldCost;
+
+        Row(String fName, String fProviderService, String fCost){
+            this.fieldName = new SimpleStringProperty(fName);
+            this.fieldProviderService = new SimpleStringProperty(fProviderService);
+            this.fieldCost = new SimpleStringProperty(fCost);
+        }
+
+        public String getFieldName() {
+            return fieldName.get();
+        }
+        public String getFieldProviderService() {
+            return fieldProviderService.get();
+        }
+        public String getFieldCost() {
+            return fieldCost.get();
+        }
+    }
 }
