@@ -3,8 +3,8 @@ package cloud.model.pricing;
 import java.text.DecimalFormat;
 
 public class Costs {
-    private Double price;
-    private Double scaledPrice;
+    private double price;
+    private double scaledPrice;
 
     private static DecimalFormat df2 = new DecimalFormat("#.00");
 
@@ -17,13 +17,13 @@ public class Costs {
         return price;
     }
     public void setPrice(Double price) {
-        this.price = Double.valueOf(df2.format(price));
+        this.price = Double.parseDouble(df2.format(price));
     }
 
     public Double getScaledPrice() {
         return scaledPrice;
     }
     public void setScaledPrice(Double scaledPrice) {
-        this.scaledPrice = Double.valueOf(df2.format(scaledPrice));
+        this.scaledPrice = Double.parseDouble(df2.format(scaledPrice));
     }
 }

@@ -5,7 +5,7 @@ import cloud.model.services.*;
 import cloud.view.services.*;
 
 public class ServiceDialogC {
-    ServiceDialog dialogService;
+    private ServiceDialog dialogService;
 
     private ServicePaneFactory servicePaneFactory;
     private ServiceUsagePropertiesPane serviceUsagePane;

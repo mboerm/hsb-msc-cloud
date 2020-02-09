@@ -63,8 +63,8 @@ class Amazon extends Provider implements IPricing {
         Costs serviceCosts = new Costs();
         if (service.getComputeType().equals(types[0])) {
             /* compute type "VM" */
-            double instancePrice = 0.0;
-            double dataPrice = 0.0;
+            double instancePrice = 0;
+            double dataPrice = 0;
             NodeList regions = element.getElementsByTagName("region");
             for (int i = 0; i < regions.getLength(); i++) {
                 Node regionNode = regions.item(i);
@@ -100,8 +100,8 @@ class Amazon extends Provider implements IPricing {
             serviceCosts.setPrice(requestsCosts + durationCosts);
         } else if (service.getComputeType().equals(types[5])) {
             /* compute type "Load Balancing" */
-            double hourPrice = 0.0;
-            double dataPrice = 0.0;
+            double hourPrice = 0;
+            double dataPrice = 0;
             NodeList balancerRegions = element.getElementsByTagName("region");
             for (int i = 0; i < balancerRegions.getLength(); i++) {
                 Node regionNode = balancerRegions.item(i);
@@ -130,11 +130,11 @@ class Amazon extends Provider implements IPricing {
 
         if (service.getStorageType().equals(types[0]) && service.getStorageMode().equals(modes[0])) {
             // storage type "Object-Storage"
-            double capacityPrice = 0.0;
-            double requestsReadPrice = 0.0;
-            double requestsWritePrice = 0.0;
-            double requestsFactor = 0.0;
-            double dataOutPrice = 0.0;
+            double capacityPrice = 0;
+            double requestsReadPrice = 0;
+            double requestsWritePrice = 0;
+            double requestsFactor = 0;
+            double dataOutPrice = 0;
             NodeList regions = element.getElementsByTagName("region");
             for (int i = 0; i < regions.getLength(); i++) {
                 Node regionNode = regions.item(i);
@@ -179,9 +179,9 @@ class Amazon extends Provider implements IPricing {
 
         if (service.getAnalyticType().equals(types[3])) {
             /* analytic type "Data Stream" */
-            double dataPrice = 0.0;
+            double dataPrice = 0;
             int dataHourSize = 0;
-            double unitPrice = 0.0;
+            double unitPrice = 0;
             int unitSize = 0;
 
             NodeList balancerRegions = element.getElementsByTagName("region");
@@ -209,9 +209,9 @@ class Amazon extends Provider implements IPricing {
                 }
             }
         } else if (service.getAnalyticType().equals(types[6])) {
-            double instancePrice = 0.0;
-            double dataPrice = 0.0;
-            double dataOutPrice = 0.0;
+            double instancePrice = 0;
+            double dataPrice = 0;
+            double dataOutPrice = 0;
             NodeList regions = element.getElementsByTagName("region");
             for (int i = 0; i < regions.getLength(); i++) {
                 Node regionNode = regions.item(i);
@@ -251,10 +251,10 @@ class Amazon extends Provider implements IPricing {
 
         if (service.getNetworkType().equals(types[3])) {
             /* network type "CDN" */
-            double dataPrice = 0.0;
-            double dataOutPrice = 0.0;
-            double httpPrice = 0.0;
-            double httpFactor = 0.0;
+            double dataPrice = 0;
+            double dataOutPrice = 0;
+            double httpPrice = 0;
+            double httpFactor = 0;
 
             NodeList regionsElements = element.getElementsByTagName("region");
             for (int i = 0; i < regionsElements.getLength(); i++) {
@@ -296,9 +296,9 @@ class Amazon extends Provider implements IPricing {
             /* monitoring type "System Monitor" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());
             double eventsPrice = Double.parseDouble(element.getElementsByTagName("events").item(0).getTextContent());
-            double metricsPrice = 0.0;
-            double dataCollectPrice = 0.0;
-            double dataSavePrice = 0.0;
+            double metricsPrice = 0;
+            double dataCollectPrice = 0;
+            double dataSavePrice = 0;
             NodeList metricsElements = element.getElementsByTagName("metrics");
             for (int i = 0; i < metricsElements.getLength(); i++) {
                 Node metricsNode = metricsElements.item(i);
