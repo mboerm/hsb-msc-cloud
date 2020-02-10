@@ -1,6 +1,7 @@
 package cloud.configuration;
 
-import java.text.DecimalFormat;
+import java.text.*;
+import java.util.Date;
 
 public final class Constants {
     private Constants(){
@@ -18,5 +19,13 @@ public final class Constants {
     public static final String CONFIG_FILE = "xml/config.xml";
     public static final String CONFIG_SEPARATOR = ";";
 
-    public static final DecimalFormat DF2 = new DecimalFormat("#.00");
+    public static final DecimalFormat DOUBLE_FORMAT_2 = new DecimalFormat("#0.00");
+    public static final DateFormat DATE_FORMAT_FILE = new SimpleDateFormat("dd-MM-yy_HH-mm-ss");
+    public static final DateFormat DATE_FORMAT_TITLE = DateFormat.getDateInstance(DateFormat.LONG);
+
+    public static final int MONTH_SECONDS = 2628000;
+    public static final int MONTH_HOURS = 730;
+    public static final int MONTH_DAYS = 31;
+    public static final int DATA_FACTOR = 1024;
+    public static final double K_FACTOR = Math.pow(10,3);
 }

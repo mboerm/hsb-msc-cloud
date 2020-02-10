@@ -1,6 +1,7 @@
 package cloud.model.provider;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import cloud.model.design.DesignManager;
 import cloud.model.pricing.*;
 import cloud.model.services.*;
@@ -96,7 +97,7 @@ class Amazon extends Provider implements IPricing {
             double durationPrice = Double.parseDouble(element.getElementsByTagName("duration").item(0).getTextContent());
             double durationFactor = Double.parseDouble(element.getElementsByTagName("duration").item(0).getAttributes().getNamedItem("factor").getTextContent());
             double requestsCosts = service.getNumOne() * requestsPrice;
-            double durationCosts = (service.getNumOne() * durationFactor) * service.getNumTwo() * ((double) (service.getStorage()) / DATA_FACTOR) * durationPrice;
+            double durationCosts = (service.getNumOne() * durationFactor) * service.getNumTwo() * ((double) (service.getStorage()) / Constants.DATA_FACTOR) * durationPrice;
             serviceCosts.setPrice(requestsCosts + durationCosts);
         } else if (service.getComputeType().equals(types[5])) {
             /* compute type "Load Balancing" */
@@ -114,7 +115,7 @@ class Amazon extends Provider implements IPricing {
                             dataPrice = Double.parseDouble(subNode.getTextContent());
                         }
                     }
-                    double hourCosts = service.getNumOne() * hourPrice * MONTH_HOURS;
+                    double hourCosts = service.getNumOne() * hourPrice * Constants.MONTH_HOURS;
                     double dataCosts = service.getNumOne() * service.getData() * dataPrice;
                     serviceCosts.setPrice(hourCosts + dataCosts);
                 }
@@ -199,12 +200,12 @@ class Amazon extends Provider implements IPricing {
                         }
                     }
 
-                    double dataSize = (double) service.getNum().getKey() * service.getNum().getValue() / DATA_FACTOR;
+                    double dataSize = (double) service.getNum().getKey() * service.getNum().getValue() / Constants.DATA_FACTOR;
                     int numOfDataHours = (int) Math.ceil((dataHourSize * dataSize) / 100.0);
-                    double dataCosts = numOfDataHours * MONTH_HOURS * dataPrice;
+                    double dataCosts = numOfDataHours * Constants.MONTH_HOURS * dataPrice;
 
                     int numOfUnits = (int) Math.ceil((double) (service.getNum().getValue() / unitSize) / 100.0);
-                    double unitCosts = numOfUnits * MONTH_SECONDS * unitPrice;
+                    double unitCosts = numOfUnits * Constants.MONTH_SECONDS * unitPrice;
                     serviceCosts.setPrice(dataCosts + unitCosts);
                 }
             }
@@ -281,7 +282,7 @@ class Amazon extends Provider implements IPricing {
                 }
             }
             double dataCosts = service.getData() * dataPrice;
-            double dataOutCosts = service.getDataOut() * K_FACTOR * dataOutPrice;
+            double dataOutCosts = service.getDataOut() * Constants.K_FACTOR * dataOutPrice;
             double httpCosts = (service.getRequests() / httpFactor) * httpPrice;
             serviceCosts.setPrice(dataCosts + dataOutCosts + httpCosts);
         }

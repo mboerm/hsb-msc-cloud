@@ -15,13 +15,13 @@ public class Costs {
         return price;
     }
     public void setPrice(Double price) {
-        this.price = Double.parseDouble(Constants.DF2.format(price));
+        this.price = Double.parseDouble(Constants.DOUBLE_FORMAT_2.format(price));
     }
 
     public Double getScaledPrice() {
         return scaledPrice;
     }
     public void setScaledPrice(Double scaledPrice) {
-        this.scaledPrice = Double.parseDouble(Constants.DF2.format(scaledPrice));
+        this.scaledPrice = Double.parseDouble(Constants.DOUBLE_FORMAT_2.format(scaledPrice));
     }
 }

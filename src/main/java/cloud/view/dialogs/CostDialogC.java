@@ -26,17 +26,15 @@ public class CostDialogC {
     private void setCostsData() {
         ObservableList<Pair<Service, Costs>> costs = DesignManager.getInstance().getDesign().getServicesCosts();
         ObservableList<CostDialog.Row> rowList = FXCollections.observableArrayList();
-        double totalCosts = 0;
 
         for (Pair<Service, Costs> cost : costs) {
             rowList.add(new CostDialog.Row(
                     cost.getKey().getName(),
                     cost.getKey().getProviderService(),
-                    Constants.DF2.format(cost.getValue().getPrice()) + " USD")
+                    Constants.DOUBLE_FORMAT_2.format(cost.getValue().getPrice()) + " USD")
             );
-            totalCosts += cost.getValue().getPrice();
         }
         costReport.getCostsTable().setItems(rowList);
-        costReport.getTotalCostsValueLabel().setText(Constants.DF2.format(totalCosts) + " USD");
+        costReport.getTotalCostsValueLabel().setText(Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCosts()) + " USD");
     }
 }
