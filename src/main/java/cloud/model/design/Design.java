@@ -1,5 +1,6 @@
 package cloud.model.design;
 
+import cloud.configuration.Constants;
 import cloud.model.pricing.Costs;
 import cloud.model.provider.Provider;
 import cloud.model.services.Service;
@@ -11,6 +12,7 @@ public class Design {
 
     private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
     private final ObservableList<Pair<Service, Costs>> servicesCosts = FXCollections.observableArrayList();
+    private double totalCosts;
 
     private Provider provider;
     private String usagePeriod;
@@ -75,4 +77,20 @@ public class Design {
 
     public String getPeriodOfCapacity() {return this.periodOfCapacity;}
     public void setPeriodOfCapacity(String capacityPeriod) {this.periodOfCapacity = capacityPeriod;}
+
+    public double getTotalCosts() {
+        double total = 0;
+        for (Pair<Service, Costs> cost : servicesCosts) {
+            total += cost.getValue().getPrice();
+        }
+        return total;
+    }
+
+    public double getTotalCostsPerDay() {
+        return getTotalCosts() / Constants.MONTH_DAYS;
+    }
+
+    public double getTotalCostsPerHour() {
+        return getTotalCosts() / Constants.MONTH_HOURS;
+    }
 }
