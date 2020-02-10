@@ -6,7 +6,7 @@ import cloud.model.services.Service;
 import cloud.model.design.*;
 import cloud.model.provider.ProviderFactory;
 
-import cloud.view.dialogs.CostReportC;
+import cloud.view.dialogs.CostDialogC;
 import cloud.view.dialogs.ServiceDialogC;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -27,14 +27,14 @@ public class DesignViewC {
 
     // Controller
     private ServiceDialogC dialogServiceC;
-    private CostReportC costReportC;
+    private CostDialogC costReportC;
 
     public DesignViewC() {
         this.view = new DesignView();
         this.design = DesignManager.getInstance().getDesign();
         this.providerFactory = new ProviderFactory();
         this.dialogServiceC = new ServiceDialogC();
-        this.costReportC = new CostReportC();
+        this.costReportC = new CostDialogC();
 
         initMenuHandler();
         initDesignPropertyHandler();

@@ -1,5 +1,6 @@
 package cloud.view.dialogs;
 
+import cloud.configuration.Constants;
 import cloud.model.design.DesignManager;
 import cloud.model.pricing.Costs;
 import cloud.model.services.Service;
@@ -10,11 +11,11 @@ import javafx.util.Pair;
 
 import java.util.Optional;
 
-public class CostReportC {
-    private CostReport costReport;
+public class CostDialogC {
+    private CostDialog costReport;
 
     public boolean showCostReport() {
-        costReport = new CostReport();
+        costReport = new CostDialog();
         setCostsData();
 
         Optional<ButtonType> result = costReport.showAndWait();
@@ -24,18 +25,18 @@ public class CostReportC {
 
     private void setCostsData() {
         ObservableList<Pair<Service, Costs>> costs = DesignManager.getInstance().getDesign().getServicesCosts();
-        ObservableList<CostReport.Row> rowList = FXCollections.observableArrayList();
+        ObservableList<CostDialog.Row> rowList = FXCollections.observableArrayList();
         double totalCosts = 0;
 
         for (Pair<Service, Costs> cost : costs) {
-            rowList.add(new CostReport.Row(
+            rowList.add(new CostDialog.Row(
                     cost.getKey().getName(),
                     cost.getKey().getProviderService(),
-                    cost.getValue().getPrice().toString() + " USD")
+                    Constants.DF2.format(cost.getValue().getPrice()) + " USD")
             );
             totalCosts += cost.getValue().getPrice();
         }
         costReport.getCostsTable().setItems(rowList);
-        costReport.getTotalCostsValueLabel().setText(totalCosts + " USD");
+        costReport.getTotalCostsValueLabel().setText(Constants.DF2.format(totalCosts) + " USD");
     }
 }

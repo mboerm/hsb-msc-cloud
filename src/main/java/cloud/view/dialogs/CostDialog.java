@@ -10,13 +10,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class CostReport extends Dialog<ButtonType> {
+public class CostDialog extends Dialog<ButtonType> {
 
     private TableView<Row> costsTable = new TableView<>();
     private Label totalCostsValueLabel;
     private ButtonType buttonTypeCreate;
 
-    public CostReport() {
+    public CostDialog() {
         setTitle("Cost Calculation Report");
         setResizable(false);
 

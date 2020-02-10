@@ -1,5 +1,7 @@
 package cloud.configuration;
 
+import java.text.DecimalFormat;
+
 public final class Constants {
     private Constants(){
         /*
@@ -15,4 +17,6 @@ public final class Constants {
 
     public static final String CONFIG_FILE = "xml/config.xml";
     public static final String CONFIG_SEPARATOR = ";";
+
+    public static final DecimalFormat DF2 = new DecimalFormat("#.00");
 }
