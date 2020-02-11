@@ -11,17 +11,17 @@ public class Costs {
         setScaledPrice(0.0);
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = Double.parseDouble(Constants.DOUBLE_FORMAT_2.format(price));
     }
 
-    public Double getScaledPrice() {
+    public double getScaledPrice() {
         return scaledPrice;
     }
-    public void setScaledPrice(Double scaledPrice) {
+    public void setScaledPrice(double scaledPrice) {
         this.scaledPrice = Double.parseDouble(Constants.DOUBLE_FORMAT_2.format(scaledPrice));
     }
 }
