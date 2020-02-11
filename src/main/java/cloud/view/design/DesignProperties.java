@@ -21,42 +21,38 @@ public class DesignProperties extends GridPane {
         setVgap(10);
         setHgap(10);
 
-        Label providerLbl = new Label("Provider:");
         providerBox = new ComboBox<>(Config.getInstance().getConfigValues("provider-services"));
 
-        Label usagePeriodLbl = new Label("Primary usage period:");
         usagePeriodField = new TextField();
         usagePeriodField.setPromptText("hh:mm - hh:mm");
 
-        Label regionLbl = new Label("Primary region:");
         regionBox = new ComboBox<>(Config.getInstance().getConfigValues("service-regions"));
 
-        Label numOfInstancesLbl = new Label("# of compute instances:");
         numOfInstancesSpinner = new Spinner<>(1, 100, 1);
         numOfInstancesSpinner.setEditable(true);
 
-        Label numOfRequestsLbl = new Label("# of requests:");
-        numOfRequestsSpinner = new Spinner<>(100000, 10000000, 100000);
+        numOfRequestsSpinner = new Spinner<>(1, 10000000, 1);
         numOfRequestsSpinner.setEditable(true);
         periodOfRequestsBox = new ComboBox<>(Config.getInstance().getConfigValues("service-property-period"));
 
-        Label numOfCapacityLbl = new Label("# of storage capacity:");
-        numOfCapacitySpinner = new Spinner<>(10, 10000, 100);
+        numOfCapacitySpinner = new Spinner<>(1, 1000000, 1);
         numOfCapacitySpinner.setEditable(true);
         periodOfCapacityBox = new ComboBox<>(Config.getInstance().getConfigValues("service-property-period"));
 
-        add(providerLbl, 0, 0);
+        String[] labels = Config.getInstance().getConfigValuesAsArray("design-property-labels");
+
+        add(new Label(labels[0]), 0, 0);
         add(providerBox, 1, 0);
-        add(usagePeriodLbl, 0, 1);
-        add(usagePeriodField, 1, 1);
-        add(regionLbl, 0, 2);
-        add(regionBox, 1, 2);
-        add(numOfInstancesLbl, 0, 3);
+        add(new Label(labels[1]), 0, 1);
+        add(regionBox, 1, 1);
+        add(new Label(labels[2]), 0, 2);
+        add(usagePeriodField, 1, 2);
+        add(new Label(labels[3]), 0, 3);
         add(numOfInstancesSpinner, 1, 3);
-        add(numOfRequestsLbl, 0, 4);
+        add(new Label(labels[4]), 0, 4);
         add(numOfRequestsSpinner, 1, 4);
         add(periodOfRequestsBox, 1, 5);
-        add(numOfCapacityLbl, 0, 6);
+        add(new Label(labels[5]), 0, 6);
         add(numOfCapacitySpinner, 1, 6);
         add(periodOfCapacityBox, 1, 7);
     }

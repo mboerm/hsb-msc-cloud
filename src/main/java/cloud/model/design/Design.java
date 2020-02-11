@@ -12,7 +12,6 @@ public class Design {
 
     private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
     private final ObservableList<Pair<Service, Costs>> servicesCosts = FXCollections.observableArrayList();
-    private double totalCosts;
 
     private Provider provider;
     private String usagePeriod;
@@ -22,6 +21,16 @@ public class Design {
     private String periodOfRequests;
     private Integer numOfCapacity;
     private String periodOfCapacity;
+
+    public Design() {
+        setUsagePeriod("");
+        setPrimaryRegion("");
+        setNumOfInstances(0);
+        setNumOfRequests(0);
+        setPeriodOfRequests("");
+        setNumOfCapacity(0);
+        setPeriodOfCapacity("");
+    }
 
     public void addService(Service service) {
         this.servicesList.add(service);
