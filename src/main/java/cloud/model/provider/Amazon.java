@@ -181,9 +181,9 @@ class Amazon extends Provider implements IPricing {
         if (service.getAnalyticType().equals(types[3])) {
             /* analytic type "Data Stream" */
             double dataPrice = 0;
-            int dataHourSize = 0;
+            double dataHourSize = 0;
             double unitPrice = 0;
-            int unitSize = 0;
+            double unitSize = 0;
 
             NodeList balancerRegions = element.getElementsByTagName("region");
             for (int i = 0; i < balancerRegions.getLength(); i++) {
@@ -192,20 +192,19 @@ class Amazon extends Provider implements IPricing {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         if (subNode.getNodeName().equals("data")) {
-                            dataHourSize = Integer.parseInt(subNode.getAttributes().getNamedItem("size").getTextContent());
+                            dataHourSize = Double.parseDouble(subNode.getAttributes().getNamedItem("size").getTextContent());
                             dataPrice = Double.parseDouble(subNode.getTextContent());
                         } else if (subNode.getNodeName().equals("unit")) {
-                            unitSize = Integer.parseInt(subNode.getAttributes().getNamedItem("size").getTextContent());
+                            unitSize = Double.parseDouble(subNode.getAttributes().getNamedItem("size").getTextContent());
                             unitPrice = Double.parseDouble(subNode.getTextContent());
                         }
                     }
-
-                    double dataSize = (double) service.getNum().getKey() * service.getNum().getValue() / Constants.DATA_FACTOR;
-                    int numOfDataHours = (int) Math.ceil((dataHourSize * dataSize) / 100.0);
+                    double dataSize = (double) service.getUnits() * service.getData() / Constants.DATA_FACTOR;
+                    int numOfDataHours = (int) Math.ceil(dataHourSize * dataSize);
                     double dataCosts = numOfDataHours * Constants.MONTH_HOURS * dataPrice;
 
-                    int numOfUnits = (int) Math.ceil((double) (service.getNum().getValue() / unitSize) / 100.0);
-                    double unitCosts = numOfUnits * Constants.MONTH_SECONDS * unitPrice;
+                    int numOfUnits = (int) Math.ceil((service.getData() / unitSize));
+                    double unitCosts = (numOfUnits * service.getUnits() * Constants.MONTH_SECONDS) / Constants.M_FACTOR  * unitPrice;
                     serviceCosts.setPrice(dataCosts + unitCosts);
                 }
             }
