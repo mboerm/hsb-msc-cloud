@@ -42,9 +42,28 @@
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
-                <configuration>
-                    <mainClass>cloud.main.CloudApp</mainClass>
-                </configuration>
+                <executions>
+                    <execution>
+                        <!-- Default configuration for running -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>cloud.main.CloudApp</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Configuration for debugging -->
+                        <id>debug</id>
+                        <configuration>
+                            <options>
+                                <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8000</option>
+                            </options>
+                            <mainClass>cloud.main.CloudApp</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+<!--                <configuration>-->
+<!--                    <mainClass>cloud.main.CloudApp</mainClass>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
     </build>
