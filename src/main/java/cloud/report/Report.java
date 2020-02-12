@@ -1,7 +1,6 @@
-package cloud.model.report;
+package cloud.report;
 
-import cloud.configuration.Config;
-import cloud.configuration.Constants;
+import cloud.configuration.*;
 import cloud.model.design.DesignManager;
 import cloud.model.pricing.Costs;
 import cloud.model.services.Service;
@@ -43,7 +42,9 @@ public class Report {
     private void writeHeader() {
         try {
             document.add(new Paragraph(Constants.DATE_FORMAT_TITLE.format(date), bf12Bold));
+            document.add(addEmptyLine(new Paragraph(), 1));
             document.add(new Paragraph("Cost Calculation Report", bf16Bold));
+            document.add(addEmptyLine(new Paragraph(), 1));
         } catch (DocumentException e) {
             System.err.println("Adding header to document failed! " + e);
         }
@@ -54,16 +55,24 @@ public class Report {
 
         float[] columnWidths = {1f, 1f};
         PdfPTable summaryTable = new PdfPTable(columnWidths);
-        summaryTable.setWidthPercentage(90f);
+        summaryTable.setWidthPercentage(75f);
         summaryTable.setSpacingBefore(10f);
         summaryTable.setSpacingAfter(10f);
 
-        insertCell(summaryTable, "Provider:", Element.ALIGN_LEFT, 1, bf12);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getProvider().getServiceName(), Element.ALIGN_LEFT, 1, bf12);
-        insertCell(summaryTable, "Primary region:", Element.ALIGN_LEFT, 1, bf12);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getPrimaryRegion(), Element.ALIGN_LEFT, 1, bf12);
-        insertCell(summaryTable, "Primary usage time:", Element.ALIGN_LEFT, 1, bf12);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getUsagePeriod(), Element.ALIGN_LEFT, 1, bf12);
+        String[] summaryLabels = Config.getInstance().getConfigValuesAsArray("design-property-labels");
+
+        insertCell(summaryTable, summaryLabels[0], Element.ALIGN_LEFT, 1, bf12);
+        insertCell(summaryTable, DesignManager.getInstance().getDesign().getProvider().getServiceName(), Element.ALIGN_CENTER, 1, bf12);
+        insertCell(summaryTable, summaryLabels[1], Element.ALIGN_LEFT, 1, bf12);
+        insertCell(summaryTable, DesignManager.getInstance().getDesign().getPrimaryRegion(), Element.ALIGN_CENTER, 1, bf12);
+        insertCell(summaryTable, summaryLabels[2], Element.ALIGN_LEFT, 1, bf12);
+        insertCell(summaryTable, DesignManager.getInstance().getDesign().getUsagePeriod(), Element.ALIGN_CENTER, 1, bf12);
+        insertCell(summaryTable, summaryLabels[3], Element.ALIGN_LEFT, 1, bf12);
+        insertCell(summaryTable, DesignManager.getInstance().getDesign().getNumOfInstances().toString(), Element.ALIGN_CENTER, 1, bf12);
+        insertCell(summaryTable, summaryLabels[4], Element.ALIGN_LEFT, 1, bf12);
+        insertCell(summaryTable, DesignManager.getInstance().getDesign().getNumOfRequests().toString(), Element.ALIGN_CENTER, 1, bf12);
+        insertCell(summaryTable, summaryLabels[5], Element.ALIGN_LEFT, 1, bf12);
+        insertCell(summaryTable, DesignManager.getInstance().getDesign().getNumOfCapacity().toString(), Element.ALIGN_CENTER, 1, bf12);
 
         try {
             document.add(summaryTitle);
@@ -74,7 +83,7 @@ public class Report {
     }
 
     private void writeChapterServices() {
-        Chapter servicesChapter = new Chapter(new Paragraph("Services"), 2);
+        Chapter servicesChapter = new Chapter(new Paragraph("Services"), 1);
 
         List servicesList = new List();
         for (Service service : DesignManager.getInstance().getDesign().getServicesList()) {
@@ -93,7 +102,7 @@ public class Report {
     }
 
     private void writeChapterCostCalc() {
-        Chapter costCalcChapter = new Chapter(new Paragraph("Cost Calculation"), 3);
+        Chapter costCalcChapter = new Chapter(new Paragraph("Cost Calculation"), 2);
 
         Section serviceCostsSection = costCalcChapter.addSection(new Paragraph("Service costs"));
         float[] columnWidths = {1f, 1f};
@@ -114,11 +123,11 @@ public class Report {
         totalCostsTable.setSpacingBefore(10f);
         totalCostsTable.setSpacingAfter(10f);
         insertCell(totalCostsTable, "Per Hour:", Element.ALIGN_LEFT, 1, bf12);
-        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerHour()), Element.ALIGN_RIGHT, 1, bf12);
+        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerHour()) + " USD", Element.ALIGN_RIGHT, 1, bf12);
         insertCell(totalCostsTable, "Per Day:", Element.ALIGN_LEFT, 1, bf12);
-        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerDay()), Element.ALIGN_RIGHT, 1, bf12);
+        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerDay()) + " USD", Element.ALIGN_RIGHT, 1, bf12);
         insertCell(totalCostsTable, "Per Month:", Element.ALIGN_LEFT, 1, bf12);
-        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCosts()), Element.ALIGN_RIGHT, 1, bf12);
+        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCosts()) + " USD", Element.ALIGN_RIGHT, 1, bf12);
         totalCostsSection.add(totalCostsTable);
 
         try {
@@ -129,7 +138,7 @@ public class Report {
     }
 
     private void writeChapterCostScale() {
-        Chapter costScaleChapter = new Chapter(new Paragraph("Cost Scaling"), 4);
+        Chapter costScaleChapter = new Chapter(new Paragraph("Cost Scaling"), 3);
         try {
             document.add(costScaleChapter);
         } catch (DocumentException e) {
@@ -138,7 +147,7 @@ public class Report {
     }
 
     private void writeChapterCostOptimize() {
-        Chapter costOptimizeChapter = new Chapter(new Paragraph("Cost Optimization"), 5);
+        Chapter costOptimizeChapter = new Chapter(new Paragraph("Cost Optimization"), 4);
         try {
             document.add(costOptimizeChapter);
         } catch (DocumentException e) {
@@ -148,7 +157,7 @@ public class Report {
 
     private void writeChapterCostCompare() {
         try {
-            Chapter costCompareChapter = new Chapter(new Paragraph("Cost Comparison"), 6);
+            Chapter costCompareChapter = new Chapter(new Paragraph("Cost Comparison"), 5);
 
             PdfPTable costCompareTable = new PdfPTable(4);
             costCompareTable.setWidthPercentage(100);
@@ -160,12 +169,12 @@ public class Report {
             costCompareTable.setWidths(columnWidths);
 
             String[] providerNames = Config.getInstance().getConfigValuesAsArray("provider-services");
-            //insert column headings
-            insertCell(costCompareTable, "", Element.ALIGN_RIGHT, 1, bf12Bold);
-            insertCell(costCompareTable, providerNames[0], Element.ALIGN_LEFT, 1, bf12Bold);
-            insertCell(costCompareTable, providerNames[1], Element.ALIGN_LEFT, 1, bf12Bold);
-            insertCell(costCompareTable, providerNames[2], Element.ALIGN_LEFT, 1, bf12Bold);
-            costCompareTable.setHeaderRows(1);
+            insertCell(costCompareTable, "", Element.ALIGN_RIGHT, 1, bf12Bold, true);
+            insertCell(costCompareTable, providerNames[0], Element.ALIGN_LEFT, 1, bf12Bold, true);
+            insertCell(costCompareTable, providerNames[1], Element.ALIGN_LEFT, 1, bf12Bold, true);
+            insertCell(costCompareTable, providerNames[2], Element.ALIGN_LEFT, 1, bf12Bold, true);
+            insertCell(costCompareTable, "Total costs", Element.ALIGN_LEFT, 4, bf12Bold, true);
+            insertCell(costCompareTable, "Cost differences", Element.ALIGN_LEFT, 4, bf12Bold, true);
 
             costCompareChapter.add(costCompareTable);
             document.add(costCompareChapter);
@@ -189,9 +198,13 @@ public class Report {
         writer.close();
     }
 
-    private void insertCell(PdfPTable table, String text, int align, int colspan, Font font){
+    private static void insertCell(PdfPTable table, String text, int align, int colspan, Font font, boolean... border){
         //create a new cell with the specified Text and Font
         PdfPCell cell = new PdfPCell(new Phrase(text.trim(), font));
+        //set border
+        if (border.length == 0) {
+            cell.setBorder(Rectangle.NO_BORDER);
+        }
         //set the cell alignment
         cell.setHorizontalAlignment(align);
         //set the cell column span in case you want to merge two or more cells
@@ -202,5 +215,12 @@ public class Report {
         }
         //add the call to the table
         table.addCell(cell);
+    }
+
+    private static Paragraph addEmptyLine(Paragraph paragraph, int number) {
+        for (int i = 0; i < number; i++) {
+            paragraph.add(new Paragraph(" "));
+        }
+        return paragraph;
     }
 }

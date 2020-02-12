@@ -2,7 +2,7 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.main.StageManager;
-import cloud.model.report.Report;
+import cloud.report.Report;
 import cloud.model.services.Service;
 import cloud.model.design.*;
 import cloud.model.provider.ProviderFactory;
