@@ -21,11 +21,13 @@ public final class Constants {
 
     public static final DecimalFormat DOUBLE_FORMAT_2 = new DecimalFormat("#0.00");
     public static final DateFormat DATE_FORMAT_FILE = new SimpleDateFormat("dd-MM-yy_HH-mm-ss");
-    public static final DateFormat DATE_FORMAT_TITLE = DateFormat.getDateInstance(DateFormat.LONG);
+    public static final DateFormat DATE_FORMAT_TITLE = new SimpleDateFormat("d. MMMM yyyy");
+//            DateFormat.getDateInstance(DateFormat.MEDIUM);
 
     public static final int MONTH_SECONDS = 2628000;
     public static final int MONTH_HOURS = 730;
     public static final int MONTH_DAYS = 31;
     public static final int DATA_FACTOR = 1024;
     public static final double K_FACTOR = Math.pow(10,3);
+    public static final double M_FACTOR = Math.pow(10,6);
 }
