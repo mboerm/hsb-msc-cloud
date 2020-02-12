@@ -7,6 +7,7 @@ import javafx.scene.control.Spinner;
 
 public class IntegrationServicePane extends ServicePropertiesPane {
     private Label integrationTypeLbl;
+    private String[] labels;
     private ComboBox<String> integrationTypeBox;
     private Spinner<Integer> dataSpinner;
     private Spinner<Integer> requestsSpinner;
@@ -67,24 +68,25 @@ public class IntegrationServicePane extends ServicePropertiesPane {
     }
 
     private void setMessageControls() {
+        labels = Config.getInstance().getConfigValuesAsArray("integration-messaging-labels");
         add(integrationTypeLbl, 0, 2);
         add(integrationTypeBox, 1, 2);
-        add(new Label("# of data in GB:"), 0, 3);
+        add(new Label(labels[0]), 0, 3);
         add(dataSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("# of requests:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(requestsSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("# of push messages:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(pushSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
-        add(new Label("# of http messages:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(httpSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
-        add(new Label("# of mail messages:"), 0, 7);
+        add(new Label(labels[4]), 0, 7);
         add(mailSpinner, 1, 7);
         add(new Label("per month"), 2, 7);
-        add(new Label("# of sms messages:"), 0, 8);
+        add(new Label(labels[5]), 0, 8);
         add(smsSpinner, 1, 8);
         add(new Label("per month"), 2, 8);
     }

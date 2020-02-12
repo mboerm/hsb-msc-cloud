@@ -34,12 +34,37 @@
 
     <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
 
-    <entry key="services-file">xml/services.xml</entry>
+    <entry key="design-property-labels">Provider:;Primary region:;Primary usage time:;# of Instances:;Requests:;Storage Capacity in TB:</entry>
+    <entry key="compute-vm-labels">Instance type:;Instance size:;Instance hours:;CPU:;RAM in GB:;Operating system:;Transferred data in GB:</entry>
+    <entry key="compute-container-labels">Container type:;CPU:;Storage in GB:;# of compute instances:;# of container groups:;Transferred data in GB:</entry>
+    <entry key="compute-app-labels">Language:;Compute instance reference:;Storage instance reference:</entry>
+    <entry key="compute-batch-labels">Compute instance reference:</entry>
+    <entry key="compute-code-labels">Invocations in Mio.:;Duration in seconds:;Storage in MB:</entry>
+    <entry key="compute-balancer-labels">Load Balancer Units:;Transferred data in GB:</entry>
+    <entry key="storage-object-labels">Storage in TB:;Read requests:;Write requests:;Data queries:;Transferred data in GB:</entry>
+    <entry key="storage-block-labels">Snapshot-storage in GB:;Volume-storage in GB:</entry>
+    <entry key="storage-file-labels">Storage in GB:;Rate in MB/s:;Transferred data in GB:</entry>
+    <entry key="database-sql-labels">Scheme:;Instance type:;Instance size:;CPU:;RAM in GB:;Instance hours:;Storage in GB:;Backup storage in GB:;Transferred data in GB:</entry>
+    <entry key="database-nosql-labels">Read queries:;Write queries:;Storage in GB:;Transferred data in GB:</entry>
+    <entry key="database-document-labels">Hours:Requests:;Storage in GB:;Transferred data in GB:</entry>
+    <entry key="database-cache-labels">Instance type:;Instance size:;CPU:;RAM in GB:;Hours:;Transferred data in GB:</entry>
+    <entry key="analytic-query-labels">Processed data in GB:</entry>
+    <entry key="analytic-transfer-labels">On-premise activities:;Off-premise activities:</entry>
+    <entry key="analytic-stream-labels">Datasets:;Dataset size in KB:</entry>
+    <entry key="analytic-catalog-labels">Units:;Requests:</entry>
+    <entry key="analytic-lake-labels">Units:;Processed data in GB:</entry>
+    <entry key="analytic-search-labels">Instance type:;Instance size:;CPU:;RAM in GB:;Instance-hours:;Processed data in GB:;Transferred data in GB:</entry>
+    <entry key="network-private-labels">Connections:;Transferred data in GB:</entry>
+    <entry key="network-api-labels">Requests:;Transferred data in GB:</entry>
+    <entry key="network-cdn-labels">Transferred data in GB:;Transferred data in TB into internet:;Http-requests in 10.000:</entry>
+    <entry key="network-dns-labels">Zones:;DNS-requests:</entry>
+    <entry key="monitoring-labels">Metrics:;Requests:;Data to collect in GB:;Data to save in GB:;Events in Mio.:;Logging:</entry>
+    <entry key="integration-messaging-labels">Data in GB:;Requests:;Push messages:;Http messages:;Mail messages:;Sms messages:</entry>
 
+    <entry key="services-file">xml/services.xml</entry>
     <entry key="aws-prices">xml/aws-prices.xml</entry>
     <entry key="azure-prices">xml/azure-prices.xml</entry>
     <entry key="gcp-prices">xml/gcp-prices.xml</entry>
-
     <entry key="aws-free-tier">aws-free-tier.xml</entry>
     <entry key="azure-free-tier">azure-free-tier.xml</entry>
     <entry key="gcp-free-tier">gcp-free-tier.xml</entry>

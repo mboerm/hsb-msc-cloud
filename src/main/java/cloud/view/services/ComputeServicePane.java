@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 public class ComputeServicePane extends ServicePropertiesPane {
 
     private Label computeTypeLbl;
+    private String[] labels;
 
     private ComboBox<String> computeTypeBox;
     private ComboBox<String> instanceTypeBox;
@@ -97,70 +98,76 @@ public class ComputeServicePane extends ServicePropertiesPane {
     }
 
     private void setVMControls() {
-        add(new Label("Instance type:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("compute-vm-labels");
+        add(new Label(labels[0]), 0, 3);
         add(instanceTypeBox, 1, 3);
-        add(new Label("Instance size:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(instanceSizeBox, 1, 4);
-        add(new Label("Instance hours:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(numOneSpinner, 1, 5);
-        add(new Label("# of CPU:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(cpuSpinner, 1, 6);
-        add(new Label("# of RAM in GB:"), 0, 7);
+        add(new Label(labels[4]), 0, 7);
         add(storageSpinner, 1, 7);
-        add(new Label("Operating system:"), 0, 8);
+        add(new Label(labels[5]), 0, 8);
         systemBox.setItems(Config.getInstance().getConfigValues("compute-os"));
         add(systemBox, 1, 8);
-        add(new Label("Transferred data in GB:"), 0, 9);
+        add(new Label(labels[6]), 0, 9);
         add(dataSpinner, 1, 9);
     }
 
     private void setContainerControls() {
-		add(new Label("Container type:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("compute-container-labels");
+		add(new Label(labels[0]), 0, 3);
 		systemBox.setItems(Config.getInstance().getConfigValues("compute-container-type"));
 		add(systemBox, 1, 3);
-        add(new Label("# of CPU:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(cpuSpinner, 1, 4);
 		add(new Label("per hour"), 2, 4);
-        add(new Label("# of storage in GB:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(storageSpinner, 1, 5);
 		add(new Label("per hour"), 2, 5);
-        add(new Label("# of compute instances:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(numOneSpinner, 1, 6);
-        add(new Label("# of container groups:"), 0, 7);
+        add(new Label(labels[4]), 0, 7);
         add(numTwoSpinner, 1, 7);
-        add(new Label("Transferred data in GB:"), 0, 8);
+        add(new Label(labels[5]), 0, 8);
         add(dataSpinner, 1, 8);
     }
 
     private void setAppControls() {
-        add(new Label("Language"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("compute-app-labels");
+        add(new Label(labels[0]), 0, 3);
         systemBox.setItems(Config.getInstance().getConfigValues("compute-app-language"));
         add(systemBox, 1, 3);
-        add(new Label("Compute instance reference:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(computeInstanceField, 1, 4);
-        add(new Label("Storage instance reference:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(storageInstanceField, 1, 5);
     }
 
     private void setBatchControls() {
-        add(new Label("Compute instance reference:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("compute-batch-labels");
+        add(new Label(labels[0]), 0, 3);
         add(computeInstanceField, 1, 3);
     }
 
     private void setCodeControls() {
-        add(new Label("# of invocations in Mio.:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("compute-code-labels");
+        add(new Label(labels[0]), 0, 3);
         add(numOneSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("Duration per invocation in seconds:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(numTwoSpinner, 1, 4);
-        add(new Label("# of storage in MB:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(storageSpinner, 1, 5);
     }
 
     private void setBalancerControls() {
-        add(new Label("# of Load Balancer Units:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("compute-balancer-labels");
+        add(new Label(labels[0]), 0, 3);
         add(numOneSpinner, 1, 3);
-        add(new Label("Transferred data in GB:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
     }

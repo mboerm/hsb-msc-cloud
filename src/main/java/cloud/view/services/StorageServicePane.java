@@ -10,6 +10,7 @@ public class StorageServicePane extends ServicePropertiesPane {
 
     private Label storageTypeLbl;
     private Label storageModeLbl;
+    private String[] labels;
 
     private ComboBox<String> storageTypeBox;
     private ComboBox<String> storageModeBox;
@@ -102,39 +103,42 @@ public class StorageServicePane extends ServicePropertiesPane {
     }
 
     private void setObjectStorageControls() {
+        this.labels = Config.getInstance().getConfigValuesAsArray("storage-object-labels");
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-object-mode"));
-        add(new Label("Storage in TB:"), 0, 4);
+        add(new Label(labels[0]), 0, 4);
         add(capacitySpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("# of read requests:"), 0, 5);
+        add(new Label(labels[1]), 0, 5);
         add(requestsReadSpinner, 1, 5);
-        add(new Label("# of write requests:"), 0, 6);
+        add(new Label(labels[2]), 0, 6);
         add(requestsWriteSpinner, 1, 6);
-        add(new Label("# of data queries:"), 0, 7);
+        add(new Label(labels[3]), 0, 7);
         add(queriesSpinner, 1, 7);
-        add(new Label("Transferred data in GB:"), 0, 8);
+        add(new Label(labels[4]), 0, 8);
         add(dataSpinner, 1, 8);
         add(new Label("per month"), 2, 8);
     }
 
     private void setBlockStorageControls() {
+        this.labels = Config.getInstance().getConfigValuesAsArray("storage-block-labels");
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-block-mode"));
-        add(new Label("Snapshot-storage in GB:"), 0, 4);
+        add(new Label(labels[0]), 0, 4);
         add(capacitySpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("Volume-storage in GB:"), 0, 5);
+        add(new Label(labels[1]), 0, 5);
         add(dataSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
     }
 
     private void setFileStorageControls() {
+        this.labels = Config.getInstance().getConfigValuesAsArray("storage-file-labels");
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-file-mode"));
-        add(new Label("Storage in GB:"), 0, 4);
+        add(new Label(labels[0]), 0, 4);
         add(capacitySpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("Rate in MB/s:"), 0, 5);
+        add(new Label(labels[1]), 0, 5);
         add(rateSpinner, 1, 5);
-        add(new Label("Transferred data in GB:"), 0, 6);
+        add(new Label(labels[2]), 0, 6);
         add(dataSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
     }

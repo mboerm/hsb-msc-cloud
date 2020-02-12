@@ -9,6 +9,7 @@ import javafx.util.Pair;
 public class AnalyticServicePane extends ServicePropertiesPane {
 
     private Label analyticTypeLbl;
+    private String[] labels;
 
     private ComboBox<String> analyticTypeBox;
     private ComboBox<String> instanceTypeBox;
@@ -94,54 +95,60 @@ public class AnalyticServicePane extends ServicePropertiesPane {
     }
 
     private void setDataQueryControls() {
-        add(new Label("# of processed data in GB:"), 0, 3);
+        this.labels = Config.getInstance().getConfigValuesAsArray("analytic-query-labels");
+        add(new Label(labels[0]), 0, 3);
         add(dataSpinner, 1, 3);
     }
 
     private void setDataTransferControls() {
-        add(new Label("# of on-premise activities:"), 0, 3);
+        this.labels = Config.getInstance().getConfigValuesAsArray("analytic-transfer-labels");
+        add(new Label(labels[0]), 0, 3);
         add(numOneSpinner, 1, 3);
-        add(new Label("# of off-premise activities:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(numTwoSpinner, 1, 4);
     }
 
     private void setDataStreamControls() {
-        add(new Label("# of datasets:"), 0, 3);
-        add(numOneSpinner, 1, 3);
+        this.labels = Config.getInstance().getConfigValuesAsArray("analytic-stream-labels");
+        add(new Label(labels[0]), 0, 3);
+        add(unitsSpinner, 1, 3);
         add(new Label("per second"),2 , 3);
-        add(new Label("size of dataset in KB:"), 0, 4);
-        add(numTwoSpinner, 1, 4);
+        add(new Label(labels[1]), 0, 4);
+        add(dataSpinner, 1, 4);
     }
 
     private void setDataCatalogControls() {
-        add(new Label("# of units:"), 0, 3);
+        this.labels = Config.getInstance().getConfigValuesAsArray("analytic-catalog-labels");
+        add(new Label(labels[0]), 0, 3);
         add(dataSpinner, 1, 3);
-        add(new Label("# of requests:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(unitsSpinner, 1, 4);
     }
 
     private void setDataLakeControls() {
-        add(new Label("# of units:"), 0, 3);
+        this.labels = Config.getInstance().getConfigValuesAsArray("analytic-lake-labels");
+        add(new Label(labels[0]), 0, 3);
         add(unitsSpinner, 1, 3);
         add(new Label("per hour"), 2, 3);
-        add(new Label("# of processed data in GB:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(dataSpinner, 1, 4);
     }
 
     private void setSearchControls() {
-        add(new Label("Instance type:"), 0, 3);
+        this.labels = Config.getInstance().getConfigValuesAsArray("analytic-search-labels");
+        add(new Label(labels[0]), 0, 3);
         add(instanceTypeBox, 1, 3);
-        add(new Label("Instance size:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(instanceSizeBox, 1, 4);
-        add(new Label("# of CPU:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(numOneSpinner, 1, 5);
-        add(new Label("# of RAM in GB:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(numTwoSpinner, 1, 6);
-        add(new Label("# of instance-hours"), 0, 7);
+        add(new Label(labels[4]), 0, 7);
         add(unitsSpinner, 1, 7);
-        add(new Label("# of processed data in GB:"), 0, 8);
+        add(new Label(labels[5]), 0, 8);
         add(dataSpinner, 1, 8);
-        add(new Label("# of transferred data in GB:"), 0, 9);
+        add(new Label(labels[6]), 0, 9);
         add(dataOutSpinner, 1, 9);
     }
 }

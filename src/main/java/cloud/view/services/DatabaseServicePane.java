@@ -9,6 +9,7 @@ import javafx.util.Pair;
 public class DatabaseServicePane extends ServicePropertiesPane {
 
     private Label databaseTypeLbl;
+    private String[] labels;
 
     private ComboBox<String> databaseTypeBox;
     private ComboBox<String> databaseSchemeBox;
@@ -94,71 +95,75 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     }
 
     private void setSQLControls() {
-        add(new Label("Scheme:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("database-sql-labels");
+        add(new Label(labels[0]), 0, 3);
         add(databaseSchemeBox, 1, 3);
-        add(new Label("Instance type:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(instanceTypeBox, 1, 4);
-        add(new Label("Instance size:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(instanceSizeBox, 1, 5);
-        add(new Label("# of CPU:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(numOneSpinner, 1, 6);
-        add(new Label("# of RAM in GB:"), 0, 7);
+        add(new Label(labels[4]), 0, 7);
         add(numTwoSpinner, 1, 7);
-        add(new Label("Instance hours:"), 0, 8);
+        add(new Label(labels[5]), 0, 8);
         add(durationSpinner, 1, 8);
         add(new Label("per month"), 2, 8);
-        add(new Label("Storage in GB:"), 0, 9);
+        add(new Label(labels[6]), 0, 9);
         add(storageSpinner, 1, 9);
         add(new Label("per month"), 2, 9);
-        add(new Label("Backup storage in GB:"), 0, 10);
+        add(new Label(labels[7]), 0, 10);
         add(backupSpinner, 1, 10);
         add(new Label("per month"), 2, 10);
-        add(new Label("Transferred data in GB:"), 0, 11);
+        add(new Label(labels[8]), 0, 11);
         add(dataSpinner, 1, 11);
         add(new Label("per month"), 2, 11);
     }
 
     private void setNoSQLControls() {
-        add(new Label("Read queries:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("database-nosql-labels");
+        add(new Label(labels[0]), 0, 3);
         add(numOneSpinner, 1, 3);
-        add(new Label("Write queries:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(numTwoSpinner, 1, 4);
-        add(new Label("Storage in GB:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(storageSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
-        add(new Label("Transferred data in GB:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(dataSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
     }
 
     private void setDocumentControls() {
-        add(new Label("Hours:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("database-document-labels");
+        add(new Label(labels[0]), 0, 3);
         add(durationSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("Requests:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(backupSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("Storage in GB:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(storageSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
-        add(new Label("Transferred data in GB:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(dataSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
     }
 
     private void setCacheControls() {
-        add(new Label("Instance type:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("database-cache-labels");
+        add(new Label(labels[0]), 0, 3);
         add(instanceTypeBox, 1, 3);
-        add(new Label("Instance size:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(instanceSizeBox, 1, 4);
-        add(new Label("# of CPU:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(numOneSpinner, 1, 5);
-        add(new Label("# of RAM in GB:"), 0, 6);
+        add(new Label(labels[3]), 0, 6);
         add(numTwoSpinner, 1, 6);
-        add(new Label("Hours:"), 0, 7);
+        add(new Label(labels[4]), 0, 7);
         add(durationSpinner, 1, 7);
         add(new Label("per month"), 2, 7);
-        add(new Label("Transferred data in GB:"), 0, 8);
+        add(new Label(labels[5]), 0, 8);
         add(dataSpinner, 1, 8);
         add(new Label("per month"), 2, 8);
     }

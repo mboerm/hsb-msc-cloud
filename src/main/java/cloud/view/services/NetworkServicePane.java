@@ -8,6 +8,7 @@ import javafx.scene.control.Spinner;
 public class NetworkServicePane extends ServicePropertiesPane {
 
     private Label networkTypeLbl;
+    private String[] labels;
     private ComboBox<String> networkTypeBox;
     private Spinner<Integer> requestsSpinner;
     private Spinner<Integer> dataSpinner;
@@ -66,39 +67,43 @@ public class NetworkServicePane extends ServicePropertiesPane {
     }
 
     private void setPrivateControls() {
-        add(new Label("# of connections:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("network-private-labels");
+        add(new Label(labels[0]), 0, 3);
         add(requestsSpinner, 1, 3);
         add(new Label("per hour"), 2, 3);
-        add(new Label("# of transferred data in GB:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per hour"), 2, 4);
     }
 
     private void setAPIControls() {
-        add(new Label("# of requests:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("network-api-labels");
+        add(new Label(labels[0]), 0, 3);
         add(requestsSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("# of transferred data in GB:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
     }
 
     private void setCDNControls() {
-        add(new Label("# of transferred data in GB:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("network-cdn-labels");
+        add(new Label(labels[0]), 0, 3);
         add(dataSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("# of transferred data in TB into internet:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(dataOutSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("# of http-requests in 10.000:"), 0, 5);
+        add(new Label(labels[2]), 0, 5);
         add(requestsSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
     }
 
     private void setDNSControls() {
-        add(new Label("# of zones:"), 0, 3);
+        labels = Config.getInstance().getConfigValuesAsArray("network-dns-labels");
+        add(new Label(labels[0]), 0, 3);
         add(zonesSpinner, 1, 3);
-        add(new Label("# of dns-requests:"), 0, 4);
+        add(new Label(labels[1]), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
     }

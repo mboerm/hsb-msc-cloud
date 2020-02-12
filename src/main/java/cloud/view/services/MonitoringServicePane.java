@@ -1,5 +1,6 @@
 package cloud.view.services;
 
+import cloud.configuration.Config;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -7,6 +8,7 @@ import javafx.util.Pair;
 
 public class MonitoringServicePane extends ServicePropertiesPane {
 
+    private String[] labels;
     private Spinner<Integer> metricsSpinner;
     private Spinner<Integer> requestsSpinner;
     private Spinner<Integer> dataCollectSpinner;
@@ -49,22 +51,23 @@ public class MonitoringServicePane extends ServicePropertiesPane {
     public void setLoggingState(boolean state) {this.isLoggingBox.setSelected(state);}
 
     private void setMonitoringControls() {
-        add(new Label("# of metrics:"), 0, 2);
+        labels = Config.getInstance().getConfigValuesAsArray("monitoring-labels");
+        add(new Label(labels[0]), 0, 2);
         add(metricsSpinner, 1, 2);
         add(new Label("per month"), 2, 2);
-        add(new Label("# of requests:"), 0, 3);
+        add(new Label(labels[1]), 0, 3);
         add(requestsSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
-        add(new Label("# of data to collect in GB:"), 0, 4);
+        add(new Label(labels[2]), 0, 4);
         add(dataCollectSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
-        add(new Label("# of data to save in GB:"), 0, 5);
+        add(new Label(labels[3]), 0, 5);
         add(dataSaveSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
-        add(new Label("# of events in Mio.:"), 0, 6);
+        add(new Label(labels[4]), 0, 6);
         add(eventsSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
-        add(new Label("Logging:"), 0, 7);
+        add(new Label(labels[5]), 0, 7);
         add(isLoggingBox, 1, 7);
     }
 }
