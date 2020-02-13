@@ -14,6 +14,7 @@ import javafx.scene.text.TextAlignment;
 public class ServiceUsagePropertiesPane extends GridPane {
 
     private Label serviceUsageLbl;
+    private String[] labels = Config.getInstance().getConfigValuesAsArray("service-usage-labels");
     private ComboBox<String> regionBox;
     private ComboBox<String> usageTypeBox;
     private ComboBox<String> usagePeriodBox;
@@ -34,6 +35,7 @@ public class ServiceUsagePropertiesPane extends GridPane {
         usageTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-usage-type"));
         usagePeriodBox = new ComboBox<>();
         usagePrepayBox = new ComboBox<>(Config.getInstance().getConfigValues("service-usage-prepay"));
+        usagePrepayBox.getSelectionModel().select(0);
         opModeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-operating-mode"));
 
         usagePeriodBox.setDisable(true);
@@ -83,15 +85,15 @@ public class ServiceUsagePropertiesPane extends GridPane {
     private void setServiceUsageControls() {
         add(serviceUsageLbl, 0,0);
         setColumnSpan(serviceUsageLbl, 2);
-        add(new Label("Region: "), 0, 1);
+        add(new Label(labels[0]), 0, 1);
         add(regionBox, 1, 1);
-        add(new Label("Usage type: "), 0, 2);
+        add(new Label(labels[1]), 0, 2);
         add(usageTypeBox, 1, 2);
-        add(new Label("Usage period: "), 0, 3);
+        add(new Label(labels[2]), 0, 3);
         add(usagePeriodBox, 1, 3);
-        add(new Label("Usage prepay: "), 0, 4);
+        add(new Label(labels[3]), 0, 4);
         add(usagePrepayBox, 1, 4);
-        add(new Label("Operating mode: "), 0, 5);
+        add(new Label(labels[4]), 0, 5);
         add(opModeBox, 1, 5);
     }
 }

@@ -35,6 +35,10 @@
     <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
 
     <entry key="design-property-labels">Provider:;Primary region:;Primary usage time:;# of Instances:;Requests:;Storage Capacity in TB:</entry>
+
+    <entry key="service-general-labels">Name:;Category:;Type:;Service:</entry>
+    <entry key="service-usage-labels">Region:;Usage type:;Usage period:;Usage prepay:;Operating mode:</entry>
+
     <entry key="compute-vm-labels">Instance type:;Instance size:;Instance hours:;CPU:;RAM in GB:;Operating system:;Transferred data in GB:</entry>
     <entry key="compute-container-labels">Container type:;CPU:;Storage in GB:;# of compute instances:;# of container groups:;Transferred data in GB:</entry>
     <entry key="compute-app-labels">Language:;Compute instance reference:;Storage instance reference:</entry>

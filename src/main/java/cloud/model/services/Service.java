@@ -12,15 +12,15 @@ public abstract class Service {
     private String opMode;
 
     public Service() {
-        setName("");
-        setDisplayName("");
-        setProviderService("");
-        setCategory("");
-        setRegion("");
-        setUsageType("");
-        setUsagePeriod("");
-        setUsagePrepay("");
-        setOpMode("");
+        this.setName("none");
+        this.setDisplayName("none");
+        this.setProviderService("none");
+        this.setCategory("none");
+        this.setRegion("none");
+        this.setUsageType("none");
+        this.setUsagePeriod("none");
+        this.setUsagePrepay("none");
+        this.setOpMode("none");
     }
 
     public String getName() {
@@ -80,5 +80,24 @@ public abstract class Service {
     }
     public void setOpMode(String mode) {
         this.opMode = mode;
+    }
+
+    public String[] getGeneralProperties() {
+        return new String[] {
+                this.getName(),
+                this.getCategory(),
+                this.getDisplayName(),
+                this.getProviderService()
+        };
+    }
+
+    public String[] getUsageProperties() {
+        return new String[] {
+                this.getRegion(),
+                this.getUsageType(),
+                this.getUsagePeriod(),
+                this.getUsagePrepay(),
+                this.getOpMode()
+        };
     }
 }
