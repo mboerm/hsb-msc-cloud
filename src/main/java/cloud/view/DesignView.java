@@ -53,7 +53,6 @@ public class DesignView {
     private MenuBar initMenuBar() {
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().add(initMenuFile());
-        menuBar.getMenus().add(initMenuEdit());
         menuBar.getMenus().add(initMenuDesign());
         menuBar.getMenus().add(initMenuView());
         menuBar.getMenus().add(initMenuHelp());
@@ -65,10 +64,6 @@ public class DesignView {
         menuFileExit = new MenuItem("Exit");
         menuFile.getItems().addAll(menuFileExit);
         return menuFile;
-    }
-
-    private Menu initMenuEdit() {
-        return new Menu("Edit");
     }
 
     private Menu initMenuDesign() {

@@ -1,5 +1,6 @@
 package cloud.view.dialogs;
 
+import cloud.configuration.Constants;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -17,12 +18,12 @@ public class CostDialog extends Dialog<ButtonType> {
     private ButtonType buttonTypeCreate;
 
     public CostDialog() {
-        setTitle("Cost Calculation Report");
+        setTitle(Constants.DIALOG_COSTS_TITLE);
         setResizable(false);
 
         Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.setMinHeight(100);
-        stage.setMinWidth(500);
+        stage.setMinHeight(Constants.DIALOG_MIN_HEIGHT);
+        stage.setMinWidth(Constants.DIALOG_MIN_WIDTH);
 
         initCostsTable();
         VBox tableBox = new VBox();

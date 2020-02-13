@@ -1,6 +1,7 @@
 package cloud.view.dialogs;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import cloud.view.services.ServiceUsagePropertiesPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -21,13 +22,13 @@ public class ServiceDialog extends Dialog<String> {
     private Button buttonOk;
 
     public ServiceDialog() {
-        setTitle("Service Dialog");
-        setHeaderText("Select service category and define properties");
+        setTitle(Constants.DIALOG_SERVICE_TITLE);
+        setHeaderText(Constants.DIALOG_SERVICE_HEADER);
         setResizable(false);
 
         Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.setMinHeight(400);
-        stage.setMinWidth(300);
+        stage.setMinHeight(Constants.DIALOG_MIN_HEIGHT);
+        stage.setMinWidth(Constants.DIALOG_MIN_WIDTH);
 
         Label serviceTypeLbl = new Label("Category: ");
         serviceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-categories"));

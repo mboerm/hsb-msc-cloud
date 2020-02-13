@@ -13,8 +13,13 @@ public final class Constants {
     }
 
     public static final String APP_TITLE = "Cloud Architecture Optimizer";
+    public static final String DIALOG_SERVICE_TITLE = "Service Dialog";
+    public static final String DIALOG_SERVICE_HEADER = "Select service category and define properties";
+    public static final String DIALOG_COSTS_TITLE = "Cost Calculation Report";
     public static final int WINDOW_MIN_WIDTH = 900;
     public static final int WINDOW_MIN_HEIGHT = 500;
+    public static final int DIALOG_MIN_WIDTH = 400;
+    public static final int DIALOG_MIN_HEIGHT = 200;
 
     public static final String CONFIG_FILE = "xml/config.xml";
     public static final String CONFIG_SEPARATOR = ";";
