@@ -45,6 +45,9 @@ class Amazon extends Provider implements IPricing {
                             costs = calcNetworkServiceCosts((NetworkService) service, serviceElement);
                         else if (ServiceChecker.isMonitoringItem(service.getCategory()) && service instanceof MonitoringService)
                             costs = calcMonitoringServiceCosts((MonitoringService) service, serviceElement);
+                        else {
+                            costs = new Costs();
+                        }
                     }
                 }
             }
