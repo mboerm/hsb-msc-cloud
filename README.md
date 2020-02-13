@@ -1,1 +1,1 @@
-# msc-cloud
+# Cloud Architecture Optimizer
