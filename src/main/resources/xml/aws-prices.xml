@@ -77,6 +77,52 @@
 			<data>0.011</data>
 		</region>
 	</service>
+
+	<service name="Amazon RDS for PostgreSQL">
+		<region name="EU-Frankfurt">
+			<instance type="Standard" size="Micro">0.021</instance>
+			<instance type="Standard" size="Small">0.042</instance>
+			<instance type="Standard" size="Medium">0.084</instance>
+			<instance type="Standard" size="Large">0.168</instance>
+			<instance type="Standard" size="Xlarge">0.336</instance>
+			<instance type="Storage-optimized" size="Large">0.305</instance>
+			<instance type="Storage-optimized" size="Xlarge">0.61</instance>
+			<storage>0.137</storage>
+			<backup>0.103</backup>
+			<dataOut min="1" max="10000">0.09</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.07</dataOut>
+			<dataOut min="150000" max="500000">0.05</dataOut>
+		</region>
+		<region name="Asia-Tokyo">
+			<instance type="Standard" size="Micro">0.028</instance>
+			<instance type="Standard" size="Small">0.056</instance>
+			<instance type="Standard" size="Medium">0.112</instance>
+			<instance type="Standard" size="Large">0.224</instance>
+			<instance type="Standard" size="Xlarge">0.448</instance>
+			<instance type="Storage-optimized" size="Large">0.30</instance>
+			<instance type="Storage-optimized" size="Xlarge">0.60</instance>
+			<storage>0.138</storage>
+			<backup>0.095</backup>
+			<dataOut min="1" max="10000">0.114</dataOut>
+			<dataOut min="10000" max="50000">0.089</dataOut>
+			<dataOut min="50000" max="150000">0.086</dataOut>
+			<dataOut min="150000" max="500000">0.084</dataOut>
+		</region>
+		<region name="Brasil-São Paulo">
+			<instance type="Standard" size="Micro">0.038</instance>
+			<instance type="Standard" size="Small">0.076</instance>
+			<instance type="Standard" size="Medium">0.151</instance>
+			<instance type="Standard" size="Large">0.302</instance>
+			<instance type="Standard" size="Xlarge">0.604</instance>
+			<storage>0.219</storage>
+			<backup>0.095</backup>
+			<dataOut min="1" max="10000">0.25</dataOut>
+			<dataOut min="10000" max="50000">0.23</dataOut>
+			<dataOut min="50000" max="150000">0.21</dataOut>
+			<dataOut min="150000" max="500000">0.19</dataOut>
+		</region>
+	</service>
 	
 	<service name="Amazon Simple Storage Service">
 		<region name="EU-Frankfurt">
