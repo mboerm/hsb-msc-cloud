@@ -9,7 +9,7 @@ Dieses Projekt ist der Prototyp für die Master-Thesis "Entwicklung eines Ansatz
 - Apache Maven 3.6.2
 - Java JDK 13.0.1
 - JavaFX 13.0.1
-- iText PDF 5.5.13.1
+- iText 7.1.10
 
 ## Installation
 - `git clone https://github.com/mboerm/hsb-msc-cloud.git`
