@@ -1,6 +1,7 @@
 package cloud.view.dialogs;
 
 import cloud.configuration.Constants;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -20,10 +21,6 @@ public class CostDialog extends Dialog<ButtonType> {
     public CostDialog() {
         setTitle(Constants.DIALOG_COSTS_TITLE);
         setResizable(false);
-
-        Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.setMinHeight(Constants.DIALOG_MIN_HEIGHT);
-        stage.setMinWidth(Constants.DIALOG_MIN_WIDTH);
 
         initCostsTable();
         VBox tableBox = new VBox();
@@ -60,6 +57,8 @@ public class CostDialog extends Dialog<ButtonType> {
         serviceCostsCol.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
 
         costsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        costsTable.setPrefWidth(Constants.DIALOG_MIN_WIDTH);
+        costsTable.setPrefHeight(Constants.DIALOG_MIN_HEIGHT);
         costsTable.getColumns().addAll(serviceNameCol, serviceProviderNameCol, serviceCostsCol);
     }
 
