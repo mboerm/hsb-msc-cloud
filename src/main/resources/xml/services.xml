@@ -61,12 +61,12 @@
 	
 	<!--Database services-->
 	<service name="SQL (MySQL)">
-		<aws>Amazon RDS for MySQL, Amazon Aurora for MySQL</aws>
-		<azure>Azure Database for MySQL, Azure SQL Database</azure>
+		<aws>Amazon RDS for MySQL</aws>
+		<azure>Azure Database for MySQL</azure>
 		<gcp>Cloud SQL, Cloud Spanner</gcp>
 	</service>
 	<service name="SQL (PostgreSQL)">
-		<aws>Amazon RDS for PostgreSQL, Amazon Aurora for PostgreSQL</aws>
+		<aws>Amazon RDS for PostgreSQL</aws>
 		<azure>Azure Database for PostgreSQL</azure>
 		<gcp>Cloud SQL for PostgreSQL</gcp>
 	</service>
