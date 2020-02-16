@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import javafx.util.Pair;
 
 import com.itextpdf.kernel.pdf.PdfOutline;
@@ -26,11 +27,10 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfFont;
 
 public class Report {
+    private String dest;
     private Document document;
-    private Date date = Calendar.getInstance().getTime();
-
+    private Date date;
     private PdfFont bf12Bold;
-    private PdfOutline outline = null;
 
     public Report() {
         try {
@@ -39,6 +39,8 @@ public class Report {
             System.out.println("Creating fonts failed" + e);
         }
 
+        date = Calendar.getInstance().getTime();
+        dest = "report_" + Constants.DATE_FORMAT_FILE.format(date) + ".pdf";
 
         createReport();
         writeHeader();
@@ -66,8 +68,7 @@ public class Report {
         String[] summaryLabels = Config.getInstance().getConfigValuesAsArray("design-property-labels");
         float[] columnWidths = {150F, 150F};
         Table summaryTable = new Table(columnWidths);
-        summaryTable.setHorizontalBorderSpacing(25f);
-        summaryTable.setVerticalBorderSpacing(25f);
+        summaryTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
         insertCell(summaryTable, summaryLabels[0], TextAlignment.LEFT);
         insertCell(summaryTable, DesignManager.getInstance().getDesign().getProvider().getServiceName(), TextAlignment.CENTER);
@@ -106,8 +107,7 @@ public class Report {
 
             document.add(new Paragraph("Properties"));
             propertiesTable = new Table(columnWidths);
-            propertiesTable.setHorizontalBorderSpacing(25f);
-            propertiesTable.setVerticalBorderSpacing(25f);
+            propertiesTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
             for (int i = 0; i < serviceGeneralLabels.length; i++) {
                 insertCell(propertiesTable, serviceGeneralLabels[i], TextAlignment.LEFT);
                 insertCell(propertiesTable, service.getGeneralProperties()[i], TextAlignment.CENTER);
@@ -116,6 +116,7 @@ public class Report {
 
             document.add(new Paragraph("Usage"));
             usageTable = new Table(columnWidths);
+            usageTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
             for (int i = 0; i < serviceUsageLabels.length; i++) {
                 insertCell(usageTable, serviceUsageLabels[i], TextAlignment.LEFT);
                 insertCell(usageTable, service.getUsageProperties()[i], TextAlignment.CENTER);
@@ -125,12 +126,13 @@ public class Report {
     }
 
     private void writeChapterCostCalc() {
-        document.add(addEmptyLine(new Paragraph(), 1));
+        document.add(new AreaBreak());
         document.add(new Paragraph("Cost Calculation").setFont(bf12Bold).setFontSize(14));
 
         document.add(new Paragraph("Service costs"));
-        float[] columnWidths = {150F, 150F};
+        float[] columnWidths = {100F, 100F};
         Table serviceCostsTable = new Table(columnWidths);
+        serviceCostsTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
         for (Pair<Service, Costs> designCost : DesignManager.getInstance().getDesign().getServicesCosts()) {
             insertCell(serviceCostsTable, designCost.getKey().getName(), TextAlignment.LEFT);
@@ -140,6 +142,7 @@ public class Report {
 
         document.add(new Paragraph("Total costs"));
         Table totalCostsTable = new Table(columnWidths);
+        totalCostsTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
         insertCell(totalCostsTable, "Per Hour:", TextAlignment.LEFT);
         insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerHour()) + " USD", TextAlignment.RIGHT);
         insertCell(totalCostsTable, "Per Day:", TextAlignment.LEFT);
@@ -166,7 +169,8 @@ public class Report {
 
     private void createReport() {
         try {
-            PdfWriter writer = new PdfWriter("report_" + Constants.DATE_FORMAT_FILE.format(date) + ".pdf");
+            // Creating a PdfWriter for destination
+            PdfWriter writer = new PdfWriter(dest);
 
             // Creating a PdfDocument
             PdfDocument pdfDoc = new PdfDocument(writer);
