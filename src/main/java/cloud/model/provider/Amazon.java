@@ -37,6 +37,8 @@ class Amazon extends Provider implements IPricing {
                     if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("name"))) {
                         if (ServiceChecker.isComputeItem(service.getCategory()) && service instanceof ComputeService)
                             costs = calcComputeServiceCosts((ComputeService) service, serviceElement);
+                        else if (ServiceChecker.isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)
+                            costs = calcDatabaseServiceCosts((DatabaseService) service, serviceElement);
                         else if (ServiceChecker.isStorageItem(service.getCategory()) && service instanceof StorageService)
                             costs = calcStorageServiceCosts((StorageService) service, serviceElement);
                         else if (ServiceChecker.isAnalyticItem(service.getCategory()) && service instanceof AnalyticService)
@@ -121,6 +123,50 @@ class Amazon extends Provider implements IPricing {
                     double hourCosts = service.getNumOne() * hourPrice * Constants.MONTH_HOURS;
                     double dataCosts = service.getNumOne() * service.getData() * dataPrice;
                     serviceCosts.setPrice(hourCosts + dataCosts);
+                }
+            }
+        }
+        return serviceCosts;
+    }
+
+    private Costs calcDatabaseServiceCosts(DatabaseService service, Element element) {
+        String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
+        String[] modes = Config.getInstance().getConfigValuesAsArray("database-sql-scheme");
+        String[] instance = Config.getInstance().getConfigValuesAsArray("database-instance-type");
+        Costs serviceCosts = new Costs();
+
+        if (service.getDatabaseType().equals(types[0]) && service.getDatabaseScheme().equals(modes[1])) {
+            // storage type "SQL - PostgreSQL"
+            double instancePrice = 0;
+            double storagePrice = 0;
+            double backupPrice = 0;
+            double dataOutPrice = 0;
+            NodeList regions = element.getElementsByTagName("region");
+            for (int i = 0; i < regions.getLength(); i++) {
+                Node regionNode = regions.item(i);
+                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
+                        Node subNode = regionNode.getChildNodes().item(j);
+                        NamedNodeMap subNodeAttributes = subNode.getAttributes();
+                        if (subNode.getNodeName().equals("instance")
+                                && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
+                                && subNodeAttributes.getNamedItem("size").getTextContent().equals(service.getInstanceSize())) {
+                            instancePrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equals("storage")) {
+                            storagePrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equals("backup") && service.getBackup() > service.getStorage()) {
+                            backupPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equals("dataOut")
+                                && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
+                                && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
+                            dataOutPrice = Double.parseDouble(subNode.getTextContent());
+                        }
+                    }
+                    double instanceCosts = service.getDuration() * instancePrice;
+                    double storageCosts = service.getStorage() * storagePrice;
+                    double backupCosts = (service.getBackup() - service.getStorage()) * backupPrice;
+                    double dataCosts = service.getData() * dataOutPrice;
+                    serviceCosts.setPrice(instanceCosts + storageCosts + backupCosts + dataCosts);
                 }
             }
         }
