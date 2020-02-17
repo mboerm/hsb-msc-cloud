@@ -1,10 +1,13 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.util.Pair;
+
+import java.util.Arrays;
 
 public class DatabaseServicePane extends ServicePropertiesPane {
 
@@ -26,7 +29,8 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         databaseTypeLbl = new Label("Type:");
         databaseTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-system-type"));
         databaseSchemeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-sql-scheme"));
-        instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-instance-type"));
+        String[] instanceTypes = Config.getInstance().getConfigValuesAsArray("service-instance-type");
+        instanceTypeBox = new ComboBox<>(FXCollections.observableArrayList(Arrays.copyOfRange(instanceTypes, 0, instanceTypes.length-2)));
         instanceSizeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-instance-size"));
 
         durationSpinner = new Spinner<>(1, 1000000, 1);

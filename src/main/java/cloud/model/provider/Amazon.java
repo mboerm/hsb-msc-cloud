@@ -74,7 +74,7 @@ class Amazon extends Provider implements IPricing {
             NodeList regions = element.getElementsByTagName("region");
             for (int i = 0; i < regions.getLength(); i++) {
                 Node regionNode = regions.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
@@ -111,7 +111,7 @@ class Amazon extends Provider implements IPricing {
             NodeList balancerRegions = element.getElementsByTagName("region");
             for (int i = 0; i < balancerRegions.getLength(); i++) {
                 Node regionNode = balancerRegions.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         if (subNode.getNodeName().equals("hour")) {
@@ -143,7 +143,7 @@ class Amazon extends Provider implements IPricing {
             NodeList regions = element.getElementsByTagName("region");
             for (int i = 0; i < regions.getLength(); i++) {
                 Node regionNode = regions.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
@@ -187,7 +187,7 @@ class Amazon extends Provider implements IPricing {
             NodeList regions = element.getElementsByTagName("region");
             for (int i = 0; i < regions.getLength(); i++) {
                 Node regionNode = regions.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
@@ -236,7 +236,7 @@ class Amazon extends Provider implements IPricing {
             NodeList balancerRegions = element.getElementsByTagName("region");
             for (int i = 0; i < balancerRegions.getLength(); i++) {
                 Node regionNode = balancerRegions.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         if (subNode.getNodeName().equals("data")) {
@@ -263,7 +263,7 @@ class Amazon extends Provider implements IPricing {
             NodeList regions = element.getElementsByTagName("region");
             for (int i = 0; i < regions.getLength(); i++) {
                 Node regionNode = regions.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
@@ -307,7 +307,7 @@ class Amazon extends Provider implements IPricing {
             NodeList regionsElements = element.getElementsByTagName("region");
             for (int i = 0; i < regionsElements.getLength(); i++) {
                 Node regionNode = regionsElements.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         switch (subNode.getNodeName()) {
@@ -358,7 +358,7 @@ class Amazon extends Provider implements IPricing {
             NodeList regionsElements = element.getElementsByTagName("region");
             for (int i = 0; i < regionsElements.getLength(); i++) {
                 Node regionNode = regionsElements.item(i);
-                if (service.getRegion().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
                         Node subNode = regionNode.getChildNodes().item(j);
                         if (subNode.getNodeName().equals("data")) {

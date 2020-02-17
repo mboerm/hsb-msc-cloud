@@ -93,7 +93,7 @@ public class DesignViewC {
         view.getPaneDesignProperties().getUsagePeriodField().textProperty().addListener((obs, oldValue, newValue) ->
             design.setUsagePeriod(newValue));
 
-        view.getPaneDesignProperties().getPrimaryRegionBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
+        view.getPaneDesignProperties().getPrimaryLocationBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
             design.setPrimaryRegion(newValue));
 
         view.getPaneDesignProperties().getNumOfInstancesSpinner().valueProperty().addListener((obs, oldValue, newValue) ->
