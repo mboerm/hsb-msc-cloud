@@ -12,7 +12,7 @@
     <entry key="service-property-period">Per Hour;Per Day;Per Month</entry>
     <entry key="service-operating-mode">On-Premise;Off-Premise;Optional</entry>
 
-    <entry key="compute-type">VM;Container;App;Batch;Code;Load Balancing</entry>
+    <entry key="compute-type">VM;Container;App;Batch;Code;Load Balancer</entry>
     <entry key="compute-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
 	<entry key="compute-container-type">Standard;Kubernetes</entry>
     <entry key="compute-os">Windows;Linux;CentOS;Ubuntu;Red Hat;SUSE;Debian</entry>
