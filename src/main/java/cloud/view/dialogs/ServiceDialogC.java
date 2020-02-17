@@ -23,7 +23,7 @@ public class ServiceDialogC {
         dialogService = new ServiceDialog();
         servicePaneFactory = new ServicePaneFactory();
         serviceUsagePane = dialogService.getServiceUsagePropertiesPane();
-        serviceUsagePane.setRegionItem(DesignManager.getInstance().getDesign().getPrimaryRegion());
+        serviceUsagePane.setLocation(DesignManager.getInstance().getDesign().getPrimaryRegion());
 
         dialogService.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             dialogService.setSeparator();
@@ -200,7 +200,7 @@ public class ServiceDialogC {
     }
 
     private void setServiceUsageProperties() {
-        serviceData.setRegion(serviceUsagePane.getRegionItem());
+        serviceData.setLocation(serviceUsagePane.getLocation());
         serviceData.setUsageType(serviceUsagePane.getUsageTypeItem());
         serviceData.setUsagePeriod(serviceUsagePane.getUsagePeriodItem());
         serviceData.setUsagePrepay(serviceUsagePane.getUsagePrepayItem());
@@ -208,7 +208,7 @@ public class ServiceDialogC {
     }
 
     private void setServiceUsagePane() {
-        serviceUsagePane.setRegionItem(serviceData.getRegion());
+        serviceUsagePane.setLocation(serviceData.getLocation());
         serviceUsagePane.setUsageTypeItem(serviceData.getUsageType());
         serviceUsagePane.setUsagePeriodItem(serviceData.getUsagePeriod());
         serviceUsagePane.setUsagePrepayItem(serviceData.getUsagePrepay());

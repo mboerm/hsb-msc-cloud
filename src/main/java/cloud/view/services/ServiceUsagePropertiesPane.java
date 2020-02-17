@@ -15,7 +15,7 @@ public class ServiceUsagePropertiesPane extends GridPane {
 
     private Label serviceUsageLbl;
     private String[] labels = Config.getInstance().getConfigValuesAsArray("service-usage-labels");
-    private ComboBox<String> regionBox;
+    private ComboBox<String> locationBox;
     private ComboBox<String> usageTypeBox;
     private ComboBox<String> usagePeriodBox;
     private ComboBox<String> usagePrepayBox;
@@ -31,7 +31,7 @@ public class ServiceUsagePropertiesPane extends GridPane {
         serviceUsageLbl.setTextAlignment(TextAlignment.CENTER);
         serviceUsageLbl.setFont(Font.font("Arial", FontWeight.BOLD, 12));
 
-        regionBox = new ComboBox<>(Config.getInstance().getConfigValues("service-regions"));
+        locationBox = new ComboBox<>(Config.getInstance().getConfigValues("service-location"));
         usageTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-usage-type"));
         usagePeriodBox = new ComboBox<>();
         usagePrepayBox = new ComboBox<>(Config.getInstance().getConfigValues("service-usage-prepay"));
@@ -57,10 +57,10 @@ public class ServiceUsagePropertiesPane extends GridPane {
         });
     }
 
-    public String getRegionItem() {
-        return regionBox.getValue();
+    public String getLocation() {
+        return locationBox.getValue();
     }
-    public void setRegionItem(String item) {this.regionBox.getSelectionModel().select(item);}
+    public void setLocation(String item) {this.locationBox.getSelectionModel().select(item);}
 
     public String getUsageTypeItem() {
         return usageTypeBox.getValue();
@@ -86,7 +86,7 @@ public class ServiceUsagePropertiesPane extends GridPane {
         add(serviceUsageLbl, 0,0);
         setColumnSpan(serviceUsageLbl, 2);
         add(new Label(labels[0]), 0, 1);
-        add(regionBox, 1, 1);
+        add(locationBox, 1, 1);
         add(new Label(labels[1]), 0, 2);
         add(usageTypeBox, 1, 2);
         add(new Label(labels[2]), 0, 3);

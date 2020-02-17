@@ -9,7 +9,7 @@ public class DesignProperties extends GridPane {
 
     private ComboBox<String> providerBox;
     private TextField usagePeriodField;
-    private ComboBox<String> regionBox;
+    private ComboBox<String> locationBox;
     private Spinner<Integer> numOfInstancesSpinner;
     private Spinner<Integer> numOfRequestsSpinner;
     private Spinner<Integer> numOfCapacitySpinner;
@@ -26,7 +26,7 @@ public class DesignProperties extends GridPane {
         usagePeriodField = new TextField();
         usagePeriodField.setPromptText("hh:mm - hh:mm");
 
-        regionBox = new ComboBox<>(Config.getInstance().getConfigValues("service-regions"));
+        locationBox = new ComboBox<>(Config.getInstance().getConfigValues("service-location"));
 
         numOfInstancesSpinner = new Spinner<>(1, 100, 1);
         numOfInstancesSpinner.setEditable(true);
@@ -44,7 +44,7 @@ public class DesignProperties extends GridPane {
         add(new Label(labels[0]), 0, 0);
         add(providerBox, 1, 0);
         add(new Label(labels[1]), 0, 1);
-        add(regionBox, 1, 1);
+        add(locationBox, 1, 1);
         add(new Label(labels[2]), 0, 2);
         add(usagePeriodField, 1, 2);
         add(new Label(labels[3]), 0, 3);
@@ -70,8 +70,8 @@ public class DesignProperties extends GridPane {
     public Spinner<Integer> getNumOfCapacitySpinner() {
         return this.numOfCapacitySpinner;
     }
-    public ComboBox<String> getPrimaryRegionBox() {
-        return this.regionBox;
+    public ComboBox<String> getPrimaryLocationBox() {
+        return this.locationBox;
     }
     public ComboBox<String> getPeriodOfRequestsBox() {
         return this.periodOfRequestsBox;

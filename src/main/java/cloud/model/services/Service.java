@@ -5,7 +5,7 @@ public abstract class Service {
     private String displayName;
     private String providerService;
     private String category;
-    private String region;
+    private String location;
     private String usageType;
     private String usagePeriod;
     private String usagePrepay;
@@ -16,7 +16,7 @@ public abstract class Service {
         this.setDisplayName("none");
         this.setProviderService("none");
         this.setCategory("none");
-        this.setRegion("none");
+        this.setLocation("none");
         this.setUsageType("none");
         this.setUsagePeriod("none");
         this.setUsagePrepay("none");
@@ -51,8 +51,8 @@ public abstract class Service {
         this.category = category;
     }
 
-    public String getRegion() {return this.region;}
-    public void setRegion(String region) {this.region = region;}
+    public String getLocation() {return this.location;}
+    public void setLocation(String location) {this.location = location;}
 
     public String getUsageType() {
         return this.usageType;
@@ -93,7 +93,7 @@ public abstract class Service {
 
     public String[] getUsageProperties() {
         return new String[] {
-                this.getRegion(),
+                this.getLocation(),
                 this.getUsageType(),
                 this.getUsagePeriod(),
                 this.getUsagePrepay(),

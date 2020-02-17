@@ -4,10 +4,11 @@
 
     <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Monitoring</entry>
     <entry key="service-instance-size">Micro;Small;Medium;Large;Xlarge</entry>
+    <entry key="service-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
     <entry key="service-usage-type">On-Demand;Reserved;Spot</entry>
     <entry key="service-usage-period">Hourly;Monthly;One Year;Three Years</entry>
     <entry key="service-usage-prepay">None;Partial;Full</entry>
-    <entry key="service-regions">US-California;US-North Virginia;Brasil-São Paulo;CA-Central;EU-Ireland;EU-London;EU-Frankfurt;Asia-Hong Kong;Asia-Singapur;Asia-Tokyo;Asia-Mumbai;Asia-Seoul</entry>
+    <entry key="service-location">US-California;US-North Virginia;Brasil-São Paulo;CA-Central;EU-Ireland;EU-London;EU-Frankfurt;Asia-Hong Kong;Asia-Singapur;Asia-Tokyo;Asia-Mumbai;Asia-Seoul</entry>
     <entry key="service-property-period">Per Hour;Per Day;Per Month</entry>
     <entry key="service-operating-mode">On-Premise;Off-Premise;Optional</entry>
 
@@ -34,10 +35,10 @@
 
     <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
 
-    <entry key="design-property-labels">Provider:;Primary region:;Primary usage time:;# of Instances:;Requests:;Storage Capacity in TB:</entry>
+    <entry key="design-property-labels">Provider:;Primary location:;Primary usage time:;# of Instances:;Requests:;Storage Capacity in TB:</entry>
 
     <entry key="service-general-labels">Name:;Category:;Type:;Service:</entry>
-    <entry key="service-usage-labels">Region:;Usage type:;Usage period:;Usage prepay:;Operating mode:</entry>
+    <entry key="service-usage-labels">Location:;Usage type:;Usage period:;Usage prepay:;Operating mode:</entry>
 
     <entry key="compute-vm-labels">Instance type:;Instance size:;Instance hours:;CPU:;RAM in GB:;Operating system:;Transferred data in GB:</entry>
     <entry key="compute-container-labels">Container type:;CPU:;Storage in GB:;# of compute instances:;# of container groups:;Transferred data in GB:</entry>
