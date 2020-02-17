@@ -23,7 +23,7 @@ import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfFont;
 
-public class PDFReport {
+public class PDFReport implements IReport {
     private String dest;
     private Document document;
     private Date date;
@@ -38,8 +38,11 @@ public class PDFReport {
 
         date = Calendar.getInstance().getTime();
         dest = "report_" + Constants.DATE_FORMAT_FILE.format(date) + ".pdf";
+    }
 
-        createReport();
+    @Override
+    public void createReport() {
+        createDocument();
         writeHeader();
 
         writeChapterSummary();
@@ -164,7 +167,7 @@ public class PDFReport {
         document.add(new Paragraph("Cost Comparison").setFont(bf12Bold).setFontSize(14));
     }
 
-    private void createReport() {
+    private void createDocument() {
         try {
             // Creating a PdfWriter for destination
             PdfWriter writer = new PdfWriter(dest);

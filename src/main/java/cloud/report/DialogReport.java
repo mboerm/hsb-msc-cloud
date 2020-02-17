@@ -1,4 +1,8 @@
 package cloud.report;
 
-public class DialogReport {
+public class DialogReport implements IReport {
+    @Override
+    public void createReport() {
+
+    }
 }

@@ -2,6 +2,7 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.main.StageManager;
+import cloud.report.IReport;
 import cloud.report.PDFReport;
 import cloud.model.services.Service;
 import cloud.model.design.*;
@@ -23,8 +24,9 @@ public class DesignViewC {
 
     // Model
     private Design design;
-    private ProviderFactory providerFactory;
     private int selectedServiceID;
+    private static ProviderFactory providerFactory;
+    private static IReport report;
 
     // Controller
     private ServiceDialogC dialogServiceC;
@@ -33,7 +35,7 @@ public class DesignViewC {
     public DesignViewC() {
         this.view = new DesignView();
         this.design = DesignManager.getInstance().getDesign();
-        this.providerFactory = new ProviderFactory();
+        providerFactory = new ProviderFactory();
         this.dialogServiceC = new ServiceDialogC();
         this.costReportC = new CostDialogC();
 
@@ -70,7 +72,8 @@ public class DesignViewC {
             design.clearServicesCosts();
             design.getProvider().calculateCosts();
             if (costReportC.showCostReport()) {
-                new PDFReport();
+                report = new PDFReport();
+                report.createReport();
             }
         });
 
