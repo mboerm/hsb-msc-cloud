@@ -25,14 +25,14 @@ import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfFont;
 
-public class Report {
+public class PDFReport {
     private Document document;
     private Date date = Calendar.getInstance().getTime();
 
     private PdfFont bf12Bold;
     private PdfOutline outline = null;
 
-    public Report() {
+    public PDFReport() {
         try {
             bf12Bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
         } catch (IOException e) {

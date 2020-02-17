@@ -2,7 +2,7 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.main.StageManager;
-import cloud.report.Report;
+import cloud.report.PDFReport;
 import cloud.model.services.Service;
 import cloud.model.design.*;
 import cloud.model.provider.ProviderFactory;
@@ -70,7 +70,7 @@ public class DesignViewC {
             design.clearServicesCosts();
             design.getProvider().calculateCosts();
             if (costReportC.showCostReport()) {
-                new Report();
+                new PDFReport();
             }
         });
 
