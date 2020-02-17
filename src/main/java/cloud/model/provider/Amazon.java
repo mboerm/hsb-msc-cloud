@@ -132,7 +132,6 @@ class Amazon extends Provider implements IPricing {
     private Costs calcDatabaseServiceCosts(DatabaseService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
         String[] modes = Config.getInstance().getConfigValuesAsArray("database-sql-scheme");
-        String[] instance = Config.getInstance().getConfigValuesAsArray("database-instance-type");
         Costs serviceCosts = new Costs();
 
         if (service.getDatabaseType().equals(types[0]) && service.getDatabaseScheme().equals(modes[1])) {
