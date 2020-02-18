@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Monitoring</entry>
+    <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Administration</entry>
     <entry key="service-instance-size">Micro;Small;Medium;Large;Xlarge</entry>
     <entry key="service-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
     <entry key="service-usage-type">On-Demand;Reserved;Spot</entry>
@@ -27,15 +27,12 @@
     <entry key="database-instance-type">Standard;Storage-optimized</entry>
 
     <entry key="integration-type">Messaging;Queueing</entry>
-    <entry key="monitoring-type">User Monitor;System Monitor</entry>
+    <entry key="administration-type">User Monitor;System Monitor</entry>
     <entry key="network-type">VPC;VPN;API;CDN;DNS</entry>
     <entry key="analytic-type">Data Query;Data Share;Data Transfer;Data Stream;Data Catalog;Data Lake;Search Engine</entry>
     <entry key="analytic-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized</entry>
 
-    <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
-
     <entry key="design-property-labels">Provider:;Primary location:;Primary usage time:;# of Instances:;Requests:;Storage Capacity in TB:</entry>
-
     <entry key="service-general-labels">Name:;Category:;Type:;Service:</entry>
     <entry key="service-usage-labels">Location:;Usage type:;Usage period:;Usage prepay:;Operating mode:</entry>
 
@@ -62,16 +59,13 @@
     <entry key="network-api-labels">Requests:;Transferred data in GB:</entry>
     <entry key="network-cdn-labels">Transferred data in GB:;Transferred data in TB into internet:;Http-requests in 10.000:</entry>
     <entry key="network-dns-labels">Zones:;DNS-requests:</entry>
-    <entry key="monitoring-labels">Metrics:;Requests:;Data to collect in GB:;Data to save in GB:;Events in Mio.:;Logging:</entry>
+    <entry key="administration-monitoring-labels">Metrics:;Requests:;Data to collect in GB:;Data to save in GB:;Events in Mio.:;Logging:</entry>
     <entry key="integration-messaging-labels">Data in GB:;Requests:;Push messages:;Http messages:;Mail messages:;Sms messages:</entry>
 
-    <entry key="services-file">xml/services.xml</entry>
+    <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
     <entry key="aws-services">xml/aws-services.xml</entry>
     <entry key="azure-services">xml/azure-services.xml</entry>
     <entry key="gcp-services">xml/gcp-services.xml</entry>
-    <entry key="aws-free-tier">aws-free-tier.xml</entry>
-    <entry key="azure-free-tier">azure-free-tier.xml</entry>
-    <entry key="gcp-free-tier">gcp-free-tier.xml</entry>
 
     <entry key="about-text">This tool is the result of the master thesis.</entry>
 </properties>
