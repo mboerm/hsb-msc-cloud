@@ -14,7 +14,6 @@ import java.io.File;
 public abstract class Provider implements IPricing {
     private String serviceName;
     private String servicesFile;
-    private String freeFile;
     private Document doc;
 
     public String getServiceName() {
@@ -27,13 +26,6 @@ public abstract class Provider implements IPricing {
     public String getServicesFile() {return servicesFile;}
     public void setServicesFile(String servicesFile) {
         this.servicesFile = servicesFile;
-    }
-
-    public String getFreeFile() {
-        return freeFile;
-    }
-    public void setFreeFile(String freeFile) {
-        this.freeFile = freeFile;
     }
 
     public String getMatchingServiceForID(String id) {

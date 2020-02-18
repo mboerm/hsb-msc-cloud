@@ -16,7 +16,6 @@ class Amazon extends Provider implements IPricing {
     Amazon() {
         setServiceName("Amazon Web Services");
         setServicesFile(Config.getInstance().getConfigValue("aws-services"));
-        setFreeFile(Config.getInstance().getConfigValue("aws-free-tier"));
     }
 
     @Override
@@ -44,8 +43,8 @@ class Amazon extends Provider implements IPricing {
                             costs = calcAnalyticServiceCosts((AnalyticService) service, serviceElement);
                         else if (ServiceChecker.isNetworkItem(service.getCategory()) && service instanceof NetworkService)
                             costs = calcNetworkServiceCosts((NetworkService) service, serviceElement);
-                        else if (ServiceChecker.isMonitoringItem(service.getCategory()) && service instanceof MonitoringService)
-                            costs = calcMonitoringServiceCosts((MonitoringService) service, serviceElement);
+                        else if (ServiceChecker.isMonitoringItem(service.getCategory()) && service instanceof AdministrationService)
+                            costs = calcMonitoringServiceCosts((AdministrationService) service, serviceElement);
                         else {
                             costs = new Costs();
                         }
@@ -335,11 +334,11 @@ class Amazon extends Provider implements IPricing {
         return serviceCosts;
     }
 
-    private Costs calcMonitoringServiceCosts(MonitoringService service, Element element) {
+    private Costs calcMonitoringServiceCosts(AdministrationService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("monitoring-type");
         Costs serviceCosts = new Costs();
 
-        if (!(service.getLoggingState()) && service.getDisplayName().equals(types[1])) {
+        if (!(service.getLoggingState()) && service.getIdentifier().equals(types[1])) {
             /* monitoring type "System Monitor" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());
             double eventsPrice = Double.parseDouble(element.getElementsByTagName("events").item(0).getTextContent());

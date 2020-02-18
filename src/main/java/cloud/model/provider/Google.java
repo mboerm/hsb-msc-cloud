@@ -8,7 +8,6 @@ class Google extends Provider implements IPricing {
     Google() {
         setServiceName("Google Cloud Platform");
         setServicesFile(Config.getInstance().getConfigValue("gcp-services"));
-        setFreeFile(Config.getInstance().getConfigValue("gcp-free-tier"));
     }
 
     @Override
