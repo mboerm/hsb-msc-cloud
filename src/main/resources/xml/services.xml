@@ -1,181 +1,99 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <generic-services>
-	<!--Compute services-->
-	<service name="VM">
-		<aws>Amazon EC2</aws>
-		<azure>Azure Virtual Machines</azure>
-		<gcp>Google Compute Engine</gcp>
+	<service category="Compute" type="VM">
+		<id>VM</id>
 	</service>
-	<service name="Container (Standard)">
-		<aws>Amazon Elastic Container Service</aws>
-		<azure>Azure Container Instances</azure>
-		<gcp>Google Container Registry</gcp>
+	<service category="Compute" type="Container" mode="Standard">
+		<id>Container (Standard)</id>
 	</service>
-	<service name="Container (Kubernetes)">
-		<aws>Amazon Elastic Kubernetes Service</aws>
-		<azure>Azure Kubernetes Service</azure>
-		<gcp>Google Kubernetes Engine</gcp>
+	<service category="Compute" type="Container" mode="Kubernetes">
+		<id>Container (Kubernetes)</id>
 	</service>
-	<service name="App">
-		<aws>AWS Elastic Beanstalk</aws>
-		<azure>Azure App Engine</azure>
-		<gcp>Google App Engine</gcp>
+	<service category="Compute" type="App">
+		<id>App</id>
 	</service>
-	<service name="Batch">
-		<aws>AWS Batch</aws>
-		<azure>Azure Batch</azure>
-		<gcp>Google Batch</gcp>
+	<service category="Compute" type="Batch">
+		<id>Batch</id>
 	</service>
-	<service name="Code">
-		<aws>AWS Lambda</aws>
-		<azure>Azure Functions</azure>
-		<gcp>Cloud Functions</gcp>
+	<service category="Compute" type="Code">
+		<id>Code</id>
 	</service>
-	<service name="Load Balancer">
-		<aws>Elastic Load Balancing</aws>
-		<azure>Azure Load Balancer</azure>
-		<gcp>Cloud Load Balancing</gcp>
+	<service category="Compute" type="Load Balancer">
+		<id>Load Balancer</id>
 	</service>
 	
-	<!--Storage services-->
-	<service name="Object-Storage (Standard)">
-		<aws>Amazon Simple Storage Service</aws>
-		<azure>Azure Blob Storage</azure>
-		<gcp>Cloud Storage</gcp>
+	<service category="Storage" type="Object-Storage" mode="Standard">
+		<id>Object-Storage (Standard)</id>
 	</service>
-	<service name="Object-Storage (Archive)">
-		<aws>Amazon S3 Glacier</aws>
-		<azure>Azure Blob Storage (Cold/Archive-Mode)</azure>
-		<gcp>Cloud Storage (Coldline-Mode)</gcp>
+	<service category="Storage" type="Object-Storage" mode="Archive">
+		<id>Object-Storage (Archive)</id>
 	</service>
-	<service name="Block-Storage">
-		<aws>Amazon Elastic Block Store</aws>
-		<azure>Azure Disk Storage</azure>
-		<gcp>Persistent Disk</gcp>
+	<service category="Storage" type="Block-Storage">
+		<id>Block-Storage</id>
 	</service>
-	<service name="File-Storage">
-		<aws>Amazon Elastic File System</aws>
-		<azure>Azure File Storage</azure>
-		<gcp>Cloud Filestore</gcp>
+	<service category="Storage" type="File-Storage">
+		<id>File-Storage</id>
 	</service>
 	
-	<!--Database services-->
-	<service name="SQL (MySQL)">
-		<aws>Amazon RDS for MySQL</aws>
-		<azure>Azure Database for MySQL</azure>
-		<gcp>Cloud SQL</gcp>
+	<service category="Database" type="SQL (MySQL)" mode="MySQL">
+		<id>SQL (MySQL)</id>
 	</service>
-	<service name="SQL (PostgreSQL)">
-		<aws>Amazon RDS for PostgreSQL</aws>
-		<azure>Azure Database for PostgreSQL</azure>
-		<gcp>Cloud SQL for PostgreSQL</gcp>
+	<service category="Database" type="SQL" mode="PostgreSQL">
+		<id>SQL (PostgreSQL)</id>
 	</service>
-	<service name="SQL (MariaDB)">
-		<aws>Amazon RDS for MariaDB</aws>
-		<azure>Azure Database for MariaDB</azure>
-		<gcp>-</gcp>
+	<service category="Database" type="SQL" mode="MariaDB">
+		<id>SQL (MariaDB)</id>
 	</service>
-	<service name="NoSQL">
-		<aws>Amazon DynamoDB</aws>
-		<azure>Azure Table Storage</azure>
-		<gcp>Cloud Bigtable</gcp>
+	<service category="Database" type="NoSQL">
+		<id>NoSQL</id>
 	</service>
-	<service name="Document">
-		<aws>Amazon DocumentDB</aws>
-		<azure>Azure Cosmos DB</azure>
-		<gcp>Cloud Firestore</gcp>
+	<service category="Database" type="Document">
+		<id>Document</id>
 	</service>
-	<service name="Cache">
-		<aws>Amazon ElastiCache</aws>
-		<azure>Azure Cache for Redis</azure>
-		<gcp>Cloud Memorystore</gcp>
+	<service category="Database" type="Cache">
+		<id>Cache</id>
 	</service>
 	
-	<!--Analytic services-->
-	<service name="Data Query">
-		<aws>Amazon Athena</aws>
-		<azure>Azure Data Lake Analytics</azure>
-		<gcp>BigQuery</gcp>
+	<service type="Data Query">
 	</service>
-	<service name="Data Share">
-		<aws>AWS Data Exchange</aws>
-		<azure>Azure Data Share</azure>
-		<gcp>Cloud Pub/Sub</gcp>
+	<service type="Data Share">
 	</service>
-	<service name="Data Transfer">
-		<aws>AWS Data Pipeline</aws>
-		<azure>Azure Data Factory</azure>
-		<gcp>Cloud Composer</gcp>
+	<service type="Data Transfer">
 	</service>
-	<service name="Data Stream">
-		<aws>Amazon Kinesis</aws>
-		<azure>Azure Stream Analytics</azure>
-		<gcp>Cloud Dataflow</gcp>
+	<service type="Data Stream">
 	</service>
-	<service name="Data Catalog">
-		<aws>AWS Glue</aws>
-		<azure>Azure Data Catalog</azure>
-		<gcp>Data Catalog</gcp>
+	<service type="Data Catalog">
 	</service>
-	<service name="Data Lake">
-		<aws>AWS Lake Formation</aws>
-		<azure>Azure Data Lake Storage</azure>
-		<gcp>Cloud Dataprep</gcp>
+	<service type="Data Lake">
 	</service>
-	<service name="Search Engine">
-		<aws>Amazon Elasticsearch Service</aws>
-		<azure>Azure Search</azure>
-		<gcp>Cloud Search</gcp>
+	<service type="Search Engine">
 	</service>
 	
-	<!--Application integration services-->
-	<service name="Messaging">
-		<aws>Amazon SNS</aws>
-		<azure>Azure Event Grid</azure>
-		<gcp>Cloud Pub/Sub</gcp>
+	<service type="Messaging">
 	</service>
-	<service name="Queueing">
-		<aws>Amazon SQS</aws>
-		<azure>Azure Service Bus</azure>
-		<gcp>Cloud Pub/Sub</gcp>
+	<service type="Queueing">
 	</service>
 	
-	<!--Monitoring services-->
-	<service name="System Monitor">
-		<aws>Amazon CloudWatch</aws>
-		<azure>Azure Monitor</azure>
-		<gcp>Stackdriver Monitoring</gcp>
+	<service category="Administration" type="System Monitor">
+		<id>System Monitor</id>
 	</service>
-	<service name="User Monitor">
-		<aws>AWS CloudTrail</aws>
-		<azure>Azure Monitor Log Analytics</azure>
-		<gcp>Stackdriver Logging</gcp>
+	<service category="Administration" type="User Monitor">
+		<id>User Monitor</id>
 	</service>
 	
-	<!--Network services-->
-	<service name="VPC">
-		<aws>Amazon VPC</aws>
-		<azure>Azure Virtual Network</azure>
-		<gcp>Google VPC</gcp>
+	<service category="Network" type="VPC">
+		<id>VPC</id>
 	</service>
-	<service name="VPN">
-		<aws>AWS VPN</aws>
-		<azure>Azure VPN Gateway</azure>
-		<gcp>Google VPC</gcp>
+	<service category="Network" type="VPN">
+		<id>VPN</id>
 	</service>
-	<service name="API">
-		<aws>Amazon API Gateway</aws>
-		<azure>Azure API Management</azure>
-		<gcp>Cloud Endpoints</gcp>
+	<service category="Network" type="API">
+		<id>API</id>
 	</service>
-	<service name="CDN">
-		<aws>Amazon CloudFront</aws>
-		<azure>Azure CDN</azure>
-		<gcp>Cloud CDN</gcp>
+	<service category="Network" type="CDN">
+		<id>CDN</id>
 	</service>
-	<service name="DNS">
-		<aws>Amazon Route 53</aws>
-		<azure>Azure DNS</azure>
-		<gcp>Cloud DNS</gcp>
+	<service category="Network" type="DNS">
+		<id>DNS</id>
 	</service>
 </generic-services>
