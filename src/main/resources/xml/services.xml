@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<services>
+<generic-services>
 	<!--Compute services-->
 	<service name="VM">
 		<aws>Amazon EC2</aws>
@@ -31,7 +31,7 @@
 		<azure>Azure Functions</azure>
 		<gcp>Cloud Functions</gcp>
 	</service>
-	<service name="Load Balancing">
+	<service name="Load Balancer">
 		<aws>Elastic Load Balancing</aws>
 		<azure>Azure Load Balancer</azure>
 		<gcp>Cloud Load Balancing</gcp>
@@ -63,7 +63,7 @@
 	<service name="SQL (MySQL)">
 		<aws>Amazon RDS for MySQL</aws>
 		<azure>Azure Database for MySQL</azure>
-		<gcp>Cloud SQL, Cloud Spanner</gcp>
+		<gcp>Cloud SQL</gcp>
 	</service>
 	<service name="SQL (PostgreSQL)">
 		<aws>Amazon RDS for PostgreSQL</aws>
@@ -178,4 +178,4 @@
 		<azure>Azure DNS</azure>
 		<gcp>Cloud DNS</gcp>
 	</service>
-</services>
+</generic-services>
