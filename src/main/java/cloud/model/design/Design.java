@@ -55,7 +55,7 @@ public class Design {
 
     public void matchServices() {
         for (Service service : servicesList) {
-            service.setProviderService(getProvider().getMatchingServiceForName(service.getDisplayName()));
+            service.setProviderService(getProvider().getMatchingServiceForID(service.getDisplayName()));
         }
     }
 

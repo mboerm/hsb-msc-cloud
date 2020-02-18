@@ -15,15 +15,14 @@ class Amazon extends Provider implements IPricing {
 
     Amazon() {
         setServiceName("Amazon Web Services");
-        setServiceShortName("aws");
-        setPriceFile(Config.getInstance().getConfigValue("aws-prices"));
+        setServicesFile(Config.getInstance().getConfigValue("aws-services"));
         setFreeFile(Config.getInstance().getConfigValue("aws-free-tier"));
     }
 
     @Override
     public void calculateCosts() {
         System.out.println(getServiceName() + " -> " + "Static Cost Calculation!");
-        setDocument(getPriceFile());
+        setDocument(getServicesFile());
 
         ObservableList<Service> services = DesignManager.getInstance().getDesign().getServicesList();
         NodeList servicesNodeList = getDocument().getElementsByTagName("service");
@@ -34,7 +33,7 @@ class Amazon extends Provider implements IPricing {
                 Node serviceNode = servicesNodeList.item(i);
                 if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element serviceElement = (Element) serviceNode;
-                    if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("name"))) {
+                    if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("id"))) {
                         if (ServiceChecker.isComputeItem(service.getCategory()) && service instanceof ComputeService)
                             costs = calcComputeServiceCosts((ComputeService) service, serviceElement);
                         else if (ServiceChecker.isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)
@@ -71,12 +70,12 @@ class Amazon extends Provider implements IPricing {
             /* compute type "VM" */
             double instancePrice = 0;
             double dataPrice = 0;
-            NodeList regions = element.getElementsByTagName("region");
-            for (int i = 0; i < regions.getLength(); i++) {
-                Node regionNode = regions.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
                         if (subNode.getNodeName().equals("instance")
                                 && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
@@ -108,12 +107,12 @@ class Amazon extends Provider implements IPricing {
             /* compute type "Load Balancing" */
             double hourPrice = 0;
             double dataPrice = 0;
-            NodeList balancerRegions = element.getElementsByTagName("region");
-            for (int i = 0; i < balancerRegions.getLength(); i++) {
-                Node regionNode = balancerRegions.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         if (subNode.getNodeName().equals("hour")) {
                             hourPrice = Double.parseDouble(subNode.getTextContent());
                         } else if (subNode.getNodeName().equals("data")) {
@@ -140,12 +139,12 @@ class Amazon extends Provider implements IPricing {
             double storagePrice = 0;
             double backupPrice = 0;
             double dataOutPrice = 0;
-            NodeList regions = element.getElementsByTagName("region");
-            for (int i = 0; i < regions.getLength(); i++) {
-                Node regionNode = regions.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
                         if (subNode.getNodeName().equals("instance")
                                 && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
@@ -184,12 +183,12 @@ class Amazon extends Provider implements IPricing {
             double requestsWritePrice = 0;
             double requestsFactor = 0;
             double dataOutPrice = 0;
-            NodeList regions = element.getElementsByTagName("region");
-            for (int i = 0; i < regions.getLength(); i++) {
-                Node regionNode = regions.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
                         if (subNode.getNodeName().equals("capacity")
                                 && service.getCapacity() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
@@ -233,12 +232,12 @@ class Amazon extends Provider implements IPricing {
             double unitPrice = 0;
             double unitSize = 0;
 
-            NodeList balancerRegions = element.getElementsByTagName("region");
-            for (int i = 0; i < balancerRegions.getLength(); i++) {
-                Node regionNode = balancerRegions.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         if (subNode.getNodeName().equals("data")) {
                             dataHourSize = Double.parseDouble(subNode.getAttributes().getNamedItem("size").getTextContent());
                             dataPrice = Double.parseDouble(subNode.getTextContent());
@@ -260,12 +259,12 @@ class Amazon extends Provider implements IPricing {
             double instancePrice = 0;
             double dataPrice = 0;
             double dataOutPrice = 0;
-            NodeList regions = element.getElementsByTagName("region");
-            for (int i = 0; i < regions.getLength(); i++) {
-                Node regionNode = regions.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
                         if (subNode.getNodeName().equals("instance")
                                 && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
@@ -304,12 +303,12 @@ class Amazon extends Provider implements IPricing {
             double httpPrice = 0;
             double httpFactor = 0;
 
-            NodeList regionsElements = element.getElementsByTagName("region");
-            for (int i = 0; i < regionsElements.getLength(); i++) {
-                Node regionNode = regionsElements.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         switch (subNode.getNodeName()) {
                             case "data":
                                 dataPrice = Double.parseDouble(subNode.getTextContent());
@@ -355,12 +354,12 @@ class Amazon extends Provider implements IPricing {
                     metricsPrice = Double.parseDouble(metricsNode.getTextContent());
                 }
             }
-            NodeList regionsElements = element.getElementsByTagName("region");
-            for (int i = 0; i < regionsElements.getLength(); i++) {
-                Node regionNode = regionsElements.item(i);
-                if (service.getLocation().equals(regionNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < regionNode.getChildNodes().getLength(); j++) {
-                        Node subNode = regionNode.getChildNodes().item(j);
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
                         if (subNode.getNodeName().equals("data")) {
                             switch (subNode.getAttributes().getNamedItem("type").getTextContent()) {
                                 case "collect":

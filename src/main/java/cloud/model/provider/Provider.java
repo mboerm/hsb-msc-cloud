@@ -12,17 +12,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
 public abstract class Provider implements IPricing {
-
     private String serviceName;
-    private String serviceShortName;
     private String servicesFile;
-    private String priceFile;
     private String freeFile;
     private Document doc;
-
-    public Provider() {
-        setServicesFile(Config.getInstance().getConfigValue("services-file"));
-    }
 
     public String getServiceName() {
         return this.serviceName;
@@ -31,23 +24,9 @@ public abstract class Provider implements IPricing {
         this.serviceName = serviceName;
     }
 
-    public String getServiceShortName() {
-        return serviceShortName;
-    }
-    public void setServiceShortName(String serviceShortName) {
-        this.serviceShortName = serviceShortName;
-    }
-
     public String getServicesFile() {return servicesFile;}
     public void setServicesFile(String servicesFile) {
         this.servicesFile = servicesFile;
-    }
-
-    public String getPriceFile() {
-        return priceFile;
-    }
-    public void setPriceFile(String priceFile) {
-        this.priceFile = priceFile;
     }
 
     public String getFreeFile() {
@@ -57,7 +36,7 @@ public abstract class Provider implements IPricing {
         this.freeFile = freeFile;
     }
 
-    public String getMatchingServiceForName(String nameValue) {
+    public String getMatchingServiceForID(String id) {
         setDocument(servicesFile);
 
         NodeList servicesNodeList = doc.getElementsByTagName("service");
@@ -65,8 +44,8 @@ public abstract class Provider implements IPricing {
             Node serviceNode = servicesNodeList.item(i);
             if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element serviceElement = (Element) serviceNode;
-                if (nameValue.equalsIgnoreCase(serviceElement.getAttribute("name"))) {
-                    return serviceElement.getElementsByTagName(serviceShortName).item(0).getTextContent();
+                if (id.equalsIgnoreCase(serviceElement.getAttribute("id"))) {
+                    return serviceElement.getAttribute("service");
                 }
             }
         }

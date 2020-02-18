@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
     <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Monitoring</entry>
     <entry key="service-instance-size">Micro;Small;Medium;Large;Xlarge</entry>
     <entry key="service-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
@@ -67,9 +66,9 @@
     <entry key="integration-messaging-labels">Data in GB:;Requests:;Push messages:;Http messages:;Mail messages:;Sms messages:</entry>
 
     <entry key="services-file">xml/services.xml</entry>
-    <entry key="aws-prices">xml/aws-prices.xml</entry>
-    <entry key="azure-prices">xml/azure-prices.xml</entry>
-    <entry key="gcp-prices">xml/gcp-prices.xml</entry>
+    <entry key="aws-services">xml/aws-services.xml</entry>
+    <entry key="azure-services">xml/azure-services.xml</entry>
+    <entry key="gcp-services">xml/gcp-services.xml</entry>
     <entry key="aws-free-tier">aws-free-tier.xml</entry>
     <entry key="azure-free-tier">azure-free-tier.xml</entry>
     <entry key="gcp-free-tier">gcp-free-tier.xml</entry>

@@ -7,8 +7,7 @@ class Windows extends Provider implements IPricing {
 
     Windows() {
         setServiceName("Windows Azure");
-        setServiceShortName("azure");
-        setPriceFile(Config.getInstance().getConfigValue("azure-prices"));
+        setServicesFile(Config.getInstance().getConfigValue("azure-services"));
         setFreeFile(Config.getInstance().getConfigValue("azure-free-tier"));
     }
 

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gcp-services>
+	<!--Compute services-->
+	<service id="VM" service="Google Compute Engine">
+	</service>
+	<service id="Container (Standard)" service="Google Container Registry">
+	</service>
+	<service id="Container (Kubernetes)" service="Google Kubernetes Engine">
+	</service>
+	<service id="App" service="Google App Engine">
+	</service>
+	<service id="Batch" service="Google Batch">
+	</service>
+	<service id="Code" service="Cloud Functions">
+	</service>
+	<service id="Load Balancer" service="Cloud Load Balancing">
+	</service>
+
+	<!--Storage services-->
+	<service id="Object-Storage (Standard)" service="Cloud Storage">
+	</service>
+	<service id="Object-Storage (Archive)" service="Cloud Storage (Coldline-Mode)">
+	</service>
+	<service id="Block-Storage" service="Persistent Disk">
+	</service>
+	<service id="File-Storage" service="Cloud Filestore">
+	</service>
+
+	<!--Database services-->
+	<service id="SQL (MySQL)" service="Cloud SQL">
+	</service>
+	<service id="SQL (PostgreSQL)" service="Cloud SQL for PostgreSQL">
+	</service>
+	<service id="SQL (MariaDB)" service="-">
+	</service>
+	<service id="NoSQL" service="Cloud Bigtable">
+	</service>
+	<service id="Document" service="Cloud Firestore">
+	</service>
+	<service id="Cache" service="Cloud Memorystore">
+	</service>
+
+	<!--Analytic services-->
+	<service id="Data Query" service="BigQuery">
+	</service>
+	<service id="Data Share" service="Cloud Pub/Sub">
+	</service>
+	<service id="Data Transfer" service="Cloud Composer">
+	</service>
+	<service id="Data Stream" service="Cloud Dataflow">
+	</service>
+	<service id="Data Catalog" service="Data Catalog">
+	</service>
+	<service id="Data Lake" service="Cloud Dataprep">
+	</service>
+	<service id="Search Engine" service="Cloud Search">
+	</service>
+	
+	<!--Application integration services-->
+	<service id="Messaging" service="Cloud Pub/Sub">
+	</service>
+	<service id="Queueing" service="Cloud Pub/Sub">
+	</service>
+
+	<!--Monitoring services-->
+	<service id="System Monitor" service="Stackdriver Monitoring">
+	</service>
+	<service id="User Monitor" service="Stackdriver Logging">
+	</service>
+
+	<!--Network services-->
+	<service id="VPC" service="Google VPC">
+	</service>
+	<service id="VPN" service="Google VPC">
+	</service>
+	<service id="API" service="Cloud Endpoints">
+	</service>
+	<service id="CDN" service="Cloud CDN">
+	</service>
+	<service id="DNS" service="Cloud DNS">
+	</service>
+</gcp-services>
