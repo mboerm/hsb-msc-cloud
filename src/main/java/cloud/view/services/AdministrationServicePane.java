@@ -6,9 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.util.Pair;
 
-public class MonitoringServicePane extends ServicePropertiesPane {
+public class AdministrationServicePane extends ServicePropertiesPane {
 
-    private String[] labels;
     private Spinner<Integer> metricsSpinner;
     private Spinner<Integer> requestsSpinner;
     private Spinner<Integer> dataCollectSpinner;
@@ -16,7 +15,7 @@ public class MonitoringServicePane extends ServicePropertiesPane {
     private Spinner<Integer> eventsSpinner;
     private CheckBox isLoggingBox;
 
-    public MonitoringServicePane() {
+    public AdministrationServicePane() {
         metricsSpinner = new Spinner<>(1, 1000000, 1);
         requestsSpinner = new Spinner<>(1, 1000000, 1);
         dataCollectSpinner = new Spinner<>(1, 1000000, 1);
@@ -51,7 +50,7 @@ public class MonitoringServicePane extends ServicePropertiesPane {
     public void setLoggingState(boolean state) {this.isLoggingBox.setSelected(state);}
 
     private void setMonitoringControls() {
-        labels = Config.getInstance().getConfigValuesAsArray("monitoring-labels");
+        String[] labels = Config.getInstance().getConfigValuesAsArray("administration-monitoring-labels");
         add(new Label(labels[0]), 0, 2);
         add(metricsSpinner, 1, 2);
         add(new Label("per month"), 2, 2);

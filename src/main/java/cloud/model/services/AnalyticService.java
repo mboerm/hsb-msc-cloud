@@ -16,7 +16,7 @@ public class AnalyticService extends Service {
     public AnalyticService(String name, String type, Integer data, Integer dataOut, Pair<Integer,Integer> num, Integer units, String instanceType, String instanceSize) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[3]);
-        setDisplayName(type);
+        setIdentifier(type);
         setAnalyticType(type);
         setData(data);
         setDataOut(dataOut);
@@ -73,5 +73,19 @@ public class AnalyticService extends Service {
     }
     public void setInstanceSize(String instanceSize) {
         this.instanceSize = instanceSize;
+    }
+
+    @Override
+    public String[] getSpecificProperties() {
+        return new String[] {
+                this.getAnalyticType(),
+                this.getInstanceType(),
+                this.getInstanceSize(),
+                this.getUnits().toString(),
+                this.getData().toString(),
+                this.getDataOut().toString(),
+                this.getNum().getKey().toString(),
+                this.getNum().getValue().toString()
+        };
     }
 }

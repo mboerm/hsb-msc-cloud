@@ -18,7 +18,7 @@ public class ServicePaneFactory {
         } else if (service.equals(serviceCategories[5])) {
             return new IntegrationServicePane();
         } else if (service.equals(serviceCategories[6])) {
-            return new MonitoringServicePane();
+            return new AdministrationServicePane();
         } else {
             throw new IllegalArgumentException("Invalid service category!");
         }

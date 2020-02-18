@@ -39,7 +39,7 @@ public class DatabaseServiceCreator implements IServiceCreator {
             // SQL
             DatabaseService dbService = new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
                     duration, storage, backup, data, num);
-            dbService.setDisplayName(databaseType + " (" + databaseScheme + ")");
+            dbService.setIdentifier(databaseType + " (" + databaseScheme + ")");
             return dbService;
         } else if (databaseType.equals(types[1])) {
             // NoSQL

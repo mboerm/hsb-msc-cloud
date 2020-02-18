@@ -15,7 +15,7 @@ public class ServiceDialogC {
     private AnalyticServicePane analyticPane;
     private NetworkServicePane networkPane;
     private IntegrationServicePane integrationPane;
-    private MonitoringServicePane monitoringPane;
+    private AdministrationServicePane monitoringPane;
 
     private Service serviceData;
 
@@ -82,7 +82,7 @@ public class ServiceDialogC {
         } else if (ServiceChecker.isIntegrationItem(item)) {
             return integrationPane = (IntegrationServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isMonitoringItem(item)) {
-            return monitoringPane = (MonitoringServicePane) servicePaneFactory.getServicePane(item);
+            return monitoringPane = (AdministrationServicePane) servicePaneFactory.getServicePane(item);
         } else {
             throw new IllegalArgumentException("Invalid service item");
         }
@@ -124,7 +124,7 @@ public class ServiceDialogC {
                     integrationPane.getRequests(), integrationPane.getMessages()
             ));
         } else if (ServiceChecker.isMonitoringItem(item)) {
-            return ServiceFactory.getService(new MonitoringServiceCreator(
+            return ServiceFactory.getService(new AdministrationServiceCreator(
                     monitoringPane.getName(), monitoringPane.getMetrics(), monitoringPane.getRequests(),
                     monitoringPane.getData(), monitoringPane.getEvents(), monitoringPane.getLoggingState()
             ));
@@ -189,13 +189,13 @@ public class ServiceDialogC {
             integrationPane.setData(((IntegrationService) serviceData).getData());
             integrationPane.setRequests(((IntegrationService) serviceData).getRequests());
             integrationPane.setMessages(((IntegrationService) serviceData).getMessages());
-        } else if (ServiceChecker.isMonitoringItem(serviceData.getCategory()) && serviceData instanceof MonitoringService) {
+        } else if (ServiceChecker.isMonitoringItem(serviceData.getCategory()) && serviceData instanceof AdministrationService) {
             monitoringPane.setName(serviceData.getName());
-            monitoringPane.setMetrics(((MonitoringService) serviceData).getMetrics());
-            monitoringPane.setRequests(((MonitoringService) serviceData).getRequests());
-            monitoringPane.setData(((MonitoringService) serviceData).getData());
-            monitoringPane.setEvents(((MonitoringService) serviceData).getEvents());
-            monitoringPane.setLoggingState(((MonitoringService) serviceData).getLoggingState());
+            monitoringPane.setMetrics(((AdministrationService) serviceData).getMetrics());
+            monitoringPane.setRequests(((AdministrationService) serviceData).getRequests());
+            monitoringPane.setData(((AdministrationService) serviceData).getData());
+            monitoringPane.setEvents(((AdministrationService) serviceData).getEvents());
+            monitoringPane.setLoggingState(((AdministrationService) serviceData).getLoggingState());
         }
     }
 

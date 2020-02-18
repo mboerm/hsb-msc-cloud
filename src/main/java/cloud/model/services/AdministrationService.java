@@ -3,7 +3,7 @@ package cloud.model.services;
 import cloud.configuration.Config;
 import javafx.util.Pair;
 
-public class MonitoringService extends Service {
+public class AdministrationService extends Service {
 
     private Integer metrics;
     private Integer apiRequests;
@@ -11,7 +11,7 @@ public class MonitoringService extends Service {
     private Integer events;
     private boolean loggerState;
 
-    public MonitoringService(String name, Integer metrics, Integer apiRequests, Pair<Integer, Integer> data, Integer events, boolean loggerState) {
+    public AdministrationService(String name, Integer metrics, Integer apiRequests, Pair<Integer, Integer> data, Integer events, boolean loggerState) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
         setMetrics(metrics);
@@ -35,4 +35,16 @@ public class MonitoringService extends Service {
 
     public boolean getLoggingState() {return this.loggerState;}
     public void setLoggingState(boolean isLogger) {this.loggerState = isLogger;}
+
+    @Override
+    public String[] getSpecificProperties() {
+        return new String[] {
+                this.getMetrics().toString(),
+                this.getMetrics().toString(),
+                this.getEvents().toString(),
+                this.getData().getKey().toString(),
+                this.getData().getValue().toString(),
+                String.valueOf(this.getLoggingState())
+        };
+    }
 }

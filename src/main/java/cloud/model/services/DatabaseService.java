@@ -20,7 +20,7 @@ public class DatabaseService extends Service {
                            Integer storage, Integer backup, Integer data, Pair<Integer,Integer> num) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[1]);
-        setDisplayName(databaseType);
+        setIdentifier(databaseType);
         setDatabaseType(databaseType);
         setDatabaseScheme(databaseScheme);
         setInstanceType(instanceType);

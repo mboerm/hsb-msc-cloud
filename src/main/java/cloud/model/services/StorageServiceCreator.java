@@ -31,7 +31,7 @@ public class StorageServiceCreator implements IServiceCreator {
 
         if (type.equals(types[0])) {
             StorageService storageService = new StorageService(name, type, mode, capacity, data, requests, queries, 0);
-            storageService.setDisplayName(type + " (" + mode + ")");
+            storageService.setIdentifier(type + " (" + mode + ")");
             return storageService;
         } else if (type.equals(types[1])) {
             return new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, 0);

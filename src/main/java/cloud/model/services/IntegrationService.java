@@ -19,7 +19,7 @@ public class IntegrationService extends Service {
     public IntegrationService(String name, String type, Integer data, Integer requests, Integer[] messages) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[5]);
-        setDisplayName(type);
+        setIdentifier(type);
         setIntegrationType(type);
         setData(data);
         setRequests(requests);

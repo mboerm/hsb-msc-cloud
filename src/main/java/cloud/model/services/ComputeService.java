@@ -20,7 +20,7 @@ public class ComputeService extends Service {
                           String computeInstance, String storageInstance, String system,
                           Integer cpu, Integer storage, Integer data, Integer numOne, Integer numTwo) {
         setName(name);
-        setDisplayName(computeType);
+        setIdentifier(computeType);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[0]);
         setComputeType(computeType);
         setInstanceType(instanceType);

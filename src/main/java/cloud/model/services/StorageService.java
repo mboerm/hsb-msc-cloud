@@ -16,7 +16,7 @@ public class StorageService extends Service {
     public StorageService(String name, String storageType, String mode, Integer capacity, Integer data, Pair<Integer, Integer> requests, Integer queries, Integer rate) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[2]);
-        setDisplayName(storageType);
+        setIdentifier(storageType);
         setStorageType(storageType);
         setStorageMode(mode);
         setCapacity(capacity);

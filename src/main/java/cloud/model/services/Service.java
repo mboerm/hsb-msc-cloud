@@ -2,7 +2,7 @@ package cloud.model.services;
 
 public abstract class Service {
     private String name;
-    private String displayName;
+    private String identifier;
     private String providerService;
     private String category;
     private String location;
@@ -13,7 +13,7 @@ public abstract class Service {
 
     public Service() {
         this.setName("none");
-        this.setDisplayName("none");
+        this.setIdentifier("none");
         this.setProviderService("none");
         this.setCategory("none");
         this.setLocation("none");
@@ -30,11 +30,11 @@ public abstract class Service {
         this.name = name;
     }
 
-    public String getDisplayName() {
-        return this.displayName;
+    public String getIdentifier() {
+        return this.identifier;
     }
-    public void setDisplayName(String display) {
-        this.displayName = display;
+    public void setIdentifier(String id) {
+        this.identifier = id;
     }
 
     public String getProviderService() {
@@ -86,7 +86,7 @@ public abstract class Service {
         return new String[] {
                 this.getName(),
                 this.getCategory(),
-                this.getDisplayName(),
+                this.getIdentifier(),
                 this.getProviderService()
         };
     }
@@ -100,4 +100,6 @@ public abstract class Service {
                 this.getOpMode()
         };
     }
+
+    public abstract String[] getSpecificProperties();
 }

@@ -13,7 +13,7 @@ public class NetworkService extends Service {
     public NetworkService(String name, String type, Integer requests, Integer data, Integer dataOut, Integer zones) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[4]);
-        setDisplayName(type);
+        setIdentifier(type);
         setNetworkType(type);
         setRequests(requests);
         setData(data);

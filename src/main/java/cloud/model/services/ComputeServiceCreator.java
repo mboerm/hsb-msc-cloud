@@ -46,7 +46,7 @@ public class ComputeServiceCreator implements IServiceCreator {
             /* Container */
 			ComputeService computeService = new ComputeService(name, computeType, "", "", "", "",
                     system, cpu, storage, data, numOne, numTwo);
-			computeService.setDisplayName(computeType + " (" + system + ")");
+			computeService.setIdentifier(computeType + " (" + system + ")");
             return computeService;
         } else if (computeType.equals(types[2])) {
             /* App */
