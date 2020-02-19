@@ -68,7 +68,7 @@ public class PDFReport implements IReport {
         String[] summaryLabels = Config.getInstance().getConfigValuesAsArray("design-property-labels");
         float[] columnWidths = {150F, 150F};
         Table summaryTable = new Table(columnWidths);
-        summaryTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        summaryTable.setHorizontalAlignment(HorizontalAlignment.LEFT);
 
         insertCell(summaryTable, summaryLabels[0], TextAlignment.LEFT);
         insertCell(summaryTable, DesignManager.getInstance().getDesign().getProvider().getServiceName(), TextAlignment.CENTER);
@@ -109,8 +109,8 @@ public class PDFReport implements IReport {
             propertiesTable = new Table(columnWidths);
             propertiesTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
             for (int i = 0; i < serviceGeneralLabels.length; i++) {
-                insertCell(propertiesTable, serviceGeneralLabels[i], TextAlignment.LEFT);
-                insertCell(propertiesTable, service.getGeneralProperties()[i], TextAlignment.CENTER);
+                insertCell(propertiesTable, serviceGeneralLabels[i], TextAlignment.LEFT, true);
+                insertCell(propertiesTable, service.getGeneralProperties()[i], TextAlignment.CENTER, true);
             }
             document.add(propertiesTable);
 
@@ -118,8 +118,8 @@ public class PDFReport implements IReport {
             usageTable = new Table(columnWidths);
             usageTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
             for (int i = 0; i < serviceUsageLabels.length; i++) {
-                insertCell(usageTable, serviceUsageLabels[i], TextAlignment.LEFT);
-                insertCell(usageTable, service.getUsageProperties()[i], TextAlignment.CENTER);
+                insertCell(usageTable, serviceUsageLabels[i], TextAlignment.LEFT, true);
+                insertCell(usageTable, service.getUsageProperties()[i], TextAlignment.CENTER, true);
             }
             document.add(usageTable);
         }
@@ -135,20 +135,20 @@ public class PDFReport implements IReport {
         serviceCostsTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
         for (Pair<Service, Costs> designCost : DesignManager.getInstance().getDesign().getServicesCosts()) {
-            insertCell(serviceCostsTable, designCost.getKey().getName(), TextAlignment.LEFT);
-            insertCell(serviceCostsTable, Constants.DOUBLE_FORMAT_2.format(designCost.getValue().getPrice()) + " USD", TextAlignment.RIGHT);
+            insertCell(serviceCostsTable, designCost.getKey().getName(), TextAlignment.LEFT, true);
+            insertCell(serviceCostsTable, Constants.DOUBLE_FORMAT_2.format(designCost.getValue().getPrice()) + " USD", TextAlignment.RIGHT, true);
         }
         document.add(serviceCostsTable);
 
         document.add(new Paragraph("Total costs"));
         Table totalCostsTable = new Table(columnWidths);
         totalCostsTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
-        insertCell(totalCostsTable, "Per Hour:", TextAlignment.LEFT);
-        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerHour()) + " USD", TextAlignment.RIGHT);
-        insertCell(totalCostsTable, "Per Day:", TextAlignment.LEFT);
-        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerDay()) + " USD", TextAlignment.RIGHT);
-        insertCell(totalCostsTable, "Per Month:", TextAlignment.LEFT);
-        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCosts()) + " USD", TextAlignment.RIGHT);
+        insertCell(totalCostsTable, "Per Hour:", TextAlignment.LEFT, true);
+        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerHour()) + " USD", TextAlignment.RIGHT, true);
+        insertCell(totalCostsTable, "Per Day:", TextAlignment.LEFT, true);
+        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerDay()) + " USD", TextAlignment.RIGHT, true);
+        insertCell(totalCostsTable, "Per Month:", TextAlignment.LEFT, true);
+        insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCosts()) + " USD", TextAlignment.RIGHT, true);
         document.add(totalCostsTable);
     }
 
