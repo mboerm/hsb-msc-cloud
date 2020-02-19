@@ -83,11 +83,11 @@
 		<id>Communication (Queueing)</id>
 	</service>
 	
-	<service category="Administration" type="Monitoring" mode="System Monitor">
-		<id>System Monitor</id>
+	<service category="Administration" type="Monitoring" mode="System">
+		<id>Monitoring (System)</id>
 	</service>
-	<service category="Administration" type="Monitoring" mode="User Monitor">
-		<id>User Monitor</id>
+	<service category="Administration" type="Monitoring" mode="User">
+		<id>Monitoring (User)</id>
 	</service>
 	
 	<service category="Network" type="VPC">

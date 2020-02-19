@@ -1,6 +1,5 @@
 package cloud.model.provider;
 
-import cloud.configuration.Config;
 import cloud.model.pricing.IPricing;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

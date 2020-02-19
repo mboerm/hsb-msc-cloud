@@ -30,7 +30,7 @@
     <entry key="integration-communication-mode">Messaging;Queueing</entry>
 
     <entry key="administration-type">Monitoring</entry>
-    <entry key="administration-monitoring-mode">User Monitor;System Monitor</entry>
+    <entry key="administration-monitoring-mode">User;System</entry>
 
     <entry key="network-type">VPC;VPN;API;CDN;DNS</entry>
 
@@ -71,6 +71,7 @@
     <entry key="aws-services">xml/aws-services.xml</entry>
     <entry key="azure-services">xml/azure-services.xml</entry>
     <entry key="gcp-services">xml/gcp-services.xml</entry>
+    <entry key="services">xml/services.xml</entry>
 
     <entry key="about-text">This tool is the result of the master thesis.</entry>
 </properties>
