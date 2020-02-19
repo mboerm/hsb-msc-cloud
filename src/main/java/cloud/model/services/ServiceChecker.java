@@ -4,38 +4,40 @@ import cloud.configuration.Config;
 import javafx.util.Pair;
 
 public class ServiceChecker {
+    private static volatile ServiceChecker INSTANCE = null;
     private static String[] serviceTypes = Config.getInstance().getConfigValuesAsArray("service-categories");
 
-    public static boolean isComputeItem(String item) {
+    public static ServiceChecker getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ServiceChecker();
+        }
+        return INSTANCE;
+    }
+
+    public boolean isComputeItem(String item) {
         return item.equals(serviceTypes[0]);
     }
-
-    public static boolean isDatabaseItem(String item) {
+    public boolean isDatabaseItem(String item) {
         return item.equals(serviceTypes[1]);
     }
-
-    public static boolean isStorageItem(String item) {
+    public boolean isStorageItem(String item) {
         return item.equals(serviceTypes[2]);
     }
-
-    public static boolean isAnalyticItem(String item) {
+    public boolean isAnalyticItem(String item) {
         return item.equals(serviceTypes[3]);
     }
-
-    public static boolean isNetworkItem(String item) {
+    public boolean isNetworkItem(String item) {
         return item.equals(serviceTypes[4]);
     }
-
-    public static boolean isIntegrationItem(String item) {
+    public boolean isIntegrationItem(String item) {
         return item.equals(serviceTypes[5]);
     }
-
-    public static boolean isAdministrationItem(String item) {
+    public boolean isAdministrationItem(String item) {
         return item.equals(serviceTypes[6]);
     }
 
     public Pair<String[],String[]> getSpecificProperties(Service service) {
-        if (ServiceChecker.isComputeItem(service.getCategory()) && service instanceof ComputeService) {
+        if (ServiceChecker.getInstance().isComputeItem(service.getCategory()) && service instanceof ComputeService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("compute-type");
             ComputeService compService = (ComputeService) service;
             if (compService.getComputeType().equals(types[0])) {
@@ -103,7 +105,7 @@ public class ServiceChecker {
                         }
                 );
             }
-        } else if (ServiceChecker.isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService) {
+        } else if (ServiceChecker.getInstance().isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
             DatabaseService dbService = (DatabaseService) service;
             if (dbService.getDatabaseType().equals(types[0])) {
@@ -159,7 +161,7 @@ public class ServiceChecker {
                         }
                 );
             }
-        } else if (ServiceChecker.isStorageItem(service.getCategory()) && service instanceof StorageService) {
+        } else if (ServiceChecker.getInstance().isStorageItem(service.getCategory()) && service instanceof StorageService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("storage-type");
             StorageService storageService = (StorageService) service;
             if (storageService.getStorageType().equals(types[0])) {
@@ -197,7 +199,7 @@ public class ServiceChecker {
                         }
                 );
             }
-        } else if (ServiceChecker.isAnalyticItem(service.getCategory()) && service instanceof AnalyticService) {
+        } else if (ServiceChecker.getInstance().isAnalyticItem(service.getCategory()) && service instanceof AnalyticService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("analytic-type");
             AnalyticService analyticService = (AnalyticService) service;
             if (analyticService.getAnalyticType().equals(types[0]) || analyticService.getAnalyticType().equals(types[1])) {
@@ -259,7 +261,7 @@ public class ServiceChecker {
                         }
                 );
             }
-        } else if (ServiceChecker.isNetworkItem(service.getCategory()) && service instanceof NetworkService) {
+        } else if (ServiceChecker.getInstance().isNetworkItem(service.getCategory()) && service instanceof NetworkService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
             NetworkService netService = (NetworkService) service;
             if (netService.getNetworkType().equals(types[0]) || netService.getNetworkType().equals(types[1])) {
@@ -300,7 +302,7 @@ public class ServiceChecker {
                         }
                 );
             }
-        } else if (ServiceChecker.isIntegrationItem(service.getCategory()) && service instanceof IntegrationService) {
+        } else if (ServiceChecker.getInstance().isIntegrationItem(service.getCategory()) && service instanceof IntegrationService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("integration-type");
             IntegrationService intService = (IntegrationService) service;
             if (intService.getIntegrationType().equals(types[0])) {
@@ -318,7 +320,7 @@ public class ServiceChecker {
                         }
                 );
             }
-        } else if (ServiceChecker.isAdministrationItem(service.getCategory()) && service instanceof AdministrationService) {
+        } else if (ServiceChecker.getInstance().isAdministrationItem(service.getCategory()) && service instanceof AdministrationService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("administration-type");
             AdministrationService adminService = (AdministrationService) service;
             if (adminService.getAdministrationType().equals(types[0])) {
