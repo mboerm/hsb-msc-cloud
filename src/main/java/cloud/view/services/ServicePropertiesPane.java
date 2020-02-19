@@ -41,4 +41,6 @@ public abstract class ServicePropertiesPane extends GridPane {
         add(nameLbl, 0, 1);
         add(nameTFld, 1, 1);
     }
+
+    abstract void recoverControls();
 }

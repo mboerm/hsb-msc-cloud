@@ -55,4 +55,9 @@ public class NetworkService extends Service {
     public void setZones(Integer zones) {
         this.zones = zones;
     }
+
+    @Override
+    public String[] getSpecificProperties() {
+        return new String[0];
+    }
 }

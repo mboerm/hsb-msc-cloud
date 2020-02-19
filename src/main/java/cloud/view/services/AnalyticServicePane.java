@@ -87,7 +87,8 @@ public class AnalyticServicePane extends ServicePropertiesPane {
     public Integer getUnits() {return this.unitsSpinner.getValue();}
     public void setUnits(Integer value) {this.unitsSpinner.getValueFactory().setValue(value);}
 
-    private void recoverControls() {
+    @Override
+    void recoverControls() {
         getChildren().clear();
         super.setControls();
         add(analyticTypeLbl, 0, 2);

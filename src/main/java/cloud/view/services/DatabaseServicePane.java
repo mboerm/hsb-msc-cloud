@@ -91,7 +91,8 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         this.numTwoSpinner.getValueFactory().setValue(values.getValue());
     }
 
-    private void recoverControls() {
+    @Override
+    void recoverControls() {
         getChildren().clear();
         super.setControls();
         add(databaseTypeLbl, 0, 2);

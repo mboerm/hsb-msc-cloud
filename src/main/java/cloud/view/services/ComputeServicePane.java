@@ -90,7 +90,8 @@ public class ComputeServicePane extends ServicePropertiesPane {
     public Integer getNumTwo() {return this.numTwoSpinner.getValue();}
     public void setNumTwo(Integer value) {this.numTwoSpinner.getValueFactory().setValue(value);}
 
-    private void recoverControls() {
+    @Override
+    void recoverControls() {
         getChildren().clear();
         super.setControls();
         add(computeTypeLbl, 0, 2);

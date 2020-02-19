@@ -54,30 +54,39 @@
 		<id>Cache</id>
 	</service>
 	
-	<service type="Data Query">
+	<service category="Analytic" type="Data Query">
+		<id>Data Query</id>
 	</service>
-	<service type="Data Share">
+	<service category="Analytic" type="Data Share">
+		<id>Data Share</id>
 	</service>
-	<service type="Data Transfer">
+	<service category="Analytic" type="Data Transfer">
+		<id>Data Transfer</id>
 	</service>
-	<service type="Data Stream">
+	<service category="Analytic" type="Data Stream">
+		<id>Data Stream</id>
 	</service>
-	<service type="Data Catalog">
+	<service category="Analytic" type="Data Catalog">
+		<id>Data Catalog</id>
 	</service>
-	<service type="Data Lake">
+	<service category="Analytic" type="Data Lake">
+		<id>Data Lake</id>
 	</service>
-	<service type="Search Engine">
+	<service category="Analytic" type="Search Engine">
+		<id>Search Engine</id>
 	</service>
 	
-	<service type="Messaging">
+	<service category="Integration" type="Communication" mode="Messaging">
+		<id>Communication (Messaging)</id>
 	</service>
-	<service type="Queueing">
+	<service category="Integration" type="Communication" mode="Queueing">
+		<id>Communication (Queueing)</id>
 	</service>
 	
-	<service category="Administration" type="System Monitor">
+	<service category="Administration" type="Monitoring" mode="System Monitor">
 		<id>System Monitor</id>
 	</service>
-	<service category="Administration" type="User Monitor">
+	<service category="Administration" type="Monitoring" mode="User Monitor">
 		<id>User Monitor</id>
 	</service>
 	

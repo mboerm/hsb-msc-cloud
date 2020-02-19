@@ -29,7 +29,7 @@ public class ServiceChecker {
         return item.equals(serviceTypes[5]);
     }
 
-    public static boolean isMonitoringItem(String item) {
+    public static boolean isAdministrationItem(String item) {
         return item.equals(serviceTypes[6]);
     }
 }

@@ -59,7 +59,8 @@ public class NetworkServicePane extends ServicePropertiesPane {
     public Integer getZones() {return this.zonesSpinner.getValue();}
     public void setZones(Integer value) {this.zonesSpinner.getValueFactory().setValue(value);}
 
-    private void recoverControls() {
+    @Override
+    void recoverControls() {
         getChildren().clear();
         super.setControls();
         add(networkTypeLbl, 0, 2);

@@ -22,7 +22,7 @@ public class DesignArea extends VBox {
         TableColumn<Service, String> serviceCategoryCol = new TableColumn<>("Category");
 
         serviceNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        serviceDisplayCol.setCellValueFactory(new PropertyValueFactory<>("displayName"));
+        serviceDisplayCol.setCellValueFactory(new PropertyValueFactory<>("identifier"));
         serviceProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("providerService"));
         serviceCategoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
 

@@ -93,7 +93,8 @@ public class StorageServicePane extends ServicePropertiesPane {
     }
     public void setRate(Integer value) {this.rateSpinner.getValueFactory().setValue(value);}
 
-    private void recoverControls() {
+    @Override
+    void recoverControls() {
         getChildren().clear();
         super.setControls();
         add(storageTypeLbl, 0, 2);

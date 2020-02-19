@@ -74,4 +74,9 @@ public class StorageService extends Service {
     public void setRate(Integer rate) {
         this.rate = rate;
     }
+
+    @Override
+    public String[] getSpecificProperties() {
+        return new String[0];
+    }
 }

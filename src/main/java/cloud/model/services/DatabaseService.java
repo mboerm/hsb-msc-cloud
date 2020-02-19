@@ -94,4 +94,9 @@ public class DatabaseService extends Service {
     public void setNum(Pair<Integer, Integer> num) {
         this.num = num;
     }
+
+    @Override
+    public String[] getSpecificProperties() {
+        return new String[0];
+    }
 }

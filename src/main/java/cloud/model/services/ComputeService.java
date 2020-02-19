@@ -111,4 +111,9 @@ public class ComputeService extends Service {
     public void setNumTwo(Integer numTwo) {
         this.numTwo = numTwo;
     }
+
+    @Override
+    public String[] getSpecificProperties() {
+        return new String[0];
+    }
 }
