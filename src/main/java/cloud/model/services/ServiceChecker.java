@@ -2,6 +2,14 @@ package cloud.model.services;
 
 import cloud.configuration.Config;
 import javafx.util.Pair;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 
 public class ServiceChecker {
     private static volatile ServiceChecker INSTANCE = null;
@@ -34,6 +42,43 @@ public class ServiceChecker {
     }
     public boolean isAdministrationItem(String item) {
         return item.equals(serviceTypes[6]);
+    }
+
+    public String getServiceIdentifier(String category, String type, String... mode) {
+        try {
+            File file = new File(getClass().getClassLoader().getResource(Config.getInstance().getConfigValue("services")).getFile());
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(file);
+            doc.getDocumentElement().normalize();
+
+            NodeList servicesNodeList = doc.getElementsByTagName("service");
+            for(int i=0; i<servicesNodeList.getLength(); i++) {
+                Node serviceNode = servicesNodeList.item(i);
+                if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element serviceElement = (Element) serviceNode;
+
+                    if (category.equalsIgnoreCase(serviceElement.getAttribute("category")) &&
+                    type.equalsIgnoreCase(serviceElement.getAttribute("type"))) {
+
+                        if (serviceElement.hasAttribute("mode")) {
+                            System.out.println("Parameter: " + mode[0]);
+                            System.out.println("XML: " + serviceElement.getAttribute("mode"));
+
+                            if (mode[0].equalsIgnoreCase(serviceElement.getAttribute("mode"))) {
+                                System.out.println("Identifier: " + serviceElement.getElementsByTagName("id").item(0).getTextContent());
+                                
+                                return serviceElement.getElementsByTagName("id").item(0).getTextContent();
+                            }
+                        }
+                        return serviceElement.getElementsByTagName("id").item(0).getTextContent();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     public Pair<String[],String[]> getSpecificProperties(Service service) {
