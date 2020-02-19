@@ -86,8 +86,8 @@ public abstract class Service {
         return new String[] {
                 this.getName(),
                 this.getCategory(),
-                this.getIdentifier(),
-                this.getProviderService()
+                this.getProviderService(),
+                this.getIdentifier()
         };
     }
 

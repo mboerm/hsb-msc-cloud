@@ -38,7 +38,7 @@
     <entry key="analytic-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized</entry>
 
     <entry key="design-property-labels">Provider:;Primary location:;Primary usage time:;# of Instances:;Requests:;Storage Capacity in TB:</entry>
-    <entry key="service-general-labels">Name:;Category:;Type:;Service:</entry>
+    <entry key="service-general-labels">Name:;Category:;Service:;Type:</entry>
     <entry key="service-usage-labels">Location:;Usage type:;Usage period:;Usage prepay:;Operating mode:</entry>
 
     <entry key="compute-vm-labels">Instance type:;Instance size:;Instance hours:;CPU:;RAM in GB:;Operating system:;Transferred data in GB:</entry>
