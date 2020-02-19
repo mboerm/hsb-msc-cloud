@@ -7,8 +7,8 @@ import javafx.scene.control.Spinner;
 
 public class IntegrationServicePane extends ServicePropertiesPane {
     private Label integrationTypeLbl;
-    private String[] labels;
     private ComboBox<String> integrationTypeBox;
+    private ComboBox<String> integrationModeBox;
     private Spinner<Integer> dataSpinner;
     private Spinner<Integer> requestsSpinner;
     private Spinner<Integer> pushSpinner;
@@ -19,6 +19,7 @@ public class IntegrationServicePane extends ServicePropertiesPane {
     public IntegrationServicePane() {
         integrationTypeLbl = new Label("Type:");
         integrationTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("integration-type"));
+        integrationModeBox = new ComboBox<>(Config.getInstance().getConfigValues("integration-communication-mode"));
         dataSpinner = new Spinner<>(1, 10000, 1);
         requestsSpinner = new Spinner<>(1, 10000000, 1);
         pushSpinner = new Spinner<>(1, 10000000, 1);
@@ -33,11 +34,21 @@ public class IntegrationServicePane extends ServicePropertiesPane {
         mailSpinner.setEditable(true);
         smsSpinner.setEditable(true);
 
-        setMessageControls();
-        disableMessageControls(true);
+        add(integrationTypeLbl, 0, 2);
+        add(integrationTypeBox, 1, 2);
 
         integrationTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
-            if (newItem.equals(Config.getInstance().getConfigValuesAsArray("integration-type")[0]))
+            recoverControls();
+            String[] type = Config.getInstance().getConfigValuesAsArray("integration-type");
+            if (newItem.equals(type[0])) {
+                setMessageControls();
+                disableMessageControls(true);
+            }
+            getScene().getWindow().sizeToScene();
+        });
+
+        integrationModeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
+            if (newItem.equals(Config.getInstance().getConfigValuesAsArray("integration-communication-mode")[0]))
                 disableMessageControls(false);
             else {
                 disableMessageControls(true);
@@ -47,6 +58,8 @@ public class IntegrationServicePane extends ServicePropertiesPane {
 
     public String getIntegrationType() {return this.integrationTypeBox.getValue();}
     public void setIntegrationType(String item) {this.integrationTypeBox.getSelectionModel().select(item);}
+    public String getIntegrationMode() {return this.integrationModeBox.getValue();}
+    public void setIntegrationMode(String item) {this.integrationModeBox.getSelectionModel().select(item);}
     public Integer getData() {return this.dataSpinner.getValue();}
     public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
     public Integer getRequests() {return this.requestsSpinner.getValue();}
@@ -67,28 +80,36 @@ public class IntegrationServicePane extends ServicePropertiesPane {
         this.smsSpinner.getValueFactory().setValue(values[3]);
     }
 
-    private void setMessageControls() {
-        labels = Config.getInstance().getConfigValuesAsArray("integration-messaging-labels");
+    @Override
+    void recoverControls() {
+        getChildren().clear();
+        super.setControls();
         add(integrationTypeLbl, 0, 2);
         add(integrationTypeBox, 1, 2);
+    }
+
+    private void setMessageControls() {
+        String[] labels = Config.getInstance().getConfigValuesAsArray("integration-messaging-labels");
         add(new Label(labels[0]), 0, 3);
-        add(dataSpinner, 1, 3);
-        add(new Label("per month"), 2, 3);
+        add(integrationModeBox, 1, 3);
         add(new Label(labels[1]), 0, 4);
-        add(requestsSpinner, 1, 4);
+        add(dataSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
         add(new Label(labels[2]), 0, 5);
-        add(pushSpinner, 1, 5);
+        add(requestsSpinner, 1, 5);
         add(new Label("per month"), 2, 5);
         add(new Label(labels[3]), 0, 6);
-        add(httpSpinner, 1, 6);
+        add(pushSpinner, 1, 6);
         add(new Label("per month"), 2, 6);
         add(new Label(labels[4]), 0, 7);
-        add(mailSpinner, 1, 7);
+        add(httpSpinner, 1, 7);
         add(new Label("per month"), 2, 7);
         add(new Label(labels[5]), 0, 8);
-        add(smsSpinner, 1, 8);
+        add(mailSpinner, 1, 8);
         add(new Label("per month"), 2, 8);
+        add(new Label(labels[6]), 0, 9);
+        add(smsSpinner, 1, 9);
+        add(new Label("per month"), 2, 9);
     }
 
     private void disableMessageControls(boolean show) {

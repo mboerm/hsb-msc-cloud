@@ -5,20 +5,29 @@ import javafx.util.Pair;
 
 public class AdministrationService extends Service {
 
+    private String administrationType;
     private Integer metrics;
     private Integer apiRequests;
     private Pair<Integer, Integer> data;
     private Integer events;
     private boolean loggerState;
 
-    public AdministrationService(String name, Integer metrics, Integer apiRequests, Pair<Integer, Integer> data, Integer events, boolean loggerState) {
+    public AdministrationService(String name, String administrationType, Integer metrics, Integer apiRequests, Pair<Integer, Integer> data, Integer events, boolean loggerState) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
+        setAdministrationType(administrationType);
         setMetrics(metrics);
         setRequests(apiRequests);
         setData(data);
         setEvents(events);
         setLoggingState(loggerState);
+    }
+
+    public String getAdministrationType() {
+        return administrationType;
+    }
+    public void setAdministrationType(String administrationType) {
+        this.administrationType = administrationType;
     }
 
     public Integer getMetrics() {return this.metrics;}
@@ -40,10 +49,10 @@ public class AdministrationService extends Service {
     public String[] getSpecificProperties() {
         return new String[] {
                 this.getMetrics().toString(),
-                this.getMetrics().toString(),
-                this.getEvents().toString(),
+                this.getRequests().toString(),
                 this.getData().getKey().toString(),
                 this.getData().getValue().toString(),
+                this.getEvents().toString(),
                 String.valueOf(this.getLoggingState())
         };
     }

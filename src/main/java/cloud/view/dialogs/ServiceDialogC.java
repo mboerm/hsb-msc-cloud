@@ -15,7 +15,7 @@ public class ServiceDialogC {
     private AnalyticServicePane analyticPane;
     private NetworkServicePane networkPane;
     private IntegrationServicePane integrationPane;
-    private AdministrationServicePane monitoringPane;
+    private AdministrationServicePane administrationPane;
 
     private Service serviceData;
 
@@ -81,8 +81,8 @@ public class ServiceDialogC {
             return networkPane = (NetworkServicePane) servicePaneFactory.getServicePane(item);
         } else if (ServiceChecker.isIntegrationItem(item)) {
             return integrationPane = (IntegrationServicePane) servicePaneFactory.getServicePane(item);
-        } else if (ServiceChecker.isMonitoringItem(item)) {
-            return monitoringPane = (AdministrationServicePane) servicePaneFactory.getServicePane(item);
+        } else if (ServiceChecker.isAdministrationItem(item)) {
+            return administrationPane = (AdministrationServicePane) servicePaneFactory.getServicePane(item);
         } else {
             throw new IllegalArgumentException("Invalid service item");
         }
@@ -120,13 +120,13 @@ public class ServiceDialogC {
             ));
         } else if (ServiceChecker.isIntegrationItem(item)) {
             return ServiceFactory.getService(new IntegrationServiceCreator(
-                    integrationPane.getName(), integrationPane.getIntegrationType(), integrationPane.getData(),
+                    integrationPane.getName(), integrationPane.getIntegrationType(), integrationPane.getIntegrationMode(), integrationPane.getData(),
                     integrationPane.getRequests(), integrationPane.getMessages()
             ));
-        } else if (ServiceChecker.isMonitoringItem(item)) {
+        } else if (ServiceChecker.isAdministrationItem(item)) {
             return ServiceFactory.getService(new AdministrationServiceCreator(
-                    monitoringPane.getName(), monitoringPane.getMetrics(), monitoringPane.getRequests(),
-                    monitoringPane.getData(), monitoringPane.getEvents(), monitoringPane.getLoggingState()
+                    administrationPane.getName(), administrationPane.getAdministrationType(), administrationPane.getMetrics(), administrationPane.getRequests(),
+                    administrationPane.getData(), administrationPane.getEvents(), administrationPane.getLoggingState()
             ));
         } else {
             throw new IllegalArgumentException("Invalid service type");
@@ -186,16 +186,18 @@ public class ServiceDialogC {
         } else if (ServiceChecker.isIntegrationItem(serviceData.getCategory()) && serviceData instanceof IntegrationService) {
             integrationPane.setName(serviceData.getName());
             integrationPane.setIntegrationType(((IntegrationService) serviceData).getIntegrationType());
+            integrationPane.setIntegrationMode(((IntegrationService) serviceData).getIntegrationMode());
             integrationPane.setData(((IntegrationService) serviceData).getData());
             integrationPane.setRequests(((IntegrationService) serviceData).getRequests());
             integrationPane.setMessages(((IntegrationService) serviceData).getMessages());
-        } else if (ServiceChecker.isMonitoringItem(serviceData.getCategory()) && serviceData instanceof AdministrationService) {
-            monitoringPane.setName(serviceData.getName());
-            monitoringPane.setMetrics(((AdministrationService) serviceData).getMetrics());
-            monitoringPane.setRequests(((AdministrationService) serviceData).getRequests());
-            monitoringPane.setData(((AdministrationService) serviceData).getData());
-            monitoringPane.setEvents(((AdministrationService) serviceData).getEvents());
-            monitoringPane.setLoggingState(((AdministrationService) serviceData).getLoggingState());
+        } else if (ServiceChecker.isAdministrationItem(serviceData.getCategory()) && serviceData instanceof AdministrationService) {
+            administrationPane.setName(serviceData.getName());
+            administrationPane.setAdministrationType(((AdministrationService) serviceData).getAdministrationType());
+            administrationPane.setMetrics(((AdministrationService) serviceData).getMetrics());
+            administrationPane.setRequests(((AdministrationService) serviceData).getRequests());
+            administrationPane.setData(((AdministrationService) serviceData).getData());
+            administrationPane.setEvents(((AdministrationService) serviceData).getEvents());
+            administrationPane.setLoggingState(((AdministrationService) serviceData).getLoggingState());
         }
     }
 

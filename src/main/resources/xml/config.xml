@@ -26,9 +26,14 @@
     <entry key="database-sql-scheme">MySQL;PostgreSQL;MariaDB</entry>
     <entry key="database-instance-type">Standard;Storage-optimized</entry>
 
-    <entry key="integration-type">Messaging;Queueing</entry>
-    <entry key="administration-type">User Monitor;System Monitor</entry>
+    <entry key="integration-type">Communication</entry>
+    <entry key="integration-communication-mode">Messaging;Queueing</entry>
+
+    <entry key="administration-type">Monitoring</entry>
+    <entry key="administration-monitoring-mode">User Monitor;System Monitor</entry>
+
     <entry key="network-type">VPC;VPN;API;CDN;DNS</entry>
+
     <entry key="analytic-type">Data Query;Data Share;Data Transfer;Data Stream;Data Catalog;Data Lake;Search Engine</entry>
     <entry key="analytic-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized</entry>
 
@@ -60,7 +65,7 @@
     <entry key="network-cdn-labels">Transferred data in GB:;Transferred data in TB into internet:;Http-requests in 10.000:</entry>
     <entry key="network-dns-labels">Zones:;DNS-requests:</entry>
     <entry key="administration-monitoring-labels">Metrics:;Requests:;Data to collect in GB:;Data to save in GB:;Events in Mio.:;Logging:</entry>
-    <entry key="integration-messaging-labels">Data in GB:;Requests:;Push messages:;Http messages:;Mail messages:;Sms messages:</entry>
+    <entry key="integration-messaging-labels">Mode:;Data in GB:;Requests:;Push messages:;Http messages:;Mail messages:;Sms messages:</entry>
 
     <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
     <entry key="aws-services">xml/aws-services.xml</entry>
