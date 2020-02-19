@@ -85,7 +85,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("compute-vm-labels"),
                         new String[] {
-                                compService.getComputeType(),
                                 compService.getInstanceType(),
                                 compService.getInstanceSize(),
                                 String.valueOf(compService.getNumOne()),
@@ -99,7 +98,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("compute-container-labels"),
                         new String[] {
-                                compService.getComputeType(),
                                 compService.getSystem(),
                                 String.valueOf(compService.getCPU()),
                                 String.valueOf(compService.getStorage()),
@@ -112,7 +110,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("compute-app-labels"),
                         new String[] {
-                                compService.getComputeType(),
                                 compService.getSystem(),
                                 compService.getComputeInstance(),
                                 compService.getStorageInstance()
@@ -122,7 +119,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("compute-batch-labels"),
                         new String[] {
-                                compService.getComputeType(),
                                 compService.getComputeInstance()
                         }
                 );
@@ -130,7 +126,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("compute-code-labels"),
                         new String[] {
-                                compService.getComputeType(),
                                 String.valueOf(compService.getNumOne()),
                                 String.valueOf(compService.getNumTwo()),
                                 String.valueOf(compService.getStorage())
@@ -140,7 +135,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("compute-balancer-labels"),
                         new String[] {
-                                compService.getComputeType(),
                                 String.valueOf(compService.getNumOne()),
                                 String.valueOf(compService.getData())
                         }
@@ -153,7 +147,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("database-sql-labels"),
                         new String[] {
-                                dbService.getDatabaseType(),
                                 dbService.getDatabaseScheme(),
                                 dbService.getInstanceType(),
                                 dbService.getInstanceSize(),
@@ -169,7 +162,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("database-nosql-labels"),
                         new String[] {
-                                dbService.getDatabaseType(),
                                 dbService.getNum().getKey().toString(),
                                 dbService.getNum().getValue().toString(),
                                 String.valueOf(dbService.getStorage()),
@@ -180,7 +172,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("database-document-labels"),
                         new String[] {
-                                dbService.getDatabaseType(),
                                 dbService.getNum().getKey().toString(),
                                 dbService.getNum().getValue().toString(),
                                 String.valueOf(dbService.getStorage()),
@@ -191,7 +182,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("database-cache-labels"),
                         new String[] {
-                                dbService.getDatabaseType(),
                                 dbService.getDatabaseScheme(),
                                 dbService.getInstanceType(),
                                 dbService.getInstanceSize(),
@@ -209,7 +199,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("storage-object-labels"),
                         new String[] {
-                                storageService.getStorageType(),
                                 storageService.getStorageMode(),
                                 String.valueOf(storageService.getCapacity()),
                                 storageService.getRequests().getKey().toString(),
@@ -222,7 +211,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("storage-block-labels"),
                         new String[] {
-                                storageService.getStorageType(),
                                 storageService.getStorageMode(),
                                 String.valueOf(storageService.getCapacity()),
                                 String.valueOf(storageService.getData())
@@ -232,7 +220,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("storage-file-labels"),
                         new String[] {
-                                storageService.getStorageType(),
                                 storageService.getStorageMode(),
                                 String.valueOf(storageService.getCapacity()),
                                 String.valueOf(storageService.getRate()),
@@ -247,7 +234,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-query-labels"),
                         new String[] {
-                                analyticService.getAnalyticType(),
                                 String.valueOf(analyticService.getData())
                         }
                 );
@@ -255,7 +241,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-transfer-labels"),
                         new String[] {
-                                analyticService.getAnalyticType(),
                                 analyticService.getNum().getKey().toString(),
                                 analyticService.getNum().getValue().toString()
                         }
@@ -264,7 +249,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-stream-labels"),
                         new String[] {
-                                analyticService.getAnalyticType(),
                                 String.valueOf(analyticService.getUnits()),
                                 String.valueOf(analyticService.getData())
                         }
@@ -273,7 +257,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-catalog-labels"),
                         new String[] {
-                                analyticService.getAnalyticType(),
                                 String.valueOf(analyticService.getData()),
                                 String.valueOf(analyticService.getUnits())
                         }
@@ -282,7 +265,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-lake-labels"),
                         new String[] {
-                                analyticService.getAnalyticType(),
                                 String.valueOf(analyticService.getUnits()),
                                 String.valueOf(analyticService.getData())
                         }
@@ -291,7 +273,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-search-labels"),
                         new String[] {
-                                analyticService.getAnalyticType(),
                                 analyticService.getInstanceType(),
                                 analyticService.getInstanceSize(),
                                 analyticService.getNum().getKey().toString(),
@@ -309,7 +290,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("network-private-labels"),
                         new String[] {
-                                netService.getNetworkType(),
                                 String.valueOf(netService.getRequests()),
                                 String.valueOf(netService.getData())
                         }
@@ -318,7 +298,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("network-api-labels"),
                         new String[] {
-                                netService.getNetworkType(),
                                 String.valueOf(netService.getRequests()),
                                 String.valueOf(netService.getData())
                         }
@@ -327,7 +306,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("network-cdn-labels"),
                         new String[] {
-                                netService.getNetworkType(),
                                 String.valueOf(netService.getData()),
                                 String.valueOf(netService.getDataOut()),
                                 String.valueOf(netService.getRequests())
@@ -337,7 +315,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("network-dns-labels"),
                         new String[] {
-                                netService.getNetworkType(),
                                 String.valueOf(netService.getZones()),
                                 String.valueOf(netService.getData())
                         }
@@ -350,7 +327,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("integration-messaging-labels"),
                         new String[]{
-                                intService.getIntegrationType(),
                                 intService.getIntegrationMode(),
                                 String.valueOf(intService.getData()),
                                 String.valueOf(intService.getRequests()),
@@ -368,7 +344,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("administration-monitoring-labels"),
                         new String[] {
-                                adminService.getAdministrationType(),
                                 String.valueOf(adminService.getMetrics()),
                                 String.valueOf(adminService.getRequests()),
                                 adminService.getData().getKey().toString(),
