@@ -10,6 +10,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.Objects;
 
 public class ServiceChecker {
     private static volatile ServiceChecker INSTANCE = null;
@@ -46,7 +47,7 @@ public class ServiceChecker {
 
     public String getServiceIdentifier(String category, String type, String... mode) {
         try {
-            File file = new File(getClass().getClassLoader().getResource(Config.getInstance().getConfigValue("services")).getFile());
+            File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(Config.getInstance().getConfigValue("services"))).getFile());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
@@ -62,16 +63,11 @@ public class ServiceChecker {
                     type.equalsIgnoreCase(serviceElement.getAttribute("type"))) {
 
                         if (serviceElement.hasAttribute("mode")) {
-                            System.out.println("Parameter: " + mode[0]);
-                            System.out.println("XML: " + serviceElement.getAttribute("mode"));
-
-                            if (mode[0].equalsIgnoreCase(serviceElement.getAttribute("mode"))) {
-                                System.out.println("Identifier: " + serviceElement.getElementsByTagName("id").item(0).getTextContent());
-                                
+                            if (mode[0].equalsIgnoreCase(serviceElement.getAttribute("mode")))
                                 return serviceElement.getElementsByTagName("id").item(0).getTextContent();
-                            }
+                        } else {
+                            return serviceElement.getElementsByTagName("id").item(0).getTextContent();
                         }
-                        return serviceElement.getElementsByTagName("id").item(0).getTextContent();
                     }
                 }
             }

@@ -35,7 +35,7 @@
 		<id>File-Storage</id>
 	</service>
 	
-	<service category="Database" type="SQL (MySQL)" mode="MySQL">
+	<service category="Database" type="SQL" mode="MySQL">
 		<id>SQL (MySQL)</id>
 	</service>
 	<service category="Database" type="SQL" mode="PostgreSQL">
