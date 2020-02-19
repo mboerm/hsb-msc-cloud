@@ -100,6 +100,4 @@ public abstract class Service {
                 this.getOpMode()
         };
     }
-
-    public abstract String[] getSpecificProperties();
 }
