@@ -8,13 +8,13 @@ public class StorageServiceCreator implements IServiceCreator {
     private String name;
     private String type;
     private String mode;
-    private Integer capacity;
-    private Integer data;
+    private int capacity;
+    private int data;
     private Pair<Integer, Integer> requests;
-    private Integer queries;
-    private Integer rate;
+    private int queries;
+    private int rate;
 
-    public StorageServiceCreator(String name, String type, String mode, Integer capacity, Integer data, Pair<Integer, Integer> requests, Integer queries, Integer rate) {
+    public StorageServiceCreator(String name, String type, String mode, int capacity, int data, Pair<Integer, Integer> requests, int queries, int rate) {
         this.name = name;
         this.type = type;
         this.mode = mode;

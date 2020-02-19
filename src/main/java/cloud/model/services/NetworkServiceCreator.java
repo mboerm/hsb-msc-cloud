@@ -6,12 +6,12 @@ public class NetworkServiceCreator implements IServiceCreator {
 
     private String name;
     private String type;
-    private Integer requests;
-    private Integer data;
-    private Integer dataOut;
-    private Integer zones;
+    private int requests;
+    private int data;
+    private int dataOut;
+    private int zones;
 
-    public NetworkServiceCreator(String name, String type, Integer requests, Integer data, Integer dataOut, Integer zones) {
+    public NetworkServiceCreator(String name, String type, int requests, int data, int dataOut, int zones) {
         this.name = name;
         this.type = type;
         this.requests = requests;

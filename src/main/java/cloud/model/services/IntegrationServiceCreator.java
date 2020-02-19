@@ -7,11 +7,11 @@ public class IntegrationServiceCreator implements IServiceCreator {
     private String name;
     private String integrationType;
     private String integrationMode;
-    private Integer data;
-    private Integer requests;
-    private Integer[] messages;
+    private int data;
+    private int requests;
+    private int[] messages;
 
-    public IntegrationServiceCreator(String name, String type, String mode, Integer data, Integer requests, Integer[] messages) {
+    public IntegrationServiceCreator(String name, String type, String mode, int data, int requests, int[] messages) {
         this.name = name;
         this.integrationType = type;
         this.integrationMode = mode;

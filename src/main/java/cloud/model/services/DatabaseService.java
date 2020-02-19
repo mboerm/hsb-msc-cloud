@@ -9,15 +9,15 @@ public class DatabaseService extends Service {
     private String databaseScheme;
     private String instanceType;
     private String instanceSize;
-    private Integer duration;
-    private Integer storage;
-    private Integer backup;
-    private Integer data;
+    private int duration;
+    private int storage;
+    private int backup;
+    private int data;
     private Pair<Integer,Integer> num;
 
     public DatabaseService(String name, String databaseType, String databaseScheme,
-                           String instanceType, String instanceSize, Integer duration,
-                           Integer storage, Integer backup, Integer data, Pair<Integer,Integer> num) {
+                           String instanceType, String instanceSize, int duration,
+                           int storage, int backup, int data, Pair<Integer,Integer> num) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[1]);
         setIdentifier(databaseType);
@@ -60,31 +60,31 @@ public class DatabaseService extends Service {
         this.instanceSize = systemType;
     }
 
-    public Integer getDuration() {
+    public int getDuration() {
         return duration;
     }
-    public void setDuration(Integer duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public Integer getStorage() {
+    public int getStorage() {
         return storage;
     }
-    public void setStorage(Integer storage) {
+    public void setStorage(int storage) {
         this.storage = storage;
     }
 
-    public Integer getBackup() {
+    public int getBackup() {
         return backup;
     }
-    public void setBackup(Integer backup) {
+    public void setBackup(int backup) {
         this.backup = backup;
     }
 
-    public Integer getData() {
+    public int getData() {
         return data;
     }
-    public void setData(Integer data) {
+    public void setData(int data) {
         this.data = data;
     }
 
@@ -93,10 +93,5 @@ public class DatabaseService extends Service {
     }
     public void setNum(Pair<Integer, Integer> num) {
         this.num = num;
-    }
-
-    @Override
-    public String[] getSpecificProperties() {
-        return new String[0];
     }
 }

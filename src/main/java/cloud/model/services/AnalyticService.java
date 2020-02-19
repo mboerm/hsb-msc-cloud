@@ -6,14 +6,14 @@ import javafx.util.Pair;
 public class AnalyticService extends Service {
 
     private String analyticType;
-    private Integer data;
-    private Integer dataOut;
+    private int data;
+    private int dataOut;
     private Pair<Integer,Integer> num;
-    private Integer units;
+    private int units;
     private String instanceType;
     private String instanceSize;
 
-    public AnalyticService(String name, String type, Integer data, Integer dataOut, Pair<Integer,Integer> num, Integer units, String instanceType, String instanceSize) {
+    public AnalyticService(String name, String type, int data, int dataOut, Pair<Integer,Integer> num, int units, String instanceType, String instanceSize) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[3]);
         setIdentifier(type);
@@ -33,17 +33,17 @@ public class AnalyticService extends Service {
         this.analyticType = type;
     }
 
-    public Integer getData() {
+    public int getData() {
         return data;
     }
-    public void setData(Integer data) {
+    public void setData(int data) {
         this.data = data;
     }
 
-    public Integer getDataOut() {
+    public int getDataOut() {
         return dataOut;
     }
-    public void setDataOut(Integer dataOut) {
+    public void setDataOut(int dataOut) {
         this.dataOut = dataOut;
     }
 
@@ -54,10 +54,10 @@ public class AnalyticService extends Service {
         this.num = num;
     }
 
-    public Integer getUnits() {
+    public int getUnits() {
         return units;
     }
-    public void setUnits(Integer units) {
+    public void setUnits(int units) {
         this.units = units;
     }
 
@@ -73,19 +73,5 @@ public class AnalyticService extends Service {
     }
     public void setInstanceSize(String instanceSize) {
         this.instanceSize = instanceSize;
-    }
-
-    @Override
-    public String[] getSpecificProperties() {
-        return new String[] {
-                this.getAnalyticType(),
-                this.getInstanceType(),
-                this.getInstanceSize(),
-                this.getUnits().toString(),
-                this.getData().toString(),
-                this.getDataOut().toString(),
-                this.getNum().getKey().toString(),
-                this.getNum().getValue().toString()
-        };
     }
 }

@@ -11,15 +11,15 @@ public class ComputeServiceCreator implements IServiceCreator {
     private String computeInstance;
     private String storageInstance;
     private String system;
-    private Integer cpu;
-    private Integer storage;
-    private Integer data;
-    private Integer numOne;
-    private Integer numTwo;
+    private int cpu;
+    private int storage;
+    private int data;
+    private int numOne;
+    private int numTwo;
 
     public ComputeServiceCreator(String name, String computeType, String instanceType, String instanceSize,
                                  String computeInstance, String storageInstance, String system,
-                                 Integer cpu, Integer storage, Integer data, Integer numOne, Integer numTwo) {
+                                 int cpu, int storage, int data, int numOne, int numTwo) {
         this.name = name;
         this.computeType = computeType;
         this.instanceType = instanceType;

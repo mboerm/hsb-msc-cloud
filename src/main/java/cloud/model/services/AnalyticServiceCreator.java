@@ -7,14 +7,14 @@ public class AnalyticServiceCreator implements IServiceCreator {
 
     private String name;
     private String type;
-    private Integer data;
-    private Integer dataOut;
-    private Pair<Integer,Integer> num;
-    private Integer units;
+    private int data;
+    private int dataOut;
+    private Pair<Integer, Integer> num;
+    private int units;
     private String instanceType;
     private String instanceSize;
 
-    public AnalyticServiceCreator(String name, String type, Integer data, Integer dataOut, Pair<Integer,Integer> num, Integer units, String instanceType, String instanceSize) {
+    public AnalyticServiceCreator(String name, String type, int data, int dataOut, Pair<Integer, Integer> num, int units, String instanceType, String instanceSize) {
         this.name = name;
         this.type = type;
         this.data = data;

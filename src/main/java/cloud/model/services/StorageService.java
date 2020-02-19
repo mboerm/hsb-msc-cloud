@@ -7,13 +7,13 @@ public class StorageService extends Service {
 
     private String storageType;
     private String mode;
-    private Integer capacity;
-    private Integer data;
+    private int capacity;
+    private int data;
     private Pair<Integer, Integer> requests;
-    private Integer queries;
-    private Integer rate;
+    private int queries;
+    private int rate;
 
-    public StorageService(String name, String storageType, String mode, Integer capacity, Integer data, Pair<Integer, Integer> requests, Integer queries, Integer rate) {
+    public StorageService(String name, String storageType, String mode, int capacity, int data, Pair<Integer, Integer> requests, int queries, int rate) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[2]);
         setIdentifier(storageType);
@@ -40,17 +40,17 @@ public class StorageService extends Service {
         this.mode = mode;
     }
 
-    public Integer getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
-    public void setCapacity(Integer capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    public Integer getData() {
+    public int getData() {
         return data;
     }
-    public void setData(Integer data) {
+    public void setData(int data) {
         this.data = data;
     }
 
@@ -61,22 +61,17 @@ public class StorageService extends Service {
         this.requests = requests;
     }
 
-    public Integer getQueries() {
+    public int getQueries() {
         return queries;
     }
-    public void setQueries(Integer queries) {
+    public void setQueries(int queries) {
         this.queries = queries;
     }
 
-    public Integer getRate() {
+    public int getRate() {
         return rate;
     }
-    public void setRate(Integer rate) {
+    public void setRate(int rate) {
         this.rate = rate;
-    }
-
-    @Override
-    public String[] getSpecificProperties() {
-        return new String[0];
     }
 }

@@ -10,15 +10,15 @@ public class DatabaseServiceCreator implements IServiceCreator {
     private String databaseScheme;
     private String instanceType;
     private String instanceSize;
-    private Integer duration;
-    private Integer storage;
-    private Integer backup;
-    private Integer data;
-    private Pair<Integer,Integer> num;
+    private int duration;
+    private int storage;
+    private int backup;
+    private int data;
+    private Pair<Integer, Integer> num;
 
     public DatabaseServiceCreator(String name, String databaseType, String databaseScheme,
-                                  String instanceType, String instanceSize, Integer duration,
-                                  Integer storage, Integer backup, Integer data, Pair<Integer,Integer> num) {
+                                  String instanceType, String instanceSize, int duration,
+                                  int storage, int backup, int data, Pair<Integer, Integer> num) {
         this.name = name;
         this.databaseType = databaseType;
         this.databaseScheme = databaseScheme;
@@ -48,7 +48,7 @@ public class DatabaseServiceCreator implements IServiceCreator {
         } else if (databaseType.equals(types[2])) {
             // Document
             return new DatabaseService(name, databaseType, "", "", "",
-                    duration, storage, backup, data, new Pair<>(0,0));
+                    0, storage, 0, data, num);
         } else if (databaseType.equals(types[3])) {
             // Cache
             return new DatabaseService(name, databaseType, "", instanceType, instanceSize,

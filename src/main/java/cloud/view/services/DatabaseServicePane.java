@@ -142,10 +142,10 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     private void setDocumentControls() {
         labels = Config.getInstance().getConfigValuesAsArray("database-document-labels");
         add(new Label(labels[0]), 0, 3);
-        add(durationSpinner, 1, 3);
+        add(numOneSpinner, 1, 3);
         add(new Label("per month"), 2, 3);
         add(new Label(labels[1]), 0, 4);
-        add(backupSpinner, 1, 4);
+        add(numTwoSpinner, 1, 4);
         add(new Label("per month"), 2, 4);
         add(new Label(labels[2]), 0, 5);
         add(storageSpinner, 1, 5);

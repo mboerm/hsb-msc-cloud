@@ -6,8 +6,8 @@ public class IntegrationService extends Service {
 
     private String integrationType;
     private String integrationMode;
-    private Integer data;
-    private Integer requests;
+    private int data;
+    private int requests;
 
     /**
      * 0 = number of push messages
@@ -15,9 +15,9 @@ public class IntegrationService extends Service {
      * 2 = number of mail messages
      * 3 = number of sms messages
      */
-    private Integer[] messages = new Integer[4];
+    private int[] messages = new int[4];
 
-    public IntegrationService(String name, String type, String mode, Integer data, Integer requests, Integer[] messages) {
+    public IntegrationService(String name, String type, String mode, int data, int requests, int[] messages) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[5]);
         setIdentifier(type);
@@ -42,21 +42,16 @@ public class IntegrationService extends Service {
         this.integrationMode = integrationMode;
     }
 
-    public Integer getData() {return this.data;}
-    public void setData(Integer data) {this.data = data;}
+    public int getData() {return this.data;}
+    public void setData(int data) {this.data = data;}
 
-    public Integer getRequests() {return this.requests;}
-    public void setRequests(Integer requests) {this.requests = requests;}
+    public int getRequests() {return this.requests;}
+    public void setRequests(int requests) {this.requests = requests;}
 
-    public Integer[] getMessages() {
+    public int[] getMessages() {
         return messages;
     }
-    public void setMessages(Integer[] messages) {
+    public void setMessages(int[] messages) {
         this.messages = messages;
-    }
-
-    @Override
-    public String[] getSpecificProperties() {
-        return new String[0];
     }
 }

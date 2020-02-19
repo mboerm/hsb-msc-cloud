@@ -7,13 +7,13 @@ public class AdministrationServiceCreator implements IServiceCreator {
 
     private String name;
     private String administrationType;
-    private Integer metrics;
-    private Integer apiRequests;
+    private int metrics;
+    private int apiRequests;
     private Pair<Integer, Integer> data;
-    private Integer events;
+    private int events;
     private boolean loggerState;
 
-    public AdministrationServiceCreator(String name, String administrationType, Integer metrics, Integer apiRequests, Pair<Integer, Integer> data, Integer events, boolean loggerState) {
+    public AdministrationServiceCreator(String name, String administrationType, int metrics, int apiRequests, Pair<Integer, Integer> data, int events, boolean loggerState) {
         this.name = name;
         this.administrationType = administrationType;
         this.metrics = metrics;

@@ -10,15 +10,15 @@ public class ComputeService extends Service {
     private String computeInstance;
     private String storageInstance;
     private String system;
-    private Integer cpu;
-    private Integer storage;
-    private Integer data;
-    private Integer numOne;
-    private Integer numTwo;
+    private int cpu;
+    private int storage;
+    private int data;
+    private int numOne;
+    private int numTwo;
 
     public ComputeService(String name, String computeType, String instanceType, String instanceSize,
                           String computeInstance, String storageInstance, String system,
-                          Integer cpu, Integer storage, Integer data, Integer numOne, Integer numTwo) {
+                          int cpu, int storage, int data, int numOne, int numTwo) {
         setName(name);
         setIdentifier(computeType);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[0]);
@@ -77,43 +77,38 @@ public class ComputeService extends Service {
         this.system = system;
     }
 
-    public Integer getCPU() {
+    public int getCPU() {
         return cpu;
     }
-    public void setCPU(Integer cpu) {
+    public void setCPU(int cpu) {
         this.cpu = cpu;
     }
 
-    public Integer getStorage() {
+    public int getStorage() {
         return storage;
     }
-    public void setStorage(Integer storage) {
+    public void setStorage(int storage) {
         this.storage = storage;
     }
 
-    public Integer getData() {
+    public int getData() {
         return data;
     }
-    public void setData(Integer data) {
+    public void setData(int data) {
         this.data = data;
     }
 
-    public Integer getNumOne() {
+    public int getNumOne() {
         return numOne;
     }
-    public void setNumOne(Integer numOne) {
+    public void setNumOne(int numOne) {
         this.numOne = numOne;
     }
 
-    public Integer getNumTwo() {
+    public int getNumTwo() {
         return numTwo;
     }
-    public void setNumTwo(Integer numTwo) {
+    public void setNumTwo(int numTwo) {
         this.numTwo = numTwo;
-    }
-
-    @Override
-    public String[] getSpecificProperties() {
-        return new String[0];
     }
 }

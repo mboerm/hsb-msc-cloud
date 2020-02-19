@@ -60,19 +60,19 @@ public class IntegrationServicePane extends ServicePropertiesPane {
     public void setIntegrationType(String item) {this.integrationTypeBox.getSelectionModel().select(item);}
     public String getIntegrationMode() {return this.integrationModeBox.getValue();}
     public void setIntegrationMode(String item) {this.integrationModeBox.getSelectionModel().select(item);}
-    public Integer getData() {return this.dataSpinner.getValue();}
-    public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
-    public Integer getRequests() {return this.requestsSpinner.getValue();}
-    public void setRequests(Integer value) {this.requestsSpinner.getValueFactory().setValue(value);}
-    public Integer[] getMessages() {return new Integer[] {
+    public int getData() {return this.dataSpinner.getValue();}
+    public void setData(int value) {this.dataSpinner.getValueFactory().setValue(value);}
+    public int getRequests() {return this.requestsSpinner.getValue();}
+    public void setRequests(int value) {this.requestsSpinner.getValueFactory().setValue(value);}
+    public int[] getMessages() {return new int[] {
         this.pushSpinner.getValue(),
         this.httpSpinner.getValue(),
         this.mailSpinner.getValue(),
         this.smsSpinner.getValue(),
     };}
-    public void setMessages(Integer[] values) {
+    public void setMessages(int[] values) {
         if (values == null) {
-            values = new Integer[] {1,1,1,1};
+            values = new int[] {1,1,1,1};
         }
         this.pushSpinner.getValueFactory().setValue(values[0]);
         this.httpSpinner.getValueFactory().setValue(values[1]);

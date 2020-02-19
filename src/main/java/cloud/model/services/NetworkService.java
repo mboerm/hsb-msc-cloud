@@ -5,12 +5,12 @@ import cloud.configuration.Config;
 public class NetworkService extends Service {
 
     private String networkType;
-    private Integer requests;
-    private Integer data;
-    private Integer dataOut;
-    private Integer zones;
+    private int requests;
+    private int data;
+    private int dataOut;
+    private int zones;
 
-    public NetworkService(String name, String type, Integer requests, Integer data, Integer dataOut, Integer zones) {
+    public NetworkService(String name, String type, int requests, int data, int dataOut, int zones) {
         setName(name);
         setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[4]);
         setIdentifier(type);
@@ -28,36 +28,31 @@ public class NetworkService extends Service {
         this.networkType = type;
     }
 
-    public Integer getRequests() {
+    public int getRequests() {
         return requests;
     }
-    public void setRequests(Integer requests) {
+    public void setRequests(int requests) {
         this.requests = requests;
     }
 
-    public Integer getData() {
+    public int getData() {
         return data;
     }
-    public void setData(Integer data) {
+    public void setData(int data) {
         this.data = data;
     }
 
-    public Integer getDataOut() {
+    public int getDataOut() {
         return dataOut;
     }
-    public void setDataOut(Integer dataOut) {
+    public void setDataOut(int dataOut) {
         this.dataOut = dataOut;
     }
 
-    public Integer getZones() {
+    public int getZones() {
         return zones;
     }
-    public void setZones(Integer zones) {
+    public void setZones(int zones) {
         this.zones = zones;
-    }
-
-    @Override
-    public String[] getSpecificProperties() {
-        return new String[0];
     }
 }
