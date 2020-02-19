@@ -69,19 +69,19 @@ public class ServiceDialogC {
     public void resetServiceData() {this.serviceData = null;}
 
     private ServicePropertiesPane switchServicePropertiesPane(String item) {
-        if (ServiceChecker.isComputeItem(item)) {
+        if (ServiceChecker.getInstance().isComputeItem(item)) {
             return computePane = (ComputeServicePane) servicePaneFactory.getServicePane(item);
-        } else if (ServiceChecker.isDatabaseItem(item)) {
+        } else if (ServiceChecker.getInstance().isDatabaseItem(item)) {
             return databasePane = (DatabaseServicePane) servicePaneFactory.getServicePane(item);
-        } else if (ServiceChecker.isStorageItem(item)) {
+        } else if (ServiceChecker.getInstance().isStorageItem(item)) {
             return storagePane = (StorageServicePane) servicePaneFactory.getServicePane(item);
-        } else if (ServiceChecker.isAnalyticItem(item)) {
+        } else if (ServiceChecker.getInstance().isAnalyticItem(item)) {
             return analyticPane = (AnalyticServicePane) servicePaneFactory.getServicePane(item);
-        } else if (ServiceChecker.isNetworkItem(item)) {
+        } else if (ServiceChecker.getInstance().isNetworkItem(item)) {
             return networkPane = (NetworkServicePane) servicePaneFactory.getServicePane(item);
-        } else if (ServiceChecker.isIntegrationItem(item)) {
+        } else if (ServiceChecker.getInstance().isIntegrationItem(item)) {
             return integrationPane = (IntegrationServicePane) servicePaneFactory.getServicePane(item);
-        } else if (ServiceChecker.isAdministrationItem(item)) {
+        } else if (ServiceChecker.getInstance().isAdministrationItem(item)) {
             return administrationPane = (AdministrationServicePane) servicePaneFactory.getServicePane(item);
         } else {
             throw new IllegalArgumentException("Invalid service item");
@@ -89,41 +89,41 @@ public class ServiceDialogC {
     }
 
     private Service createService(String item) {
-        if (ServiceChecker.isComputeItem(item)) {
+        if (ServiceChecker.getInstance().isComputeItem(item)) {
             return ServiceFactory.getService(new ComputeServiceCreator(
                     computePane.getName(), computePane.getComputeType(), computePane.getInstanceType(), computePane.getInstanceSize(),
                     computePane.getComputeInstanceRef(), computePane.getStorageInstanceRef(), computePane.getSystem(),
                     computePane.getCPU(), computePane.getStorage(), computePane.getData(), computePane.getNumOne(), computePane.getNumTwo()
             ));
-        } else if (ServiceChecker.isDatabaseItem(item)) {
+        } else if (ServiceChecker.getInstance().isDatabaseItem(item)) {
             return ServiceFactory.getService(new DatabaseServiceCreator(
                     databasePane.getName(), databasePane.getDatabaseType(), databasePane.getDatabaseScheme(),
                     databasePane.getInstanceType(), databasePane.getInstanceSize(), databasePane.getDuration(),
                     databasePane.getStorage(), databasePane.getBackup(), databasePane.getData(), databasePane.getNum()
             ));
-        } else if (ServiceChecker.isStorageItem(item)) {
+        } else if (ServiceChecker.getInstance().isStorageItem(item)) {
             return ServiceFactory.getService(new StorageServiceCreator(
                     storagePane.getName(), storagePane.getStorageType(), storagePane.getStorageMode(),
                     storagePane.getCapacity(), storagePane.getData(), storagePane.getRequests(),
                     storagePane.getQueries(), storagePane.getRate()
             ));
-        } else if (ServiceChecker.isAnalyticItem(item)) {
+        } else if (ServiceChecker.getInstance().isAnalyticItem(item)) {
             return ServiceFactory.getService(new AnalyticServiceCreator(
                     analyticPane.getName(), analyticPane.getAnalyticType(), analyticPane.getData(),
                     analyticPane.getDataOut(), analyticPane.getNum(), analyticPane.getUnits(),
                     analyticPane.getInstanceType(), analyticPane.getInstanceSize()
             ));
-        } else if (ServiceChecker.isNetworkItem(item)) {
+        } else if (ServiceChecker.getInstance().isNetworkItem(item)) {
             return ServiceFactory.getService(new NetworkServiceCreator(
                     networkPane.getName(), networkPane.getNetworkType(), networkPane.getRequests(),
                     networkPane.getData(), networkPane.getDataOut(), networkPane.getZones()
             ));
-        } else if (ServiceChecker.isIntegrationItem(item)) {
+        } else if (ServiceChecker.getInstance().isIntegrationItem(item)) {
             return ServiceFactory.getService(new IntegrationServiceCreator(
                     integrationPane.getName(), integrationPane.getIntegrationType(), integrationPane.getIntegrationMode(), integrationPane.getData(),
                     integrationPane.getRequests(), integrationPane.getMessages()
             ));
-        } else if (ServiceChecker.isAdministrationItem(item)) {
+        } else if (ServiceChecker.getInstance().isAdministrationItem(item)) {
             return ServiceFactory.getService(new AdministrationServiceCreator(
                     administrationPane.getName(), administrationPane.getAdministrationType(), administrationPane.getMetrics(), administrationPane.getRequests(),
                     administrationPane.getData(), administrationPane.getEvents(), administrationPane.getLoggingState()
@@ -134,7 +134,7 @@ public class ServiceDialogC {
     }
 
     private void setServicePropertiesPane() {
-        if (ServiceChecker.isComputeItem(serviceData.getCategory()) && serviceData instanceof ComputeService) {
+        if (ServiceChecker.getInstance().isComputeItem(serviceData.getCategory()) && serviceData instanceof ComputeService) {
             computePane.setName(serviceData.getName());
             computePane.setComputeType(((ComputeService) serviceData).getComputeType());
             computePane.setInstanceType(((ComputeService) serviceData).getInstanceType());
@@ -147,7 +147,7 @@ public class ServiceDialogC {
             computePane.setData(((ComputeService) serviceData).getData());
             computePane.setNumOne(((ComputeService) serviceData).getNumOne());
             computePane.setNumTwo(((ComputeService) serviceData).getNumTwo());           
-        } else if (ServiceChecker.isDatabaseItem(serviceData.getCategory()) && serviceData instanceof DatabaseService) {
+        } else if (ServiceChecker.getInstance().isDatabaseItem(serviceData.getCategory()) && serviceData instanceof DatabaseService) {
             databasePane.setName(serviceData.getName());
             databasePane.setDatabaseType(((DatabaseService) serviceData).getDatabaseType());
             databasePane.setDatabaseScheme(((DatabaseService) serviceData).getDatabaseScheme());
@@ -158,7 +158,7 @@ public class ServiceDialogC {
             databasePane.setBackup(((DatabaseService) serviceData).getBackup());
             databasePane.setData(((DatabaseService) serviceData).getData());
             databasePane.setNum(((DatabaseService) serviceData).getNum());
-        } else if (ServiceChecker.isStorageItem(serviceData.getCategory()) && serviceData instanceof StorageService) {
+        } else if (ServiceChecker.getInstance().isStorageItem(serviceData.getCategory()) && serviceData instanceof StorageService) {
             storagePane.setName(serviceData.getName());
             storagePane.setStorageType(((StorageService) serviceData).getStorageType());
             storagePane.setStorageMode(((StorageService) serviceData).getStorageMode());
@@ -167,7 +167,7 @@ public class ServiceDialogC {
             storagePane.setRequests(((StorageService) serviceData).getRequests());
             storagePane.setQueries(((StorageService) serviceData).getQueries());
             storagePane.setRate(((StorageService) serviceData).getRate());
-        } else if (ServiceChecker.isAnalyticItem(serviceData.getCategory()) && serviceData instanceof AnalyticService) {
+        } else if (ServiceChecker.getInstance().isAnalyticItem(serviceData.getCategory()) && serviceData instanceof AnalyticService) {
             analyticPane.setName(serviceData.getName());
             analyticPane.setAnalyticType(((AnalyticService) serviceData).getAnalyticType());
             analyticPane.setData(((AnalyticService) serviceData).getData());
@@ -176,21 +176,21 @@ public class ServiceDialogC {
             analyticPane.setUnits(((AnalyticService) serviceData).getUnits());
             analyticPane.setInstanceType(((AnalyticService) serviceData).getInstanceType());
             analyticPane.setInstanceSize(((AnalyticService) serviceData).getInstanceSize());
-        } else if (ServiceChecker.isNetworkItem(serviceData.getCategory()) && serviceData instanceof NetworkService) {
+        } else if (ServiceChecker.getInstance().isNetworkItem(serviceData.getCategory()) && serviceData instanceof NetworkService) {
             networkPane.setName(serviceData.getName());
             networkPane.setNetworkType(((NetworkService) serviceData).getNetworkType());
             networkPane.setRequests(((NetworkService) serviceData).getRequests());
             networkPane.setData(((NetworkService) serviceData).getData());
             networkPane.setDataOut(((NetworkService) serviceData).getDataOut());
             networkPane.setZones(((NetworkService) serviceData).getZones());
-        } else if (ServiceChecker.isIntegrationItem(serviceData.getCategory()) && serviceData instanceof IntegrationService) {
+        } else if (ServiceChecker.getInstance().isIntegrationItem(serviceData.getCategory()) && serviceData instanceof IntegrationService) {
             integrationPane.setName(serviceData.getName());
             integrationPane.setIntegrationType(((IntegrationService) serviceData).getIntegrationType());
             integrationPane.setIntegrationMode(((IntegrationService) serviceData).getIntegrationMode());
             integrationPane.setData(((IntegrationService) serviceData).getData());
             integrationPane.setRequests(((IntegrationService) serviceData).getRequests());
             integrationPane.setMessages(((IntegrationService) serviceData).getMessages());
-        } else if (ServiceChecker.isAdministrationItem(serviceData.getCategory()) && serviceData instanceof AdministrationService) {
+        } else if (ServiceChecker.getInstance().isAdministrationItem(serviceData.getCategory()) && serviceData instanceof AdministrationService) {
             administrationPane.setName(serviceData.getName());
             administrationPane.setAdministrationType(((AdministrationService) serviceData).getAdministrationType());
             administrationPane.setMetrics(((AdministrationService) serviceData).getMetrics());

@@ -33,17 +33,17 @@ class Amazon extends Provider implements IPricing {
                 if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element serviceElement = (Element) serviceNode;
                     if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("service"))) {
-                        if (ServiceChecker.isComputeItem(service.getCategory()) && service instanceof ComputeService)
+                        if (ServiceChecker.getInstance().isComputeItem(service.getCategory()) && service instanceof ComputeService)
                             costs = calcComputeServiceCosts((ComputeService) service, serviceElement);
-                        else if (ServiceChecker.isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)
+                        else if (ServiceChecker.getInstance().isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)
                             costs = calcDatabaseServiceCosts((DatabaseService) service, serviceElement);
-                        else if (ServiceChecker.isStorageItem(service.getCategory()) && service instanceof StorageService)
+                        else if (ServiceChecker.getInstance().isStorageItem(service.getCategory()) && service instanceof StorageService)
                             costs = calcStorageServiceCosts((StorageService) service, serviceElement);
-                        else if (ServiceChecker.isAnalyticItem(service.getCategory()) && service instanceof AnalyticService)
+                        else if (ServiceChecker.getInstance().isAnalyticItem(service.getCategory()) && service instanceof AnalyticService)
                             costs = calcAnalyticServiceCosts((AnalyticService) service, serviceElement);
-                        else if (ServiceChecker.isNetworkItem(service.getCategory()) && service instanceof NetworkService)
+                        else if (ServiceChecker.getInstance().isNetworkItem(service.getCategory()) && service instanceof NetworkService)
                             costs = calcNetworkServiceCosts((NetworkService) service, serviceElement);
-                        else if (ServiceChecker.isAdministrationItem(service.getCategory()) && service instanceof AdministrationService)
+                        else if (ServiceChecker.getInstance().isAdministrationItem(service.getCategory()) && service instanceof AdministrationService)
                             costs = calcMonitoringServiceCosts((AdministrationService) service, serviceElement);
                         else {
                             costs = new Costs();
