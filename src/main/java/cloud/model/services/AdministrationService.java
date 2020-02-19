@@ -14,7 +14,6 @@ public class AdministrationService extends Service {
 
     public AdministrationService(String name, String administrationType, int metrics, int apiRequests, Pair<Integer, Integer> data, int events, boolean loggerState) {
         setName(name);
-        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
         setAdministrationType(administrationType);
         setMetrics(metrics);
         setRequests(apiRequests);

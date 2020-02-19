@@ -38,34 +38,37 @@ public class ComputeServiceCreator implements IServiceCreator {
     public Service createService() {
         String[] types = Config.getInstance().getConfigValuesAsArray("compute-type");
 
+        ComputeService computeService;
+
         if (computeType.equals(types[0])) {
             /* VM */
-            return new ComputeService(name, computeType, instanceType, instanceSize, "", "",
+            computeService = new ComputeService(name, computeType, instanceType, instanceSize, "", "",
                     system, cpu, storage, data, numOne, 0);
         } else if (computeType.equals(types[1])) {
             /* Container */
-			ComputeService computeService = new ComputeService(name, computeType, "", "", "", "",
+            computeService = new ComputeService(name, computeType, "", "", "", "",
                     system, cpu, storage, data, numOne, numTwo);
 			computeService.setIdentifier(computeType + " (" + system + ")");
-            return computeService;
         } else if (computeType.equals(types[2])) {
             /* App */
-            return new ComputeService(name, computeType, "", "", computeInstance, storageInstance,
+            computeService = new ComputeService(name, computeType, "", "", computeInstance, storageInstance,
                     system, 0, 0, 0, 0, 0);
         } else if (computeType.equals(types[3])) {
             /* Batch */
-            return new ComputeService(name, computeType, "", "", computeInstance, "",
+            computeService = new ComputeService(name, computeType, "", "", computeInstance, "",
                     "", 0, 0, 0, 0, 0);
         } else if (computeType.equals(types[4])) {
             /* Code */
-            return new ComputeService(name, computeType, "", "", "", "",
+            computeService = new ComputeService(name, computeType, "", "", "", "",
                     "", 0, storage, 0, numOne, numTwo);
         } else if (computeType.equals(types[5])) {
             /* Load Balancing */
-            return new ComputeService(name, computeType, "", "", "", "",
+            computeService = new ComputeService(name, computeType, "", "", "", "",
                     "", 0, 0, data, numOne, 0);
         } else {
             throw new IllegalArgumentException("Invalid compute type");
         }
+        computeService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[0]);
+        return computeService;
     }
 }

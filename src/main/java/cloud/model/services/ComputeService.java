@@ -21,7 +21,6 @@ public class ComputeService extends Service {
                           int cpu, int storage, int data, int numOne, int numTwo) {
         setName(name);
         setIdentifier(computeType);
-        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[0]);
         setComputeType(computeType);
         setInstanceType(instanceType);
         setInstanceSize(instanceSize);

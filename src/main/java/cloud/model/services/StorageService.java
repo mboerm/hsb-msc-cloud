@@ -1,6 +1,5 @@
 package cloud.model.services;
 
-import cloud.configuration.Config;
 import javafx.util.Pair;
 
 public class StorageService extends Service {
@@ -15,7 +14,6 @@ public class StorageService extends Service {
 
     public StorageService(String name, String storageType, String mode, int capacity, int data, Pair<Integer, Integer> requests, int queries, int rate) {
         setName(name);
-        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[2]);
         setIdentifier(storageType);
         setStorageType(storageType);
         setStorageMode(mode);

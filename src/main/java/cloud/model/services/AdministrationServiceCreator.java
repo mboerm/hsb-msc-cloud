@@ -28,6 +28,7 @@ public class AdministrationServiceCreator implements IServiceCreator {
         String[] types = Config.getInstance().getConfigValuesAsArray("administration-type");
         if (administrationType.equals(types[0])) {
             AdministrationService adminService = new AdministrationService(name, administrationType, metrics, apiRequests, data, events, loggerState);
+            adminService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
             String[] modes = Config.getInstance().getConfigValuesAsArray("administration-monitoring-mode");
             if (loggerState) {
                 adminService.setIdentifier(administrationType + " (" + modes[0] + ")");

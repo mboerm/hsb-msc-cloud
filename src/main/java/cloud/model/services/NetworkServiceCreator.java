@@ -24,14 +24,18 @@ public class NetworkServiceCreator implements IServiceCreator {
     public Service createService() {
         String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
 
+        NetworkService networkService;
+
         if (type.equals(types[0]) || type.equals(types[1]) || type.equals(types[2])) {
-            return new NetworkService(name, type, requests, data, 0, 0);
+            networkService = new NetworkService(name, type, requests, data, 0, 0);
         } else if (type.equals(types[3])) {
-            return new NetworkService(name, type, requests, data, dataOut, 0);
+            networkService = new NetworkService(name, type, requests, data, dataOut, 0);
         } else if (type.equals(types[4])) {
-            return new NetworkService(name, type, requests, 0, 0, zones);
+            networkService = new NetworkService(name, type, requests, 0, 0, zones);
         } else {
             return null;
         }
+        networkService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[4]);
+        return networkService;
     }
 }

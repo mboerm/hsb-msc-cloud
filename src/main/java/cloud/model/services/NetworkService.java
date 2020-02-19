@@ -12,7 +12,6 @@ public class NetworkService extends Service {
 
     public NetworkService(String name, String type, int requests, int data, int dataOut, int zones) {
         setName(name);
-        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[4]);
         setIdentifier(type);
         setNetworkType(type);
         setRequests(requests);

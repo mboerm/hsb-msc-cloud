@@ -28,17 +28,19 @@ public class StorageServiceCreator implements IServiceCreator {
     @Override
     public Service createService() {
         String[] types = Config.getInstance().getConfigValuesAsArray("storage-type");
+        StorageService storageService;
 
         if (type.equals(types[0])) {
-            StorageService storageService = new StorageService(name, type, mode, capacity, data, requests, queries, 0);
+            storageService = new StorageService(name, type, mode, capacity, data, requests, queries, 0);
             storageService.setIdentifier(type + " (" + mode + ")");
-            return storageService;
         } else if (type.equals(types[1])) {
-            return new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, 0);
+            storageService = new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, 0);
         } else if (type.equals(types[2])) {
-            return new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, rate);
+            storageService = new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, rate);
         } else {
             return null;
         }
+        storageService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[2]);
+        return storageService;
     }
 }

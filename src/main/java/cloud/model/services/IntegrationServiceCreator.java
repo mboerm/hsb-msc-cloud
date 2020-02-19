@@ -35,6 +35,7 @@ public class IntegrationServiceCreator implements IServiceCreator {
         } else {
             return null;
         }
+        integrationService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[5]);
         return integrationService;
     }
 }

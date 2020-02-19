@@ -35,26 +35,29 @@ public class DatabaseServiceCreator implements IServiceCreator {
     public Service createService() {
         String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
 
+        DatabaseService databaseService;
+
         if (databaseType.equals(types[0])) {
             // SQL
-            DatabaseService dbService = new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
+            databaseService = new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
                     duration, storage, backup, data, num);
-            dbService.setIdentifier(databaseType + " (" + databaseScheme + ")");
-            return dbService;
+            databaseService.setIdentifier(databaseType + " (" + databaseScheme + ")");
         } else if (databaseType.equals(types[1])) {
             // NoSQL
-            return new DatabaseService(name, databaseType, "", "", "",
+            databaseService = new DatabaseService(name, databaseType, "", "", "",
                     0, storage, 0, data, num);
         } else if (databaseType.equals(types[2])) {
             // Document
-            return new DatabaseService(name, databaseType, "", "", "",
+            databaseService = new DatabaseService(name, databaseType, "", "", "",
                     0, storage, 0, data, num);
         } else if (databaseType.equals(types[3])) {
             // Cache
-            return new DatabaseService(name, databaseType, "", instanceType, instanceSize,
+            databaseService = new DatabaseService(name, databaseType, "", instanceType, instanceSize,
                     duration, 0, 0, data, num);
         } else {
             return null;
         }
+        databaseService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[1]);
+        return databaseService;
     }
 }

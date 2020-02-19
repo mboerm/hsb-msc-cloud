@@ -19,7 +19,6 @@ public class IntegrationService extends Service {
 
     public IntegrationService(String name, String type, String mode, int data, int requests, int[] messages) {
         setName(name);
-        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[5]);
         setIdentifier(type);
         setIntegrationType(type);
         setIntegrationMode(mode);
