@@ -1,7 +1,5 @@
 package cloud.model.services;
 
-import cloud.configuration.Config;
-
 public class NetworkService extends Service {
 
     private String networkType;
@@ -12,7 +10,6 @@ public class NetworkService extends Service {
 
     public NetworkService(String name, String type, int requests, int data, int dataOut, int zones) {
         setName(name);
-        setIdentifier(type);
         setNetworkType(type);
         setRequests(requests);
         setData(data);

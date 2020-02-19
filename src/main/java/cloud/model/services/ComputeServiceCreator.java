@@ -69,6 +69,7 @@ public class ComputeServiceCreator implements IServiceCreator {
             throw new IllegalArgumentException("Invalid compute type");
         }
         computeService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[0]);
+        computeService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(computeService.getCategory(), computeType));
         return computeService;
     }
 }

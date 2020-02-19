@@ -41,7 +41,6 @@ public class DatabaseServiceCreator implements IServiceCreator {
             // SQL
             databaseService = new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
                     duration, storage, backup, data, num);
-            databaseService.setIdentifier(databaseType + " (" + databaseScheme + ")");
         } else if (databaseType.equals(types[1])) {
             // NoSQL
             databaseService = new DatabaseService(name, databaseType, "", "", "",
@@ -58,6 +57,7 @@ public class DatabaseServiceCreator implements IServiceCreator {
             return null;
         }
         databaseService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[1]);
+        databaseService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(databaseService.getCategory(), databaseType, databaseScheme));
         return databaseService;
     }
 }

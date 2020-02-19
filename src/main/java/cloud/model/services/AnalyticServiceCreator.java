@@ -29,23 +29,28 @@ public class AnalyticServiceCreator implements IServiceCreator {
     public Service createService() {
         String[] types = Config.getInstance().getConfigValuesAsArray("analytic-type");
 
+        AnalyticService analyticService;
+
         if (type.equals(types[0]) || type.equals(types[1])) {
             // Data Query & Data Share
-            return new AnalyticService(name, type, data, 0, new Pair<>(0, 0), 0, "", "");
+            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0, 0), 0, "", "");
         } else if (type.equals(types[2])) {
             // Data Transfer
-            return new AnalyticService(name, type, 0, 0, num, 0, "", "");
+            analyticService = new AnalyticService(name, type, 0, 0, num, 0, "", "");
         } else if (type.equals(types[3])) {
             // Data Stream
-            return new AnalyticService(name, type, data, 0, new Pair<>(0, 0), units, "", "");
+            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0, 0), units, "", "");
         } else if (type.equals(types[4]) || type.equals(types[5])) {
             // Data Catalog & Data Lake
-            return new AnalyticService(name, type, data, 0, new Pair<>(0,0), units, "", "");
+            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0,0), units, "", "");
         } else if (type.equals(types[6])) {
             // Search Engine
-            return new AnalyticService(name, type, data, dataOut, num, units, instanceType, instanceSize);
+            analyticService = new AnalyticService(name, type, data, dataOut, num, units, instanceType, instanceSize);
         } else {
             return null;
         }
+        analyticService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[3]);
+        analyticService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(analyticService.getCategory(), type));
+        return analyticService;
     }
 }

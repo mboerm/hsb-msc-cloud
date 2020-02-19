@@ -23,19 +23,15 @@ public class IntegrationServiceCreator implements IServiceCreator {
     @Override
     public Service createService() {
         String[] types = Config.getInstance().getConfigValuesAsArray("integration-type");
-        String[] modes = Config.getInstance().getConfigValuesAsArray("integration-communication-mode");
         IntegrationService integrationService;
 
         if (integrationType.equals(types[0])) {
             integrationService = new IntegrationService(name, integrationType, integrationMode, data, requests, messages);
-            integrationService.setIdentifier(integrationType + " (" + integrationMode + ")");
-            if (integrationMode.equals(modes[1])) {
-                integrationService.setMessages(null);
-            }
         } else {
             return null;
         }
         integrationService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[5]);
+        integrationService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(integrationService.getCategory(), integrationType, integrationMode));
         return integrationService;
     }
 }

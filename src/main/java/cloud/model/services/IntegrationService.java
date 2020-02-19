@@ -1,7 +1,5 @@
 package cloud.model.services;
 
-import cloud.configuration.Config;
-
 public class IntegrationService extends Service {
 
     private String integrationType;

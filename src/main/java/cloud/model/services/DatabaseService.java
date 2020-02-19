@@ -18,7 +18,6 @@ public class DatabaseService extends Service {
                            String instanceType, String instanceSize, int duration,
                            int storage, int backup, int data, Pair<Integer,Integer> num) {
         setName(name);
-        setIdentifier(databaseType);
         setDatabaseType(databaseType);
         setDatabaseScheme(databaseScheme);
         setInstanceType(instanceType);

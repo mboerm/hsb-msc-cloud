@@ -1,7 +1,5 @@
 package cloud.model.services;
 
-import cloud.configuration.Config;
-
 public class ComputeService extends Service {
 
     private String computeType;
@@ -20,7 +18,6 @@ public class ComputeService extends Service {
                           String computeInstance, String storageInstance, String system,
                           int cpu, int storage, int data, int numOne, int numTwo) {
         setName(name);
-        setIdentifier(computeType);
         setComputeType(computeType);
         setInstanceType(instanceType);
         setInstanceSize(instanceSize);

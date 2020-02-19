@@ -1,6 +1,5 @@
 package cloud.model.services;
 
-import cloud.configuration.Config;
 import javafx.util.Pair;
 
 public class AnalyticService extends Service {
@@ -15,8 +14,6 @@ public class AnalyticService extends Service {
 
     public AnalyticService(String name, String type, int data, int dataOut, Pair<Integer,Integer> num, int units, String instanceType, String instanceSize) {
         setName(name);
-        setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[3]);
-        setIdentifier(type);
         setAnalyticType(type);
         setData(data);
         setDataOut(dataOut);

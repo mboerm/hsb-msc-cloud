@@ -1,6 +1,5 @@
 package cloud.model.services;
 
-import cloud.configuration.Config;
 import javafx.util.Pair;
 
 public class AdministrationService extends Service {

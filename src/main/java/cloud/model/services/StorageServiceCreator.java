@@ -32,7 +32,6 @@ public class StorageServiceCreator implements IServiceCreator {
 
         if (type.equals(types[0])) {
             storageService = new StorageService(name, type, mode, capacity, data, requests, queries, 0);
-            storageService.setIdentifier(type + " (" + mode + ")");
         } else if (type.equals(types[1])) {
             storageService = new StorageService(name, type, mode, capacity, data, new Pair<>(0,0), 0, 0);
         } else if (type.equals(types[2])) {
@@ -41,6 +40,7 @@ public class StorageServiceCreator implements IServiceCreator {
             return null;
         }
         storageService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[2]);
+        storageService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(storageService.getCategory(), type, mode));
         return storageService;
     }
 }

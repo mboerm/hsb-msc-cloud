@@ -14,7 +14,6 @@ public class StorageService extends Service {
 
     public StorageService(String name, String storageType, String mode, int capacity, int data, Pair<Integer, Integer> requests, int queries, int rate) {
         setName(name);
-        setIdentifier(storageType);
         setStorageType(storageType);
         setStorageMode(mode);
         setCapacity(capacity);

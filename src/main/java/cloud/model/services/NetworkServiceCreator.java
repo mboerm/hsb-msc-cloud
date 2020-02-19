@@ -36,6 +36,7 @@ public class NetworkServiceCreator implements IServiceCreator {
             return null;
         }
         networkService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[4]);
+        networkService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(networkService.getCategory(), type));
         return networkService;
     }
 }
