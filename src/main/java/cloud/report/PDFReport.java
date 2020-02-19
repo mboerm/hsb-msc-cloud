@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
+import cloud.model.services.ServiceChecker;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import javafx.util.Pair;
@@ -96,7 +97,7 @@ public class PDFReport implements IReport {
         }
         document.add(servicesList);
 
-        float[] columnWidths = {150F, 150F};
+        float[] columnWidths = {150F, 200F};
         Table propertiesTable;
         Table usageTable;
         String[] serviceGeneralLabels = Config.getInstance().getConfigValuesAsArray("service-general-labels");
@@ -111,6 +112,12 @@ public class PDFReport implements IReport {
             for (int i = 0; i < serviceGeneralLabels.length; i++) {
                 insertCell(propertiesTable, serviceGeneralLabels[i], TextAlignment.LEFT, true);
                 insertCell(propertiesTable, service.getGeneralProperties()[i], TextAlignment.CENTER, true);
+            }
+            String[] serviceSpecificLabels = ServiceChecker.getInstance().getSpecificProperties(service).getKey();
+            String[] serviceSpecificData = ServiceChecker.getInstance().getSpecificProperties(service).getValue();
+            for (int j = 0; j < serviceSpecificLabels.length; j++) {
+                insertCell(propertiesTable, serviceSpecificLabels[j], TextAlignment.LEFT, true);
+                insertCell(propertiesTable, serviceSpecificData[j], TextAlignment.CENTER, true);
             }
             document.add(propertiesTable);
 
