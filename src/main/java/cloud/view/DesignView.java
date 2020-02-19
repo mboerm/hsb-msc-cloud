@@ -74,11 +74,6 @@ public class DesignView {
         menuDesignOptimize = new MenuItem("Optimize Costs");
         menuDesignCompare = new MenuItem("Compare Design");
         menuDesignReset = new MenuItem("Reset Design");
-        menuDesignMatch.setDisable(true);
-        menuDesignCalculate.setDisable(true);
-        menuDesignScale.setDisable(true);
-        menuDesignOptimize.setDisable(true);
-        menuDesignCompare.setDisable(true);
 
         menuDesign.getItems().addAll(menuDesignMatch, menuDesignCalculate, menuDesignScale, menuDesignOptimize, menuDesignCompare, menuDesignReset);
         return menuDesign;

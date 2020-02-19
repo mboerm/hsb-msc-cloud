@@ -32,7 +32,7 @@ class Amazon extends Provider implements IPricing {
                 Node serviceNode = servicesNodeList.item(i);
                 if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element serviceElement = (Element) serviceNode;
-                    if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("id"))) {
+                    if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("service"))) {
                         if (ServiceChecker.isComputeItem(service.getCategory()) && service instanceof ComputeService)
                             costs = calcComputeServiceCosts((ComputeService) service, serviceElement);
                         else if (ServiceChecker.isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)
@@ -79,8 +79,8 @@ class Amazon extends Provider implements IPricing {
                         if (subNode.getNodeName().equals("instance")
                                 && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
                                 && subNodeAttributes.getNamedItem("size").getTextContent().equals(service.getInstanceSize())
-                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(service.getCPU().toString())
-                                && subNodeAttributes.getNamedItem("ram").getTextContent().equals(service.getStorage().toString())
+                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(String.valueOf(service.getCPU()))
+                                && subNodeAttributes.getNamedItem("ram").getTextContent().equals(String.valueOf(service.getStorage()))
                                 && subNodeAttributes.getNamedItem("os").getTextContent().equals(service.getSystem()))
                         {
                             instancePrice = Double.parseDouble(subNode.getTextContent());

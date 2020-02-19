@@ -56,16 +56,12 @@ public class DesignViewC {
             view.getPaneDesignArea().getServicesTable().getItems().removeAll();
             design.clearServicesList();
             design.clearServicesCosts();
-            view.getMenuDesignMatch().setDisable(true);
-            view.getMenuDesignCalculate().setDisable(true);
-            view.getMenuDesignOptimize().setDisable(true);
         });
 
         view.getMenuDesignMatch().setOnAction(actionEvent -> {
             design.matchServices();
             view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
             view.getPaneDesignArea().getServicesTable().refresh();
-            view.getMenuDesignCalculate().setDisable(false);
         });
 
         view.getMenuDesignCalculate().setOnAction(actionEvent -> {
@@ -84,7 +80,6 @@ public class DesignViewC {
         view.getPaneDesignProperties().getProviderBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             try {
                 design.setProvider(providerFactory.getProvider(newValue));
-                view.getMenuDesignMatch().setDisable(false);
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid provider!");
             }
