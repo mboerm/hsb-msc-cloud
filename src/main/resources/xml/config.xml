@@ -2,7 +2,6 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Administration</entry>
-    <entry key="service-instance-size">Micro;Small;Medium;Large;Xlarge</entry>
     <entry key="service-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
     <entry key="service-usage-type">On-Demand;Reserved;Spot</entry>
     <entry key="service-usage-period">Hourly;Monthly;One Year;Three Years</entry>
@@ -12,7 +11,6 @@
     <entry key="service-operating-mode">On-Premise;Off-Premise;Optional</entry>
 
     <entry key="compute-type">VM;Container;App;Batch;Code;Load Balancer</entry>
-    <entry key="compute-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
 	<entry key="compute-container-type">Standard;Kubernetes</entry>
     <entry key="compute-os">Windows;Linux;CentOS;Ubuntu;Red Hat;SUSE;Debian</entry>
     <entry key="compute-app-language">Python;Java;PHP;Ruby;Node.js;.NET;Go;C#;C</entry>
@@ -41,7 +39,7 @@
     <entry key="service-general-labels">Name:;Category:;Service:;Type:</entry>
     <entry key="service-usage-labels">Location:;Usage type:;Usage period:;Usage prepay:;Operating mode:</entry>
 
-    <entry key="compute-vm-labels">Instance type:;Instance size:;Instance hours:;CPU:;RAM in GB:;Operating system:;Transferred data in GB:</entry>
+    <entry key="compute-vm-labels">Instance type:;Instance hours:;CPU:;RAM in GB:;Operating system:;Transferred data in GB:</entry>
     <entry key="compute-container-labels">Container type:;CPU:;Storage in GB:;# of compute instances:;# of container groups:;Transferred data in GB:</entry>
     <entry key="compute-app-labels">Language:;Compute instance reference:;Storage instance reference:</entry>
     <entry key="compute-batch-labels">Compute instance reference:</entry>
@@ -50,16 +48,16 @@
     <entry key="storage-object-labels">Storage in TB:;Read requests:;Write requests:;Data queries:;Transferred data in GB:</entry>
     <entry key="storage-block-labels">Snapshot-storage in GB:;Volume-storage in GB:</entry>
     <entry key="storage-file-labels">Storage in GB:;Rate in MB/s:;Transferred data in GB:</entry>
-    <entry key="database-sql-labels">Scheme:;Instance type:;Instance size:;CPU:;RAM in GB:;Instance hours:;Storage in GB:;Backup storage in GB:;Transferred data in GB:</entry>
+    <entry key="database-sql-labels">Scheme:;Instance type:;CPU:;RAM in GB:;Instance hours:;Storage in GB:;Backup storage in GB:;Transferred data in GB:</entry>
     <entry key="database-nosql-labels">Read queries:;Write queries:;Storage in GB:;Transferred data in GB:</entry>
-    <entry key="database-document-labels">Hours:Requests:;Storage in GB:;Transferred data in GB:</entry>
-    <entry key="database-cache-labels">Instance type:;Instance size:;CPU:;RAM in GB:;Hours:;Transferred data in GB:</entry>
+    <entry key="database-document-labels">Hours:;Requests:;Storage in GB:;Transferred data in GB:</entry>
+    <entry key="database-cache-labels">CPU:;RAM in GB:;Hours:;Transferred data in GB:</entry>
     <entry key="analytic-query-labels">Processed data in GB:</entry>
     <entry key="analytic-transfer-labels">On-premise activities:;Off-premise activities:</entry>
     <entry key="analytic-stream-labels">Datasets:;Dataset size in KB:</entry>
     <entry key="analytic-catalog-labels">Units:;Requests:</entry>
     <entry key="analytic-lake-labels">Units:;Processed data in GB:</entry>
-    <entry key="analytic-search-labels">Instance type:;Instance size:;CPU:;RAM in GB:;Instance-hours:;Processed data in GB:;Transferred data in GB:</entry>
+    <entry key="analytic-search-labels">Instance type:;CPU:;RAM in GB:;Instance-hours:;Processed data in GB:;Transferred data in GB:</entry>
     <entry key="network-private-labels">Connections:;Transferred data in GB:</entry>
     <entry key="network-api-labels">Requests:;Transferred data in GB:</entry>
     <entry key="network-cdn-labels">Transferred data in GB:;Transferred data in TB into internet:;Http-requests in 10.000:</entry>

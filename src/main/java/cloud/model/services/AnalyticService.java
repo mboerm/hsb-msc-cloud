@@ -10,9 +10,8 @@ public class AnalyticService extends Service {
     private Pair<Integer,Integer> num;
     private int units;
     private String instanceType;
-    private String instanceSize;
 
-    public AnalyticService(String name, String type, int data, int dataOut, Pair<Integer,Integer> num, int units, String instanceType, String instanceSize) {
+    public AnalyticService(String name, String type, int data, int dataOut, Pair<Integer,Integer> num, int units, String instanceType) {
         setName(name);
         setAnalyticType(type);
         setData(data);
@@ -20,7 +19,6 @@ public class AnalyticService extends Service {
         setNum(num);
         setUnits(units);
         setInstanceType(instanceType);
-        setInstanceSize(instanceSize);
     }
 
     public String getAnalyticType() {
@@ -63,12 +61,5 @@ public class AnalyticService extends Service {
     }
     public void setInstanceType(String instanceType) {
         this.instanceType = instanceType;
-    }
-
-    public String getInstanceSize() {
-        return instanceSize;
-    }
-    public void setInstanceSize(String instanceSize) {
-        this.instanceSize = instanceSize;
     }
 }

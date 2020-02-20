@@ -7,7 +7,6 @@ public class DatabaseService extends Service {
     private String databaseType;
     private String databaseScheme;
     private String instanceType;
-    private String instanceSize;
     private int duration;
     private int storage;
     private int backup;
@@ -15,13 +14,12 @@ public class DatabaseService extends Service {
     private Pair<Integer,Integer> num;
 
     public DatabaseService(String name, String databaseType, String databaseScheme,
-                           String instanceType, String instanceSize, int duration,
+                           String instanceType, int duration,
                            int storage, int backup, int data, Pair<Integer,Integer> num) {
         setName(name);
         setDatabaseType(databaseType);
         setDatabaseScheme(databaseScheme);
         setInstanceType(instanceType);
-        setInstanceSize(instanceSize);
         setDuration(duration);
         setStorage(storage);
         setBackup(backup);
@@ -48,13 +46,6 @@ public class DatabaseService extends Service {
     }
     public void setInstanceType(String instanceType) {
         this.instanceType = instanceType;
-    }
-
-    public String getInstanceSize() {
-        return this.instanceSize;
-    }
-    public void setInstanceSize(String systemType) {
-        this.instanceSize = systemType;
     }
 
     public int getDuration() {

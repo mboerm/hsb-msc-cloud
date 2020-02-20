@@ -12,9 +12,8 @@ public class AnalyticServiceCreator implements IServiceCreator {
     private Pair<Integer, Integer> num;
     private int units;
     private String instanceType;
-    private String instanceSize;
 
-    public AnalyticServiceCreator(String name, String type, int data, int dataOut, Pair<Integer, Integer> num, int units, String instanceType, String instanceSize) {
+    public AnalyticServiceCreator(String name, String type, int data, int dataOut, Pair<Integer, Integer> num, int units, String instanceType) {
         this.name = name;
         this.type = type;
         this.data = data;
@@ -22,7 +21,6 @@ public class AnalyticServiceCreator implements IServiceCreator {
         this.num = num;
         this.units = units;
         this.instanceType = instanceType;
-        this.instanceSize = instanceSize;
     }
 
     @Override
@@ -33,19 +31,19 @@ public class AnalyticServiceCreator implements IServiceCreator {
 
         if (type.equals(types[0]) || type.equals(types[1])) {
             // Data Query & Data Share
-            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0, 0), 0, "", "");
+            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0, 0), 0, "");
         } else if (type.equals(types[2])) {
             // Data Transfer
-            analyticService = new AnalyticService(name, type, 0, 0, num, 0, "", "");
+            analyticService = new AnalyticService(name, type, 0, 0, num, 0, "");
         } else if (type.equals(types[3])) {
             // Data Stream
-            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0, 0), units, "", "");
+            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0, 0), units, "");
         } else if (type.equals(types[4]) || type.equals(types[5])) {
             // Data Catalog & Data Lake
-            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0,0), units, "", "");
+            analyticService = new AnalyticService(name, type, data, 0, new Pair<>(0,0), units, "");
         } else if (type.equals(types[6])) {
             // Search Engine
-            analyticService = new AnalyticService(name, type, data, dataOut, num, units, instanceType, instanceSize);
+            analyticService = new AnalyticService(name, type, data, dataOut, num, units, instanceType);
         } else {
             return null;
         }

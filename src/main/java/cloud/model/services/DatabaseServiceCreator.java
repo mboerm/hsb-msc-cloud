@@ -9,7 +9,6 @@ public class DatabaseServiceCreator implements IServiceCreator {
     private String databaseType;
     private String databaseScheme;
     private String instanceType;
-    private String instanceSize;
     private int duration;
     private int storage;
     private int backup;
@@ -17,13 +16,12 @@ public class DatabaseServiceCreator implements IServiceCreator {
     private Pair<Integer, Integer> num;
 
     public DatabaseServiceCreator(String name, String databaseType, String databaseScheme,
-                                  String instanceType, String instanceSize, int duration,
+                                  String instanceType, int duration,
                                   int storage, int backup, int data, Pair<Integer, Integer> num) {
         this.name = name;
         this.databaseType = databaseType;
         this.databaseScheme = databaseScheme;
         this.instanceType = instanceType;
-        this.instanceSize = instanceSize;
         this.duration = duration;
         this.storage = storage;
         this.backup = backup;
@@ -39,19 +37,19 @@ public class DatabaseServiceCreator implements IServiceCreator {
 
         if (databaseType.equals(types[0])) {
             // SQL
-            databaseService = new DatabaseService(name, databaseType, databaseScheme, instanceType, instanceSize,
+            databaseService = new DatabaseService(name, databaseType, databaseScheme, instanceType,
                     duration, storage, backup, data, num);
         } else if (databaseType.equals(types[1])) {
             // NoSQL
-            databaseService = new DatabaseService(name, databaseType, "", "", "",
+            databaseService = new DatabaseService(name, databaseType, "", "",
                     0, storage, 0, data, num);
         } else if (databaseType.equals(types[2])) {
             // Document
-            databaseService = new DatabaseService(name, databaseType, "", "", "",
+            databaseService = new DatabaseService(name, databaseType, "", "",
                     0, storage, 0, data, num);
         } else if (databaseType.equals(types[3])) {
             // Cache
-            databaseService = new DatabaseService(name, databaseType, "", instanceType, instanceSize,
+            databaseService = new DatabaseService(name, databaseType, "", "",
                     duration, 0, 0, data, num);
         } else {
             return null;

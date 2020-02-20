@@ -4,7 +4,6 @@ public class ComputeService extends Service {
 
     private String computeType;
     private String instanceType;
-    private String instanceSize;
     private String computeInstance;
     private String storageInstance;
     private String system;
@@ -14,13 +13,12 @@ public class ComputeService extends Service {
     private int numOne;
     private int numTwo;
 
-    public ComputeService(String name, String computeType, String instanceType, String instanceSize,
+    public ComputeService(String name, String computeType, String instanceType,
                           String computeInstance, String storageInstance, String system,
                           int cpu, int storage, int data, int numOne, int numTwo) {
         setName(name);
         setComputeType(computeType);
         setInstanceType(instanceType);
-        setInstanceSize(instanceSize);
         setComputeInstance(computeInstance);
         setStorageInstance(storageInstance);
         setSystem(system);
@@ -43,13 +41,6 @@ public class ComputeService extends Service {
     }
     public void setInstanceType(String instanceType) {
         this.instanceType = instanceType;
-    }
-
-    public String getInstanceSize() {
-        return instanceSize;
-    }
-    public void setInstanceSize(String instanceSize) {
-        this.instanceSize = instanceSize;
     }
 
     public String getComputeInstance() {

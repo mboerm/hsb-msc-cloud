@@ -13,7 +13,6 @@ public class ComputeServicePane extends ServicePropertiesPane {
 
     private ComboBox<String> computeTypeBox;
     private ComboBox<String> instanceTypeBox;
-    private ComboBox<String> instanceSizeBox;
     private TextField computeInstanceField;
     private TextField storageInstanceField;
     private ComboBox<String> systemBox;
@@ -26,8 +25,7 @@ public class ComputeServicePane extends ServicePropertiesPane {
     public ComputeServicePane() {
         computeTypeLbl = new Label("Type:");
         computeTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("compute-type"));
-        instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("compute-instance-type"));
-        instanceSizeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-instance-size"));
+        instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-instance-type"));
         systemBox = new ComboBox<>();
         computeInstanceField = new TextField();
         storageInstanceField = new TextField();
@@ -71,8 +69,6 @@ public class ComputeServicePane extends ServicePropertiesPane {
     public void setComputeType(String item) {this.computeTypeBox.getSelectionModel().select(item);}
     public String getInstanceType() {return this.instanceTypeBox.getValue();}
     public void setInstanceType(String item) {this.instanceTypeBox.getSelectionModel().select(item);}
-    public String getInstanceSize() {return this.instanceSizeBox.getValue();}
-    public void setInstanceSize(String item) {this.instanceSizeBox.getSelectionModel().select(item);}
     public String getComputeInstanceRef() {return this.computeInstanceField.getText();}
     public void setComputeInstanceRef(String item) {this.computeInstanceField.setText(item);}
     public String getStorageInstanceRef() {return this.storageInstanceField.getText();}
@@ -103,18 +99,16 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(new Label(labels[0]), 0, 3);
         add(instanceTypeBox, 1, 3);
         add(new Label(labels[1]), 0, 4);
-        add(instanceSizeBox, 1, 4);
+        add(numOneSpinner, 1, 4);
         add(new Label(labels[2]), 0, 5);
-        add(numOneSpinner, 1, 5);
+        add(cpuSpinner, 1, 5);
         add(new Label(labels[3]), 0, 6);
-        add(cpuSpinner, 1, 6);
+        add(storageSpinner, 1, 6);
         add(new Label(labels[4]), 0, 7);
-        add(storageSpinner, 1, 7);
-        add(new Label(labels[5]), 0, 8);
         systemBox.setItems(Config.getInstance().getConfigValues("compute-os"));
-        add(systemBox, 1, 8);
-        add(new Label(labels[6]), 0, 9);
-        add(dataSpinner, 1, 9);
+        add(systemBox, 1, 7);
+        add(new Label(labels[5]), 0, 8);
+        add(dataSpinner, 1, 8);
     }
 
     private void setContainerControls() {

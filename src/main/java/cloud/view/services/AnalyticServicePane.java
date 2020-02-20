@@ -13,7 +13,6 @@ public class AnalyticServicePane extends ServicePropertiesPane {
 
     private ComboBox<String> analyticTypeBox;
     private ComboBox<String> instanceTypeBox;
-    private ComboBox<String> instanceSizeBox;
     private Spinner<Integer> dataSpinner;
     private Spinner<Integer> dataOutSpinner;
     private Spinner<Integer> numOneSpinner;
@@ -24,7 +23,6 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         analyticTypeLbl = new Label("Type:");
         analyticTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("analytic-type"));
         instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("analytic-instance-type"));
-        instanceSizeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-instance-size"));
         dataSpinner = new Spinner<>(1, 1000000, 1);
         dataOutSpinner = new Spinner<>(1, 1000000, 1);
         numOneSpinner = new Spinner<>(1, 1000000, 1);
@@ -65,9 +63,6 @@ public class AnalyticServicePane extends ServicePropertiesPane {
 
     public String getInstanceType() {return this.instanceTypeBox.getValue();}
     public void setInstanceType(String item) {this.instanceTypeBox.getSelectionModel().select(item);}
-
-    public String getInstanceSize() {return this.instanceSizeBox.getValue();}
-    public void setInstanceSize(String item) {this.instanceSizeBox.getSelectionModel().select(item);}
 
     public Integer getData() {return this.dataSpinner.getValue();}
     public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
@@ -140,16 +135,14 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(new Label(labels[0]), 0, 3);
         add(instanceTypeBox, 1, 3);
         add(new Label(labels[1]), 0, 4);
-        add(instanceSizeBox, 1, 4);
+        add(numOneSpinner, 1, 4);
         add(new Label(labels[2]), 0, 5);
-        add(numOneSpinner, 1, 5);
+        add(numTwoSpinner, 1, 5);
         add(new Label(labels[3]), 0, 6);
-        add(numTwoSpinner, 1, 6);
+        add(unitsSpinner, 1, 6);
         add(new Label(labels[4]), 0, 7);
-        add(unitsSpinner, 1, 7);
+        add(dataSpinner, 1, 7);
         add(new Label(labels[5]), 0, 8);
-        add(dataSpinner, 1, 8);
-        add(new Label(labels[6]), 0, 9);
-        add(dataOutSpinner, 1, 9);
+        add(dataOutSpinner, 1, 8);
     }
 }

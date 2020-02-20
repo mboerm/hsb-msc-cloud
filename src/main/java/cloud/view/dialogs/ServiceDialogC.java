@@ -91,14 +91,14 @@ public class ServiceDialogC {
     private Service createService(String item) {
         if (ServiceChecker.getInstance().isComputeItem(item)) {
             return ServiceFactory.getService(new ComputeServiceCreator(
-                    computePane.getName(), computePane.getComputeType(), computePane.getInstanceType(), computePane.getInstanceSize(),
+                    computePane.getName(), computePane.getComputeType(), computePane.getInstanceType(),
                     computePane.getComputeInstanceRef(), computePane.getStorageInstanceRef(), computePane.getSystem(),
                     computePane.getCPU(), computePane.getStorage(), computePane.getData(), computePane.getNumOne(), computePane.getNumTwo()
             ));
         } else if (ServiceChecker.getInstance().isDatabaseItem(item)) {
             return ServiceFactory.getService(new DatabaseServiceCreator(
                     databasePane.getName(), databasePane.getDatabaseType(), databasePane.getDatabaseScheme(),
-                    databasePane.getInstanceType(), databasePane.getInstanceSize(), databasePane.getDuration(),
+                    databasePane.getInstanceType(), databasePane.getDuration(),
                     databasePane.getStorage(), databasePane.getBackup(), databasePane.getData(), databasePane.getNum()
             ));
         } else if (ServiceChecker.getInstance().isStorageItem(item)) {
@@ -111,7 +111,7 @@ public class ServiceDialogC {
             return ServiceFactory.getService(new AnalyticServiceCreator(
                     analyticPane.getName(), analyticPane.getAnalyticType(), analyticPane.getData(),
                     analyticPane.getDataOut(), analyticPane.getNum(), analyticPane.getUnits(),
-                    analyticPane.getInstanceType(), analyticPane.getInstanceSize()
+                    analyticPane.getInstanceType()
             ));
         } else if (ServiceChecker.getInstance().isNetworkItem(item)) {
             return ServiceFactory.getService(new NetworkServiceCreator(
@@ -138,7 +138,6 @@ public class ServiceDialogC {
             computePane.setName(serviceData.getName());
             computePane.setComputeType(((ComputeService) serviceData).getComputeType());
             computePane.setInstanceType(((ComputeService) serviceData).getInstanceType());
-            computePane.setInstanceSize(((ComputeService) serviceData).getInstanceSize());
             computePane.setComputeInstanceRef(((ComputeService) serviceData).getComputeInstance());
             computePane.setStorageInstanceRef(((ComputeService) serviceData).getStorageInstance());
             computePane.setSystem(((ComputeService) serviceData).getSystem());
@@ -152,7 +151,6 @@ public class ServiceDialogC {
             databasePane.setDatabaseType(((DatabaseService) serviceData).getDatabaseType());
             databasePane.setDatabaseScheme(((DatabaseService) serviceData).getDatabaseScheme());
             databasePane.setInstanceType(((DatabaseService) serviceData).getInstanceType());
-            databasePane.setInstanceSize(((DatabaseService) serviceData).getInstanceSize());
             databasePane.setDuration(((DatabaseService) serviceData).getDuration());
             databasePane.setStorage(((DatabaseService) serviceData).getStorage());
             databasePane.setBackup(((DatabaseService) serviceData).getBackup());
@@ -175,7 +173,6 @@ public class ServiceDialogC {
             analyticPane.setNum(((AnalyticService) serviceData).getNum());
             analyticPane.setUnits(((AnalyticService) serviceData).getUnits());
             analyticPane.setInstanceType(((AnalyticService) serviceData).getInstanceType());
-            analyticPane.setInstanceSize(((AnalyticService) serviceData).getInstanceSize());
         } else if (ServiceChecker.getInstance().isNetworkItem(serviceData.getCategory()) && serviceData instanceof NetworkService) {
             networkPane.setName(serviceData.getName());
             networkPane.setNetworkType(((NetworkService) serviceData).getNetworkType());

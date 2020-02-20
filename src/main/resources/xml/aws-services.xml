@@ -3,60 +3,60 @@
 	<!--Compute services-->
 	<service id="VM" name="Amazon EC2">
 		<location name="EU-Frankfurt">
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0.012</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0.024</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0.048</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0.096</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0.192</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0.097</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0.194</instance>
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0.0212</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0.0424</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0.0664</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0.1236</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0.2656</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0.189</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0.378</instance>
+			<instance type="General" cpu="2" ram="1" os="Linux">0.012</instance>
+			<instance type="General" cpu="2" ram="2" os="Linux">0.024</instance>
+			<instance type="General" cpu="2" ram="4" os="Linux">0.048</instance>
+			<instance type="General" cpu="2" ram="8" os="Linux">0.096</instance>
+			<instance type="General" cpu="4" ram="16" os="Linux">0.192</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4" os="Linux">0.097</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8" os="Linux">0.194</instance>
+			<instance type="General" cpu="2" ram="1" os="Windows">0.0212</instance>
+			<instance type="General" cpu="2" ram="2" os="Windows">0.0424</instance>
+			<instance type="General" cpu="2" ram="4" os="Windows">0.0664</instance>
+			<instance type="General" cpu="2" ram="8" os="Windows">0.1236</instance>
+			<instance type="General" cpu="4" ram="16" os="Windows">0.2656</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4" os="Windows">0.189</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8" os="Windows">0.378</instance>
 			<dataOut min="1" max="10000">0.09</dataOut>
 			<dataOut min="10000" max="50000">0.085</dataOut>
 			<dataOut min="50000" max="150000">0.07</dataOut>
 			<dataOut min="150000" max="500000">0.05</dataOut>
 		</location>
 		<location name="Asia-Tokyo">
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0.0136</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0.0272</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0.0544</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0.1088</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0.2176</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0.107</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0.214</instance>
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0.0228</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0.0456</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0.0728</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0.1364</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0.2912</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0.199</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0.398</instance>
+			<instance type="General" cpu="2" ram="1" os="Linux">0.0136</instance>
+			<instance type="General" cpu="2" ram="2" os="Linux">0.0272</instance>
+			<instance type="General" cpu="2" ram="4" os="Linux">0.0544</instance>
+			<instance type="General" cpu="2" ram="8" os="Linux">0.1088</instance>
+			<instance type="General" cpu="4" ram="16" os="Linux">0.2176</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4" os="Linux">0.107</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8" os="Linux">0.214</instance>
+			<instance type="General" cpu="2" ram="1" os="Windows">0.0228</instance>
+			<instance type="General" cpu="2" ram="2" os="Windows">0.0456</instance>
+			<instance type="General" cpu="2" ram="4" os="Windows">0.0728</instance>
+			<instance type="General" cpu="2" ram="8" os="Windows">0.1364</instance>
+			<instance type="General" cpu="4" ram="16" os="Windows">0.2912</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4" os="Windows">0.199</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8" os="Windows">0.398</instance>
 			<dataOut min="1" max="10000">0.114</dataOut>
 			<dataOut min="10000" max="50000">0.089</dataOut>
 			<dataOut min="50000" max="150000">0.086</dataOut>
 			<dataOut min="150000" max="500000">0.084</dataOut>
 		</location>
 		<location name="Brasil-São Paulo">
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Linux">0.0168</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Linux">0.0336</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Linux">0.0672</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Linux">0.1344</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Linux">0.2688</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Linux">0.131</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Linux">0.262</instance>
-			<instance type="General" size="Micro" cpu="2" ram="1" os="Windows">0.026</instance>
-			<instance type="General" size="Small" cpu="2" ram="2" os="Windows">0.052</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4" os="Windows">0.0856</instance>
-			<instance type="General" size="Large" cpu="2" ram="8" os="Windows">0.162</instance>
-			<instance type="General" size="Xlarge" cpu="4" ram="16" os="Windows">0.3424</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4" os="Windows">0.223</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8" os="Windows">0.446</instance>
+			<instance type="General" cpu="2" ram="1" os="Linux">0.0168</instance>
+			<instance type="General" cpu="2" ram="2" os="Linux">0.0336</instance>
+			<instance type="General" cpu="2" ram="4" os="Linux">0.0672</instance>
+			<instance type="General" cpu="2" ram="8" os="Linux">0.1344</instance>
+			<instance type="General" cpu="4" ram="16" os="Linux">0.2688</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4" os="Linux">0.131</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8" os="Linux">0.262</instance>
+			<instance type="General" cpu="2" ram="1" os="Windows">0.026</instance>
+			<instance type="General" cpu="2" ram="2" os="Windows">0.052</instance>
+			<instance type="General" cpu="2" ram="4" os="Windows">0.0856</instance>
+			<instance type="General" cpu="2" ram="8" os="Windows">0.162</instance>
+			<instance type="General" cpu="4" ram="16" os="Windows">0.3424</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4" os="Windows">0.223</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8" os="Windows">0.446</instance>
 			<dataOut min="1" max="10000">0.25</dataOut>
 			<dataOut min="10000" max="50000">0.23</dataOut>
 			<dataOut min="50000" max="150000">0.21</dataOut>
@@ -130,13 +130,11 @@
 	<service id="SQL (MySQL)" name="Amazon RDS for MySQL"/>
 	<service id="SQL (PostgreSQL)" name="Amazon RDS for PostgreSQL">
 		<location name="EU-Frankfurt">
-			<instance type="Standard" size="Micro">0.021</instance>
-			<instance type="Standard" size="Small">0.042</instance>
-			<instance type="Standard" size="Medium">0.084</instance>
-			<instance type="Standard" size="Large">0.168</instance>
-			<instance type="Standard" size="Xlarge">0.336</instance>
-			<instance type="Storage-optimized" size="Large">0.305</instance>
-			<instance type="Storage-optimized" size="Xlarge">0.61</instance>
+			<instance type="Standard" cpu="2" ram="1">0.021</instance>
+			<instance type="Standard" cpu="2" ram="2">0.042</instance>
+			<instance type="Standard" cpu="2" ram="4">0.084</instance>
+			<instance type="Standard" cpu="2" ram="8">0.168</instance>
+			<instance type="Standard" cpu="4" ram="16">0.336</instance>
 			<storage>0.137</storage>
 			<backup>0.103</backup>
 			<dataOut min="1" max="10000">0.09</dataOut>
@@ -145,13 +143,11 @@
 			<dataOut min="150000" max="500000">0.05</dataOut>
 		</location>
 		<location name="Asia-Tokyo">
-			<instance type="Standard" size="Micro">0.028</instance>
-			<instance type="Standard" size="Small">0.056</instance>
-			<instance type="Standard" size="Medium">0.112</instance>
-			<instance type="Standard" size="Large">0.224</instance>
-			<instance type="Standard" size="Xlarge">0.448</instance>
-			<instance type="Storage-optimized" size="Large">0.30</instance>
-			<instance type="Storage-optimized" size="Xlarge">0.60</instance>
+			<instance type="Standard" cpu="2" ram="1">0.028</instance>
+			<instance type="Standard" cpu="2" ram="2">0.056</instance>
+			<instance type="Standard" cpu="2" ram="4">0.112</instance>
+			<instance type="Standard" cpu="2" ram="8">0.224</instance>
+			<instance type="Standard" cpu="4" ram="16">0.448</instance>
 			<storage>0.138</storage>
 			<backup>0.095</backup>
 			<dataOut min="1" max="10000">0.114</dataOut>
@@ -160,11 +156,11 @@
 			<dataOut min="150000" max="500000">0.084</dataOut>
 		</location>
 		<location name="Brasil-São Paulo">
-			<instance type="Standard" size="Micro">0.038</instance>
-			<instance type="Standard" size="Small">0.076</instance>
-			<instance type="Standard" size="Medium">0.151</instance>
-			<instance type="Standard" size="Large">0.302</instance>
-			<instance type="Standard" size="Xlarge">0.604</instance>
+			<instance type="Standard" cpu="2" ram="1">0.038</instance>
+			<instance type="Standard" cpu="2" ram="2">0.076</instance>
+			<instance type="Standard" cpu="2" ram="4">0.151</instance>
+			<instance type="Standard" cpu="2" ram="8">0.302</instance>
+			<instance type="Standard" cpu="4" ram="16">0.604</instance>
 			<storage>0.219</storage>
 			<backup>0.095</backup>
 			<dataOut min="1" max="10000">0.25</dataOut>
@@ -200,13 +196,13 @@
 	<service id="Data Lake" name="AWS Lake Formation"/>
 	<service id="Search Engine" name="Amazon Elasticsearch Service">
 		<location name="EU-Frankfurt">
-			<instance type="General" size="Micro" cpu="1" ram="1">0.021</instance>
-			<instance type="General" size="Small" cpu="1" ram="2">0.042</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4">0.084</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0.143</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0.286</instance>
-			<instance type="RAM-optimized" size="Large" cpu="2" ram="16">0.224</instance>
-			<instance type="RAM-optimized" size="Xlarge" cpu="4" ram="32">0.448</instance>
+			<instance type="General" cpu="1" ram="1">0.021</instance>
+			<instance type="General" cpu="1" ram="2">0.042</instance>
+			<instance type="General" cpu="2" ram="4">0.084</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4">0.143</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8">0.286</instance>
+			<instance type="RAM-optimized" cpu="2" ram="16">0.224</instance>
+			<instance type="RAM-optimized" cpu="4" ram="32">0.448</instance>
 			<data>0.02</data>
 			<dataOut min="1" max="10000">0.09</dataOut>
 			<dataOut min="10000" max="50000">0.085</dataOut>
@@ -214,13 +210,13 @@
 			<dataOut min="150000" max="500000">0.05</dataOut>
 		</location>
 		<location name="Asia-Tokyo">
-			<instance type="General" size="Micro" cpu="1" ram="1">0.028</instance>
-			<instance type="General" size="Small" cpu="1" ram="2">0.056</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4">0.112</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0.158</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0.316</instance>
-			<instance type="RAM-optimized" size="Large" cpu="2" ram="16">0.224</instance>
-			<instance type="RAM-optimized" size="Xlarge" cpu="4" ram="32">0.448</instance>
+			<instance type="General" cpu="1" ram="1">0.028</instance>
+			<instance type="General" cpu="1" ram="2">0.056</instance>
+			<instance type="General" cpu="2" ram="4">0.112</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4">0.158</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8">0.316</instance>
+			<instance type="RAM-optimized" cpu="2" ram="16">0.224</instance>
+			<instance type="RAM-optimized" cpu="4" ram="32">0.448</instance>
 			<data>0.09</data>
 			<dataOut min="1" max="10000">0.114</dataOut>
 			<dataOut min="10000" max="50000">0.089</dataOut>
@@ -228,11 +224,11 @@
 			<dataOut min="150000" max="500000">0.084</dataOut>
 		</location>
 		<location name="Brasil-São Paulo">
-			<instance type="General" size="Micro" cpu="1" ram="1">0.038</instance>
-			<instance type="General" size="Small" cpu="1" ram="2">0.076</instance>
-			<instance type="General" size="Medium" cpu="2" ram="4">0.152</instance>
-			<instance type="Compute-optimized" size="Large" cpu="2" ram="4">0.193</instance>
-			<instance type="Compute-optimized" size="Xlarge" cpu="4" ram="8">0.386</instance>
+			<instance type="General" cpu="1" ram="1">0.038</instance>
+			<instance type="General" cpu="1" ram="2">0.076</instance>
+			<instance type="General" cpu="2" ram="4">0.152</instance>
+			<instance type="Compute-optimized" cpu="2" ram="4">0.193</instance>
+			<instance type="Compute-optimized" cpu="4" ram="8">0.386</instance>
 			<data>0.16</data>
 			<dataOut min="1" max="10000">0.25</dataOut>
 			<dataOut min="10000" max="50000">0.23</dataOut>

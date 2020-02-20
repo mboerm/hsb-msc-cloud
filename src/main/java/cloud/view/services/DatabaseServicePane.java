@@ -17,7 +17,6 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     private ComboBox<String> databaseTypeBox;
     private ComboBox<String> databaseSchemeBox;
     private ComboBox<String> instanceTypeBox;
-    private ComboBox<String> instanceSizeBox;
     private Spinner<Integer> durationSpinner;
     private Spinner<Integer> storageSpinner;
     private Spinner<Integer> backupSpinner;
@@ -31,7 +30,6 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         databaseSchemeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-sql-scheme"));
         String[] instanceTypes = Config.getInstance().getConfigValuesAsArray("service-instance-type");
         instanceTypeBox = new ComboBox<>(FXCollections.observableArrayList(Arrays.copyOfRange(instanceTypes, 0, instanceTypes.length-2)));
-        instanceSizeBox = new ComboBox<>(Config.getInstance().getConfigValues("service-instance-size"));
 
         durationSpinner = new Spinner<>(1, 1000000, 1);
         storageSpinner = new Spinner<>(1, 1000000, 1);
@@ -72,8 +70,6 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     public void setDatabaseScheme(String item) {this.databaseSchemeBox.getSelectionModel().select(item);}
     public String getInstanceType() {return this.instanceTypeBox.getValue();}
     public void setInstanceType(String item) {this.instanceTypeBox.getSelectionModel().select(item);}
-    public String getInstanceSize() {return this.instanceSizeBox.getValue();}
-    public void setInstanceSize(String item) {this.instanceSizeBox.getSelectionModel().select(item);}
     public Integer getDuration() {return this.durationSpinner.getValue();}
     public void setDuration(Integer value) {this.durationSpinner.getValueFactory().setValue(value);}
     public Integer getStorage() {return this.storageSpinner.getValue();}
@@ -106,23 +102,21 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(new Label(labels[1]), 0, 4);
         add(instanceTypeBox, 1, 4);
         add(new Label(labels[2]), 0, 5);
-        add(instanceSizeBox, 1, 5);
+        add(numOneSpinner, 1, 5);
         add(new Label(labels[3]), 0, 6);
-        add(numOneSpinner, 1, 6);
+        add(numTwoSpinner, 1, 6);
         add(new Label(labels[4]), 0, 7);
-        add(numTwoSpinner, 1, 7);
+        add(durationSpinner, 1, 7);
+        add(new Label("per month"), 2, 7);
         add(new Label(labels[5]), 0, 8);
-        add(durationSpinner, 1, 8);
+        add(storageSpinner, 1, 8);
         add(new Label("per month"), 2, 8);
         add(new Label(labels[6]), 0, 9);
-        add(storageSpinner, 1, 9);
+        add(backupSpinner, 1, 9);
         add(new Label("per month"), 2, 9);
         add(new Label(labels[7]), 0, 10);
-        add(backupSpinner, 1, 10);
+        add(dataSpinner, 1, 10);
         add(new Label("per month"), 2, 10);
-        add(new Label(labels[8]), 0, 11);
-        add(dataSpinner, 1, 11);
-        add(new Label("per month"), 2, 11);
     }
 
     private void setNoSQLControls() {
@@ -158,18 +152,14 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     private void setCacheControls() {
         labels = Config.getInstance().getConfigValuesAsArray("database-cache-labels");
         add(new Label(labels[0]), 0, 3);
-        add(instanceTypeBox, 1, 3);
+        add(numOneSpinner, 1, 3);
         add(new Label(labels[1]), 0, 4);
-        add(instanceSizeBox, 1, 4);
+        add(numTwoSpinner, 1, 4);
         add(new Label(labels[2]), 0, 5);
-        add(numOneSpinner, 1, 5);
+        add(durationSpinner, 1, 5);
+        add(new Label("per month"), 2, 5);
         add(new Label(labels[3]), 0, 6);
-        add(numTwoSpinner, 1, 6);
-        add(new Label(labels[4]), 0, 7);
-        add(durationSpinner, 1, 7);
-        add(new Label("per month"), 2, 7);
-        add(new Label(labels[5]), 0, 8);
-        add(dataSpinner, 1, 8);
-        add(new Label("per month"), 2, 8);
+        add(dataSpinner, 1, 6);
+        add(new Label("per month"), 2, 6);
     }
 }

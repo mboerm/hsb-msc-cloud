@@ -86,7 +86,6 @@ public class ServiceChecker {
                         Config.getInstance().getConfigValuesAsArray("compute-vm-labels"),
                         new String[] {
                                 compService.getInstanceType(),
-                                compService.getInstanceSize(),
                                 String.valueOf(compService.getNumOne()),
                                 String.valueOf(compService.getCPU()),
                                 String.valueOf(compService.getStorage()),
@@ -149,7 +148,6 @@ public class ServiceChecker {
                         new String[] {
                                 dbService.getDatabaseScheme(),
                                 dbService.getInstanceType(),
-                                dbService.getInstanceSize(),
                                 dbService.getNum().getKey().toString(),
                                 dbService.getNum().getValue().toString(),
                                 String.valueOf(dbService.getDuration()),
@@ -182,9 +180,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("database-cache-labels"),
                         new String[] {
-                                dbService.getDatabaseScheme(),
-                                dbService.getInstanceType(),
-                                dbService.getInstanceSize(),
                                 dbService.getNum().getKey().toString(),
                                 dbService.getNum().getValue().toString(),
                                 String.valueOf(dbService.getDuration()),
@@ -273,8 +268,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-search-labels"),
                         new String[] {
-                                analyticService.getInstanceType(),
-                                analyticService.getInstanceSize(),
                                 analyticService.getNum().getKey().toString(),
                                 analyticService.getNum().getValue().toString(),
                                 String.valueOf(analyticService.getUnits()),
