@@ -130,11 +130,11 @@
 	<service id="SQL (MySQL)" name="Amazon RDS for MySQL"/>
 	<service id="SQL (PostgreSQL)" name="Amazon RDS for PostgreSQL">
 		<location name="EU-Frankfurt">
-			<instance type="Standard" cpu="2" ram="1">0.021</instance>
-			<instance type="Standard" cpu="2" ram="2">0.042</instance>
-			<instance type="Standard" cpu="2" ram="4">0.084</instance>
-			<instance type="Standard" cpu="2" ram="8">0.168</instance>
-			<instance type="Standard" cpu="4" ram="16">0.336</instance>
+			<instance type="General" cpu="2" ram="1">0.021</instance>
+			<instance type="General" cpu="2" ram="2">0.042</instance>
+			<instance type="General" cpu="2" ram="4">0.084</instance>
+			<instance type="General" cpu="2" ram="8">0.168</instance>
+			<instance type="General" cpu="4" ram="16">0.336</instance>
 			<storage>0.137</storage>
 			<backup>0.103</backup>
 			<dataOut min="1" max="10000">0.09</dataOut>
@@ -143,11 +143,11 @@
 			<dataOut min="150000" max="500000">0.05</dataOut>
 		</location>
 		<location name="Asia-Tokyo">
-			<instance type="Standard" cpu="2" ram="1">0.028</instance>
-			<instance type="Standard" cpu="2" ram="2">0.056</instance>
-			<instance type="Standard" cpu="2" ram="4">0.112</instance>
-			<instance type="Standard" cpu="2" ram="8">0.224</instance>
-			<instance type="Standard" cpu="4" ram="16">0.448</instance>
+			<instance type="General" cpu="2" ram="1">0.028</instance>
+			<instance type="General" cpu="2" ram="2">0.056</instance>
+			<instance type="General" cpu="2" ram="4">0.112</instance>
+			<instance type="General" cpu="2" ram="8">0.224</instance>
+			<instance type="General" cpu="4" ram="16">0.448</instance>
 			<storage>0.138</storage>
 			<backup>0.095</backup>
 			<dataOut min="1" max="10000">0.114</dataOut>
@@ -156,11 +156,11 @@
 			<dataOut min="150000" max="500000">0.084</dataOut>
 		</location>
 		<location name="Brasil-São Paulo">
-			<instance type="Standard" cpu="2" ram="1">0.038</instance>
-			<instance type="Standard" cpu="2" ram="2">0.076</instance>
-			<instance type="Standard" cpu="2" ram="4">0.151</instance>
-			<instance type="Standard" cpu="2" ram="8">0.302</instance>
-			<instance type="Standard" cpu="4" ram="16">0.604</instance>
+			<instance type="General" cpu="2" ram="1">0.038</instance>
+			<instance type="General" cpu="2" ram="2">0.076</instance>
+			<instance type="General" cpu="2" ram="4">0.151</instance>
+			<instance type="General" cpu="2" ram="8">0.302</instance>
+			<instance type="General" cpu="4" ram="16">0.604</instance>
 			<storage>0.219</storage>
 			<backup>0.095</backup>
 			<dataOut min="1" max="10000">0.25</dataOut>

@@ -22,7 +22,6 @@
 
     <entry key="database-system-type">SQL;NoSQL;Document;Cache</entry>
     <entry key="database-sql-scheme">MySQL;PostgreSQL;MariaDB</entry>
-    <entry key="database-instance-type">Standard;Storage-optimized</entry>
 
     <entry key="integration-type">Communication</entry>
     <entry key="integration-communication-mode">Messaging;Queueing</entry>
