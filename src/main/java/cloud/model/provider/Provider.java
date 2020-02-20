@@ -9,6 +9,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.Objects;
 
 public abstract class Provider implements IPricing {
     private String serviceName;
@@ -36,7 +37,7 @@ public abstract class Provider implements IPricing {
             if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element serviceElement = (Element) serviceNode;
                 if (id.equalsIgnoreCase(serviceElement.getAttribute("id"))) {
-                    return serviceElement.getAttribute("service");
+                    return serviceElement.getAttribute("name");
                 }
             }
         }
@@ -46,7 +47,7 @@ public abstract class Provider implements IPricing {
     protected Document getDocument() {return doc;}
     protected void setDocument(String fileName) {
         try {
-            File file = new File(getClass().getClassLoader().getResource(fileName).getFile());
+            File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).getFile());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(file);

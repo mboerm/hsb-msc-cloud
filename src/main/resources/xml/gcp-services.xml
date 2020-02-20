@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <gcp-services>
 	<!--Compute services-->
-	<service id="VM" service="Google Compute Engine">
+	<service id="VM" name="Google Compute Engine">
 	</service>
-	<service id="Container (Standard)" service="Google Container Registry">
+	<service id="Container (Standard)" name="Google Container Registry">
 	</service>
-	<service id="Container (Kubernetes)" service="Google Kubernetes Engine">
+	<service id="Container (Kubernetes)" name="Google Kubernetes Engine">
 	</service>
-	<service id="App" service="Google App Engine">
+	<service id="App" name="Google App Engine">
 	</service>
-	<service id="Batch" service="Google Batch">
+	<service id="Batch" name="Google Batch">
 	</service>
-	<service id="Code" service="Cloud Functions">
+	<service id="Code" name="Cloud Functions">
 	</service>
-	<service id="Load Balancer" service="Cloud Load Balancing">
+	<service id="Load Balancer" name="Cloud Load Balancing">
 	</service>
 
 	<!--Storage services-->
-	<service id="Object-Storage (Standard)" service="Cloud Storage">
+	<service id="Object-Storage (Standard)" name="Cloud Storage">
 	</service>
-	<service id="Object-Storage (Archive)" service="Cloud Storage (Coldline-Mode)">
+	<service id="Object-Storage (Archive)" name="Cloud Storage (Coldline-Mode)">
 	</service>
-	<service id="Block-Storage" service="Persistent Disk">
+	<service id="Block-Storage" name="Persistent Disk">
 	</service>
-	<service id="File-Storage" service="Cloud Filestore">
+	<service id="File-Storage" name="Cloud Filestore">
 	</service>
 
 	<!--Database services-->
-	<service id="SQL (MySQL)" service="Cloud SQL">
+	<service id="SQL (MySQL)" name="Cloud SQL">
 	</service>
-	<service id="SQL (PostgreSQL)" service="Cloud SQL for PostgreSQL">
+	<service id="SQL (PostgreSQL)" name="Cloud SQL for PostgreSQL">
 	</service>
-	<service id="SQL (MariaDB)" service="-">
+	<service id="SQL (MariaDB)" name="-">
 	</service>
-	<service id="NoSQL" service="Cloud Bigtable">
+	<service id="NoSQL" name="Cloud Bigtable">
 	</service>
-	<service id="Document" service="Cloud Firestore">
+	<service id="Document" name="Cloud Firestore">
 	</service>
-	<service id="Cache" service="Cloud Memorystore">
+	<service id="Cache" name="Cloud Memorystore">
 	</service>
 
 	<!--Analytic services-->
-	<service id="Data Query" service="BigQuery">
+	<service id="Data Query" name="BigQuery">
 	</service>
-	<service id="Data Share" service="Cloud Pub/Sub">
+	<service id="Data Share" name="Cloud Pub/Sub">
 	</service>
-	<service id="Data Transfer" service="Cloud Composer">
+	<service id="Data Transfer" name="Cloud Composer">
 	</service>
-	<service id="Data Stream" service="Cloud Dataflow">
+	<service id="Data Stream" name="Cloud Dataflow">
 	</service>
-	<service id="Data Catalog" service="Data Catalog">
+	<service id="Data Catalog" name="Data Catalog">
 	</service>
-	<service id="Data Lake" service="Cloud Dataprep">
+	<service id="Data Lake" name="Cloud Dataprep">
 	</service>
-	<service id="Search Engine" service="Cloud Search">
+	<service id="Search Engine" name="Cloud Search">
 	</service>
 	
 	<!--Application integration services-->
-	<service id="Messaging" service="Cloud Pub/Sub">
+	<service id="Messaging" name="Cloud Pub/Sub">
 	</service>
-	<service id="Queueing" service="Cloud Pub/Sub">
+	<service id="Queueing" name="Cloud Pub/Sub">
 	</service>
 
 	<!--Monitoring services-->
-	<service id="System Monitor" service="Stackdriver Monitoring">
+	<service id="System Monitor" name="Stackdriver Monitoring">
 	</service>
-	<service id="User Monitor" service="Stackdriver Logging">
+	<service id="User Monitor" name="Stackdriver Logging">
 	</service>
 
 	<!--Network services-->
-	<service id="VPC" service="Google VPC">
+	<service id="VPC" name="Google VPC">
 	</service>
-	<service id="VPN" service="Google VPC">
+	<service id="VPN" name="Google VPC">
 	</service>
-	<service id="API" service="Cloud Endpoints">
+	<service id="API" name="Cloud Endpoints">
 	</service>
-	<service id="CDN" service="Cloud CDN">
+	<service id="CDN" name="Cloud CDN">
 	</service>
-	<service id="DNS" service="Cloud DNS">
+	<service id="DNS" name="Cloud DNS">
 	</service>
 </gcp-services>

@@ -32,7 +32,7 @@ class Amazon extends Provider implements IPricing {
                 Node serviceNode = servicesNodeList.item(i);
                 if(serviceNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element serviceElement = (Element) serviceNode;
-                    if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("service"))) {
+                    if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("name"))) {
                         if (ServiceChecker.getInstance().isComputeItem(service.getCategory()) && service instanceof ComputeService)
                             costs = calcComputeServiceCosts((ComputeService) service, serviceElement);
                         else if (ServiceChecker.getInstance().isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)

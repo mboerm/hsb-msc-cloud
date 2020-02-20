@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <azure-services>
 	<!--Compute services-->
-	<service id="VM" service="Azure Virtual Machines">
+	<service id="VM" name="Azure Virtual Machines">
 	</service>
-	<service id="Container (Standard)" service="Azure Container Instances">
+	<service id="Container (Standard)" name="Azure Container Instances">
 	</service>
-	<service id="Container (Kubernetes)" service="Azure Kubernetes Engine">
+	<service id="Container (Kubernetes)" name="Azure Kubernetes Engine">
 	</service>
-	<service id="App" service="Azure App Engine">
+	<service id="App" name="Azure App Engine">
 	</service>
-	<service id="Batch" service="Azure Batch">
+	<service id="Batch" name="Azure Batch">
 	</service>
-	<service id="Code" service="Azure Functions">
+	<service id="Code" name="Azure Functions">
 	</service>
-	<service id="Load Balancer" service="Azure Load Balancer">
+	<service id="Load Balancer" name="Azure Load Balancer">
 	</service>
 
 	<!--Storage services-->
-	<service id="Object-Storage (Standard)" service="Azure Blob Storage">
+	<service id="Object-Storage (Standard)" name="Azure Blob Storage">
 	</service>
-	<service id="Object-Storage (Archive)" service="CAzure Blob Storage (Cold/Archive-Mode)">
+	<service id="Object-Storage (Archive)" name="CAzure Blob Storage (Cold/Archive-Mode)">
 	</service>
-	<service id="Block-Storage" service="Azure Disk Storage">
+	<service id="Block-Storage" name="Azure Disk Storage">
 	</service>
-	<service id="File-Storage" service="Azure File Storage">
+	<service id="File-Storage" name="Azure File Storage">
 	</service>
 
 	<!--Database services-->
-	<service id="SQL (MySQL)" service="Azure Database for MySQL">
+	<service id="SQL (MySQL)" name="Azure Database for MySQL">
 	</service>
-	<service id="SQL (PostgreSQL)" service="Azure Database for PostgreSQL">
+	<service id="SQL (PostgreSQL)" name="Azure Database for PostgreSQL">
 	</service>
-	<service id="SQL (MariaDB)" service="Azure Database for MariaDB">
+	<service id="SQL (MariaDB)" name="Azure Database for MariaDB">
 	</service>
-	<service id="NoSQL" service="Azure Table Storage">
+	<service id="NoSQL" name="Azure Table Storage">
 	</service>
-	<service id="Document" service="Azure Cosmos DB">
+	<service id="Document" name="Azure Cosmos DB">
 	</service>
-	<service id="Cache" service="Amazon ElastiCache">
+	<service id="Cache" name="Amazon ElastiCache">
 	</service>
 
 	<!--Analytic services-->
-	<service id="Data Query" service="Azure Data Lake Analytics">
+	<service id="Data Query" name="Azure Data Lake Analytics">
 	</service>
-	<service id="Data Share" service="Azure Data Share">
+	<service id="Data Share" name="Azure Data Share">
 	</service>
-	<service id="Data Transfer" service="Azure Data Factory">
+	<service id="Data Transfer" name="Azure Data Factory">
 	</service>
-	<service id="Data Stream" service="Azure Stream Analytics">
+	<service id="Data Stream" name="Azure Stream Analytics">
 	</service>
-	<service id="Data Catalog" service="Azure Data Catalog">
+	<service id="Data Catalog" name="Azure Data Catalog">
 	</service>
-	<service id="Data Lake" service="Azure Data Lake Storage">
+	<service id="Data Lake" name="Azure Data Lake Storage">
 	</service>
-	<service id="Search Engine" service="Azure Search">
+	<service id="Search Engine" name="Azure Search">
 	</service>
 	
 	<!--Application integration services-->
-	<service id="Messaging" service="Azure Event Grid">
+	<service id="Messaging" name="Azure Event Grid">
 	</service>
-	<service id="Queueing" service="Azure Service Bus">
+	<service id="Queueing" name="Azure Service Bus">
 	</service>
 
 	<!--Monitoring services-->
-	<service id="System Monitor" service="Azure Monitor">
+	<service id="System Monitor" name="Azure Monitor">
 	</service>
-	<service id="User Monitor" service="Azure Monitor Log Analytics">
+	<service id="User Monitor" name="Azure Monitor Log Analytics">
 	</service>
 
 	<!--Network services-->
-	<service id="VPC" service="Azure Virtual Network">
+	<service id="VPC" name="Azure Virtual Network">
 	</service>
-	<service id="VPN" service="Azure VPN Gateway">
+	<service id="VPN" name="Azure VPN Gateway">
 	</service>
-	<service id="API" service="Azure API Management">
+	<service id="API" name="Azure API Management">
 	</service>
-	<service id="CDN" service="Azure CDN">
+	<service id="CDN" name="Azure CDN">
 	</service>
-	<service id="DNS" service="Azure DNS">
+	<service id="DNS" name="Azure DNS">
 	</service>
 </azure-services>
