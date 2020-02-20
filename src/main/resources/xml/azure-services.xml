@@ -19,7 +19,7 @@
 	<!--Storage services-->
 	<service id="Object-Storage (Standard)" name="Azure Blob Storage">
 	</service>
-	<service id="Object-Storage (Archive)" name="CAzure Blob Storage (Cold/Archive-Mode)">
+	<service id="Object-Storage (Archive)" name="Azure Blob Storage (Cold/Archive-Mode)">
 	</service>
 	<service id="Block-Storage" name="Azure Disk Storage">
 	</service>
@@ -53,7 +53,7 @@
 	</service>
 	<service id="Data Lake" name="Azure Data Lake Storage">
 	</service>
-	<service id="Search Engine" name="Azure Search">
+	<service id="Search Engine" name="Azure Cognitive Search">
 	</service>
 	
 	<!--Application integration services-->

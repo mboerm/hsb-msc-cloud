@@ -78,7 +78,6 @@ class Amazon extends Provider implements IPricing {
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
                         if (subNode.getNodeName().equals("instance")
                                 && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
-                                && subNodeAttributes.getNamedItem("size").getTextContent().equals(service.getInstanceSize())
                                 && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(String.valueOf(service.getCPU()))
                                 && subNodeAttributes.getNamedItem("ram").getTextContent().equals(String.valueOf(service.getStorage()))
                                 && subNodeAttributes.getNamedItem("os").getTextContent().equals(service.getSystem()))
@@ -91,7 +90,9 @@ class Amazon extends Provider implements IPricing {
                             dataPrice = Double.parseDouble(subNode.getTextContent());
                         }
                     }
-                    serviceCosts.setPrice(service.getNumOne() * instancePrice + service.getData() * dataPrice);
+                    double instanceCosts = service.getNumOne() * instancePrice;
+                    double dataCosts = service.getData() * dataPrice;
+                    serviceCosts.setPrice(instanceCosts + dataCosts);
                 }
             }
         } else if (service.getComputeType().equals(types[4])) {
@@ -147,7 +148,8 @@ class Amazon extends Provider implements IPricing {
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
                         if (subNode.getNodeName().equals("instance")
                                 && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
-                                && subNodeAttributes.getNamedItem("size").getTextContent().equals(service.getInstanceSize())) {
+                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(String.valueOf(service.getNum().getKey()))
+                                && subNodeAttributes.getNamedItem("ram").getTextContent().equals(String.valueOf(service.getNum().getValue()))) {
                             instancePrice = Double.parseDouble(subNode.getTextContent());
                         } else if (subNode.getNodeName().equals("storage")) {
                             storagePrice = Double.parseDouble(subNode.getTextContent());
@@ -267,7 +269,6 @@ class Amazon extends Provider implements IPricing {
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
                         if (subNode.getNodeName().equals("instance")
                                 && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
-                                && subNodeAttributes.getNamedItem("size").getTextContent().equals(service.getInstanceSize())
                                 && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(service.getNum().getKey().toString())
                                 && subNodeAttributes.getNamedItem("ram").getTextContent().equals(service.getNum().getValue().toString()))
                         {
@@ -281,9 +282,10 @@ class Amazon extends Provider implements IPricing {
                             dataOutPrice = Double.parseDouble(subNode.getTextContent());
                         }
                     }
-                    serviceCosts.setPrice(service.getUnits() * instancePrice +
-                            service.getData() * dataPrice +
-                            service.getDataOut() * dataOutPrice);
+                    double unitCosts = service.getUnits() * instancePrice;
+                    double dataCosts = service.getData() * dataPrice;
+                    double dataOutCosts = service.getDataOut() * dataOutPrice;
+                    serviceCosts.setPrice(unitCosts + dataCosts + dataOutCosts);
                 }
             }
         }
