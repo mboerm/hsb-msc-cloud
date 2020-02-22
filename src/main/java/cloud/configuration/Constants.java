@@ -29,6 +29,7 @@ public final class Constants {
     public static final DateFormat DATE_FORMAT_TITLE = new SimpleDateFormat("d. MMMM yyyy");
 //            DateFormat.getDateInstance(DateFormat.MEDIUM);
 
+    public static final int HOUR_SECONDS = 3600;
     public static final int MONTH_SECONDS = 2628000;
     public static final int MONTH_HOURS = 730;
     public static final int MONTH_DAYS = 31;

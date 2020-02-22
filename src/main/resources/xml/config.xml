@@ -39,11 +39,11 @@
     <entry key="service-usage-labels">Location:;Usage type:;Usage period:;Usage prepay:;Operating mode:</entry>
 
     <entry key="compute-vm-labels">Instance type:;Instance hours:;CPU:;RAM in GB:;Operating system:;Transferred data in GB:</entry>
-    <entry key="compute-container-labels">Container type:;CPU:;Storage in GB:;# of compute instances:;# of container groups:;Transferred data in GB:</entry>
+    <entry key="compute-container-labels">Container type:;CPU:;RAM in GB:;Tasks:;Duration in seconds:;Transferred data in GB:</entry>
     <entry key="compute-app-labels">Language:;Compute instance reference:;Storage instance reference:</entry>
     <entry key="compute-batch-labels">Compute instance reference:</entry>
     <entry key="compute-code-labels">Invocations in Mio.:;Duration in seconds:;Storage in MB:</entry>
-    <entry key="compute-balancer-labels">Load Balancer Units:;Transferred data in GB:</entry>
+    <entry key="compute-balancer-labels">Units:;Transferred data in GB:</entry>
     <entry key="storage-object-labels">Storage in TB:;Read requests:;Write requests:;Data queries:;Transferred data in GB:</entry>
     <entry key="storage-block-labels">Snapshot-storage in GB:;Volume-storage in GB:</entry>
     <entry key="storage-file-labels">Storage in GB:;Rate in MB/s:;Transferred data in GB:</entry>

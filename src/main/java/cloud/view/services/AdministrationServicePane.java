@@ -85,10 +85,10 @@ public class AdministrationServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 4);
         add(new Label(labels[2]), 0, 5);
         add(dataCollectSpinner, 1, 5);
-        add(new Label("per month"), 2, 5);
+        add(new Label("per day"), 2, 5);
         add(new Label(labels[3]), 0, 6);
         add(dataSaveSpinner, 1, 6);
-        add(new Label("per month"), 2, 6);
+        add(new Label("per day"), 2, 6);
         add(new Label(labels[4]), 0, 7);
         add(eventsSpinner, 1, 7);
         add(new Label("per month"), 2, 7);
