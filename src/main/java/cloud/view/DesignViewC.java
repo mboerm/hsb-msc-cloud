@@ -59,9 +59,7 @@ public class DesignViewC {
         });
 
         view.getMenuDesignMatch().setOnAction(actionEvent -> {
-            design.matchServices();
-            view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
-            view.getPaneDesignArea().getServicesTable().refresh();
+            updateServiceMatches();
         });
 
         view.getMenuDesignCalculate().setOnAction(actionEvent -> {
@@ -129,6 +127,7 @@ public class DesignViewC {
                     if (dialogServiceC.showPresetDialog(selectedService)) {
                         Service editedService = dialogServiceC.getServiceData();
                         design.replaceService(selectedService, editedService);
+                        updateServiceMatches();
                     }
                 }
             }
@@ -155,6 +154,12 @@ public class DesignViewC {
             view.getPaneDesignArea().getServicesTable().getSelectionModel().clearSelection();
             view.getPaneDesignControls().getControlRemove().setDisable(true);
         });
+    }
+
+    private void updateServiceMatches() {
+        design.matchServices();
+        view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
+        view.getPaneDesignArea().getServicesTable().refresh();
     }
 
     private void showAboutDialog() {
