@@ -2,81 +2,258 @@
 <azure-services>
 	<!--Compute services-->
 	<service id="VM" name="Azure Virtual Machines">
+		<location name="EU-Frankfurt">
+			<instance type="General" cpu="2" ram="4" os="Linux">0.048</instance>
+			<instance type="General" cpu="2" ram="8" os="Linux">0.096</instance>
+			<instance type="General" cpu="4" ram="16" os="Linux">0.192</instance>
+			<instance type="General" cpu="2" ram="4" os="Windows">0.048</instance>
+			<instance type="General" cpu="2" ram="8" os="Windows">0.096</instance>
+			<instance type="General" cpu="4" ram="16" os="Windows">0.192</instance>
+			<dataOut min="5" max="10000">0.10</dataOut>
+			<dataOut min="10000" max="50000">0.095</dataOut>
+			<dataOut min="50000" max="150000">0.08</dataOut>
+			<dataOut min="150000" max="500000">0.057</dataOut>
+		</location>
+		<location name="Asia-Tokyo">
+			<instance type="General" cpu="2" ram="4" os="Linux">0.0544</instance>
+			<instance type="General" cpu="2" ram="8" os="Linux">0.109</instance>
+			<instance type="General" cpu="4" ram="16" os="Linux">0.218</instance>
+			<instance type="General" cpu="2" ram="4" os="Windows">0.0544</instance>
+			<instance type="General" cpu="2" ram="8" os="Windows">0.109</instance>
+			<instance type="General" cpu="4" ram="16" os="Windows">0.218</instance>
+			<dataOut min="5" max="10000">0.12</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.082</dataOut>
+			<dataOut min="150000" max="500000">0.08</dataOut>
+		</location>
+		<location name="Brasil-São Paulo">
+			<instance type="General" cpu="2" ram="4" os="Linux">0.0672</instance>
+			<instance type="General" cpu="2" ram="8" os="Linux">0.134</instance>
+			<instance type="General" cpu="4" ram="16" os="Linux">0.269</instance>
+			<instance type="General" cpu="2" ram="4" os="Windows">0.0672</instance>
+			<instance type="General" cpu="2" ram="8" os="Windows">0.134</instance>
+			<instance type="General" cpu="4" ram="16" os="Windows">0.269</instance>
+			<dataOut min="5" max="10000">0.181</dataOut>
+			<dataOut min="10000" max="50000">0.175</dataOut>
+			<dataOut min="50000" max="150000">0.17</dataOut>
+			<dataOut min="150000" max="500000">0.16</dataOut>
+		</location>
 	</service>
 	<service id="Container (Standard)" name="Azure Container Instances">
+		<location name="EU-Frankfurt">
+			<cpu>0.0468</cpu>
+			<ram>0.0054</ram>
+			<dataOut min="5" max="10000">0.10</dataOut>
+			<dataOut min="10000" max="50000">0.095</dataOut>
+			<dataOut min="50000" max="150000">0.08</dataOut>
+			<dataOut min="150000" max="500000">0.057</dataOut>
+		</location>
+		<location name="Asia-Tokyo">
+			<cpu>0.05076</cpu>
+			<ram>0.00576</ram>
+			<dataOut min="5" max="10000">0.12</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.082</dataOut>
+			<dataOut min="150000" max="500000">0.08</dataOut>
+		</location>
+		<location name="Brasil-São Paulo">
+			<cpu>0.081</cpu>
+			<ram>0.009</ram>
+			<dataOut min="5" max="10000">0.181</dataOut>
+			<dataOut min="10000" max="50000">0.175</dataOut>
+			<dataOut min="50000" max="150000">0.17</dataOut>
+			<dataOut min="150000" max="500000">0.16</dataOut>
+		</location>
 	</service>
-	<service id="Container (Kubernetes)" name="Azure Kubernetes Engine">
-	</service>
-	<service id="App" name="Azure App Engine">
-	</service>
-	<service id="Batch" name="Azure Batch">
-	</service>
+	<service id="Container (Kubernetes)" name="Azure Kubernetes Engine"/>
+	<service id="App" name="Azure App Service"/>
+	<service id="Batch" name="Azure Batch"/>
 	<service id="Code" name="Azure Functions">
+		<requests>0.20</requests>
+		<duration factor="1000000">0.000016</duration>
 	</service>
 	<service id="Load Balancer" name="Azure Load Balancer">
+		<hour min="1" max="5">0.025</hour>
+		<hour min="5" max="9999">0.01</hour>
+		<data>0.005</data>
 	</service>
 
 	<!--Storage services-->
 	<service id="Object-Storage (Standard)" name="Azure Blob Storage">
+		<location name="EU-Frankfurt">
+			<capacity min="1" max="50000">0.0196</capacity>
+			<capacity min="50000" max="500000">0.0188</capacity>
+			<capacity min="500000" max="999999">0.018</capacity>
+			<requests factor="1000" type="read">0.00043</requests>
+			<requests factor="1000" type="write">0.0054</requests>
+			<dataOut min="5" max="10000">0.10</dataOut>
+			<dataOut min="10000" max="50000">0.095</dataOut>
+			<dataOut min="50000" max="150000">0.08</dataOut>
+			<dataOut min="150000" max="500000">0.057</dataOut>
+		</location>
+		<location name="Asia-Tokyo">
+			<capacity min="1" max="50000">0.02</capacity>
+			<capacity min="50000" max="500000">0.0192</capacity>
+			<capacity min="500000" max="999999">0.0184</capacity>
+			<requests factor="1000" type="read">0.0004</requests>
+			<requests factor="1000" type="write">0.005</requests>
+			<dataOut min="5" max="10000">0.12</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.082</dataOut>
+			<dataOut min="150000" max="500000">0.08</dataOut>
+		</location>
+		<location name="Brasil-São Paulo">
+			<capacity min="1" max="50000">0.0326</capacity>
+			<capacity min="50000" max="500000">0.0315</capacity>
+			<capacity min="500000" max="999999">0.0304</capacity>
+			<requests factor="1000" type="read">0.00056</requests>
+			<requests factor="1000" type="write">0.007</requests>
+			<dataOut min="5" max="10000">0.181</dataOut>
+			<dataOut min="10000" max="50000">0.175</dataOut>
+			<dataOut min="50000" max="150000">0.17</dataOut>
+			<dataOut min="150000" max="500000">0.16</dataOut>
+		</location>
 	</service>
-	<service id="Object-Storage (Archive)" name="Azure Blob Storage (Cold/Archive-Mode)">
-	</service>
-	<service id="Block-Storage" name="Azure Disk Storage">
-	</service>
-	<service id="File-Storage" name="Azure File Storage">
-	</service>
+	<service id="Object-Storage (Archive)" name="Azure Blob Storage (Cold/Archive-Mode)"/>
+	<service id="Block-Storage" name="Azure Disk Storage"/>
+	<service id="File-Storage" name="Azure File Storage"/>
 
 	<!--Database services-->
-	<service id="SQL (MySQL)" name="Azure Database for MySQL">
-	</service>
+	<service id="SQL (MySQL)" name="Azure Database for MySQL"/>
 	<service id="SQL (PostgreSQL)" name="Azure Database for PostgreSQL">
+		<location name="EU-Frankfurt">
+			<instance type="General" cpu="1" ram="2">0.04</instance>
+			<instance type="General" cpu="2" ram="4">0.08</instance>
+			<storage>0.199</storage>
+			<backup>0.119</backup>
+			<dataOut min="5" max="10000">0.10</dataOut>
+			<dataOut min="10000" max="50000">0.095</dataOut>
+			<dataOut min="50000" max="150000">0.08</dataOut>
+			<dataOut min="150000" max="500000">0.057</dataOut>
+		</location>
+		<location name="Asia-Tokyo">
+			<instance type="General" cpu="1" ram="2">0.052</instance>
+			<instance type="General" cpu="2" ram="4">0.104</instance>
+			<storage>0.12</storage>
+			<backup>0.12</backup>
+			<dataOut min="5" max="10000">0.12</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.082</dataOut>
+			<dataOut min="150000" max="500000">0.08</dataOut>
+		</location>
+		<location name="Brasil-São Paulo">
+			<instance type="General" cpu="1" ram="2">0.07</instance>
+			<instance type="General" cpu="2" ram="4">0.141</instance>
+			<storage>0.19</storage>
+			<backup>0.19</backup>
+			<dataOut min="5" max="10000">0.181</dataOut>
+			<dataOut min="10000" max="50000">0.175</dataOut>
+			<dataOut min="50000" max="150000">0.17</dataOut>
+			<dataOut min="150000" max="500000">0.16</dataOut>
+		</location>
 	</service>
-	<service id="SQL (MariaDB)" name="Azure Database for MariaDB">
-	</service>
-	<service id="NoSQL" name="Azure Table Storage">
-	</service>
-	<service id="Document" name="Azure Cosmos DB">
-	</service>
-	<service id="Cache" name="Amazon ElastiCache">
-	</service>
+	<service id="SQL (MariaDB)" name="Azure Database for MariaDB"/>
+	<service id="NoSQL" name="Azure Table Storage"/>
+	<service id="Document" name="Azure Cosmos DB"/>
+	<service id="Cache" name="Amazon ElastiCache"/>
 
 	<!--Analytic services-->
-	<service id="Data Query" name="Azure Data Lake Analytics">
-	</service>
-	<service id="Data Share" name="Azure Data Share">
-	</service>
-	<service id="Data Transfer" name="Azure Data Factory">
-	</service>
+	<service id="Data Query" name="Azure Data Lake Analytics"/>
+	<service id="Data Share" name="Azure Data Share"/>
+	<service id="Data Transfer" name="Azure Data Factory"/>
 	<service id="Data Stream" name="Azure Stream Analytics">
+		<location name="EU-Frankfurt">
+			<data size="1">0.12</data>
+		</location>
+		<location name="Asia-Tokyo">
+			<data size="1">0.138</data>
+		</location>
+		<location name="Brasil-São Paulo">
+			<data size="1">0.125</data>
+		</location>
 	</service>
-	<service id="Data Catalog" name="Azure Data Catalog">
-	</service>
-	<service id="Data Lake" name="Azure Data Lake Storage">
-	</service>
+	<service id="Data Catalog" name="Azure Data Catalog"/>
+	<service id="Data Lake" name="Azure Data Lake Storage"/>
 	<service id="Search Engine" name="Azure Cognitive Search">
+		<location name="EU-Frankfurt">
+			<data min="1" max="2">0.101</data>
+			<data min="2" max="25">0.336</data>
+			<data min="25" max="100">1.344</data>
+			<data min="100" max="200">2.688</data>
+			<data min="200" max="1000">3.839</data>
+			<data min="1000" max="2000">7.677</data>
+		</location>
+		<location name="Asia-Tokyo">
+			<data min="1" max="2">0.133</data>
+			<data min="2" max="25">0.444</data>
+			<data min="25" max="100">1.774</data>
+			<data min="100" max="200">3.552</data>
+			<data min="200" max="1000">3.839</data>
+		</location>
+		<location name="Brasil-São Paulo">
+			<data min="1" max="2">0.133</data>
+			<data min="2" max="25">0.444</data>
+			<data min="25" max="100">1.774</data>
+			<data min="100" max="200">3.552</data>
+			<data min="200" max="1000">3.839</data>
+		</location>
 	</service>
 	
 	<!--Application integration services-->
-	<service id="Messaging" name="Azure Event Grid">
-	</service>
-	<service id="Queueing" name="Azure Service Bus">
-	</service>
+	<service id="Communication (Messaging)" name="Azure Event Grid"/>
+	<service id="Communication (Queueing)" name="Azure Service Bus"/>
 
-	<!--Monitoring services-->
-	<service id="System Monitor" name="Azure Monitor">
+	<!--Administration services-->
+	<service id="Monitoring (System)" name="Azure Monitor">
+		<metrics min="150" max="100000">0.258</metrics>
+		<metrics min="100000" max="250000">0.151</metrics>
+		<metrics min="250000" max="1000000">0.061</metrics>
+		<events>0.60</events>
+		<requests>0.01</requests>
+		<location name="EU-Frankfurt">
+			<data type="collect">2.99</data>
+			<data type="save">0.13</data>
+		</location>
+		<location name="Asia-Tokyo">
+			<data type="collect">3.34</data>
+			<data type="save">0.15</data>
+		</location>
+		<location name="Brasil-São Paulo">
+			<data type="collect">4.60</data>
+			<data type="save">0.20</data>
+		</location>
 	</service>
-	<service id="User Monitor" name="Azure Monitor Log Analytics">
-	</service>
+	<service id="Monitoring (User)" name="Azure Monitor Log Analytics"/>
 
 	<!--Network services-->
-	<service id="VPC" name="Azure Virtual Network">
-	</service>
-	<service id="VPN" name="Azure VPN Gateway">
-	</service>
-	<service id="API" name="Azure API Management">
-	</service>
+	<service id="VPC" name="Azure Virtual Network"/>
+	<service id="VPN" name="Azure VPN Gateway"/>
+	<service id="API" name="Azure API Management"/>
 	<service id="CDN" name="Azure CDN">
+		<location name="EU-Frankfurt">
+			<dataOut min="1" max="10">0.081</dataOut>
+			<dataOut min="10" max="50">0.075</dataOut>
+			<dataOut min="50" max="150">0.056</dataOut>
+			<dataOut min="150" max="500">0.037</dataOut>
+			<dataOut min="500" max="1000">0.028</dataOut>
+			<dataOut min="1000" max="5000">0.023</dataOut>
+		</location>
+		<location name="Asia-Tokyo">
+			<dataOut min="1" max="10">0.129</dataOut>
+			<dataOut min="10" max="50">0.121</dataOut>
+			<dataOut min="50" max="150">0.112</dataOut>
+			<dataOut min="150" max="500">0.093</dataOut>
+			<dataOut min="500" max="1000">0.075</dataOut>
+			<dataOut min="1000" max="5000">0.065</dataOut>
+		</location>
+		<location name="Brasil-São Paulo">
+			<dataOut min="1" max="10">0.233</dataOut>
+			<dataOut min="10" max="50">0.186</dataOut>
+			<dataOut min="50" max="150">0.168</dataOut>
+			<dataOut min="150" max="500">0.149</dataOut>
+			<dataOut min="500" max="1000">0.13</dataOut>
+			<dataOut min="1000" max="5000">0.121</dataOut>
+		</location>
 	</service>
-	<service id="DNS" name="Azure DNS">
-	</service>
+	<service id="DNS" name="Azure DNS"/>
 </azure-services>
