@@ -32,7 +32,7 @@ public final class Constants {
     public static final int HOUR_SECONDS = 3600;
     public static final int MONTH_SECONDS = 2628000;
     public static final int MONTH_HOURS = 730;
-    public static final int MONTH_DAYS = 31;
+    public static final int MONTH_DAYS = 30;
     public static final int DATA_FACTOR = 1024;
     public static final double K_FACTOR = Math.pow(10,3);
     public static final double M_FACTOR = Math.pow(10,6);
