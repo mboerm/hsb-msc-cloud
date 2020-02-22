@@ -20,7 +20,6 @@ class Amazon extends Provider implements IPricing {
 
     @Override
     public void calculateCosts() {
-        System.out.println(getServiceName() + " -> " + "Static Cost Calculation!");
         setDocument(getServicesFile());
 
         ObservableList<Service> services = DesignManager.getInstance().getDesign().getServicesList();
@@ -35,16 +34,16 @@ class Amazon extends Provider implements IPricing {
                     if (service.getProviderService().equalsIgnoreCase(serviceElement.getAttribute("name"))) {
                         if (ServiceChecker.getInstance().isComputeItem(service.getCategory()) && service instanceof ComputeService)
                             costs = calcComputeServiceCosts((ComputeService) service, serviceElement);
-                        else if (ServiceChecker.getInstance().isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)
-                            costs = calcDatabaseServiceCosts((DatabaseService) service, serviceElement);
                         else if (ServiceChecker.getInstance().isStorageItem(service.getCategory()) && service instanceof StorageService)
                             costs = calcStorageServiceCosts((StorageService) service, serviceElement);
+                        else if (ServiceChecker.getInstance().isDatabaseItem(service.getCategory()) && service instanceof  DatabaseService)
+                            costs = calcDatabaseServiceCosts((DatabaseService) service, serviceElement);
                         else if (ServiceChecker.getInstance().isAnalyticItem(service.getCategory()) && service instanceof AnalyticService)
                             costs = calcAnalyticServiceCosts((AnalyticService) service, serviceElement);
                         else if (ServiceChecker.getInstance().isNetworkItem(service.getCategory()) && service instanceof NetworkService)
                             costs = calcNetworkServiceCosts((NetworkService) service, serviceElement);
                         else if (ServiceChecker.getInstance().isAdministrationItem(service.getCategory()) && service instanceof AdministrationService)
-                            costs = calcMonitoringServiceCosts((AdministrationService) service, serviceElement);
+                            costs = calcAdministrationServiceCosts((AdministrationService) service, serviceElement);
                         else {
                             costs = new Costs();
                         }
@@ -64,26 +63,27 @@ class Amazon extends Provider implements IPricing {
 
     private Costs calcComputeServiceCosts(ComputeService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("compute-type");
+        String[] containerModes = Config.getInstance().getConfigValuesAsArray("compute-container-type");
         Costs serviceCosts = new Costs();
-        if (service.getComputeType().equals(types[0])) {
+        if (service.getComputeType().equalsIgnoreCase(types[0])) {
             /* compute type "VM" */
             double instancePrice = 0;
             double dataPrice = 0;
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
                         Node subNode = locationNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
-                        if (subNode.getNodeName().equals("instance")
-                                && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
-                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(String.valueOf(service.getCPU()))
-                                && subNodeAttributes.getNamedItem("ram").getTextContent().equals(String.valueOf(service.getStorage()))
-                                && subNodeAttributes.getNamedItem("os").getTextContent().equals(service.getSystem()))
+                        if (subNode.getNodeName().equalsIgnoreCase("instance")
+                                && subNodeAttributes.getNamedItem("type").getTextContent().equalsIgnoreCase(service.getInstanceType())
+                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equalsIgnoreCase(String.valueOf(service.getCPU()))
+                                && subNodeAttributes.getNamedItem("ram").getTextContent().equalsIgnoreCase(String.valueOf(service.getStorage()))
+                                && subNodeAttributes.getNamedItem("os").getTextContent().equalsIgnoreCase(service.getSystem()))
                         {
                             instancePrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("dataOut")
+                        } else if (subNode.getNodeName().equalsIgnoreCase("dataOut")
                                 && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
                                 && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent()))
                         {
@@ -95,7 +95,40 @@ class Amazon extends Provider implements IPricing {
                     serviceCosts.setPrice(instanceCosts + dataCosts);
                 }
             }
-        } else if (service.getComputeType().equals(types[4])) {
+        } else if (service.getComputeType().equalsIgnoreCase(types[1]) && service.getSystem().equalsIgnoreCase(containerModes[0])) {
+            /* compute type "Container (Standard)" */
+            double cpuPrice = 0;
+            double ramPrice = 0;
+            double dataOutPrice = 0;
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
+                        NamedNodeMap subNodeAttributes = subNode.getAttributes();
+                        if (subNode.getNodeName().equalsIgnoreCase("cpu")) {
+                            cpuPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("ram")) {
+                            ramPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("dataOut")
+                                && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
+                                && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
+                            dataOutPrice = Double.parseDouble(subNode.getTextContent());
+                        }
+                    }
+                    double cpuCosts = service.getNumOne() * service.getCPU() * (cpuPrice / Constants.HOUR_SECONDS) * service.getNumTwo() * Constants.MONTH_DAYS;
+                    double ramCosts = service.getNumOne() * service.getStorage() * (ramPrice / Constants.HOUR_SECONDS) * service.getNumTwo() * Constants.MONTH_DAYS;
+                    double dataOutCosts = service.getData() * dataOutPrice;
+                    serviceCosts.setPrice(cpuCosts + ramCosts + dataOutCosts);
+                }
+            }
+        } else if (service.getComputeType().equalsIgnoreCase(types[3])) {
+            /* compute type "App" */
+
+
+            serviceCosts.setPrice(0);
+        } else if (service.getComputeType().equalsIgnoreCase(types[4])) {
             /* compute type "Code" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());
             double durationPrice = Double.parseDouble(element.getElementsByTagName("duration").item(0).getTextContent());
@@ -103,19 +136,19 @@ class Amazon extends Provider implements IPricing {
             double requestsCosts = service.getNumOne() * requestsPrice;
             double durationCosts = (service.getNumOne() * durationFactor) * service.getNumTwo() * ((double) (service.getStorage()) / Constants.DATA_FACTOR) * durationPrice;
             serviceCosts.setPrice(requestsCosts + durationCosts);
-        } else if (service.getComputeType().equals(types[5])) {
+        } else if (service.getComputeType().equalsIgnoreCase(types[5])) {
             /* compute type "Load Balancing" */
             double hourPrice = 0;
             double dataPrice = 0;
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
                         Node subNode = locationNode.getChildNodes().item(j);
-                        if (subNode.getNodeName().equals("hour")) {
+                        if (subNode.getNodeName().equalsIgnoreCase("hour")) {
                             hourPrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("data")) {
+                        } else if (subNode.getNodeName().equalsIgnoreCase("data")) {
                             dataPrice = Double.parseDouble(subNode.getTextContent());
                         }
                     }
@@ -128,56 +161,12 @@ class Amazon extends Provider implements IPricing {
         return serviceCosts;
     }
 
-    private Costs calcDatabaseServiceCosts(DatabaseService service, Element element) {
-        String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
-        String[] modes = Config.getInstance().getConfigValuesAsArray("database-sql-scheme");
-        Costs serviceCosts = new Costs();
-
-        if (service.getDatabaseType().equals(types[0]) && service.getDatabaseScheme().equals(modes[1])) {
-            // storage type "SQL - PostgreSQL"
-            double instancePrice = 0;
-            double storagePrice = 0;
-            double backupPrice = 0;
-            double dataOutPrice = 0;
-            NodeList locationElements = element.getElementsByTagName("location");
-            for (int i = 0; i < locationElements.getLength(); i++) {
-                Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
-                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
-                        Node subNode = locationNode.getChildNodes().item(j);
-                        NamedNodeMap subNodeAttributes = subNode.getAttributes();
-                        if (subNode.getNodeName().equals("instance")
-                                && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
-                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(String.valueOf(service.getNum().getKey()))
-                                && subNodeAttributes.getNamedItem("ram").getTextContent().equals(String.valueOf(service.getNum().getValue()))) {
-                            instancePrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("storage")) {
-                            storagePrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("backup") && service.getBackup() > service.getStorage()) {
-                            backupPrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("dataOut")
-                                && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
-                                && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
-                            dataOutPrice = Double.parseDouble(subNode.getTextContent());
-                        }
-                    }
-                    double instanceCosts = service.getDuration() * instancePrice;
-                    double storageCosts = service.getStorage() * storagePrice;
-                    double backupCosts = (service.getBackup() - service.getStorage()) * backupPrice;
-                    double dataCosts = service.getData() * dataOutPrice;
-                    serviceCosts.setPrice(instanceCosts + storageCosts + backupCosts + dataCosts);
-                }
-            }
-        }
-        return serviceCosts;
-    }
-
     private Costs calcStorageServiceCosts(StorageService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("storage-type");
         String[] modes = Config.getInstance().getConfigValuesAsArray("storage-object-mode");
         Costs serviceCosts = new Costs();
 
-        if (service.getStorageType().equals(types[0]) && service.getStorageMode().equals(modes[0])) {
+        if (service.getStorageType().equalsIgnoreCase(types[0]) && service.getStorageMode().equalsIgnoreCase(modes[0])) {
             // storage type "Object-Storage"
             double capacityPrice = 0;
             double requestsReadPrice = 0;
@@ -187,15 +176,15 @@ class Amazon extends Provider implements IPricing {
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
                         Node subNode = locationNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
-                        if (subNode.getNodeName().equals("capacity")
+                        if (subNode.getNodeName().equalsIgnoreCase("capacity")
                                 && service.getCapacity() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
                                 && service.getCapacity() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
                             capacityPrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("requests")) {
+                        } else if (subNode.getNodeName().equalsIgnoreCase("requests")) {
                             requestsFactor = Integer.parseInt(subNode.getAttributes().getNamedItem("factor").getTextContent());
                             switch (subNode.getAttributes().getNamedItem("type").getTextContent()) {
                                 case "read":
@@ -205,7 +194,7 @@ class Amazon extends Provider implements IPricing {
                                     requestsWritePrice = Double.parseDouble(subNode.getTextContent());
                                     break;
                             }
-                        } else if (subNode.getNodeName().equals("dataOut")
+                        } else if (subNode.getNodeName().equalsIgnoreCase("dataOut")
                                 && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
                                 && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
                             dataOutPrice = Double.parseDouble(subNode.getTextContent());
@@ -222,11 +211,55 @@ class Amazon extends Provider implements IPricing {
         return serviceCosts;
     }
 
+    private Costs calcDatabaseServiceCosts(DatabaseService service, Element element) {
+        String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
+        String[] modes = Config.getInstance().getConfigValuesAsArray("database-sql-scheme");
+        Costs serviceCosts = new Costs();
+
+        if (service.getDatabaseType().equalsIgnoreCase(types[0]) && service.getDatabaseScheme().equalsIgnoreCase(modes[1])) {
+            // storage type "SQL - PostgreSQL"
+            double instancePrice = 0;
+            double storagePrice = 0;
+            double backupPrice = 0;
+            double dataOutPrice = 0;
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
+                        NamedNodeMap subNodeAttributes = subNode.getAttributes();
+                        if (subNode.getNodeName().equalsIgnoreCase("instance")
+                                && subNodeAttributes.getNamedItem("type").getTextContent().equalsIgnoreCase(service.getInstanceType())
+                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equalsIgnoreCase(String.valueOf(service.getNum().getKey()))
+                                && subNodeAttributes.getNamedItem("ram").getTextContent().equalsIgnoreCase(String.valueOf(service.getNum().getValue()))) {
+                            instancePrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("storage")) {
+                            storagePrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("backup") && service.getBackup() > service.getStorage()) {
+                            backupPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("dataOut")
+                                && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
+                                && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
+                            dataOutPrice = Double.parseDouble(subNode.getTextContent());
+                        }
+                    }
+                    double instanceCosts = service.getDuration() * instancePrice;
+                    double storageCosts = service.getStorage() * storagePrice;
+                    double backupCosts = (service.getBackup() - service.getStorage()) * backupPrice;
+                    double dataCosts = service.getData() * dataOutPrice;
+                    serviceCosts.setPrice(instanceCosts + storageCosts + backupCosts + dataCosts);
+                }
+            }
+        }
+        return serviceCosts;
+    }
+
     private Costs calcAnalyticServiceCosts(AnalyticService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("analytic-type");
         Costs serviceCosts = new Costs();
 
-        if (service.getAnalyticType().equals(types[3])) {
+        if (service.getAnalyticType().equalsIgnoreCase(types[3])) {
             /* analytic type "Data Stream" */
             double dataPrice = 0;
             double dataHourSize = 0;
@@ -236,13 +269,13 @@ class Amazon extends Provider implements IPricing {
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
                         Node subNode = locationNode.getChildNodes().item(j);
-                        if (subNode.getNodeName().equals("data")) {
+                        if (subNode.getNodeName().equalsIgnoreCase("data")) {
                             dataHourSize = Double.parseDouble(subNode.getAttributes().getNamedItem("size").getTextContent());
                             dataPrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("unit")) {
+                        } else if (subNode.getNodeName().equalsIgnoreCase("unit")) {
                             unitSize = Double.parseDouble(subNode.getAttributes().getNamedItem("size").getTextContent());
                             unitPrice = Double.parseDouble(subNode.getTextContent());
                         }
@@ -256,26 +289,27 @@ class Amazon extends Provider implements IPricing {
                     serviceCosts.setPrice(dataCosts + unitCosts);
                 }
             }
-        } else if (service.getAnalyticType().equals(types[6])) {
+        } else if (service.getAnalyticType().equalsIgnoreCase(types[6])) {
+            /* analytic type "Search Engine" */
             double instancePrice = 0;
             double dataPrice = 0;
             double dataOutPrice = 0;
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
                         Node subNode = locationNode.getChildNodes().item(j);
                         NamedNodeMap subNodeAttributes = subNode.getAttributes();
-                        if (subNode.getNodeName().equals("instance")
-                                && subNodeAttributes.getNamedItem("type").getTextContent().equals(service.getInstanceType())
-                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equals(service.getNum().getKey().toString())
-                                && subNodeAttributes.getNamedItem("ram").getTextContent().equals(service.getNum().getValue().toString()))
+                        if (subNode.getNodeName().equalsIgnoreCase("instance")
+                                && subNodeAttributes.getNamedItem("type").getTextContent().equalsIgnoreCase(service.getInstanceType())
+                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equalsIgnoreCase(service.getNum().getKey().toString())
+                                && subNodeAttributes.getNamedItem("ram").getTextContent().equalsIgnoreCase(service.getNum().getValue().toString()))
                         {
                             instancePrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("data")) {
+                        } else if (subNode.getNodeName().equalsIgnoreCase("data")) {
                             dataPrice = Double.parseDouble(subNode.getTextContent());
-                        } else if (subNode.getNodeName().equals("dataOut")
+                        } else if (subNode.getNodeName().equalsIgnoreCase("dataOut")
                                 && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
                                 && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent()))
                         {
@@ -297,7 +331,7 @@ class Amazon extends Provider implements IPricing {
         String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
         Costs serviceCosts = new Costs();
 
-        if (service.getNetworkType().equals(types[3])) {
+        if (service.getNetworkType().equalsIgnoreCase(types[3])) {
             /* network type "CDN" */
             double dataPrice = 0;
             double dataOutPrice = 0;
@@ -307,7 +341,7 @@ class Amazon extends Provider implements IPricing {
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
                         Node subNode = locationNode.getChildNodes().item(j);
                         switch (subNode.getNodeName()) {
@@ -336,11 +370,11 @@ class Amazon extends Provider implements IPricing {
         return serviceCosts;
     }
 
-    private Costs calcMonitoringServiceCosts(AdministrationService service, Element element) {
-        String[] types = Config.getInstance().getConfigValuesAsArray("monitoring-type");
+    private Costs calcAdministrationServiceCosts(AdministrationService service, Element element) {
+        String[] types = Config.getInstance().getConfigValuesAsArray("administration-type");
         Costs serviceCosts = new Costs();
 
-        if (!(service.getLoggingState()) && service.getIdentifier().equals(types[1])) {
+        if (service.getAdministrationType().equalsIgnoreCase(types[0]) && !(service.getLoggingState())) {
             /* monitoring type "System Monitor" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());
             double eventsPrice = Double.parseDouble(element.getElementsByTagName("events").item(0).getTextContent());
@@ -358,10 +392,10 @@ class Amazon extends Provider implements IPricing {
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
-                if (service.getLocation().equals(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
                     for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
                         Node subNode = locationNode.getChildNodes().item(j);
-                        if (subNode.getNodeName().equals("data")) {
+                        if (subNode.getNodeName().equalsIgnoreCase("data")) {
                             switch (subNode.getAttributes().getNamedItem("type").getTextContent()) {
                                 case "collect":
                                     dataCollectPrice = Double.parseDouble(subNode.getTextContent());
@@ -377,7 +411,7 @@ class Amazon extends Provider implements IPricing {
             double metricsCosts = service.getMetrics() * metricsPrice;
             double requestsCosts = service.getRequests() * requestsPrice;
             double eventsCosts = service.getEvents() * eventsPrice;
-            double dataCosts = service.getData().getKey() * dataCollectPrice + service.getData().getValue() * dataSavePrice;
+            double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice * Constants.MONTH_DAYS;
             serviceCosts.setPrice(metricsCosts + requestsCosts + eventsCosts + dataCosts);
         }
         return serviceCosts;
