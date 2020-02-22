@@ -124,11 +124,28 @@ class Windows extends Provider implements IPricing {
                     serviceCosts.setPrice(cpuCosts + ramCosts + dataOutCosts);
                 }
             }
-        } else if (service.getComputeType().equalsIgnoreCase(types[3])) {
+        } else if (service.getComputeType().equalsIgnoreCase(types[2])) {
             /* compute type "App" */
-
-
-            serviceCosts.setPrice(0);
+            double instancePrice = 0;
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
+                        NamedNodeMap subNodeAttributes = subNode.getAttributes();
+                        if (subNode.getNodeName().equalsIgnoreCase("instance")
+                                && subNodeAttributes.getNamedItem("os").getTextContent().equalsIgnoreCase(service.getSystem())
+                                && subNodeAttributes.getNamedItem("cpu").getTextContent().equalsIgnoreCase(String.valueOf(service.getCPU()))
+                                && subNodeAttributes.getNamedItem("ram").getTextContent().equalsIgnoreCase(String.valueOf(service.getNumOne()))
+                                && subNodeAttributes.getNamedItem("storage").getTextContent().equalsIgnoreCase(String.valueOf(service.getStorage()))) {
+                            instancePrice = Double.parseDouble(subNode.getTextContent());
+                        }
+                    }
+                    double instanceCosts = instancePrice * Constants.MONTH_HOURS;
+                    serviceCosts.setPrice(instanceCosts);
+                }
+            }
         } else if (service.getComputeType().equalsIgnoreCase(types[4])) {
             /* compute type "Code" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());

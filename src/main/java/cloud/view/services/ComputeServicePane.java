@@ -1,10 +1,13 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+
+import java.util.Arrays;
 
 public class ComputeServicePane extends ServicePropertiesPane {
 
@@ -118,10 +121,8 @@ public class ComputeServicePane extends ServicePropertiesPane {
 		add(systemBox, 1, 3);
         add(new Label(labels[1]), 0, 4);
         add(cpuSpinner, 1, 4);
-		add(new Label("per hour"), 2, 4);
         add(new Label(labels[2]), 0, 5);
         add(storageSpinner, 1, 5);
-		add(new Label("per hour"), 2, 5);
         add(new Label(labels[3]), 0, 6);
         add(numOneSpinner, 1, 6);
         add(new Label(labels[4]), 0, 7);
@@ -133,12 +134,19 @@ public class ComputeServicePane extends ServicePropertiesPane {
     private void setAppControls() {
         labels = Config.getInstance().getConfigValuesAsArray("compute-app-labels");
         add(new Label(labels[0]), 0, 3);
-        systemBox.setItems(Config.getInstance().getConfigValues("compute-app-language"));
+        String[] appOSTypes = Config.getInstance().getConfigValuesAsArray("compute-os");
+        systemBox.setItems(FXCollections.observableArrayList(Arrays.copyOfRange(appOSTypes, 0, 2)));
         add(systemBox, 1, 3);
         add(new Label(labels[1]), 0, 4);
-        add(computeInstanceField, 1, 4);
+        add(cpuSpinner, 1, 4);
         add(new Label(labels[2]), 0, 5);
-        add(storageInstanceField, 1, 5);
+        add(numOneSpinner, 1, 5);
+        add(new Label(labels[3]), 0, 6);
+        add(storageSpinner, 1, 6);
+        add(new Label(labels[4]), 0, 7);
+        add(computeInstanceField, 1, 7);
+        add(new Label(labels[5]), 0, 8);
+        add(storageInstanceField, 1, 8);
     }
 
     private void setBatchControls() {

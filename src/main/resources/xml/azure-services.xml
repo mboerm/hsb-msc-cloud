@@ -66,7 +66,86 @@
 		</location>
 	</service>
 	<service id="Container (Kubernetes)" name="Azure Kubernetes Engine"/>
-	<service id="App" name="Azure App Service"/>
+	<service id="App" name="Azure App Service">
+		<location name="EU-Frankfurt">
+			<instance os="Linux" cpu="1" ram="2" storage="10">0.053</instance>
+			<instance os="Linux" cpu="2" ram="4" storage="10">0.106</instance>
+			<instance os="Linux" cpu="4" ram="7" storage="10">0.212</instance>
+			<instance os="Linux" cpu="1" ram="2" storage="50">0.095</instance>
+			<instance os="Linux" cpu="2" ram="4" storage="50">0.19</instance>
+			<instance os="Linux" cpu="4" ram="7" storage="50">0.38</instance>
+			<instance os="Linux" cpu="1" ram="4" storage="250">0.123</instance>
+			<instance os="Linux" cpu="2" ram="7" storage="250">0.246</instance>
+			<instance os="Linux" cpu="4" ram="14" storage="250">0.491</instance>
+			<instance os="Linux" cpu="1" ram="4" storage="1000">1.753</instance>
+			<instance os="Linux" cpu="2" ram="7" storage="1000">2.038</instance>
+			<instance os="Linux" cpu="4" ram="14" storage="1000">2.608</instance>
+			<instance os="Windows" cpu="1" ram="2" storage="10">0.079</instance>
+			<instance os="Windows" cpu="2" ram="4" storage="10">0.158</instance>
+			<instance os="Windows" cpu="4" ram="7" storage="10">0.316</instance>
+			<instance os="Windows" cpu="1" ram="2" storage="50">0.104</instance>
+			<instance os="Windows" cpu="2" ram="4" storage="50">0.208</instance>
+			<instance os="Windows" cpu="4" ram="7" storage="50">0.416</instance>
+			<instance os="Windows" cpu="1" ram="4" storage="250">0.20</instance>
+			<instance os="Windows" cpu="2" ram="7" storage="250">0.40</instance>
+			<instance os="Windows" cpu="4" ram="14" storage="250">0.80</instance>
+			<instance os="Windows" cpu="1" ram="4" storage="1000">1.846</instance>
+			<instance os="Windows" cpu="2" ram="7" storage="1000">2.146</instance>
+			<instance os="Windows" cpu="4" ram="14" storage="1000">2.746</instance>
+		</location>
+		<location name="Asia-Tokyo">
+			<instance os="Linux" cpu="1" ram="2" storage="10">0.019</instance>
+			<instance os="Linux" cpu="2" ram="4" storage="10">0.037</instance>
+			<instance os="Linux" cpu="4" ram="7" storage="10">0.073</instance>
+			<instance os="Linux" cpu="1" ram="2" storage="50">0.112</instance>
+			<instance os="Linux" cpu="2" ram="4" storage="50">0.224</instance>
+			<instance os="Linux" cpu="4" ram="7" storage="50">0.448</instance>
+			<instance os="Linux" cpu="1" ram="4" storage="250">0.123</instance>
+			<instance os="Linux" cpu="2" ram="7" storage="250">0.245</instance>
+			<instance os="Linux" cpu="4" ram="14" storage="250">0.491</instance>
+			<instance os="Linux" cpu="1" ram="4" storage="1000">2.104</instance>
+			<instance os="Linux" cpu="2" ram="7" storage="1000">2.484</instance>
+			<instance os="Linux" cpu="4" ram="14" storage="1000">3.244</instance>
+			<instance os="Windows" cpu="1" ram="2" storage="10">0.089</instance>
+			<instance os="Windows" cpu="2" ram="4" storage="10">0.177</instance>
+			<instance os="Windows" cpu="4" ram="7" storage="10">0.354</instance>
+			<instance os="Windows" cpu="1" ram="2" storage="50">0.118</instance>
+			<instance os="Windows" cpu="2" ram="4" storage="50">0.236</instance>
+			<instance os="Windows" cpu="4" ram="7" storage="50">0.472</instance>
+			<instance os="Windows" cpu="1" ram="4" storage="250">0.236</instance>
+			<instance os="Windows" cpu="2" ram="7" storage="250">0.472</instance>
+			<instance os="Windows" cpu="4" ram="14" storage="250">0.944</instance>
+			<instance os="Windows" cpu="1" ram="4" storage="1000">2.215</instance>
+			<instance os="Windows" cpu="2" ram="7" storage="1000">2.615</instance>
+			<instance os="Windows" cpu="4" ram="14" storage="1000">3.415</instance>
+		</location>
+		<location name="Brasil-São Paulo">
+			<instance os="Linux" cpu="1" ram="2" storage="10">0.02</instance>
+			<instance os="Linux" cpu="2" ram="4" storage="10">0.041</instance>
+			<instance os="Linux" cpu="4" ram="7" storage="10">0.081</instance>
+			<instance os="Linux" cpu="1" ram="2" storage="50">0.116</instance>
+			<instance os="Linux" cpu="2" ram="4" storage="50">0.232</instance>
+			<instance os="Linux" cpu="4" ram="7" storage="50">0.464</instance>
+			<instance os="Linux" cpu="1" ram="4" storage="250">0.15</instance>
+			<instance os="Linux" cpu="2" ram="7" storage="250">0.299</instance>
+			<instance os="Linux" cpu="4" ram="14" storage="250">0.598</instance>
+			<instance os="Linux" cpu="1" ram="4" storage="1000">2.347</instance>
+			<instance os="Linux" cpu="2" ram="7" storage="1000">2.86</instance>
+			<instance os="Linux" cpu="4" ram="14" storage="1000">3.886</instance>
+			<instance os="Windows" cpu="1" ram="2" storage="10">0.092</instance>
+			<instance os="Windows" cpu="2" ram="4" storage="10">0.183</instance>
+			<instance os="Windows" cpu="4" ram="7" storage="10">0.366</instance>
+			<instance os="Windows" cpu="1" ram="2" storage="50">0.172</instance>
+			<instance os="Windows" cpu="2" ram="4" storage="50">0.244</instance>
+			<instance os="Windows" cpu="4" ram="7" storage="50">0.488</instance>
+			<instance os="Windows" cpu="1" ram="4" storage="250">0.244</instance>
+			<instance os="Windows" cpu="2" ram="7" storage="250">0.488</instance>
+			<instance os="Windows" cpu="4" ram="14" storage="250">0.976</instance>
+			<instance os="Windows" cpu="1" ram="4" storage="1000">2.471</instance>
+			<instance os="Windows" cpu="2" ram="7" storage="1000">3.011</instance>
+			<instance os="Windows" cpu="4" ram="14" storage="1000">4.091</instance>
+		</location>
+	</service>
 	<service id="Batch" name="Azure Batch"/>
 	<service id="Code" name="Azure Functions">
 		<requests>0.20</requests>

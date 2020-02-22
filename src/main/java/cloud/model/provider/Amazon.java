@@ -123,11 +123,6 @@ class Amazon extends Provider implements IPricing {
                     serviceCosts.setPrice(cpuCosts + ramCosts + dataOutCosts);
                 }
             }
-        } else if (service.getComputeType().equalsIgnoreCase(types[3])) {
-            /* compute type "App" */
-
-
-            serviceCosts.setPrice(0);
         } else if (service.getComputeType().equalsIgnoreCase(types[4])) {
             /* compute type "Code" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());

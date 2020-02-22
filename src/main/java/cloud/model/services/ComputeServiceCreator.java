@@ -50,7 +50,7 @@ public class ComputeServiceCreator implements IServiceCreator {
         } else if (computeType.equals(types[2])) {
             /* App */
             computeService = new ComputeService(name, computeType, "", computeInstance, storageInstance,
-                    system, 0, 0, 0, 0, 0);
+                    system, cpu, storage, 0, numOne, 0);
         } else if (computeType.equals(types[3])) {
             /* Batch */
             computeService = new ComputeService(name, computeType, "", computeInstance, "",
