@@ -130,6 +130,7 @@ public class DesignViewC {
                         updateServiceMatches();
                     }
                 }
+                selectedServiceID = view.getPaneDesignArea().getServicesTable().getItems().indexOf(selectedService);
             }
         });
     }

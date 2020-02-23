@@ -59,7 +59,7 @@ public class ServiceDialog extends Dialog<String> {
             if (dialogButton == ButtonType.OK) {
                 return getServiceTypeBoxItem();
             } else {
-                return "";
+                return null;
             }
         });
     }
