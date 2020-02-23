@@ -18,7 +18,6 @@ public class StorageServicePane extends ServicePropertiesPane {
     private Spinner<Integer> dataSpinner;
     private Spinner<Integer> requestsReadSpinner;
     private Spinner<Integer> requestsWriteSpinner;
-    private Spinner<Integer> queriesSpinner;
     private Spinner<Integer> rateSpinner;
 
     public StorageServicePane() {
@@ -31,14 +30,12 @@ public class StorageServicePane extends ServicePropertiesPane {
         requestsReadSpinner = new Spinner<>(1, 1000000, 1);
         requestsWriteSpinner = new Spinner<>(1, 1000000, 1);
         dataSpinner = new Spinner<>(1, 1000000, 1);
-        queriesSpinner = new Spinner<>(1, 1000000, 1);
         rateSpinner = new Spinner<>(1, 1000000, 1);
 
         capacitySpinner.setEditable(true);
         requestsReadSpinner.setEditable(true);
         requestsWriteSpinner.setEditable(true);
         dataSpinner.setEditable(true);
-        queriesSpinner.setEditable(true);
         rateSpinner.setEditable(true);
 
         add(storageTypeLbl, 0, 2);
@@ -84,10 +81,6 @@ public class StorageServicePane extends ServicePropertiesPane {
         return dataSpinner.getValue();
     }
     public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
-    public Integer getQueries() {
-        return queriesSpinner.getValue();
-    }
-    public void setQueries(Integer value) {this.queriesSpinner.getValueFactory().setValue(value);}
     public Integer getRate() {
         return rateSpinner.getValue();
     }
@@ -108,16 +101,16 @@ public class StorageServicePane extends ServicePropertiesPane {
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-object-mode"));
         add(new Label(labels[0]), 0, 4);
         add(capacitySpinner, 1, 4);
-        add(new Label("per month"), 2, 4);
+        add(new Label("per day"), 2, 4);
         add(new Label(labels[1]), 0, 5);
         add(requestsReadSpinner, 1, 5);
+        add(new Label("per day"), 2, 5);
         add(new Label(labels[2]), 0, 6);
         add(requestsWriteSpinner, 1, 6);
-        add(new Label(labels[3]), 0, 7);
-        add(queriesSpinner, 1, 7);
-        add(new Label(labels[4]), 0, 8);
-        add(dataSpinner, 1, 8);
-        add(new Label("per month"), 2, 8);
+        add(new Label("per day"), 2, 6);
+        add(new Label(labels[4]), 0, 7);
+        add(dataSpinner, 1, 7);
+        add(new Label("per day"), 2, 7);
     }
 
     private void setBlockStorageControls() {

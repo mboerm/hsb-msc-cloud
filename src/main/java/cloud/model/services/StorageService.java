@@ -9,17 +9,15 @@ public class StorageService extends Service {
     private int capacity;
     private int data;
     private Pair<Integer, Integer> requests;
-    private int queries;
     private int rate;
 
-    public StorageService(String name, String storageType, String mode, int capacity, int data, Pair<Integer, Integer> requests, int queries, int rate) {
+    public StorageService(String name, String storageType, String mode, int capacity, int data, Pair<Integer, Integer> requests, int rate) {
         setName(name);
         setStorageType(storageType);
         setStorageMode(mode);
         setCapacity(capacity);
         setData(data);
         setRequests(requests);
-        setQueries(queries);
         setRate(rate);
     }
 
@@ -56,13 +54,6 @@ public class StorageService extends Service {
     }
     public void setRequests(Pair<Integer, Integer> requests) {
         this.requests = requests;
-    }
-
-    public int getQueries() {
-        return queries;
-    }
-    public void setQueries(int queries) {
-        this.queries = queries;
     }
 
     public int getRate() {

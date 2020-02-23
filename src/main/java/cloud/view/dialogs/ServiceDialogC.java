@@ -105,7 +105,7 @@ public class ServiceDialogC {
             return ServiceFactory.getService(new StorageServiceCreator(
                     storagePane.getName(), storagePane.getStorageType(), storagePane.getStorageMode(),
                     storagePane.getCapacity(), storagePane.getData(), storagePane.getRequests(),
-                    storagePane.getQueries(), storagePane.getRate()
+                    storagePane.getRate()
             ));
         } else if (ServiceChecker.getInstance().isAnalyticItem(item)) {
             return ServiceFactory.getService(new AnalyticServiceCreator(
@@ -163,7 +163,6 @@ public class ServiceDialogC {
             storagePane.setCapacity(((StorageService) serviceData).getCapacity());
             storagePane.setData(((StorageService) serviceData).getData());
             storagePane.setRequests(((StorageService) serviceData).getRequests());
-            storagePane.setQueries(((StorageService) serviceData).getQueries());
             storagePane.setRate(((StorageService) serviceData).getRate());
         } else if (ServiceChecker.getInstance().isAnalyticItem(serviceData.getCategory()) && serviceData instanceof AnalyticService) {
             analyticPane.setName(serviceData.getName());

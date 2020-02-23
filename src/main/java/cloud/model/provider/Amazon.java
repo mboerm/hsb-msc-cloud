@@ -195,10 +195,10 @@ class Amazon extends Provider implements IPricing {
                             dataOutPrice = Double.parseDouble(subNode.getTextContent());
                         }
                     }
-                    double capacityCosts = service.getCapacity() * capacityPrice;
-                    double requestsCosts = Math.ceil(service.getRequests().getKey() / requestsFactor * requestsReadPrice) +
-                            Math.ceil(service.getRequests().getValue() / requestsFactor * requestsWritePrice);
-                    double dataCosts = service.getData() * dataOutPrice;
+                    double capacityCosts = service.getCapacity() * capacityPrice * Constants.MONTH_DAYS;
+                    double requestsCosts = Math.ceil(service.getRequests().getKey() / requestsFactor * requestsReadPrice) * Constants.MONTH_DAYS +
+                            Math.ceil(service.getRequests().getValue() / requestsFactor * requestsWritePrice) * Constants.MONTH_DAYS;
+                    double dataCosts = service.getData() * dataOutPrice * Constants.MONTH_DAYS;
                     serviceCosts.setPrice(capacityCosts + requestsCosts + dataCosts);
                 }
             }
