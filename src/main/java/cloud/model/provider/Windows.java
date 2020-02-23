@@ -390,7 +390,7 @@ class Windows extends Provider implements IPricing {
             double metricsCosts = service.getMetrics() * metricsPrice;
             double requestsCosts = service.getRequests() * requestsPrice;
             double eventsCosts = service.getEvents() * eventsPrice;
-            double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice * Constants.MONTH_DAYS;
+            double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice;
             serviceCosts.setPrice(metricsCosts + requestsCosts + eventsCosts + dataCosts);
         }
         return serviceCosts;

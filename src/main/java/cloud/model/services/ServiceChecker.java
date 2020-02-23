@@ -198,7 +198,6 @@ public class ServiceChecker {
                                 String.valueOf(storageService.getCapacity()),
                                 storageService.getRequests().getKey().toString(),
                                 storageService.getRequests().getKey().toString(),
-                                String.valueOf(storageService.getQueries()),
                                 String.valueOf(storageService.getData())
                         }
                 );
