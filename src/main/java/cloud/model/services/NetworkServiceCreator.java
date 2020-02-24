@@ -26,7 +26,11 @@ public class NetworkServiceCreator implements IServiceCreator {
 
         NetworkService networkService;
 
-        if (type.equals(types[0]) || type.equals(types[1]) || type.equals(types[2])) {
+        if (type.equals(types[0])) {
+            networkService = new NetworkService(name, type, requests, data, dataOut, zones);
+        } else if (type.equals(types[1])) {
+            networkService = new NetworkService(name, type, requests, data, dataOut, 0);
+        } else if (type.equals(types[2])) {
             networkService = new NetworkService(name, type, requests, data, 0, 0);
         } else if (type.equals(types[3])) {
             networkService = new NetworkService(name, type, requests, data, dataOut, 0);

@@ -278,14 +278,25 @@ public class ServiceChecker {
         } else if (ServiceChecker.getInstance().isNetworkItem(service.getCategory()) && service instanceof NetworkService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
             NetworkService netService = (NetworkService) service;
-            if (netService.getNetworkType().equals(types[0]) || netService.getNetworkType().equals(types[1])) {
+            if (netService.getNetworkType().equals(types[0])) {
                 return new Pair<>(
-                        Config.getInstance().getConfigValuesAsArray("network-private-labels"),
-                        new String[] {
+                        Config.getInstance().getConfigValuesAsArray("network-vpc-labels"),
+                        new String[]{
                                 String.valueOf(netService.getRequests()),
-                                String.valueOf(netService.getData())
+                                String.valueOf(netService.getZones()),
+                                String.valueOf(netService.getData()),
+                                String.valueOf(netService.getDataOut())
                         }
                 );
+            } else if (netService.getNetworkType().equals(types[1])) {
+                    return new Pair<>(
+                            Config.getInstance().getConfigValuesAsArray("network-vpn-labels"),
+                            new String[] {
+                                    String.valueOf(netService.getRequests()),
+                                    String.valueOf(netService.getData()),
+                                    String.valueOf(netService.getDataOut())
+                            }
+                    );
             } else if (netService.getNetworkType().equals(types[2])) {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("network-api-labels"),

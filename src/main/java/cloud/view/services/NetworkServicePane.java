@@ -35,8 +35,10 @@ public class NetworkServicePane extends ServicePropertiesPane {
         networkTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("network-type");
-            if (newItem.equals(type[0]) || newItem.equals(type[1])) {
-                setPrivateControls();
+            if (newItem.equals(type[0])) {
+                setVPCControls();
+            } else if (newItem.equals(type[1])) {
+                setVPNControls();
             } else if (newItem.equals(type[2])) {
                 setAPIControls();
             } else if (newItem.equals(type[3])) {
@@ -67,14 +69,29 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(networkTypeBox, 1, 2);
     }
 
-    private void setPrivateControls() {
-        labels = Config.getInstance().getConfigValuesAsArray("network-private-labels");
+    private void setVPCControls() {
+        labels = Config.getInstance().getConfigValuesAsArray("network-vpc-labels");
+        add(new Label(labels[0]), 0, 3);
+        add(requestsSpinner, 1, 3);
+        add(new Label("per hour"), 2, 3);
+        add(new Label(labels[1]), 0, 4);
+        add(zonesSpinner, 1, 4);
+        add(new Label("per hour"), 2, 4);
+        add(new Label(labels[2]), 0, 5);
+        add(dataSpinner, 1, 5);
+        add(new Label(labels[3]), 0, 6);
+        add(dataOutSpinner, 1, 6);
+    }
+
+    private void setVPNControls() {
+        labels = Config.getInstance().getConfigValuesAsArray("network-vpn-labels");
         add(new Label(labels[0]), 0, 3);
         add(requestsSpinner, 1, 3);
         add(new Label("per hour"), 2, 3);
         add(new Label(labels[1]), 0, 4);
         add(dataSpinner, 1, 4);
-        add(new Label("per hour"), 2, 4);
+        add(new Label(labels[2]), 0, 5);
+        add(dataOutSpinner, 1, 5);
     }
 
     private void setAPIControls() {
