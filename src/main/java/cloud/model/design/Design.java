@@ -54,8 +54,10 @@ public class Design {
     public void clearServicesCosts() {this.servicesCosts.clear();}
 
     public void matchServices() {
-        for (Service service : servicesList) {
-            service.setProviderService(getProvider().getMatchingServiceForID(service.getIdentifier()));
+        if (getProvider() != null) {
+            for (Service service : servicesList) {
+                service.setProviderService(getProvider().getMatchingServiceForID(service.getIdentifier()));
+            }
         }
     }
 
