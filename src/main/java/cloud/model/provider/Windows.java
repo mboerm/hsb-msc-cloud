@@ -324,7 +324,14 @@ class Windows extends Provider implements IPricing {
         String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
         Costs serviceCosts = new Costs();
 
-        if (service.getNetworkType().equalsIgnoreCase(types[3])) {
+        if (service.getNetworkType().equalsIgnoreCase(types[0])) {
+            /* network type "VPC" */
+            double dataInPrice = Double.parseDouble(element.getElementsByTagName("dataIn").item(0).getTextContent());;
+            double dataOutPrice = Double.parseDouble(element.getElementsByTagName("dataOut").item(0).getTextContent());;
+            double dataInCosts = service.getData() * dataInPrice;
+            double dataOutCosts = service.getDataOut() * dataOutPrice;
+            serviceCosts.setPrice(dataInCosts + dataOutCosts);
+        } else if (service.getNetworkType().equalsIgnoreCase(types[3])) {
             /* network type "CDN" */
             double dataOutPrice = 0;
 

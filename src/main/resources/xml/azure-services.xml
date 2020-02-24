@@ -305,7 +305,10 @@
 	<service id="Monitoring (User)" name="Azure Monitor Log Analytics"/>
 
 	<!--Network services-->
-	<service id="VPC" name="Azure Virtual Network"/>
+	<service id="VPC" name="Azure Virtual Network">
+		<dataIn>0.01</dataIn>
+		<dataOut>0.01</dataOut>
+	</service>
 	<service id="VPN" name="Azure VPN Gateway"/>
 	<service id="API" name="Azure API Management"/>
 	<service id="CDN" name="Azure CDN">
