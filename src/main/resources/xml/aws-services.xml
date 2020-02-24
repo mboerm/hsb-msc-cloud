@@ -256,8 +256,58 @@
 	<service id="Monitoring (User)" name="AWS CloudTrail"/>
 
 	<!--Network services-->
-	<service id="VPC" name="Amazon VPC"/>
-	<service id="VPN" name="AWS VPN"/>
+	<service id="VPC" name="Amazon VPC">
+		<location name="EU-Frankfurt">
+			<connection>0.05</connection>
+			<endpoint>0.012</endpoint>
+			<data>0.01</data>
+			<dataOut min="1" max="10000">0.09</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.07</dataOut>
+			<dataOut min="150000" max="500000">0.05</dataOut>
+		</location>
+		<location name="Asia-Tokyo">
+			<connection>0.048</connection>
+			<endpoint>0.014</endpoint>
+			<data>0.01</data>
+			<dataOut min="1" max="10000">0.114</dataOut>
+			<dataOut min="10000" max="50000">0.089</dataOut>
+			<dataOut min="50000" max="150000">0.086</dataOut>
+			<dataOut min="150000" max="500000">0.084</dataOut>
+		</location>
+		<location name="Brasil-São Paulo">
+			<connection>0.05</connection>
+			<endpoint>0.021</endpoint>
+			<data>0.01</data>
+			<dataOut min="1" max="10000">0.25</dataOut>
+			<dataOut min="10000" max="50000">0.23</dataOut>
+			<dataOut min="50000" max="150000">0.21</dataOut>
+			<dataOut min="150000" max="500000">0.19</dataOut>
+		</location>
+	</service>
+	<service id="VPN" name="AWS VPN">
+		<location name="EU-Frankfurt">
+			<connection>0.05</connection>
+			<dataOut min="1" max="10000">0.09</dataOut>
+			<dataOut min="10000" max="50000">0.085</dataOut>
+			<dataOut min="50000" max="150000">0.07</dataOut>
+			<dataOut min="150000" max="500000">0.05</dataOut>
+		</location>
+		<location name="Asia-Tokyo">
+			<connection>0.048</connection>
+			<dataOut min="1" max="10000">0.114</dataOut>
+			<dataOut min="10000" max="50000">0.089</dataOut>
+			<dataOut min="50000" max="150000">0.086</dataOut>
+			<dataOut min="150000" max="500000">0.084</dataOut>
+		</location>
+		<location name="Brasil-São Paulo">
+			<connection>0.05</connection>
+			<dataOut min="1" max="10000">0.25</dataOut>
+			<dataOut min="10000" max="50000">0.23</dataOut>
+			<dataOut min="50000" max="150000">0.21</dataOut>
+			<dataOut min="150000" max="500000">0.19</dataOut>
+		</location>
+	</service>
 	<service id="API" name="Amazon API Gateway"/>
 	<service id="CDN" name="Amazon CloudFront">
 		<location name="EU-Frankfurt">

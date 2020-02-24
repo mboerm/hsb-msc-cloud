@@ -326,7 +326,65 @@ class Amazon extends Provider implements IPricing {
         String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
         Costs serviceCosts = new Costs();
 
-        if (service.getNetworkType().equalsIgnoreCase(types[3])) {
+        if (service.getNetworkType().equalsIgnoreCase(types[0])) {
+            /* network type "VPC" */
+            double connectionPrice = 0;
+            double endpointPrice = 0;
+            double dataPrice = 0;
+            double dataOutPrice = 0;
+
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
+                        NamedNodeMap subNodeAttributes = subNode.getAttributes();
+                        if (subNode.getNodeName().equalsIgnoreCase("connection")) {
+                            connectionPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("endpoint")) {
+                            endpointPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("data")) {
+                            dataPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("dataOut")
+                                && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
+                                && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
+                            dataOutPrice = Double.parseDouble(subNode.getTextContent());
+                        }
+                    }
+                }
+            }
+            double connectionCosts = service.getRequests() * connectionPrice * Constants.MONTH_HOURS;
+            double endpointCosts = service.getZones() * endpointPrice * Constants.MONTH_HOURS;
+            double dataCosts = service.getData() * dataPrice;
+            double dataOutCosts = service.getDataOut() * dataOutPrice;
+            serviceCosts.setPrice(connectionCosts + endpointCosts + dataCosts + dataOutCosts);
+        } else if (service.getNetworkType().equalsIgnoreCase(types[1])) {
+            /* network type "VPN" */
+            double connectionPrice = 0;
+            double dataOutPrice = 0;
+
+            NodeList locationElements = element.getElementsByTagName("location");
+            for (int i = 0; i < locationElements.getLength(); i++) {
+                Node locationNode = locationElements.item(i);
+                if (service.getLocation().equalsIgnoreCase(locationNode.getAttributes().getNamedItem("name").getNodeValue())) {
+                    for (int j = 0; j < locationNode.getChildNodes().getLength(); j++) {
+                        Node subNode = locationNode.getChildNodes().item(j);
+                        NamedNodeMap subNodeAttributes = subNode.getAttributes();
+                        if (subNode.getNodeName().equalsIgnoreCase("connection")) {
+                            connectionPrice = Double.parseDouble(subNode.getTextContent());
+                        } else if (subNode.getNodeName().equalsIgnoreCase("dataOut")
+                                && service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
+                                && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
+                            dataOutPrice = Double.parseDouble(subNode.getTextContent());
+                        }
+                    }
+                }
+            }
+            double connectionCosts = service.getRequests() * connectionPrice * Constants.MONTH_HOURS;
+            double dataOutCosts = service.getDataOut() * dataOutPrice;
+            serviceCosts.setPrice(connectionCosts + dataOutCosts);
+        } else if (service.getNetworkType().equalsIgnoreCase(types[3])) {
             /* network type "CDN" */
             double dataPrice = 0;
             double dataOutPrice = 0;
