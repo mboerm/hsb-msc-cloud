@@ -15,7 +15,7 @@ class Amazon extends Provider implements IPricing {
 
     Amazon() {
         setServiceName("Amazon Web Services");
-        setServicesFile(Config.getInstance().getConfigValue("aws-services"));
+        setServiceFile(Config.getInstance().getConfigValue("aws-services"));
     }
 
     @Override
@@ -27,7 +27,7 @@ class Amazon extends Provider implements IPricing {
 
     @Override
     public void calculateStaticCosts() {
-        setDocument(getServicesFile());
+        setDocument(getServiceFile());
 
         ObservableList<Service> services = DesignManager.getInstance().getDesign().getServicesList();
         NodeList servicesNodeList = getDocument().getElementsByTagName("service");

@@ -11,9 +11,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Objects;
 
-public abstract class Provider implements IPricing {
+public abstract class Provider {
     private String serviceName;
-    private String servicesFile;
+    private String serviceFile;
     private Document doc;
 
     public String getServiceName() {
@@ -23,13 +23,13 @@ public abstract class Provider implements IPricing {
         this.serviceName = serviceName;
     }
 
-    public String getServicesFile() {return servicesFile;}
-    public void setServicesFile(String servicesFile) {
-        this.servicesFile = servicesFile;
+    public String getServiceFile() {return serviceFile;}
+    public void setServiceFile(String serviceFile) {
+        this.serviceFile = serviceFile;
     }
 
     public String getMatchingServiceForID(String id) {
-        setDocument(servicesFile);
+        setDocument(serviceFile);
 
         NodeList servicesNodeList = doc.getElementsByTagName("service");
         for(int i=0; i<servicesNodeList.getLength(); i++) {

@@ -16,7 +16,7 @@ class Windows extends Provider implements IPricing {
 
     Windows() {
         setServiceName("Windows Azure");
-        setServicesFile(Config.getInstance().getConfigValue("azure-services"));
+        setServiceFile(Config.getInstance().getConfigValue("azure-services"));
     }
 
     @Override
@@ -28,7 +28,7 @@ class Windows extends Provider implements IPricing {
 
     @Override
     public void calculateStaticCosts() {
-        setDocument(getServicesFile());
+        setDocument(getServiceFile());
 
         ObservableList<Service> services = DesignManager.getInstance().getDesign().getServicesList();
         NodeList servicesNodeList = getDocument().getElementsByTagName("service");
