@@ -3,7 +3,6 @@ package cloud.model.provider;
 import cloud.configuration.Config;
 
 public class ProviderFactory {
-
     public Provider getProvider(String provider) {
         String[] providerNames = Config.getInstance().getConfigValuesAsArray("provider-services");
         if (provider.equals(providerNames[0])) {

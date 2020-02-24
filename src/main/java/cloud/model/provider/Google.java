@@ -12,7 +12,16 @@ class Google extends Provider implements IPricing {
 
     @Override
     public void calculateCosts() {
-        System.out.println(getServiceName() + " -> " + "None!");
+        /*
+         * TODO: implement api call for cost calculation
+         */
+    }
+
+    @Override
+    public void calculateStaticCosts() {
+        /*
+         * TODO: optionally implement static cost calculation
+         */
     }
 
     @Override

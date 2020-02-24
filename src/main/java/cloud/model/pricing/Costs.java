@@ -3,14 +3,14 @@ package cloud.model.pricing;
 import cloud.configuration.Constants;
 
 public class Costs {
-
     private double price;
     private double scaledPrice;
     private String formula;
 
     public Costs() {
-        setPrice(0.0);
-        setScaledPrice(0.0);
+        setPrice(0);
+        setScaledPrice(0);
+        setFormula("");
     }
 
     public double getPrice() {

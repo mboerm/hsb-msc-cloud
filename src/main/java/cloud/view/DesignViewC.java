@@ -64,7 +64,7 @@ public class DesignViewC {
 
         view.getMenuDesignCalculate().setOnAction(actionEvent -> {
             design.clearServicesCosts();
-            design.getProvider().calculateCosts();
+            design.getProvider().calculateStaticCosts();
             if (costReportC.showCostReport()) {
                 report = new PDFReport();
                 report.createReport();

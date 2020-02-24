@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.util.Pair;
 
 public class Design {
-
     private final ObservableList<Service> servicesList = FXCollections.observableArrayList();
     private final ObservableList<Pair<Service, Costs>> servicesCosts = FXCollections.observableArrayList();
 

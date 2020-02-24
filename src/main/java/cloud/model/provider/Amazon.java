@@ -20,6 +20,13 @@ class Amazon extends Provider implements IPricing {
 
     @Override
     public void calculateCosts() {
+        /*
+         * TODO: implement api call for cost calculation
+         */
+    }
+
+    @Override
+    public void calculateStaticCosts() {
         setDocument(getServicesFile());
 
         ObservableList<Service> services = DesignManager.getInstance().getDesign().getServicesList();

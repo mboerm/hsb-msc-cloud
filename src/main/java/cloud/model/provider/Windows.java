@@ -21,6 +21,13 @@ class Windows extends Provider implements IPricing {
 
     @Override
     public void calculateCosts() {
+        /*
+         * TODO: implement api call for cost calculation
+         */
+    }
+
+    @Override
+    public void calculateStaticCosts() {
         setDocument(getServicesFile());
 
         ObservableList<Service> services = DesignManager.getInstance().getDesign().getServicesList();
@@ -326,8 +333,8 @@ class Windows extends Provider implements IPricing {
 
         if (service.getNetworkType().equalsIgnoreCase(types[0])) {
             /* network type "VPC" */
-            double dataInPrice = Double.parseDouble(element.getElementsByTagName("dataIn").item(0).getTextContent());;
-            double dataOutPrice = Double.parseDouble(element.getElementsByTagName("dataOut").item(0).getTextContent());;
+            double dataInPrice = Double.parseDouble(element.getElementsByTagName("dataIn").item(0).getTextContent());
+            double dataOutPrice = Double.parseDouble(element.getElementsByTagName("dataOut").item(0).getTextContent());
             double dataInCosts = service.getData() * dataInPrice;
             double dataOutCosts = service.getDataOut() * dataOutPrice;
             serviceCosts.setPrice(dataInCosts + dataOutCosts);
