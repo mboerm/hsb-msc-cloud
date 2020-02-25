@@ -4,7 +4,7 @@ import cloud.configuration.Config;
 import cloud.configuration.Constants;
 import cloud.model.design.DesignManager;
 import cloud.model.pricing.Costs;
-import cloud.model.pricing.IPricing;
+import cloud.model.pricing.Pricing;
 import cloud.model.services.*;
 import javafx.collections.ObservableList;
 import org.w3c.dom.Element;
@@ -12,7 +12,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-class Windows extends Provider implements IPricing {
+class Windows extends Provider implements Pricing {
 
     Windows() {
         setServiceName("Windows Azure");

@@ -11,7 +11,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-class Amazon extends Provider implements IPricing {
+class Amazon extends Provider implements Pricing {
 
     Amazon() {
         setServiceName("Amazon Web Services");

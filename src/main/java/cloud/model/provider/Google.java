@@ -1,9 +1,9 @@
 package cloud.model.provider;
 
 import cloud.configuration.Config;
-import cloud.model.pricing.IPricing;
+import cloud.model.pricing.Pricing;
 
-class Google extends Provider implements IPricing {
+class Google extends Provider implements Pricing {
 
     Google() {
         setServiceName("Google Cloud Platform");

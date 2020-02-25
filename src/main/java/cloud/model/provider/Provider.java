@@ -1,6 +1,6 @@
 package cloud.model.provider;
 
-import cloud.model.pricing.IPricing;
+import cloud.model.pricing.Pricing;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -11,7 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Objects;
 
-public abstract class Provider implements IPricing {
+public abstract class Provider implements Pricing {
     private String serviceName;
     private String serviceFile;
     private Document doc;
