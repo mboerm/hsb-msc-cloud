@@ -23,7 +23,6 @@ public class DesignViewC {
     private DesignView view;
 
     // Model
-    private Design design;
     private int selectedServiceID;
     private static ProviderFactory providerFactory;
     private static IReport report;
@@ -34,7 +33,6 @@ public class DesignViewC {
 
     public DesignViewC() {
         this.view = new DesignView();
-        this.design = DesignManager.getInstance().getDesign();
         providerFactory = new ProviderFactory();
         this.dialogServiceC = new ServiceDialogC();
         this.costReportC = new CostDialogC();
@@ -52,23 +50,27 @@ public class DesignViewC {
     private void initMenuHandler() {
         view.getMenuFileExit().setOnAction(actionEvent -> System.exit(0));
 
-        view.getMenuDesignReset().setOnAction(actionEvent -> {
-            view.getPaneDesignArea().getServicesTable().getItems().removeAll();
-            design.clearServicesList();
-            design.clearServicesCosts();
-        });
-
-        view.getMenuDesignMatch().setOnAction(actionEvent -> {
-            updateServiceMatches();
-        });
+        view.getMenuDesignMatch().setOnAction(actionEvent -> updateServiceMatches());
 
         view.getMenuDesignCalculate().setOnAction(actionEvent -> {
-            design.clearServicesCosts();
-            design.getProvider().calculateStaticCosts();
+            DesignManager.getInstance().getDesign().clearServicesCosts();
+            DesignManager.getInstance().getDesign().getProvider().calculateStaticCosts();
             if (costReportC.showCostReport()) {
                 report = new PDFReport();
                 report.createReport();
             }
+        });
+
+        view.getMenuDesignScale().setOnAction(actionEvent -> DesignManager.getInstance().getDesign().scaleCosts());
+
+        view.getMenuDesignOptimize().setOnAction(actionEvent -> DesignManager.getInstance().getDesign().getProvider().optimizeCosts());
+
+        view.getMenuDesignCompare().setOnAction(actionEvent -> DesignManager.getInstance().getDesign().compareCosts());
+
+        view.getMenuDesignReset().setOnAction(actionEvent -> {
+            view.getPaneDesignArea().getServicesTable().getItems().removeAll();
+            DesignManager.getInstance().getDesign().clearServicesList();
+            DesignManager.getInstance().getDesign().clearServicesCosts();
         });
 
         view.getMenuHelpAbout().setOnAction(actionEvent -> showAboutDialog());
@@ -77,36 +79,36 @@ public class DesignViewC {
     private void initDesignPropertyHandler() {
         view.getPaneDesignProperties().getProviderBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             try {
-                design.setProvider(providerFactory.getProvider(newValue));
+                DesignManager.getInstance().getDesign().setProvider(providerFactory.getProvider(newValue));
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid provider!");
             }
         });
 
         view.getPaneDesignProperties().getUsagePeriodField().textProperty().addListener((obs, oldValue, newValue) ->
-            design.setUsagePeriod(newValue));
+            DesignManager.getInstance().getDesign().setUsagePeriod(newValue));
 
         view.getPaneDesignProperties().getPrimaryLocationBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
-            design.setPrimaryRegion(newValue));
+            DesignManager.getInstance().getDesign().setPrimaryRegion(newValue));
 
         view.getPaneDesignProperties().getNumOfInstancesSpinner().valueProperty().addListener((obs, oldValue, newValue) ->
-            design.setNumOfInstances(newValue));
+            DesignManager.getInstance().getDesign().setNumOfInstances(newValue));
 
         view.getPaneDesignProperties().getNumOfRequestsSpinner().valueProperty().addListener((obs, oldValue, newValue) ->
-            design.setNumOfRequests(newValue));
+            DesignManager.getInstance().getDesign().setNumOfRequests(newValue));
 
         view.getPaneDesignProperties().getPeriodOfRequestsBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
-            design.setPeriodOfRequests(newValue));
+            DesignManager.getInstance().getDesign().setPeriodOfRequests(newValue));
 
         view.getPaneDesignProperties().getNumOfCapacitySpinner().valueProperty().addListener((obs, oldValue, newValue) ->
-            design.setNumOfCapacity(newValue));
+            DesignManager.getInstance().getDesign().setNumOfCapacity(newValue));
 
         view.getPaneDesignProperties().getPeriodOfCapacityBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
-            design.setPeriodOfCapacity(newValue));
+            DesignManager.getInstance().getDesign().setPeriodOfCapacity(newValue));
     }
 
     private void initDesignAreaHandler() {
-        view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
+        view.getPaneDesignArea().getServicesTable().setItems(DesignManager.getInstance().getDesign().getServicesList());
 
         ObservableList<Service> selectedItems = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItems();
         selectedItems.addListener((ListChangeListener<Service>) change -> {
@@ -126,7 +128,7 @@ public class DesignViewC {
                     // show dialog with preset by service
                     if (dialogServiceC.showPresetDialog(selectedService)) {
                         Service editedService = dialogServiceC.getServiceData();
-                        design.replaceService(selectedService, editedService);
+                        DesignManager.getInstance().getDesign().replaceService(selectedService, editedService);
                         updateServiceMatches();
                     }
                 }
@@ -142,7 +144,7 @@ public class DesignViewC {
             dialogServiceC.newDialog();
             if (dialogServiceC.showDialog()) {
                 /* add created service to services list */
-                design.addService(dialogServiceC.getServiceData());
+                DesignManager.getInstance().getDesign().addService(dialogServiceC.getServiceData());
             }
             dialogServiceC.resetServiceData();
         });
@@ -150,7 +152,7 @@ public class DesignViewC {
         view.getPaneDesignControls().getControlRemove().setOnAction(actionEvent -> {
             /* remove selected service from services list */
             Service selectedService = view.getPaneDesignArea().getServicesTable().getItems().get(selectedServiceID);
-            design.removeService(selectedService);
+            DesignManager.getInstance().getDesign().removeService(selectedService);
             /* clear selection */
             view.getPaneDesignArea().getServicesTable().getSelectionModel().clearSelection();
             view.getPaneDesignControls().getControlRemove().setDisable(true);
@@ -158,8 +160,8 @@ public class DesignViewC {
     }
 
     private void updateServiceMatches() {
-        design.matchServices();
-        view.getPaneDesignArea().getServicesTable().setItems(design.getServicesList());
+        DesignManager.getInstance().getDesign().matchServices();
+        view.getPaneDesignArea().getServicesTable().setItems(DesignManager.getInstance().getDesign().getServicesList());
         view.getPaneDesignArea().getServicesTable().refresh();
     }
 

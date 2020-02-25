@@ -11,7 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Objects;
 
-public abstract class Provider {
+public abstract class Provider implements IPricing {
     private String serviceName;
     private String serviceFile;
     private Document doc;

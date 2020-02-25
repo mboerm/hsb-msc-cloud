@@ -103,4 +103,16 @@ public class Design {
     public double getTotalCostsPerHour() {
         return getTotalCosts() / Constants.MONTH_HOURS;
     }
+
+    public void scaleCosts() {
+        /*
+         * TODO: implement function to scale costs of services
+         */
+    }
+
+    public void compareCosts() {
+        /*
+         * TODO: implement function to compare costs
+         */
+    }
 }
