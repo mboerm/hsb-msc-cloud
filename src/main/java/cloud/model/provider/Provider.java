@@ -30,7 +30,6 @@ public abstract class Provider implements Pricing {
 
     public String getMatchingServiceForID(String id) {
         setDocument(serviceFile);
-
         NodeList servicesNodeList = doc.getElementsByTagName("service");
         for(int i=0; i<servicesNodeList.getLength(); i++) {
             Node serviceNode = servicesNodeList.item(i);
