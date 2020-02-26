@@ -2,7 +2,7 @@ package cloud.view;
 
 import cloud.configuration.Config;
 import cloud.main.StageManager;
-import cloud.report.IReport;
+import cloud.report.Report;
 import cloud.report.PDFReport;
 import cloud.model.services.Service;
 import cloud.model.design.*;
@@ -25,7 +25,7 @@ public class DesignViewC {
     // Model
     private int selectedServiceID;
     private static ProviderFactory providerFactory;
-    private static IReport report;
+    private static Report report;
 
     // Controller
     private ServiceDialogC dialogServiceC;

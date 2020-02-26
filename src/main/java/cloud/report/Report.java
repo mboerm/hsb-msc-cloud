@@ -1,5 +1,5 @@
 package cloud.report;
 
-public interface IReport {
+public interface Report {
     void createReport();
 }
