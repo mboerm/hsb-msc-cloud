@@ -24,7 +24,7 @@ import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfFont;
 
-public class PDFReport implements IReport {
+public class PDFReport implements Report {
     private String dest;
     private Document document;
     private Date date;
@@ -137,18 +137,20 @@ public class PDFReport implements IReport {
         document.add(new Paragraph("Cost Calculation").setFont(bf12Bold).setFontSize(14));
 
         document.add(new Paragraph("Service costs"));
-        float[] columnWidths = {100F, 100F};
-        Table serviceCostsTable = new Table(columnWidths);
+        float[] columnWidthsServices = {100F, 100F, 200F};
+        Table serviceCostsTable = new Table(columnWidthsServices);
         serviceCostsTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
         for (Pair<Service, Costs> designCost : DesignManager.getInstance().getDesign().getServicesCosts()) {
             insertCell(serviceCostsTable, designCost.getKey().getName(), TextAlignment.LEFT, true);
             insertCell(serviceCostsTable, Constants.DOUBLE_FORMAT_2.format(designCost.getValue().getPrice()) + " USD", TextAlignment.RIGHT, true);
+            insertCell(serviceCostsTable, designCost.getValue().getFormula(), TextAlignment.LEFT, true);
         }
         document.add(serviceCostsTable);
 
         document.add(new Paragraph("Total costs"));
-        Table totalCostsTable = new Table(columnWidths);
+        float[] columnWidthsTotal = {100F, 100F};
+        Table totalCostsTable = new Table(columnWidthsTotal);
         totalCostsTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
         insertCell(totalCostsTable, "Per Hour:", TextAlignment.LEFT, true);
         insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCostsPerHour()) + " USD", TextAlignment.RIGHT, true);
