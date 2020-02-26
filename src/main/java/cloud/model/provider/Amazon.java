@@ -61,13 +61,6 @@ class Amazon extends Provider implements Pricing {
         }
     }
 
-    @Override
-    public void optimizeCosts() {
-        /*
-         * TODO: implement function to optimize costs of services for amazon web services
-         */
-    }
-
     private Costs calcComputeServiceCosts(ComputeService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("compute-type");
         String[] containerModes = Config.getInstance().getConfigValuesAsArray("compute-container-type");
@@ -100,6 +93,7 @@ class Amazon extends Provider implements Pricing {
                     double instanceCosts = service.getNumOne() * instancePrice;
                     double dataCosts = service.getData() * dataPrice;
                     serviceCosts.setPrice(instanceCosts + dataCosts);
+                    serviceCosts.setFormula(service.getNumOne()+" * "+instancePrice+" USD"+ " + " + service.getData()+" * "+dataPrice+" USD");
                 }
             }
         } else if (service.getComputeType().equalsIgnoreCase(types[1]) && service.getSystem().equalsIgnoreCase(containerModes[0])) {
@@ -128,6 +122,9 @@ class Amazon extends Provider implements Pricing {
                     double ramCosts = service.getNumOne() * service.getStorage() * (ramPrice / Constants.HOUR_SECONDS) * service.getNumTwo() * Constants.MONTH_DAYS;
                     double dataOutCosts = service.getData() * dataOutPrice;
                     serviceCosts.setPrice(cpuCosts + ramCosts + dataOutCosts);
+                    serviceCosts.setFormula(service.getNumOne()*service.getCPU()*service.getNumTwo()+" * "+cpuPrice+" USD" + " + "
+                            + service.getNumOne()*service.getStorage()*service.getNumTwo()+" * "+ramPrice+" USD" + " + "
+                            + service.getData() + " * " + dataOutPrice + " USD");
                 }
             }
         } else if (service.getComputeType().equalsIgnoreCase(types[4])) {
@@ -138,6 +135,8 @@ class Amazon extends Provider implements Pricing {
             double requestsCosts = service.getNumOne() * requestsPrice;
             double durationCosts = (service.getNumOne() * durationFactor) * service.getNumTwo() * ((double) (service.getStorage()) / Constants.DATA_FACTOR) * durationPrice;
             serviceCosts.setPrice(requestsCosts + durationCosts);
+            serviceCosts.setFormula(service.getNumOne()+" * "+requestsPrice+" USD"+" + "
+                    + (service.getNumOne()*durationFactor)*service.getNumTwo()*((double)(service.getStorage())/Constants.DATA_FACTOR)+" * "+durationPrice+" USD");
         } else if (service.getComputeType().equalsIgnoreCase(types[5])) {
             /* compute type "Load Balancing" */
             double hourPrice = 0;
@@ -157,6 +156,8 @@ class Amazon extends Provider implements Pricing {
                     double hourCosts = service.getNumOne() * hourPrice * Constants.MONTH_HOURS;
                     double dataCosts = service.getNumOne() * service.getData() * dataPrice;
                     serviceCosts.setPrice(hourCosts + dataCosts);
+                    serviceCosts.setFormula(service.getNumOne()+" * "+hourPrice+" USD * "+Constants.MONTH_HOURS+" hours"+" + "
+                            + service.getNumOne()+" * "+service.getData()+" * "+dataPrice+" USD");
                 }
             }
         }
@@ -203,10 +204,14 @@ class Amazon extends Provider implements Pricing {
                         }
                     }
                     double capacityCosts = service.getCapacity() * capacityPrice * Constants.MONTH_DAYS;
-                    double requestsCosts = Math.ceil(service.getRequests().getKey() / requestsFactor * requestsReadPrice) * Constants.MONTH_DAYS +
-                            Math.ceil(service.getRequests().getValue() / requestsFactor * requestsWritePrice) * Constants.MONTH_DAYS;
+                    double requestsCosts = Math.ceil(service.getRequests().getKey() / requestsFactor) * requestsReadPrice * Constants.MONTH_DAYS +
+                            Math.ceil(service.getRequests().getValue() / requestsFactor) * requestsWritePrice * Constants.MONTH_DAYS;
                     double dataCosts = service.getData() * dataOutPrice * Constants.MONTH_DAYS;
                     serviceCosts.setPrice(capacityCosts + requestsCosts + dataCosts);
+                    serviceCosts.setFormula(service.getCapacity()+" * "+capacityPrice+" USD * "+Constants.MONTH_DAYS+" days"+" + "
+                            + Math.ceil(service.getRequests().getKey()/requestsFactor)+" * "+requestsReadPrice+" USD * "+Constants.MONTH_DAYS+" days" +" + "
+                            + Math.ceil(service.getRequests().getValue()/requestsFactor)+" * "+requestsWritePrice+" USD * "+Constants.MONTH_DAYS+" days"+" + "
+                            + service.getData()+" * "+dataOutPrice+" USD * "+Constants.MONTH_DAYS+" days");
                 }
             }
         }
@@ -251,6 +256,10 @@ class Amazon extends Provider implements Pricing {
                     double backupCosts = (service.getBackup() - service.getStorage()) * backupPrice;
                     double dataCosts = service.getData() * dataOutPrice;
                     serviceCosts.setPrice(instanceCosts + storageCosts + backupCosts + dataCosts);
+                    serviceCosts.setFormula(service.getDuration()+" * "+instancePrice+" USD"+" + "
+                            + service.getStorage()+" * "+storagePrice+" USD"+" + "
+                            + (service.getBackup()-service.getStorage())+" * "+backupPrice+" USD"+" + "
+                            + service.getData()+" * "+dataOutPrice+" USD");
                 }
             }
         }
@@ -289,6 +298,8 @@ class Amazon extends Provider implements Pricing {
                     int numOfUnits = (int) Math.ceil((service.getData() / unitSize));
                     double unitCosts = (numOfUnits * service.getUnits() * Constants.MONTH_SECONDS) / Constants.M_FACTOR  * unitPrice;
                     serviceCosts.setPrice(dataCosts + unitCosts);
+                    serviceCosts.setFormula(numOfDataHours+" * "+Constants.MONTH_HOURS+" hours"+" * "+dataPrice+" USD"+" + "
+                            + numOfUnits+" * "+service.getUnits()+" * "+Constants.MONTH_SECONDS+" seconds"+" / "+Constants.M_FACTOR+" * "+unitPrice+" USD");
                 }
             }
         } else if (service.getAnalyticType().equalsIgnoreCase(types[6])) {
@@ -322,10 +333,12 @@ class Amazon extends Provider implements Pricing {
                     double dataCosts = service.getData() * dataPrice;
                     double dataOutCosts = service.getDataOut() * dataOutPrice;
                     serviceCosts.setPrice(unitCosts + dataCosts + dataOutCosts);
+                    serviceCosts.setFormula(service.getUnits()+" * "+instancePrice+" USD"+" + "
+                            + service.getData()+" * "+dataPrice+" USD"+" + "
+                            + service.getDataOut()+" * "+dataOutPrice+" USD");
                 }
             }
         }
-
         return serviceCosts;
     }
 
@@ -366,6 +379,10 @@ class Amazon extends Provider implements Pricing {
             double dataCosts = service.getData() * dataPrice;
             double dataOutCosts = service.getDataOut() * dataOutPrice;
             serviceCosts.setPrice(connectionCosts + endpointCosts + dataCosts + dataOutCosts);
+            serviceCosts.setFormula(service.getRequests()+" * "+connectionPrice+" USD"+" * "+Constants.MONTH_HOURS+" hours"+" + "
+                    + service.getZones()+" * "+endpointPrice+" USD"+" * "+Constants.MONTH_HOURS+" hours"+" + "
+                    + service.getData()+" * "+dataPrice+" USD"+" + "
+                    + service.getDataOut()+" * "+dataOutPrice+" USD");
         } else if (service.getNetworkType().equalsIgnoreCase(types[1])) {
             /* network type "VPN" */
             double connectionPrice = 0;
@@ -391,6 +408,8 @@ class Amazon extends Provider implements Pricing {
             double connectionCosts = service.getRequests() * connectionPrice * Constants.MONTH_HOURS;
             double dataOutCosts = service.getDataOut() * dataOutPrice;
             serviceCosts.setPrice(connectionCosts + dataOutCosts);
+            serviceCosts.setFormula(service.getRequests()+" * "+connectionPrice+" USD"+" * "+Constants.MONTH_HOURS+" hours"+" + "
+                    + service.getDataOut()+" * "+dataOutPrice+" USD");
         } else if (service.getNetworkType().equalsIgnoreCase(types[3])) {
             /* network type "CDN" */
             double dataPrice = 0;
@@ -426,6 +445,9 @@ class Amazon extends Provider implements Pricing {
             double dataOutCosts = service.getDataOut() * Constants.K_FACTOR * dataOutPrice;
             double httpCosts = (service.getRequests() / httpFactor) * httpPrice;
             serviceCosts.setPrice(dataCosts + dataOutCosts + httpCosts);
+            serviceCosts.setFormula(service.getData()+" * "+dataPrice+" USD"+" + "
+                    + service.getDataOut()+" * "+Constants.K_FACTOR+" * "+dataOutPrice+" USD"+" + "
+                    + service.getRequests()+"/"+httpFactor+" * "+httpPrice+" USD");
         }
         return serviceCosts;
     }
@@ -473,7 +495,19 @@ class Amazon extends Provider implements Pricing {
             double eventsCosts = service.getEvents() * eventsPrice;
             double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice * Constants.MONTH_DAYS;
             serviceCosts.setPrice(metricsCosts + requestsCosts + eventsCosts + dataCosts);
+            serviceCosts.setFormula(service.getMetrics()+" * "+metricsPrice+" USD"+" + "
+                    + service.getRequests()+" * "+requestsPrice+" USD"+" + "
+                    + service.getEvents()+" * "+eventsPrice+" USD"+" + "
+                    + service.getData().getKey()+" * "+Constants.MONTH_DAYS+" * "+dataCollectPrice+" USD"+" + "
+                    + service.getData().getValue()+" * "+Constants.MONTH_DAYS+" * "+dataSavePrice+" USD");
         }
         return serviceCosts;
+    }
+
+    @Override
+    public void optimizeCosts() {
+        /*
+         * TODO: implement function to optimize costs of services for amazon web services
+         */
     }
 }

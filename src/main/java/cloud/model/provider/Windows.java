@@ -101,6 +101,7 @@ class Windows extends Provider implements Pricing {
                     double instanceCosts = service.getNumOne() * instancePrice;
                     double dataCosts = service.getData() * dataPrice;
                     serviceCosts.setPrice(instanceCosts + dataCosts);
+                    serviceCosts.setFormula(service.getNumOne() + " * " + instancePrice + " USD" + " + " + service.getData() + " * " + dataPrice + " USD");
                 }
             }
         } else if (service.getComputeType().equalsIgnoreCase(types[1]) && service.getSystem().equalsIgnoreCase(containerModes[0])) {
@@ -129,6 +130,9 @@ class Windows extends Provider implements Pricing {
                     double ramCosts = service.getNumOne() * service.getStorage() * (ramPrice / Constants.HOUR_SECONDS) * service.getNumTwo() * Constants.MONTH_DAYS;
                     double dataOutCosts = service.getData() * dataOutPrice;
                     serviceCosts.setPrice(cpuCosts + ramCosts + dataOutCosts);
+                    serviceCosts.setFormula(service.getNumOne()*service.getCPU()*service.getNumTwo()+" * "+cpuPrice+" USD" + " + "
+                            + service.getNumOne()*service.getStorage()*service.getNumTwo()+" * "+ramPrice+" USD" + " + "
+                            + service.getData() + " * " + dataOutPrice + " USD");
                 }
             }
         } else if (service.getComputeType().equalsIgnoreCase(types[2])) {
@@ -151,6 +155,7 @@ class Windows extends Provider implements Pricing {
                     }
                     double instanceCosts = instancePrice * Constants.MONTH_HOURS;
                     serviceCosts.setPrice(instanceCosts);
+                    serviceCosts.setFormula(instancePrice+" USD * "+Constants.MONTH_HOURS+" hours");
                 }
             }
         } else if (service.getComputeType().equalsIgnoreCase(types[4])) {
@@ -161,6 +166,8 @@ class Windows extends Provider implements Pricing {
             double requestsCosts = service.getNumOne() * requestsPrice;
             double durationCosts = (service.getNumOne() * durationFactor) * service.getNumTwo() * ((double) (service.getStorage()) / Constants.DATA_FACTOR) * durationPrice;
             serviceCosts.setPrice(requestsCosts + durationCosts);
+            serviceCosts.setFormula(service.getNumOne()+" * "+requestsPrice+" USD"+" + "
+                    + (service.getNumOne()*durationFactor)*service.getNumTwo()*((double)(service.getStorage())/Constants.DATA_FACTOR)+" * "+durationPrice+" USD");
         } else if (service.getComputeType().equalsIgnoreCase(types[5])) {
             /* compute type "Load Balancing" */
             double hourPrice = 0;
@@ -178,6 +185,8 @@ class Windows extends Provider implements Pricing {
             double hourCosts = service.getNumOne() * hourPrice * Constants.MONTH_HOURS;
             double dataCosts = service.getNumOne() * service.getData() * dataPrice;
             serviceCosts.setPrice(hourCosts + dataCosts);
+            serviceCosts.setFormula(service.getNumOne()+" * "+hourPrice+" USD * "+Constants.MONTH_HOURS+" hours"+" + "
+                    + service.getNumOne()+" * "+service.getData()+" * "+dataPrice+" USD");
         }
         return serviceCosts;
     }
@@ -226,6 +235,10 @@ class Windows extends Provider implements Pricing {
                             Math.ceil(service.getRequests().getValue() / requestsFactor * requestsWritePrice)  * Constants.MONTH_DAYS;
                     double dataCosts = service.getData() * dataOutPrice * Constants.MONTH_DAYS;
                     serviceCosts.setPrice(capacityCosts + requestsCosts + dataCosts);
+                    serviceCosts.setFormula(service.getCapacity()+" * "+capacityPrice+" USD * "+Constants.MONTH_DAYS+" days"+" + "
+                            + Math.ceil(service.getRequests().getKey()/requestsFactor)+" * "+requestsReadPrice+" USD * "+Constants.MONTH_DAYS+" days" +" + "
+                            + Math.ceil(service.getRequests().getValue()/requestsFactor)+" * "+requestsWritePrice+" USD * "+Constants.MONTH_DAYS+" days"+" + "
+                            + service.getData()+" * "+dataOutPrice+" USD * "+Constants.MONTH_DAYS+" days");
                 }
             }
         }
@@ -270,6 +283,10 @@ class Windows extends Provider implements Pricing {
                     double backupCosts = (service.getBackup() - service.getStorage()) * backupPrice;
                     double dataCosts = service.getData() * dataOutPrice;
                     serviceCosts.setPrice(instanceCosts + storageCosts + backupCosts + dataCosts);
+                    serviceCosts.setFormula(service.getDuration()+" * "+instancePrice+" USD"+" + "
+                            + service.getStorage()+" * "+storagePrice+" USD"+" + "
+                            + (service.getBackup()-service.getStorage())+" * "+backupPrice+" USD"+" + "
+                            + service.getData()+" * "+dataOutPrice+" USD");
                 }
             }
         }
@@ -300,6 +317,7 @@ class Windows extends Provider implements Pricing {
                     int numOfDataHours = (int) Math.ceil(dataHourSize * dataSize);
                     double dataCosts = numOfDataHours * Constants.MONTH_HOURS * dataPrice;
                     serviceCosts.setPrice(dataCosts);
+                    serviceCosts.setFormula(numOfDataHours+" * "+Constants.MONTH_HOURS+" hours"+" * "+dataPrice+" USD");
                 }
             }
         } else if (service.getAnalyticType().equalsIgnoreCase(types[6])) {
@@ -320,6 +338,7 @@ class Windows extends Provider implements Pricing {
                     }
                     double instanceCosts = service.getUnits() * instancePrice;
                     serviceCosts.setPrice(instanceCosts);
+                    serviceCosts.setFormula(service.getUnits()+" * "+instancePrice+" USD");
                 }
             }
         }
@@ -338,6 +357,8 @@ class Windows extends Provider implements Pricing {
             double dataInCosts = service.getData() * dataInPrice;
             double dataOutCosts = service.getDataOut() * dataOutPrice;
             serviceCosts.setPrice(dataInCosts + dataOutCosts);
+            serviceCosts.setFormula(service.getData()+" * "+dataInPrice+" USD"+" + "
+                    + service.getDataOut()+" * "+dataOutPrice+" USD");
         } else if (service.getNetworkType().equalsIgnoreCase(types[3])) {
             /* network type "CDN" */
             double dataOutPrice = 0;
@@ -359,6 +380,7 @@ class Windows extends Provider implements Pricing {
             }
             double dataOutCosts = service.getDataOut() * Constants.K_FACTOR * dataOutPrice;
             serviceCosts.setPrice(dataOutCosts);
+            serviceCosts.setFormula(service.getDataOut()+" * "+Constants.K_FACTOR+" * "+dataOutPrice+" USD");
         }
         return serviceCosts;
     }
@@ -404,8 +426,13 @@ class Windows extends Provider implements Pricing {
             double metricsCosts = service.getMetrics() * metricsPrice;
             double requestsCosts = service.getRequests() * requestsPrice;
             double eventsCosts = service.getEvents() * eventsPrice;
-            double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice;
+            double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice * Constants.MONTH_DAYS;
             serviceCosts.setPrice(metricsCosts + requestsCosts + eventsCosts + dataCosts);
+            serviceCosts.setFormula(service.getMetrics()+" * "+metricsPrice+" USD"+" + "
+                    + service.getRequests()+" * "+requestsPrice+" USD"+" + "
+                    + service.getEvents()+" * "+eventsPrice+" USD"+" + "
+                    + service.getData().getKey()+" * "+Constants.MONTH_DAYS+" * "+dataCollectPrice+" USD"+" + "
+                    + service.getData().getValue()+" * "+Constants.MONTH_DAYS+" * "+dataSavePrice+" USD");
         }
         return serviceCosts;
     }
