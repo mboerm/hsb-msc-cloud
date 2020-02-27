@@ -15,6 +15,6 @@ Dieses Projekt ist der Prototyp für die Master-Thesis mit dem Titel "Entwicklun
 - `git clone https://github.com/mboerm/hsb-msc-cloud.git`
 
 ## Anwendung starten
-- `mvn clean javafx:compile javafx:run`
+- `mvn clean javafx:compile javafx:run` oder die start.bat ausführen
 
 *Mirco Börm, 2020, GPL v3.0*
