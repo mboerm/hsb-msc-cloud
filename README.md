@@ -1,5 +1,5 @@
 # Cloud Architecture Optimizer
-Dieses Projekt ist der Prototyp für die Master-Thesis "Entwicklung eines Ansatzes und Applikation zur Deployment- und Kostenoptimierung von Architekturvarianten in der Cloud" an der HS-Bremen.
+Dieses Projekt ist der Prototyp für die Master-Thesis mit dem Titel "Entwicklung eines Ansatzes und Applikation zur Deployment- und Kostenoptimierung von Architekturvarianten in der Cloud" im Studiengang Informatik M.Sc. für Komplexe Softwaresysteme an der Hochschule Bremen.
 
 ## Autor
 - Mirco Börm
@@ -13,5 +13,8 @@ Dieses Projekt ist der Prototyp für die Master-Thesis "Entwicklung eines Ansatz
 
 ## Installation
 - `git clone https://github.com/mboerm/hsb-msc-cloud.git`
+
+## Anwendung starten
+- `mvn clean javafx:compile javafx:run`
 
 *Mirco Börm, 2020, GPL v3.0*
