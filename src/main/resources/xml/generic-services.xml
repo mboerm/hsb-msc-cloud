@@ -21,7 +21,6 @@
 	<service category="Compute" type="Load Balancer">
 		<id>Load Balancer</id>
 	</service>
-	
 	<service category="Storage" type="Object-Storage" mode="Standard">
 		<id>Object-Storage (Standard)</id>
 	</service>
@@ -34,7 +33,6 @@
 	<service category="Storage" type="File-Storage">
 		<id>File-Storage</id>
 	</service>
-	
 	<service category="Database" type="SQL" mode="MySQL">
 		<id>SQL (MySQL)</id>
 	</service>
@@ -53,7 +51,6 @@
 	<service category="Database" type="Cache">
 		<id>Cache</id>
 	</service>
-	
 	<service category="Analytic" type="Data Query">
 		<id>Data Query</id>
 	</service>
@@ -75,21 +72,18 @@
 	<service category="Analytic" type="Search Engine">
 		<id>Search Engine</id>
 	</service>
-	
 	<service category="Integration" type="Communication" mode="Messaging">
 		<id>Communication (Messaging)</id>
 	</service>
 	<service category="Integration" type="Communication" mode="Queueing">
 		<id>Communication (Queueing)</id>
 	</service>
-	
 	<service category="Administration" type="Monitoring" mode="System">
 		<id>Monitoring (System)</id>
 	</service>
 	<service category="Administration" type="Monitoring" mode="User">
 		<id>Monitoring (User)</id>
 	</service>
-	
 	<service category="Network" type="VPC">
 		<id>VPC</id>
 	</service>
