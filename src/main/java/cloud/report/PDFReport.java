@@ -38,7 +38,7 @@ public class PDFReport implements Report {
         }
 
         date = Calendar.getInstance().getTime();
-        dest = "report_" + Constants.DATE_FORMAT_FILE.format(date) + ".pdf";
+        dest = Config.getInstance().getConfigValue("report-filename") + Constants.DATE_FORMAT_FILE.format(date) + ".pdf";
     }
 
     @Override
@@ -59,7 +59,7 @@ public class PDFReport implements Report {
     private void writeHeader() {
         document.add(new Paragraph(Constants.DATE_FORMAT_TITLE.format(date)).setFont(bf12Bold));
         document.add(addEmptyLine(new Paragraph(), 1));
-        document.add(new Paragraph("Cost Calculation Report").setFont(bf12Bold).setFontSize(16));
+        document.add(new Paragraph(Config.getInstance().getConfigValue("report-title")).setFont(bf12Bold).setFontSize(16));
         document.add(addEmptyLine(new Paragraph(), 1));
     }
 
@@ -180,17 +180,14 @@ public class PDFReport implements Report {
         try {
             // Creating a PdfWriter for destination
             PdfWriter writer = new PdfWriter(dest);
-
             // Creating a PdfDocument
             PdfDocument pdfDoc = new PdfDocument(writer);
-
             // Adding a new page
             pdfDoc.addNewPage();
-
             // Creating a Document
             document = new Document(pdfDoc);
         } catch (FileNotFoundException e) {
-            System.err.println("Creating report failed! " + e);
+            System.err.println("Error in creating report! " + e);
         }
     }
 

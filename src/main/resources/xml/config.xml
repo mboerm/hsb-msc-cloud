@@ -72,4 +72,7 @@
     <entry key="services">xml/services.xml</entry>
 
     <entry key="about-text">This tool is the result of the master thesis.</entry>
+
+    <entry key="report-title">Cloud Architecture Report</entry>
+    <entry key="report-filename">report_</entry>
 </properties>
