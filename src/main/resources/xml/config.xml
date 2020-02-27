@@ -69,7 +69,7 @@
     <entry key="aws-services">xml/aws-services.xml</entry>
     <entry key="azure-services">xml/azure-services.xml</entry>
     <entry key="gcp-services">xml/gcp-services.xml</entry>
-    <entry key="services">xml/services.xml</entry>
+    <entry key="generic-services">xml/generic-services.xml</entry>
 
     <entry key="about-text">This tool is the result of the master thesis.</entry>
 

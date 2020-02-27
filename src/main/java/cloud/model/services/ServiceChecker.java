@@ -47,7 +47,7 @@ public class ServiceChecker {
 
     public String getServiceIdentifier(String category, String type, String... mode) {
         try {
-            File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(Config.getInstance().getConfigValue("services"))).getFile());
+            File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(Config.getInstance().getConfigValue("generic-services"))).getFile());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
