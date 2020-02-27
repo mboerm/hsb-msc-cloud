@@ -1,42 +1,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>cloud</groupId>
     <artifactId>hsb-msc-cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>hsb-msc-cloud</name>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>13</jdk.version>
         <javafx.version>13.0.1</javafx.version>
-        <log4j.version>1.2.17</log4j.version>
-        <itext5.version>5.5.13.1</itext5.version>
         <itext7.version>7.1.10</itext7.version>
     </properties>
 
     <build>
         <plugins>
+            <!-- Set a compiler level -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>11</release>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-                    <archive>
-                        <index>true</index>
-                        <manifest>
-                            <mainClass>cloud.main.CloudApp</mainClass>
-                        </manifest>
-                    </archive>
+                    <release>${jdk.version}</release>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                 </configuration>
             </plugin>
 
@@ -65,17 +53,13 @@
                 </executions>
             </plugin>
         </plugins>
+
     </build>
 
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
         <dependency>
