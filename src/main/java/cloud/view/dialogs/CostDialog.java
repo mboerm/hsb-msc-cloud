@@ -13,12 +13,18 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+/**
+ * Cost dialog
+ */
 public class CostDialog extends Dialog<ButtonType> {
 
     private TableView<Row> costsTable = new TableView<>();
     private Label totalCostsValueLabel;
     private ButtonType buttonTypeCreate;
 
+    /**
+     * Constructor
+     */
     public CostDialog() {
         setTitle(Config.getInstance().getConfigValue("dialog-costs-title"));
         setResizable(false);
@@ -44,6 +50,9 @@ public class CostDialog extends Dialog<ButtonType> {
         getDialogPane().getButtonTypes().addAll(buttonTypeCreate, ButtonType.CANCEL);
     }
 
+    /**
+     * Init costs table
+     */
     private void initCostsTable() {
         TableColumn<Row, String> serviceNameCol = new TableColumn<>("Name");
         TableColumn<Row, String> serviceProviderNameCol = new TableColumn<>("Provider-Service");
@@ -69,6 +78,9 @@ public class CostDialog extends Dialog<ButtonType> {
     public ButtonType getButtonTypeCreate() {return this.buttonTypeCreate;}
     public Label getTotalCostsValueLabel() {return this.totalCostsValueLabel;}
 
+    /**
+     * Inner class to create row of costs table
+     */
     public static class Row {
         private SimpleStringProperty fieldName;
         private SimpleStringProperty fieldProviderService;

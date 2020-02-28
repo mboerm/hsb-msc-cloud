@@ -4,11 +4,17 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
+/**
+ * Panel of design controls
+ */
 public class DesignControls extends VBox {
 
     private Button controlAdd;
     private Button controlRemove;
 
+    /**
+     * Constructor
+     */
     public DesignControls() {
         initControls();
         setSpacing(10);
@@ -16,6 +22,9 @@ public class DesignControls extends VBox {
         getChildren().addAll(controlAdd, controlRemove);
     }
 
+    /**
+     * Init design controls
+     */
     private void initControls() {
         controlAdd = new Button("Add");
         controlRemove = new Button("Remove");

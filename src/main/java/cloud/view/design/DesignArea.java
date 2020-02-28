@@ -7,14 +7,23 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
+/**
+ * Panel of design area
+ */
 public class DesignArea extends VBox {
     private TableView<Service> servicesTable = new TableView<>();
 
+    /**
+     * Constructor
+     */
     public DesignArea() {
         initArea();
         getChildren().add(servicesTable);
     }
 
+    /**
+     * Init design area
+     */
     private void initArea() {
         TableColumn<Service, String> serviceNameCol = new TableColumn<>("Name");
         TableColumn<Service, String> serviceDisplayCol = new TableColumn<>("Service");

@@ -9,6 +9,9 @@ import javafx.util.Pair;
 
 import java.util.Arrays;
 
+/**
+ * Database service panel
+ */
 public class DatabaseServicePane extends ServicePropertiesPane {
 
     private Label databaseTypeLbl;
@@ -24,6 +27,9 @@ public class DatabaseServicePane extends ServicePropertiesPane {
     private Spinner<Integer> numOneSpinner;
     private Spinner<Integer> numTwoSpinner;
 
+    /**
+     * Constructor
+     */
     public DatabaseServicePane() {
         databaseTypeLbl = new Label("Type:");
         databaseTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("database-system-type"));
@@ -48,6 +54,7 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(databaseTypeLbl, 0, 2);
         add(databaseTypeBox, 1, 2);
 
+        /* set controls by database type */
         databaseTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("database-system-type");
@@ -95,6 +102,7 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(databaseTypeBox, 1, 2);
     }
 
+    /* set controls for type sql */
     private void setSQLControls() {
         labels = Config.getInstance().getConfigValuesAsArray("database-sql-labels");
         add(new Label(labels[0]), 0, 3);
@@ -119,6 +127,7 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 10);
     }
 
+    /* set controls for type noSql */
     private void setNoSQLControls() {
         labels = Config.getInstance().getConfigValuesAsArray("database-nosql-labels");
         add(new Label(labels[0]), 0, 3);
@@ -133,6 +142,7 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 6);
     }
 
+    /* set controls for type document */
     private void setDocumentControls() {
         labels = Config.getInstance().getConfigValuesAsArray("database-document-labels");
         add(new Label(labels[0]), 0, 3);
@@ -149,6 +159,7 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 6);
     }
 
+    /* set controls for type cache */
     private void setCacheControls() {
         labels = Config.getInstance().getConfigValuesAsArray("database-cache-labels");
         add(new Label(labels[0]), 0, 3);

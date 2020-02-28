@@ -9,12 +9,18 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * Abstract service property pane
+ */
 public abstract class ServicePropertiesPane extends GridPane {
 
     private Label servicePropertiesLbl;
     private Label nameLbl;
     private TextField nameTFld;
 
+    /**
+     * Constructor
+     */
     public ServicePropertiesPane() {
         setPadding(new Insets(10, 10, 10, 10));
         setHgap(10);
@@ -42,5 +48,8 @@ public abstract class ServicePropertiesPane extends GridPane {
         add(nameTFld, 1, 1);
     }
 
+    /**
+     * Abstract method to recover controls of specific service pane
+     */
     abstract void recoverControls();
 }

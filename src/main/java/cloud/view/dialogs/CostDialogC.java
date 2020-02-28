@@ -11,9 +11,16 @@ import javafx.util.Pair;
 
 import java.util.Optional;
 
+/**
+ * Controller of costs dialog
+ */
 public class CostDialogC {
     private CostDialog costReport;
 
+    /**
+     * Show new cost dialog
+     * @return true if create button was pressed
+     */
     public boolean showCostReport() {
         costReport = new CostDialog();
         setCostsData();
@@ -23,10 +30,15 @@ public class CostDialogC {
         return (result.isPresent()) && (result.get() == costReport.getButtonTypeCreate());
     }
 
+    /**
+     * Set costs data for costs dialog
+     */
     private void setCostsData() {
+        /* get list of service and costs pairs */
         ObservableList<Pair<Service, Costs>> costs = DesignManager.getInstance().getDesign().getServicesCosts();
         ObservableList<CostDialog.Row> rowList = FXCollections.observableArrayList();
 
+        /* add new row to row list */
         for (Pair<Service, Costs> cost : costs) {
             rowList.add(new CostDialog.Row(
                     cost.getKey().getName(),

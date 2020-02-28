@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.util.Pair;
 
+/**
+ * Administration service panel
+ */
 public class AdministrationServicePane extends ServicePropertiesPane {
 
     private Label administrationTypeLbl;
@@ -18,6 +21,9 @@ public class AdministrationServicePane extends ServicePropertiesPane {
     private Spinner<Integer> eventsSpinner;
     private CheckBox isLoggingBox;
 
+    /**
+     * Constructor
+     */
     public AdministrationServicePane() {
         administrationTypeLbl = new Label("Type:");
         administrationTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("administration-type"));
@@ -37,6 +43,7 @@ public class AdministrationServicePane extends ServicePropertiesPane {
         add(administrationTypeLbl, 0, 2);
         add(administrationTypeBox, 1, 2);
 
+        /* set controls by administration type */
         administrationTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("administration-type");
@@ -75,6 +82,7 @@ public class AdministrationServicePane extends ServicePropertiesPane {
         add(administrationTypeBox, 1, 2);
     }
 
+    /* set controls for type monitoring */
     private void setMonitoringControls() {
         String[] labels = Config.getInstance().getConfigValuesAsArray("administration-monitoring-labels");
         add(new Label(labels[0]), 0, 3);
