@@ -97,12 +97,14 @@ public class PDFReport implements Report {
         }
         document.add(servicesList);
 
+
+        document.add(new AreaBreak());
+
         float[] columnWidths = {150F, 200F};
         Table propertiesTable;
         Table usageTable;
         String[] serviceGeneralLabels = Config.getInstance().getConfigValuesAsArray("service-general-labels");
         String[] serviceUsageLabels = Config.getInstance().getConfigValuesAsArray("service-usage-labels");
-        document.add(addEmptyLine(new Paragraph(), 1));
         for (Service service : DesignManager.getInstance().getDesign().getServicesList()) {
             document.add(new Paragraph(service.getName()).setFont(bf12Bold));
 
