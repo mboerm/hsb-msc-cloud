@@ -15,8 +15,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseButton;
 
-import static cloud.configuration.Constants.*;
-
 public class DesignViewC {
 
     // View
@@ -89,7 +87,7 @@ public class DesignViewC {
             DesignManager.getInstance().getDesign().setUsagePeriod(newValue));
 
         view.getPaneDesignProperties().getPrimaryLocationBox().getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
-            DesignManager.getInstance().getDesign().setPrimaryRegion(newValue));
+            DesignManager.getInstance().getDesign().setPrimaryLocation(newValue));
 
         view.getPaneDesignProperties().getNumOfInstancesSpinner().valueProperty().addListener((obs, oldValue, newValue) ->
             DesignManager.getInstance().getDesign().setNumOfInstances(newValue));

@@ -23,7 +23,7 @@ public class ServiceDialogC {
         dialogService = new ServiceDialog();
         servicePaneFactory = new ServicePaneFactory();
         serviceUsagePane = dialogService.getServiceUsagePropertiesPane();
-        serviceUsagePane.setLocation(DesignManager.getInstance().getDesign().getPrimaryRegion());
+        serviceUsagePane.setLocation(DesignManager.getInstance().getDesign().getPrimaryLocation());
 
         dialogService.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             dialogService.setSeparator();

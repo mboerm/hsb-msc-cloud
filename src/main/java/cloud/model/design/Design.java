@@ -14,7 +14,7 @@ public class Design {
 
     private Provider provider;
     private String usagePeriod;
-    private String primaryRegion;
+    private String primaryLocation;
     private Integer numOfInstances;
     private Integer numOfRequests;
     private String periodOfRequests;
@@ -23,7 +23,7 @@ public class Design {
 
     public Design() {
         setUsagePeriod("");
-        setPrimaryRegion("");
+        setPrimaryLocation("");
         setNumOfInstances(0);
         setNumOfRequests(0);
         setPeriodOfRequests("");
@@ -70,8 +70,8 @@ public class Design {
     public String getUsagePeriod() {return this.usagePeriod;}
     public void setUsagePeriod(String period) {this.usagePeriod = period;}
 
-    public String getPrimaryRegion() {return this.primaryRegion;}
-    public void setPrimaryRegion(String region) {this.primaryRegion = region;}
+    public String getPrimaryLocation() {return this.primaryLocation;}
+    public void setPrimaryLocation(String location) {this.primaryLocation = location;}
 
     public Integer getNumOfInstances() {return this.numOfInstances;}
     public void setNumOfInstances(Integer instances) {this.numOfInstances = instances;}
@@ -114,5 +114,16 @@ public class Design {
         /*
          * TODO: implement function to compare costs
          */
+    }
+
+    public String[] getDesignProperties() {
+        return new String[] {
+                this.getProvider().getServiceName(),
+                this.getPrimaryLocation(),
+                this.getUsagePeriod(),
+                this.getNumOfInstances().toString(),
+                this.getNumOfRequests().toString() + " " + this.getPeriodOfRequests(),
+                this.getNumOfCapacity().toString() + " " + this.getPeriodOfCapacity()
+        };
     }
 }
