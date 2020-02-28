@@ -1,6 +1,7 @@
 package cloud.report;
 
 import cloud.configuration.*;
+import cloud.model.design.Design;
 import cloud.model.design.DesignManager;
 import cloud.model.pricing.Costs;
 import cloud.model.services.Service;
@@ -24,12 +25,19 @@ import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfFont;
 
+/**
+ * Report class to create PDF
+ */
 public class PDFReport implements Report {
+    /* Destination path of pdf report */
     private String dest;
     private Document document;
     private Date date;
     private PdfFont bf12Bold;
 
+    /**
+     * Constructor
+     */
     public PDFReport() {
         try {
             bf12Bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
@@ -56,6 +64,9 @@ public class PDFReport implements Report {
         closeReport();
     }
 
+    /**
+     * Write header
+     */
     private void writeHeader() {
         document.add(new Paragraph(Constants.DATE_FORMAT_TITLE.format(date)).setFont(bf12Bold));
         document.add(addEmptyLine(new Paragraph(), 1));
@@ -63,32 +74,33 @@ public class PDFReport implements Report {
         document.add(addEmptyLine(new Paragraph(), 1));
     }
 
+    /**
+     * Write summary chapter
+     */
     private void writeChapterSummary() {
         document.add(new Paragraph("Summary").setFont(bf12Bold).setFontSize(14));
 
         String[] summaryLabels = Config.getInstance().getConfigValuesAsArray("design-property-labels");
+        String[] summaryProperties = DesignManager.getInstance().getDesign().getDesignProperties();
         float[] columnWidths = {150F, 150F};
         Table summaryTable = new Table(columnWidths);
         summaryTable.setHorizontalAlignment(HorizontalAlignment.LEFT);
 
-        insertCell(summaryTable, summaryLabels[0], TextAlignment.LEFT);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getProvider().getServiceName(), TextAlignment.CENTER);
-        insertCell(summaryTable, summaryLabels[1], TextAlignment.LEFT);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getPrimaryRegion(), TextAlignment.CENTER);
-        insertCell(summaryTable, summaryLabels[2], TextAlignment.LEFT);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getUsagePeriod(), TextAlignment.CENTER);
-        insertCell(summaryTable, summaryLabels[3], TextAlignment.LEFT);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getNumOfInstances().toString(), TextAlignment.CENTER);
-        insertCell(summaryTable, summaryLabels[4], TextAlignment.LEFT);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getNumOfRequests().toString(), TextAlignment.CENTER);
-        insertCell(summaryTable, summaryLabels[5], TextAlignment.LEFT);
-        insertCell(summaryTable, DesignManager.getInstance().getDesign().getNumOfCapacity().toString(), TextAlignment.CENTER);
+        for (int i = 0; i < summaryLabels.length; i++) {
+            insertCell(summaryTable, summaryLabels[i], TextAlignment.LEFT);
+            insertCell(summaryTable, summaryProperties[i], TextAlignment.CENTER);
+        }
 
         document.add(summaryTable);
     }
 
+    /**
+     * Write services chapter
+     */
     private void writeChapterServices() {
         document.add(addEmptyLine(new Paragraph(), 1));
+
+        /* Create and write list of services to document */
         document.add(new Paragraph("Services").setFont(bf12Bold).setFontSize(14));
 
         List servicesList = new List().setSymbolIndent(12).setListSymbol("\u2022");
@@ -97,9 +109,9 @@ public class PDFReport implements Report {
         }
         document.add(servicesList);
 
-
         document.add(new AreaBreak());
 
+        /* Create and write table of service properties to document */
         float[] columnWidths = {150F, 200F};
         Table propertiesTable;
         Table usageTable;
@@ -134,15 +146,18 @@ public class PDFReport implements Report {
         }
     }
 
+    /**
+     * Write cost calculation chapter
+     */
     private void writeChapterCostCalc() {
         document.add(new AreaBreak());
         document.add(new Paragraph("Cost Calculation").setFont(bf12Bold).setFontSize(14));
 
+        /* Single service costs */
         document.add(new Paragraph("Service costs"));
         float[] columnWidthsServices = {100F, 100F, 200F};
         Table serviceCostsTable = new Table(columnWidthsServices);
         serviceCostsTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
-
         for (Pair<Service, Costs> designCost : DesignManager.getInstance().getDesign().getServicesCosts()) {
             insertCell(serviceCostsTable, designCost.getKey().getName(), TextAlignment.LEFT, true);
             insertCell(serviceCostsTable, Constants.DOUBLE_FORMAT_2.format(designCost.getValue().getPrice()) + " USD", TextAlignment.RIGHT, true);
@@ -150,6 +165,7 @@ public class PDFReport implements Report {
         }
         document.add(serviceCostsTable);
 
+        /* Total costs */
         document.add(new Paragraph("Total costs"));
         float[] columnWidthsTotal = {100F, 100F};
         Table totalCostsTable = new Table(columnWidthsTotal);
@@ -163,21 +179,33 @@ public class PDFReport implements Report {
         document.add(totalCostsTable);
     }
 
+    /**
+     * Write cost scaling chapter
+     */
     private void writeChapterCostScale() {
         document.add(addEmptyLine(new Paragraph(), 1));
         document.add(new Paragraph("Cost Scaling").setFont(bf12Bold).setFontSize(14));
     }
 
+    /**
+     * Write cost optimization chapter
+     */
     private void writeChapterCostOptimize() {
         document.add(addEmptyLine(new Paragraph(), 1));
         document.add(new Paragraph("Cost Optimization").setFont(bf12Bold).setFontSize(14));
     }
 
+    /**
+     * Write cost comparison chapter
+     */
     private void writeChapterCostCompare() {
         document.add(addEmptyLine(new Paragraph(), 1));
         document.add(new Paragraph("Cost Comparison").setFont(bf12Bold).setFontSize(14));
     }
 
+    /**
+     * Create pdf document
+     */
     private void createDocument() {
         try {
             // Creating a PdfWriter for destination
@@ -193,11 +221,21 @@ public class PDFReport implements Report {
         }
     }
 
+    /**
+     * Close report
+     */
     private void closeReport() {
         document.close();
         System.out.println("Report completed!");
     }
 
+    /**
+     * Insert cell to table
+     * @param table Table
+     * @param text content of cell
+     * @param align alignment of cell
+     * @param border boolean
+     */
     private static void insertCell(Table table, String text, TextAlignment align, boolean... border){
         //create a new cell with the specified Text
         Cell cell = new Cell().add(new Paragraph(text.trim()));
@@ -215,6 +253,12 @@ public class PDFReport implements Report {
         table.addCell(cell);
     }
 
+    /**
+     * Create multiple paragraph
+     * @param paragraph paragraph to create
+     * @param number number of lines
+     * @return paragraph
+     */
     private static Paragraph addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
             paragraph.add(new Paragraph(" "));
