@@ -1,5 +1,8 @@
 package cloud.model.design;
 
+/**
+ * Design manager class
+ */
 public class DesignManager {
 
     private static DesignManager instance;
