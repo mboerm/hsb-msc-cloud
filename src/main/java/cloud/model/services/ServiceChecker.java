@@ -309,7 +309,7 @@ public class ServiceChecker {
                         Config.getInstance().getConfigValuesAsArray("network-vpc-labels"),
                         new String[]{
                                 String.valueOf(netService.getRequests()),
-                                String.valueOf(netService.getZones()),
+                                String.valueOf(netService.getNumTwo()),
                                 String.valueOf(netService.getData()),
                                 String.valueOf(netService.getDataOut())
                         }
@@ -344,7 +344,7 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("network-dns-labels"),
                         new String[] {
-                                String.valueOf(netService.getZones()),
+                                String.valueOf(netService.getNumTwo()),
                                 String.valueOf(netService.getData())
                         }
                 );

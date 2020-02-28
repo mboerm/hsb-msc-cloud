@@ -142,7 +142,7 @@ public class ServiceDialogC {
         } else if (ServiceChecker.getInstance().isNetworkItem(item)) {
             return ServiceFactory.getService(new NetworkServiceCreator(
                     networkPane.getName(), networkPane.getNetworkType(), networkPane.getRequests(),
-                    networkPane.getData(), networkPane.getDataOut(), networkPane.getZones()
+                    networkPane.getData(), networkPane.getDataOut(), networkPane.getNumOne(), networkPane.getNumTwo()
             ));
         } else if (ServiceChecker.getInstance().isIntegrationItem(item)) {
             return ServiceFactory.getService(new IntegrationServiceCreator(
@@ -207,7 +207,8 @@ public class ServiceDialogC {
             networkPane.setRequests(((NetworkService) serviceData).getRequests());
             networkPane.setData(((NetworkService) serviceData).getData());
             networkPane.setDataOut(((NetworkService) serviceData).getDataOut());
-            networkPane.setZones(((NetworkService) serviceData).getZones());
+            networkPane.setNumOne(((NetworkService) serviceData).getNumOne());
+            networkPane.setNumTwo(((NetworkService) serviceData).getNumTwo());
         } else if (ServiceChecker.getInstance().isIntegrationItem(serviceData.getCategory()) && serviceData instanceof IntegrationService) {
             integrationPane.setName(serviceData.getName());
             integrationPane.setIntegrationType(((IntegrationService) serviceData).getIntegrationType());

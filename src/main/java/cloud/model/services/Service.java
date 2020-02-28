@@ -15,15 +15,15 @@ public abstract class Service {
     private String opMode;
 
     public Service() {
-        this.setName("none");
-        this.setIdentifier("none");
-        this.setProviderService("none");
-        this.setCategory("none");
-        this.setLocation("none");
-        this.setUsageType("none");
-        this.setUsagePeriod("none");
-        this.setUsagePrepay("none");
-        this.setOpMode("none");
+        this.setName("");
+        this.setIdentifier("");
+        this.setProviderService("");
+        this.setCategory("");
+        this.setLocation("");
+        this.setUsageType("");
+        this.setUsagePeriod("");
+        this.setUsagePrepay("");
+        this.setOpMode("");
     }
 
     public String getName() {
@@ -91,7 +91,7 @@ public abstract class Service {
      */
     public String[] getGeneralProperties() {
         return new String[] {
-                this.getName(),
+                this.getName() == null ? "-" : this.getName(),
                 this.getCategory(),
                 this.getProviderService(),
                 this.getIdentifier()
@@ -104,11 +104,11 @@ public abstract class Service {
      */
     public String[] getUsageProperties() {
         return new String[] {
-                this.getLocation(),
-                this.getUsageType(),
-                this.getUsagePeriod(),
-                this.getUsagePrepay(),
-                this.getOpMode()
+                this.getLocation() == null ? "-" : this.getLocation(),
+                this.getUsageType() == null ? "-" : this.getUsageType(),
+                this.getUsagePeriod() == null ? "-" : this.getUsagePeriod(),
+                this.getUsagePrepay() == null ? "-" : this.getUsagePrepay(),
+                this.getOpMode() == null ? "-" : this.getOpMode(),
         };
     }
 }
