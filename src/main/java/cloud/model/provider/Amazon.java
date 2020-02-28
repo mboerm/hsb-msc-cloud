@@ -222,15 +222,15 @@ class Amazon extends Provider implements Pricing {
                             dataOutPrice = Double.parseDouble(subNode.getTextContent());
                         }
                     }
-                    double capacityCosts = service.getCapacity() * capacityPrice * Constants.MONTH_DAYS;
-                    double requestsCosts = Math.ceil(service.getRequests().getKey() / requestsFactor) * requestsReadPrice * Constants.MONTH_DAYS +
-                            Math.ceil(service.getRequests().getValue() / requestsFactor) * requestsWritePrice * Constants.MONTH_DAYS;
-                    double dataCosts = service.getData() * dataOutPrice * Constants.MONTH_DAYS;
+                    double capacityCosts = service.getCapacity() * capacityPrice;
+                    double requestsCosts = Math.ceil(service.getRequests().getKey() / requestsFactor) * requestsReadPrice +
+                            Math.ceil(service.getRequests().getValue() / requestsFactor) * requestsWritePrice;
+                    double dataCosts = service.getData() * dataOutPrice;
                     serviceCosts.setPrice(capacityCosts + requestsCosts + dataCosts);
-                    serviceCosts.setFormula(service.getCapacity()+" * "+capacityPrice+" USD * "+Constants.MONTH_DAYS+" days"+" + "
-                            + Math.ceil(service.getRequests().getKey()/requestsFactor)+" * "+requestsReadPrice+" USD * "+Constants.MONTH_DAYS+" days" +" + "
-                            + Math.ceil(service.getRequests().getValue()/requestsFactor)+" * "+requestsWritePrice+" USD * "+Constants.MONTH_DAYS+" days"+" + "
-                            + service.getData()+" * "+dataOutPrice+" USD * "+Constants.MONTH_DAYS+" days");
+                    serviceCosts.setFormula(service.getCapacity()+" * "+capacityPrice+" USD"+" + "
+                            + Math.ceil(service.getRequests().getKey()/requestsFactor)+" * "+requestsReadPrice+" USD"+" + "
+                            + Math.ceil(service.getRequests().getValue()/requestsFactor)+" * "+requestsWritePrice+" USD"+" + "
+                            + service.getData()+" * "+dataOutPrice+" USD");
                 }
             }
         }

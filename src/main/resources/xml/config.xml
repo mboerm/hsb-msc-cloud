@@ -63,7 +63,7 @@
     <entry key="analytic-stream-labels">Datasets:;Dataset size in KB:</entry>
     <entry key="analytic-catalog-labels">Units:;Requests:</entry>
     <entry key="analytic-lake-labels">Units:;Processed data in GB:</entry>
-    <entry key="analytic-search-labels">Instance type:;CPU:;RAM in GB:;Instance-hours:;Processed data in GB:;Transferred data in GB:</entry>
+    <entry key="analytic-search-labels">Instance type:;CPU:;RAM in GB:;Hours:;Processed data in GB:;Transferred data in GB:</entry>
     <entry key="network-vpn-labels">Connections:;Incoming data in GB:;Outgoing data in GB:</entry>
     <entry key="network-vpc-labels">Connections:;Endpoints:;Hours:;Incoming data in GB:;Outgoing data in GB:</entry>
     <entry key="network-private-labels">Connections:;Transferred data in GB:</entry>

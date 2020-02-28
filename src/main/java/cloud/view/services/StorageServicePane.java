@@ -109,16 +109,14 @@ public class StorageServicePane extends ServicePropertiesPane {
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-object-mode"));
         add(new Label(labels[0]), 0, 4);
         add(capacitySpinner, 1, 4);
-        add(new Label("per day"), 2, 4);
+        add(new Label("per month"), 2, 4);
         add(new Label(labels[1]), 0, 5);
         add(requestsReadSpinner, 1, 5);
-        add(new Label("per day"), 2, 5);
         add(new Label(labels[2]), 0, 6);
         add(requestsWriteSpinner, 1, 6);
-        add(new Label("per day"), 2, 6);
-        add(new Label(labels[4]), 0, 7);
+        add(new Label(labels[3]), 0, 7);
         add(dataSpinner, 1, 7);
-        add(new Label("per day"), 2, 7);
+        add(new Label("per month"), 2, 7);
     }
 
     /* set controls for type block storage */

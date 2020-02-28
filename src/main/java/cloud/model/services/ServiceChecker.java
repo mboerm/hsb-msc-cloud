@@ -293,6 +293,7 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("analytic-search-labels"),
                         new String[] {
+                                analyticService.getInstanceType(),
                                 analyticService.getNum().getKey().toString(),
                                 analyticService.getNum().getValue().toString(),
                                 String.valueOf(analyticService.getUnits()),
