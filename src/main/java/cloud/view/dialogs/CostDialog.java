@@ -1,5 +1,6 @@
 package cloud.view.dialogs;
 
+import cloud.configuration.Config;
 import cloud.configuration.Constants;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
@@ -19,7 +20,7 @@ public class CostDialog extends Dialog<ButtonType> {
     private ButtonType buttonTypeCreate;
 
     public CostDialog() {
-        setTitle(Constants.DIALOG_COSTS_TITLE);
+        setTitle(Config.getInstance().getConfigValue("dialog-costs-title"));
         setResizable(false);
 
         initCostsTable();

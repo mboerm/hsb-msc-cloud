@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+    <entry key="app-title">Cloud Architecture Optimizer</entry>
+    <entry key="dialog-service-title">Service Dialog</entry>
+    <entry key="dialog-service-header">Select service category and define properties</entry>
+    <entry key="dialog-costs-title">Cost Calculation Report</entry>
+    <entry key="report-title">Cloud Architecture Report</entry>
+    <entry key="report-filename">report_</entry>
+
     <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Administration</entry>
     <entry key="service-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>
     <entry key="service-usage-type">On-Demand;Reserved;Spot</entry>
@@ -72,7 +79,4 @@
     <entry key="generic-services">xml/generic-services.xml</entry>
 
     <entry key="about-text">This tool is the result of the master thesis.</entry>
-
-    <entry key="report-title">Cloud Architecture Report</entry>
-    <entry key="report-filename">report_</entry>
 </properties>

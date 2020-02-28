@@ -1,5 +1,6 @@
 package cloud.view;
 
+import cloud.configuration.Config;
 import cloud.view.design.DesignArea;
 import cloud.view.design.DesignControls;
 import cloud.view.design.DesignProperties;
@@ -44,7 +45,7 @@ public class DesignView {
     public void show(Stage stage) {
         stage.setMinHeight(WINDOW_MIN_HEIGHT);
         stage.setMinWidth(WINDOW_MIN_WIDTH);
-        stage.setTitle(APP_TITLE);
+        stage.setTitle(Config.getInstance().getConfigValue("app-title"));
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

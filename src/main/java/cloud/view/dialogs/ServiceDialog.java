@@ -22,8 +22,8 @@ public class ServiceDialog extends Dialog<String> {
     private Button buttonOk;
 
     public ServiceDialog() {
-        setTitle(Constants.DIALOG_SERVICE_TITLE);
-        setHeaderText(Constants.DIALOG_SERVICE_HEADER);
+        setTitle(Config.getInstance().getConfigValue("dialog-service-title"));
+        setHeaderText(Config.getInstance().getConfigValue("dialog-service-header"));
         setResizable(false);
 
         Stage stage = (Stage) getDialogPane().getScene().getWindow();

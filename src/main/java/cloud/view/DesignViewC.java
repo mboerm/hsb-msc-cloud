@@ -167,7 +167,7 @@ public class DesignViewC {
 
     private void showAboutDialog() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("About " + APP_TITLE);
+        alert.setTitle("About " + Config.getInstance().getConfigValue("app-title"));
         alert.setHeaderText(null);
         alert.setContentText(Config.getInstance().getConfigValuesAsArray("about-text")[0]);
         alert.showAndWait();
