@@ -3,8 +3,14 @@ package cloud.model.provider;
 import cloud.configuration.Config;
 import cloud.model.pricing.Pricing;
 
+/**
+ * Protected Google provider class
+ */
 class Google extends Provider implements Pricing {
 
+    /**
+     * Protected constructor
+     */
     Google() {
         setServiceName("Google Cloud Platform");
         setServiceFile(Config.getInstance().getConfigValue("gcp-services"));

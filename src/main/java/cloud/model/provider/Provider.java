@@ -11,6 +11,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Objects;
 
+/**
+ * Abstract provider class
+ */
 public abstract class Provider implements Pricing {
     private String serviceName;
     private String serviceFile;
@@ -28,6 +31,11 @@ public abstract class Provider implements Pricing {
         this.serviceFile = serviceFile;
     }
 
+    /**
+     * Get matching service of provider for generic service id
+     * @param id generic service identifier
+     * @return name of matching service
+     */
     public String getMatchingServiceForID(String id) {
         setDocument(serviceFile);
         NodeList servicesNodeList = doc.getElementsByTagName("service");

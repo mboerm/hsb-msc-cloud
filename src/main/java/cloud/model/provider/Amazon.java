@@ -11,8 +11,14 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * protected Amazon provider class
+ */
 class Amazon extends Provider implements Pricing {
 
+    /**
+     * Protected constructor
+     */
     Amazon() {
         setServiceName("Amazon Web Services");
         setServiceFile(Config.getInstance().getConfigValue("aws-services"));
@@ -33,6 +39,7 @@ class Amazon extends Provider implements Pricing {
         NodeList servicesNodeList = getDocument().getElementsByTagName("service");
         Costs costs = new Costs();
 
+        /* check category and calculate static costs for all added services */
         for (Service service : services) {
             for(int i=0; i<servicesNodeList.getLength(); i++) {
                 Node serviceNode = servicesNodeList.item(i);
@@ -61,6 +68,12 @@ class Amazon extends Provider implements Pricing {
         }
     }
 
+    /**
+     * Calculate compute service costs
+     * @param service compute service
+     * @param element element of service file
+     * @return costs object
+     */
     private Costs calcComputeServiceCosts(ComputeService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("compute-type");
         String[] containerModes = Config.getInstance().getConfigValuesAsArray("compute-container-type");
@@ -164,13 +177,19 @@ class Amazon extends Provider implements Pricing {
         return serviceCosts;
     }
 
+    /**
+     * Calculate storage service costs
+     * @param service storage service
+     * @param element element of service file
+     * @return costs object
+     */
     private Costs calcStorageServiceCosts(StorageService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("storage-type");
         String[] modes = Config.getInstance().getConfigValuesAsArray("storage-object-mode");
         Costs serviceCosts = new Costs();
 
         if (service.getStorageType().equalsIgnoreCase(types[0]) && service.getStorageMode().equalsIgnoreCase(modes[0])) {
-            // storage type "Object-Storage"
+            // storage type "Object-Storage (Standard)"
             double capacityPrice = 0;
             double requestsReadPrice = 0;
             double requestsWritePrice = 0;
@@ -218,13 +237,19 @@ class Amazon extends Provider implements Pricing {
         return serviceCosts;
     }
 
+    /**
+     * Calculate database service costs
+     * @param service database service
+     * @param element element of service file
+     * @return costs object
+     */
     private Costs calcDatabaseServiceCosts(DatabaseService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("database-system-type");
         String[] modes = Config.getInstance().getConfigValuesAsArray("database-sql-scheme");
         Costs serviceCosts = new Costs();
 
         if (service.getDatabaseType().equalsIgnoreCase(types[0]) && service.getDatabaseScheme().equalsIgnoreCase(modes[1])) {
-            // storage type "SQL - PostgreSQL"
+            // storage type "SQL (PostgreSQL)"
             double instancePrice = 0;
             double storagePrice = 0;
             double backupPrice = 0;
@@ -266,6 +291,12 @@ class Amazon extends Provider implements Pricing {
         return serviceCosts;
     }
 
+    /**
+     * Calculate analytic service costs
+     * @param service analytic service
+     * @param element element of service file
+     * @return costs object
+     */
     private Costs calcAnalyticServiceCosts(AnalyticService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("analytic-type");
         Costs serviceCosts = new Costs();
@@ -342,6 +373,12 @@ class Amazon extends Provider implements Pricing {
         return serviceCosts;
     }
 
+    /**
+     * Calculate network service costs
+     * @param service network service
+     * @param element element of service file
+     * @return costs object
+     */
     private Costs calcNetworkServiceCosts(NetworkService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("network-type");
         Costs serviceCosts = new Costs();
@@ -452,12 +489,18 @@ class Amazon extends Provider implements Pricing {
         return serviceCosts;
     }
 
+    /**
+     * Calculate administration service costs
+     * @param service administration service
+     * @param element element of service file
+     * @return costs object
+     */
     private Costs calcAdministrationServiceCosts(AdministrationService service, Element element) {
         String[] types = Config.getInstance().getConfigValuesAsArray("administration-type");
         Costs serviceCosts = new Costs();
 
         if (service.getAdministrationType().equalsIgnoreCase(types[0]) && !(service.getLoggingState())) {
-            /* monitoring type "System Monitor" */
+            /* administration type "Monitoring (System Monitor)" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());
             double eventsPrice = Double.parseDouble(element.getElementsByTagName("events").item(0).getTextContent());
             double metricsPrice = 0;
