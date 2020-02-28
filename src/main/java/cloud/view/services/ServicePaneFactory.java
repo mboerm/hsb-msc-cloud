@@ -2,7 +2,15 @@ package cloud.view.services;
 
 import cloud.configuration.Config;
 
+/**
+ * Service panel factory
+ */
 public class ServicePaneFactory {
+    /**
+     * Get service panel by category
+     * @param service service object
+     * @return service property panel
+     */
     public ServicePropertiesPane getServicePane(String service) {
         String[] serviceCategories = Config.getInstance().getConfigValuesAsArray("service-categories");
         if (service.equals(serviceCategories[0])) {

@@ -5,6 +5,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
+/**
+ * Integration service panel
+ */
 public class IntegrationServicePane extends ServicePropertiesPane {
     private Label integrationTypeLbl;
     private ComboBox<String> integrationTypeBox;
@@ -16,6 +19,9 @@ public class IntegrationServicePane extends ServicePropertiesPane {
     private Spinner<Integer> mailSpinner;
     private Spinner<Integer> smsSpinner;
 
+    /**
+     * Constructor
+     */
     public IntegrationServicePane() {
         integrationTypeLbl = new Label("Type:");
         integrationTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("integration-type"));
@@ -37,6 +43,7 @@ public class IntegrationServicePane extends ServicePropertiesPane {
         add(integrationTypeLbl, 0, 2);
         add(integrationTypeBox, 1, 2);
 
+        /* set controls by integration type */
         integrationTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("integration-type");
@@ -47,6 +54,7 @@ public class IntegrationServicePane extends ServicePropertiesPane {
             getScene().getWindow().sizeToScene();
         });
 
+        /* toggle message controls by communication mode */
         integrationModeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             if (newItem.equals(Config.getInstance().getConfigValuesAsArray("integration-communication-mode")[0]))
                 disableMessageControls(false);
@@ -88,6 +96,7 @@ public class IntegrationServicePane extends ServicePropertiesPane {
         add(integrationTypeBox, 1, 2);
     }
 
+    /* set controls for type messaging */
     private void setMessageControls() {
         String[] labels = Config.getInstance().getConfigValuesAsArray("integration-messaging-labels");
         add(new Label(labels[0]), 0, 3);
@@ -112,6 +121,7 @@ public class IntegrationServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 9);
     }
 
+    /* disable message controls */
     private void disableMessageControls(boolean show) {
         this.pushSpinner.setDisable(show);
         this.httpSpinner.setDisable(show);

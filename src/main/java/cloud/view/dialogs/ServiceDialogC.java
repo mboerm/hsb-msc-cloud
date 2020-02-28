@@ -4,6 +4,9 @@ import cloud.model.design.DesignManager;
 import cloud.model.services.*;
 import cloud.view.services.*;
 
+/**
+ * Controller for service dialog
+ */
 public class ServiceDialogC {
     private ServiceDialog dialogService;
 
@@ -19,14 +22,18 @@ public class ServiceDialogC {
 
     private Service serviceData;
 
+    /**
+     * Create new dialog
+     */
     public void newDialog() {
         dialogService = new ServiceDialog();
         servicePaneFactory = new ServicePaneFactory();
         serviceUsagePane = dialogService.getServiceUsagePropertiesPane();
         serviceUsagePane.setLocation(DesignManager.getInstance().getDesign().getPrimaryLocation());
 
-        dialogService.getServiceTypeBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
+        dialogService.getServiceCategoryBox().getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             dialogService.setSeparator();
+            /* set service properties panel by chosen category */
             try {
                 dialogService.getServiceDialogPane().setRight(switchServicePropertiesPane(newItem));
             } catch (IllegalArgumentException e) {
@@ -37,6 +44,10 @@ public class ServiceDialogC {
         });
     }
 
+    /**
+     * Show new dialog
+     * @return true if service was created successfully
+     */
     public boolean showDialog() {
         dialogService.showAndWait().ifPresent(response ->  {
             try {
@@ -53,10 +64,15 @@ public class ServiceDialogC {
         return false;
     }
 
+    /**
+     * Show preset dialog if service was opened in table
+     * @param data service to be opened
+     * @return true if service was optionally updated successful
+     */
     public boolean showPresetDialog(Service data) {
         serviceData = data;
         dialogService.selectServiceType(serviceData.getCategory());
-        dialogService.getServiceTypeBox().setDisable(true);
+        dialogService.getServiceCategoryBox().setDisable(true);
         setServiceUsagePane();
         setServicePropertiesPane();
         return showDialog();
@@ -68,6 +84,11 @@ public class ServiceDialogC {
 
     public void resetServiceData() {this.serviceData = null;}
 
+    /**
+     * Switch service property panels
+     * @param item service category
+     * @return service property panel
+     */
     private ServicePropertiesPane switchServicePropertiesPane(String item) {
         if (ServiceChecker.getInstance().isComputeItem(item)) {
             return computePane = (ComputeServicePane) servicePaneFactory.getServicePane(item);
@@ -88,6 +109,11 @@ public class ServiceDialogC {
         }
     }
 
+    /**
+     * Create service by category
+     * @param item service category
+     * @return new service object
+     */
     private Service createService(String item) {
         if (ServiceChecker.getInstance().isComputeItem(item)) {
             return ServiceFactory.getService(new ComputeServiceCreator(
@@ -133,6 +159,9 @@ public class ServiceDialogC {
         }
     }
 
+    /**
+     * Set service property pane for preset dialog
+     */
     private void setServicePropertiesPane() {
         if (ServiceChecker.getInstance().isComputeItem(serviceData.getCategory()) && serviceData instanceof ComputeService) {
             computePane.setName(serviceData.getName());
@@ -197,6 +226,9 @@ public class ServiceDialogC {
         }
     }
 
+    /**
+     * Set service usage properties
+     */
     private void setServiceUsageProperties() {
         serviceData.setLocation(serviceUsagePane.getLocation());
         serviceData.setUsageType(serviceUsagePane.getUsageTypeItem());
@@ -205,6 +237,9 @@ public class ServiceDialogC {
         serviceData.setOpMode(serviceUsagePane.getOpModeItem());
     }
 
+    /**
+     * Set service usage pane for preset dialog
+     */
     private void setServiceUsagePane() {
         serviceUsagePane.setLocation(serviceData.getLocation());
         serviceUsagePane.setUsageTypeItem(serviceData.getUsageType());

@@ -5,6 +5,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 
+/**
+ * Network service panel
+ */
 public class NetworkServicePane extends ServicePropertiesPane {
 
     private Label networkTypeLbl;
@@ -15,6 +18,9 @@ public class NetworkServicePane extends ServicePropertiesPane {
     private Spinner<Integer> dataOutSpinner;
     private Spinner<Integer> zonesSpinner;
 
+    /**
+     * Constructor
+     */
     public NetworkServicePane() {
         networkTypeLbl = new Label("Type:");
         networkTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("network-type"));
@@ -32,6 +38,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(networkTypeLbl, 0, 2);
         add(networkTypeBox, 1, 2);
 
+        /* set controls by network type */
         networkTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("network-type");
@@ -69,6 +76,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(networkTypeBox, 1, 2);
     }
 
+    /* set controls for type vpc */
     private void setVPCControls() {
         labels = Config.getInstance().getConfigValuesAsArray("network-vpc-labels");
         add(new Label(labels[0]), 0, 3);
@@ -83,6 +91,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(dataOutSpinner, 1, 6);
     }
 
+    /* set controls for type vpn */
     private void setVPNControls() {
         labels = Config.getInstance().getConfigValuesAsArray("network-vpn-labels");
         add(new Label(labels[0]), 0, 3);
@@ -94,6 +103,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(dataOutSpinner, 1, 5);
     }
 
+    /* set controls for type api */
     private void setAPIControls() {
         labels = Config.getInstance().getConfigValuesAsArray("network-api-labels");
         add(new Label(labels[0]), 0, 3);
@@ -104,6 +114,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 4);
     }
 
+    /* set controls for type cdn */
     private void setCDNControls() {
         labels = Config.getInstance().getConfigValuesAsArray("network-cdn-labels");
         add(new Label(labels[0]), 0, 3);
@@ -117,6 +128,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 5);
     }
 
+    /* set controls for type dns */
     private void setDNSControls() {
         labels = Config.getInstance().getConfigValuesAsArray("network-dns-labels");
         add(new Label(labels[0]), 0, 3);

@@ -15,12 +15,16 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseButton;
 
+/**
+ * Main view controller
+ */
 public class DesignViewC {
 
     // View
     private DesignView view;
 
     // Model
+    /* id of selected service in table */
     private int selectedServiceID;
     private static ProviderFactory providerFactory;
     private static Report report;
@@ -29,6 +33,9 @@ public class DesignViewC {
     private ServiceDialogC dialogServiceC;
     private CostDialogC costReportC;
 
+    /**
+     * Constructor
+     */
     public DesignViewC() {
         this.view = new DesignView();
         providerFactory = new ProviderFactory();
@@ -41,6 +48,9 @@ public class DesignViewC {
         initDesignControlsHandler();
     }
 
+    /**
+     * Show main view
+     */
     public void show() {
         view.show(StageManager.getInstance().getPrimaryStage());
     }
@@ -108,12 +118,15 @@ public class DesignViewC {
     private void initDesignAreaHandler() {
         view.getPaneDesignArea().getServicesTable().setItems(DesignManager.getInstance().getDesign().getServicesList());
 
+        /* listener of selected item in table */
         ObservableList<Service> selectedItems = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedItems();
         selectedItems.addListener((ListChangeListener<Service>) change -> {
+            /* if item was selected get id and enable remove button */
             selectedServiceID = view.getPaneDesignArea().getServicesTable().getSelectionModel().getSelectedIndex();
             view.getPaneDesignControls().getControlRemove().setDisable(false);
         });
 
+        /* listener for service table */
         view.getPaneDesignArea().getServicesTable().setOnMousePressed(mouseEvent -> {
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && mouseEvent.getClickCount() == 2) {
                 // get selected service item

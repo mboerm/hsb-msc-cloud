@@ -11,6 +11,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * Service usage property panel
+ */
 public class ServiceUsagePropertiesPane extends GridPane {
 
     private Label serviceUsageLbl;

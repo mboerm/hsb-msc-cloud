@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.util.Pair;
 
+/**
+ * Storage service panel
+ */
 public class StorageServicePane extends ServicePropertiesPane {
 
     private Label storageTypeLbl;
@@ -20,6 +23,9 @@ public class StorageServicePane extends ServicePropertiesPane {
     private Spinner<Integer> requestsWriteSpinner;
     private Spinner<Integer> rateSpinner;
 
+    /**
+     * Constructor
+     */
     public StorageServicePane() {
         storageTypeLbl = new Label("Type:");
         storageTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("storage-type"));
@@ -43,6 +49,7 @@ public class StorageServicePane extends ServicePropertiesPane {
         add(storageModeLbl, 0, 3);
         add(storageModeBox, 1, 3);
 
+        /* set controls by storage type */
         storageTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("storage-type");
@@ -96,6 +103,7 @@ public class StorageServicePane extends ServicePropertiesPane {
         add(storageModeBox, 1, 3);
     }
 
+    /* set controls for type object storage */
     private void setObjectStorageControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("storage-object-labels");
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-object-mode"));
@@ -113,6 +121,7 @@ public class StorageServicePane extends ServicePropertiesPane {
         add(new Label("per day"), 2, 7);
     }
 
+    /* set controls for type block storage */
     private void setBlockStorageControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("storage-block-labels");
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-block-mode"));
@@ -124,6 +133,7 @@ public class StorageServicePane extends ServicePropertiesPane {
         add(new Label("per month"), 2, 5);
     }
 
+    /* set controls for type file storage */
     private void setFileStorageControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("storage-file-labels");
         this.storageModeBox.setItems(Config.getInstance().getConfigValues("storage-file-mode"));

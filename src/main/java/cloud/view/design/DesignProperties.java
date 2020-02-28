@@ -5,6 +5,9 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
+/**
+ * Panel of design properties
+ */
 public class DesignProperties extends GridPane {
 
     private ComboBox<String> providerBox;
@@ -16,6 +19,9 @@ public class DesignProperties extends GridPane {
     private ComboBox<String> periodOfRequestsBox;
     private ComboBox<String> periodOfCapacityBox;
 
+    /**
+     * Constructor
+     */
     public DesignProperties() {
         setPadding(new Insets(10, 10, 10, 10));
         setVgap(10);

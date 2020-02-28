@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.util.Pair;
 
+/**
+ * Analytic service panel
+ */
 public class AnalyticServicePane extends ServicePropertiesPane {
 
     private Label analyticTypeLbl;
@@ -19,6 +22,9 @@ public class AnalyticServicePane extends ServicePropertiesPane {
     private Spinner<Integer> numTwoSpinner;
     private Spinner<Integer> unitsSpinner;
 
+    /**
+     * Constructor
+     */
     public AnalyticServicePane() {
         analyticTypeLbl = new Label("Type:");
         analyticTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("analytic-type"));
@@ -38,6 +44,7 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(analyticTypeLbl, 0, 2);
         add(analyticTypeBox, 1, 2);
 
+        /* set controls by analytic type */
         analyticTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("analytic-type");
@@ -90,12 +97,14 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(analyticTypeBox, 1, 2);
     }
 
+    /* set controls for type data query */
     private void setDataQueryControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("analytic-query-labels");
         add(new Label(labels[0]), 0, 3);
         add(dataSpinner, 1, 3);
     }
 
+    /* set controls for type data transfer */
     private void setDataTransferControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("analytic-transfer-labels");
         add(new Label(labels[0]), 0, 3);
@@ -104,6 +113,7 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(numTwoSpinner, 1, 4);
     }
 
+    /* set controls for type data stream */
     private void setDataStreamControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("analytic-stream-labels");
         add(new Label(labels[0]), 0, 3);
@@ -113,6 +123,7 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(dataSpinner, 1, 4);
     }
 
+    /* set controls for type data catalog */
     private void setDataCatalogControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("analytic-catalog-labels");
         add(new Label(labels[0]), 0, 3);
@@ -121,6 +132,7 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(unitsSpinner, 1, 4);
     }
 
+    /* set controls for type data lake */
     private void setDataLakeControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("analytic-lake-labels");
         add(new Label(labels[0]), 0, 3);
@@ -130,6 +142,7 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         add(dataSpinner, 1, 4);
     }
 
+    /* set controls for type search engine */
     private void setSearchControls() {
         this.labels = Config.getInstance().getConfigValuesAsArray("analytic-search-labels");
         add(new Label(labels[0]), 0, 3);

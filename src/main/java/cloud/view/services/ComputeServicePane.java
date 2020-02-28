@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 
 import java.util.Arrays;
 
+/**
+ * Compute service panel
+ */
 public class ComputeServicePane extends ServicePropertiesPane {
 
     private Label computeTypeLbl;
@@ -25,6 +28,9 @@ public class ComputeServicePane extends ServicePropertiesPane {
     private Spinner<Integer> numOneSpinner;
     private Spinner<Integer> numTwoSpinner;
 
+    /**
+     * Constructor
+     */
     public ComputeServicePane() {
         computeTypeLbl = new Label("Type:");
         computeTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("compute-type"));
@@ -48,6 +54,7 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(computeTypeLbl, 0, 2);
         add(computeTypeBox, 1, 2);
 
+        /* set controls by compute type */
         computeTypeBox.getSelectionModel().selectedItemProperty().addListener((ov, oldItem, newItem) -> {
             recoverControls();
             String[] type = Config.getInstance().getConfigValuesAsArray("compute-type");
@@ -97,6 +104,7 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(computeTypeBox, 1, 2);
     }
 
+    /* set controls for type vm */
     private void setVMControls() {
         labels = Config.getInstance().getConfigValuesAsArray("compute-vm-labels");
         add(new Label(labels[0]), 0, 3);
@@ -114,6 +122,7 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(dataSpinner, 1, 8);
     }
 
+    /* set controls for type container */
     private void setContainerControls() {
         labels = Config.getInstance().getConfigValuesAsArray("compute-container-labels");
 		add(new Label(labels[0]), 0, 3);
@@ -131,6 +140,7 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(dataSpinner, 1, 8);
     }
 
+    /* set controls for type app */
     private void setAppControls() {
         labels = Config.getInstance().getConfigValuesAsArray("compute-app-labels");
         add(new Label(labels[0]), 0, 3);
@@ -149,12 +159,14 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(storageInstanceField, 1, 8);
     }
 
+    /* set controls for type batch */
     private void setBatchControls() {
         labels = Config.getInstance().getConfigValuesAsArray("compute-batch-labels");
         add(new Label(labels[0]), 0, 3);
         add(computeInstanceField, 1, 3);
     }
 
+    /* set controls for type code */
     private void setCodeControls() {
         labels = Config.getInstance().getConfigValuesAsArray("compute-code-labels");
         add(new Label(labels[0]), 0, 3);
@@ -166,6 +178,7 @@ public class ComputeServicePane extends ServicePropertiesPane {
         add(storageSpinner, 1, 5);
     }
 
+    /* set controls for type load balancer */
     private void setBalancerControls() {
         labels = Config.getInstance().getConfigValuesAsArray("compute-balancer-labels");
         add(new Label(labels[0]), 0, 3);

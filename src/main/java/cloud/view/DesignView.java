@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 import static cloud.configuration.Constants.*;
 
+/**
+ * Main view
+ */
 public class DesignView {
     private Scene scene;
 
@@ -32,6 +35,9 @@ public class DesignView {
     private DesignArea paneDesignArea;
     private DesignControls paneDesignControls;
 
+    /**
+     * Constructor
+     */
     public DesignView() {
         BorderPane rootPane = new BorderPane();
         rootPane.setTop(initMenuBar());
@@ -42,6 +48,10 @@ public class DesignView {
         scene = new Scene(rootPane);
     }
 
+    /**
+     * Show main view
+     * @param stage primary stage
+     */
     public void show(Stage stage) {
         stage.setMinHeight(WINDOW_MIN_HEIGHT);
         stage.setMinWidth(WINDOW_MIN_WIDTH);
