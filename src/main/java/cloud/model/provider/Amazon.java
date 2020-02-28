@@ -411,13 +411,13 @@ class Amazon extends Provider implements Pricing {
                     }
                 }
             }
-            double connectionCosts = service.getRequests() * connectionPrice * Constants.MONTH_HOURS;
-            double endpointCosts = service.getNumTwo() * endpointPrice * Constants.MONTH_HOURS;
+            double connectionCosts = service.getRequests() * connectionPrice * service.getNumTwo();
+            double endpointCosts = service.getNumOne() * endpointPrice * service.getNumTwo();
             double dataCosts = service.getData() * dataPrice;
             double dataOutCosts = service.getDataOut() * dataOutPrice;
             serviceCosts.setPrice(connectionCosts + endpointCosts + dataCosts + dataOutCosts);
-            serviceCosts.setFormula(service.getRequests()+" * "+connectionPrice+" USD"+" * "+Constants.MONTH_HOURS+" hours"+" + "
-                    + service.getNumTwo()+" * "+endpointPrice+" USD"+" * "+Constants.MONTH_HOURS+" hours"+" + "
+            serviceCosts.setFormula(service.getRequests()+" * "+connectionPrice+" USD"+" * "+service.getNumTwo()+" hours"+" + "
+                    + service.getNumTwo()+" * "+endpointPrice+" USD"+" * "+service.getNumTwo()+" hours"+" + "
                     + service.getData()+" * "+dataPrice+" USD"+" + "
                     + service.getDataOut()+" * "+dataOutPrice+" USD");
         } else if (service.getNetworkType().equalsIgnoreCase(types[1])) {

@@ -309,6 +309,7 @@ public class ServiceChecker {
                         Config.getInstance().getConfigValuesAsArray("network-vpc-labels"),
                         new String[]{
                                 String.valueOf(netService.getRequests()),
+                                String.valueOf(netService.getNumOne()),
                                 String.valueOf(netService.getNumTwo()),
                                 String.valueOf(netService.getData()),
                                 String.valueOf(netService.getDataOut())

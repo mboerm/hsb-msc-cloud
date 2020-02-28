@@ -90,7 +90,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(new Label(labels[1]), 0, 4);
         add(numOneSpinner, 1, 4);
         add(new Label("per hour"), 2, 4);
-        add(new Label(labels[2]), 0, 4);
+        add(new Label(labels[2]), 0, 5);
         add(numTwoSpinner, 1, 5);
         add(new Label(labels[3]), 0, 6);
         add(dataSpinner, 1, 6);
