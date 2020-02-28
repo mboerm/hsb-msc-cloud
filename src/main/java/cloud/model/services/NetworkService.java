@@ -9,15 +9,17 @@ public class NetworkService extends Service {
     private int requests;
     private int data;
     private int dataOut;
-    private int zones;
+    private int numOne;
+    private int numTwo;
 
-    public NetworkService(String name, String type, int requests, int data, int dataOut, int zones) {
+    public NetworkService(String name, String type, int requests, int data, int dataOut, int numOne, int numTwo) {
         setName(name);
         setNetworkType(type);
         setRequests(requests);
         setData(data);
         setDataOut(dataOut);
-        setZones(zones);
+        setNumOne(numOne);
+        setNumTwo(numTwo);
     }
 
     public String getNetworkType() {
@@ -48,10 +50,17 @@ public class NetworkService extends Service {
         this.dataOut = dataOut;
     }
 
-    public int getZones() {
-        return zones;
+    public int getNumOne() {
+        return numOne;
     }
-    public void setZones(int zones) {
-        this.zones = zones;
+    public void setNumOne(int numOne) {
+        this.numOne = numOne;
+    }
+
+    public int getNumTwo() {
+        return numTwo;
+    }
+    public void setNumTwo(int numTwo) {
+        this.numTwo = numTwo;
     }
 }

@@ -16,7 +16,8 @@ public class NetworkServicePane extends ServicePropertiesPane {
     private Spinner<Integer> requestsSpinner;
     private Spinner<Integer> dataSpinner;
     private Spinner<Integer> dataOutSpinner;
-    private Spinner<Integer> zonesSpinner;
+    private Spinner<Integer> numOneSpinner;
+    private Spinner<Integer> numTwoSpinner;
 
     /**
      * Constructor
@@ -28,12 +29,14 @@ public class NetworkServicePane extends ServicePropertiesPane {
         requestsSpinner = new Spinner<>(1, 1000000, 1);
         dataSpinner = new Spinner<>(1, 1000000, 1);
         dataOutSpinner = new Spinner<>(1, 1000000, 1);
-        zonesSpinner = new Spinner<>(1, 1000000, 1);
+        numOneSpinner = new Spinner<>(1, 1000000, 1);
+        numTwoSpinner = new Spinner<>(1, 1000000, 1);
 
         requestsSpinner.setEditable(true);
         dataSpinner.setEditable(true);
         dataOutSpinner.setEditable(true);
-        zonesSpinner.setEditable(true);
+        numOneSpinner.setEditable(true);
+        numTwoSpinner.setEditable(true);
 
         add(networkTypeLbl, 0, 2);
         add(networkTypeBox, 1, 2);
@@ -65,8 +68,10 @@ public class NetworkServicePane extends ServicePropertiesPane {
     public void setData(Integer value) {this.dataSpinner.getValueFactory().setValue(value);}
     public Integer getDataOut() {return this.dataOutSpinner.getValue();}
     public void setDataOut(Integer value) {this.dataOutSpinner.getValueFactory().setValue(value);}
-    public Integer getZones() {return this.zonesSpinner.getValue();}
-    public void setZones(Integer value) {this.zonesSpinner.getValueFactory().setValue(value);}
+    public Integer getNumOne() {return this.numOneSpinner.getValue();}
+    public void setNumOne(Integer value) {this.numOneSpinner.getValueFactory().setValue(value);}
+    public Integer getNumTwo() {return this.numTwoSpinner.getValue();}
+    public void setNumTwo(Integer value) {this.numTwoSpinner.getValueFactory().setValue(value);}
 
     @Override
     void recoverControls() {
@@ -83,12 +88,14 @@ public class NetworkServicePane extends ServicePropertiesPane {
         add(requestsSpinner, 1, 3);
         add(new Label("per hour"), 2, 3);
         add(new Label(labels[1]), 0, 4);
-        add(zonesSpinner, 1, 4);
+        add(numOneSpinner, 1, 4);
         add(new Label("per hour"), 2, 4);
-        add(new Label(labels[2]), 0, 5);
-        add(dataSpinner, 1, 5);
+        add(new Label(labels[2]), 0, 4);
+        add(numTwoSpinner, 1, 5);
         add(new Label(labels[3]), 0, 6);
-        add(dataOutSpinner, 1, 6);
+        add(dataSpinner, 1, 6);
+        add(new Label(labels[4]), 0, 7);
+        add(dataOutSpinner, 1, 7);
     }
 
     /* set controls for type vpn */
@@ -132,7 +139,7 @@ public class NetworkServicePane extends ServicePropertiesPane {
     private void setDNSControls() {
         labels = Config.getInstance().getConfigValuesAsArray("network-dns-labels");
         add(new Label(labels[0]), 0, 3);
-        add(zonesSpinner, 1, 3);
+        add(numOneSpinner, 1, 3);
         add(new Label(labels[1]), 0, 4);
         add(dataSpinner, 1, 4);
         add(new Label("per month"), 2, 4);

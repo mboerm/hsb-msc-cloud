@@ -12,7 +12,8 @@ public class NetworkServiceCreator implements ServiceCreator {
     private int requests;
     private int data;
     private int dataOut;
-    private int zones;
+    private int numOne;
+    private int numTwo;
 
     /**
      * Constructor
@@ -21,15 +22,17 @@ public class NetworkServiceCreator implements ServiceCreator {
      * @param requests number of requests
      * @param data number of data
      * @param dataOut number of outgoing data
-     * @param zones number of zones
+     * @param numOne additional number one
+     * @param numTwo additional number two
      */
-    public NetworkServiceCreator(String name, String networkType, int requests, int data, int dataOut, int zones) {
+    public NetworkServiceCreator(String name, String networkType, int requests, int data, int dataOut, int numOne, int numTwo) {
         this.name = name;
         this.networkType = networkType;
         this.requests = requests;
         this.data = data;
         this.dataOut = dataOut;
-        this.zones = zones;
+        this.numOne = numOne;
+        this.numTwo = numTwo;
     }
 
     @Override
@@ -40,19 +43,19 @@ public class NetworkServiceCreator implements ServiceCreator {
 
         if (networkType.equals(types[0])) {
             // VPC
-            networkService = new NetworkService(name, networkType, requests, data, dataOut, zones);
+            networkService = new NetworkService(name, networkType, requests, data, dataOut, numOne, numTwo);
         } else if (networkType.equals(types[1])) {
             // VPN
-            networkService = new NetworkService(name, networkType, requests, data, dataOut, 0);
+            networkService = new NetworkService(name, networkType, requests, data, dataOut, 0, 0);
         } else if (networkType.equals(types[2])) {
             // API
-            networkService = new NetworkService(name, networkType, requests, data, 0, 0);
+            networkService = new NetworkService(name, networkType, requests, data, 0, 0, 0);
         } else if (networkType.equals(types[3])) {
             // CDN
-            networkService = new NetworkService(name, networkType, requests, data, dataOut, 0);
+            networkService = new NetworkService(name, networkType, requests, data, dataOut, 0, 0);
         } else if (networkType.equals(types[4])) {
             // DNS
-            networkService = new NetworkService(name, networkType, requests, 0, 0, zones);
+            networkService = new NetworkService(name, networkType, requests, 0, 0, numOne, 0);
         } else {
             return null;
         }
