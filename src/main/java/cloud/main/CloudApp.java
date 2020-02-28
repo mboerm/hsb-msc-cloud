@@ -1,5 +1,6 @@
 package cloud.main;
 
+import cloud.configuration.Config;
 import cloud.model.design.DesignManager;
 import cloud.model.design.Design;
 import cloud.view.DesignViewC;
@@ -8,6 +9,9 @@ import javafx.stage.Stage;
 
 import java.util.Locale;
 
+/**
+ * Main class
+ */
 public class CloudApp extends Application {
 
     public static void main(String[] args) {
@@ -16,9 +20,10 @@ public class CloudApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Locale.setDefault(new Locale("en"));
+        /* set locale settings */
+        Locale.setDefault(new Locale(Config.getInstance().getConfigValue("locale")));
 
-        // set primarystage in stage manager
+        // set primary stage in stage manager
         StageManager.getInstance().setPrimaryStage(primaryStage);
 
         // create new design in design manager
