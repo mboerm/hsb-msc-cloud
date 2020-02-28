@@ -14,10 +14,17 @@ import static cloud.configuration.Constants.*;
  *
  */
 public class Config {
+
+	/* Singleton */
 	private static volatile Config INSTANCE = null;
 
+	/* Properties */
 	private Properties configs;
 
+	/**
+	 * getInstance method
+	 * @return instance
+	 */
 	public static Config getInstance() {
     	if (INSTANCE == null) {
     		INSTANCE = new Config();
@@ -25,7 +32,10 @@ public class Config {
     	return INSTANCE;
     }
 
-    private Config() {
+	/**
+	 * Constructor
+	 */
+	private Config() {
 		configs = new Properties();
 		try {
 			String path = CONFIG_FILE;
@@ -39,7 +49,7 @@ public class Config {
 	}
 	
 	/**
-	 * Get values of configuration parameter
+	 * Get values of configuration parameter as array
 	 * @param configName name of configuration parameter
 	 * @return values as string-array
 	 */
