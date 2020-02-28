@@ -2,9 +2,15 @@ package cloud.model.pricing;
 
 import cloud.configuration.Constants;
 
+/**
+ * Costs class
+ */
 public class Costs {
+    /* calculated price */
     private double price;
+    /* scaled price */
     private double scaledPrice;
+    /* string formula for price calculation */
     private String formula;
 
     public Costs() {
