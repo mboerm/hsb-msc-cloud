@@ -12,10 +12,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Objects;
 
+/**
+ * Service checker helper class
+ */
 public class ServiceChecker {
     private static volatile ServiceChecker INSTANCE = null;
     private static String[] serviceTypes = Config.getInstance().getConfigValuesAsArray("service-categories");
 
+    /**
+     * Singleton instance
+     * @return service checker instance
+     */
     public static ServiceChecker getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new ServiceChecker();
@@ -23,28 +30,42 @@ public class ServiceChecker {
         return INSTANCE;
     }
 
+    /* check item category to compute */
     public boolean isComputeItem(String item) {
         return item.equals(serviceTypes[0]);
     }
+    /* check item category to database */
     public boolean isDatabaseItem(String item) {
         return item.equals(serviceTypes[1]);
     }
+    /* check item category to storage */
     public boolean isStorageItem(String item) {
         return item.equals(serviceTypes[2]);
     }
+    /* check item category to analytic */
     public boolean isAnalyticItem(String item) {
         return item.equals(serviceTypes[3]);
     }
+    /* check item category to network */
     public boolean isNetworkItem(String item) {
         return item.equals(serviceTypes[4]);
     }
+    /* check item category to integration */
     public boolean isIntegrationItem(String item) {
         return item.equals(serviceTypes[5]);
     }
+    /* check item category to administration */
     public boolean isAdministrationItem(String item) {
         return item.equals(serviceTypes[6]);
     }
 
+    /**
+     * Get service identifier
+     * @param category category of service
+     * @param type type of service
+     * @param mode optional mode of service type
+     * @return service identifier
+     */
     public String getServiceIdentifier(String category, String type, String... mode) {
         try {
             File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(Config.getInstance().getConfigValue("generic-services"))).getFile());
@@ -77,6 +98,11 @@ public class ServiceChecker {
         return "";
     }
 
+    /**
+     * Get properties of specific service
+     * @param service service object
+     * @return pair of string arrays
+     */
     public Pair<String[],String[]> getSpecificProperties(Service service) {
         if (ServiceChecker.getInstance().isComputeItem(service.getCategory()) && service instanceof ComputeService) {
             String[] types = Config.getInstance().getConfigValuesAsArray("compute-type");

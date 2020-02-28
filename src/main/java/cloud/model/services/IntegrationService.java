@@ -1,5 +1,8 @@
 package cloud.model.services;
 
+/**
+ * Integration service class
+ */
 public class IntegrationService extends Service {
 
     private String integrationType;
@@ -8,6 +11,7 @@ public class IntegrationService extends Service {
     private int requests;
 
     /**
+     * Num of Messages array
      * 0 = number of push messages
      * 1 = number of http messages
      * 2 = number of mail messages

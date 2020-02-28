@@ -3,6 +3,9 @@ package cloud.model.services;
 import cloud.configuration.Config;
 import javafx.util.Pair;
 
+/**
+ * Database service creator
+ */
 public class DatabaseServiceCreator implements ServiceCreator {
 
     private String name;
@@ -15,6 +18,18 @@ public class DatabaseServiceCreator implements ServiceCreator {
     private int data;
     private Pair<Integer, Integer> num;
 
+    /**
+     * Constructor
+     * @param name name of service
+     * @param databaseType database type
+     * @param databaseScheme database scheme
+     * @param instanceType instance type
+     * @param duration number of duration
+     * @param storage number of storage
+     * @param backup number of additional backup storage
+     * @param data number of data
+     * @param num additional pair of numbers
+     */
     public DatabaseServiceCreator(String name, String databaseType, String databaseScheme,
                                   String instanceType, int duration,
                                   int storage, int backup, int data, Pair<Integer, Integer> num) {
@@ -54,7 +69,9 @@ public class DatabaseServiceCreator implements ServiceCreator {
         } else {
             return null;
         }
+        /* set category of service */
         databaseService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[1]);
+        /* set identifier of service */
         databaseService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(databaseService.getCategory(), databaseType, databaseScheme));
         return databaseService;
     }

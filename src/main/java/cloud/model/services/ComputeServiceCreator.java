@@ -2,6 +2,9 @@ package cloud.model.services;
 
 import cloud.configuration.Config;
 
+/**
+ * Compute service creator
+ */
 public class ComputeServiceCreator implements ServiceCreator {
 
     private String name;
@@ -16,6 +19,20 @@ public class ComputeServiceCreator implements ServiceCreator {
     private int numOne;
     private int numTwo;
 
+    /**
+     * Constructor
+     * @param name service name
+     * @param computeType compute type
+     * @param instanceType instance type
+     * @param computeInstance compute instance reference
+     * @param storageInstance storage instance reference
+     * @param system system or mode of service
+     * @param cpu number of cpu
+     * @param storage number of storage
+     * @param data number of data
+     * @param numOne additional number one
+     * @param numTwo additional number two
+     */
     public ComputeServiceCreator(String name, String computeType, String instanceType,
                                  String computeInstance, String storageInstance, String system,
                                  int cpu, int storage, int data, int numOne, int numTwo) {
@@ -66,7 +83,9 @@ public class ComputeServiceCreator implements ServiceCreator {
         } else {
             throw new IllegalArgumentException("Invalid compute type");
         }
+        /* set category of service */
         computeService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[0]);
+        /* set identifier of service */
         computeService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(computeService.getCategory(), computeType, system));
         return computeService;
     }

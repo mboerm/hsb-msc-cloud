@@ -1,5 +1,8 @@
 package cloud.model.services;
 
+/**
+ * Abstract service class
+ */
 public abstract class Service {
     private String name;
     private String identifier;
@@ -82,6 +85,10 @@ public abstract class Service {
         this.opMode = mode;
     }
 
+    /**
+     * Get general properties of service
+     * @return string array
+     */
     public String[] getGeneralProperties() {
         return new String[] {
                 this.getName(),
@@ -91,6 +98,10 @@ public abstract class Service {
         };
     }
 
+    /**
+     * Get usage properties of service
+     * @return string array
+     */
     public String[] getUsageProperties() {
         return new String[] {
                 this.getLocation(),

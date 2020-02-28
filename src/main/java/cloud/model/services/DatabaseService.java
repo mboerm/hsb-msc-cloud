@@ -2,6 +2,9 @@ package cloud.model.services;
 
 import javafx.util.Pair;
 
+/**
+ * Database service class
+ */
 public class DatabaseService extends Service {
 
     private String databaseType;

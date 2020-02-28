@@ -3,6 +3,9 @@ package cloud.model.services;
 import cloud.configuration.Config;
 import javafx.util.Pair;
 
+/**
+ * Administration service creator
+ */
 public class AdministrationServiceCreator implements ServiceCreator {
 
     private String name;
@@ -13,6 +16,16 @@ public class AdministrationServiceCreator implements ServiceCreator {
     private int events;
     private boolean loggerState;
 
+    /**
+     * Constructor
+     * @param name service name
+     * @param administrationType administration type
+     * @param metrics number of metric
+     * @param apiRequests number of requests
+     * @param data number of data
+     * @param events number of events
+     * @param loggerState boolean of logger state
+     */
     public AdministrationServiceCreator(String name, String administrationType, int metrics, int apiRequests, Pair<Integer, Integer> data, int events, boolean loggerState) {
         this.name = name;
         this.administrationType = administrationType;
@@ -26,18 +39,23 @@ public class AdministrationServiceCreator implements ServiceCreator {
     @Override
     public Service createService() {
         String[] types = Config.getInstance().getConfigValuesAsArray("administration-type");
+        AdministrationService adminService;
+        String mode;
         if (administrationType.equals(types[0])) {
-            AdministrationService adminService = new AdministrationService(name, administrationType, metrics, apiRequests, data, events, loggerState);
-            adminService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
+            adminService = new AdministrationService(name, administrationType, metrics, apiRequests, data, events, loggerState);
             String[] modes = Config.getInstance().getConfigValuesAsArray("administration-monitoring-mode");
             if (loggerState) {
-                adminService.setIdentifier(administrationType + " (" + modes[0] + ")");
+                mode = modes[0];
             } else {
-                adminService.setIdentifier(administrationType + " (" + modes[1] + ")");
+                mode = modes[1];
             }
-            return adminService;
         } else {
             return null;
         }
+        /* set category of service */
+        adminService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[6]);
+        /* set identifier of service */
+        adminService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(adminService.getCategory(), administrationType, mode));
+        return adminService;
     }
 }

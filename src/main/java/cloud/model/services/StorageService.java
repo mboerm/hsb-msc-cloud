@@ -2,6 +2,9 @@ package cloud.model.services;
 
 import javafx.util.Pair;
 
+/**
+ * Storage service class
+ */
 public class StorageService extends Service {
 
     private String storageType;

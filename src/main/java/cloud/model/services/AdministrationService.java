@@ -2,6 +2,9 @@ package cloud.model.services;
 
 import javafx.util.Pair;
 
+/**
+ * Administration service class
+ */
 public class AdministrationService extends Service {
 
     private String administrationType;

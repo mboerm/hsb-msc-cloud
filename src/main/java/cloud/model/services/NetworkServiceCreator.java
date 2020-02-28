@@ -2,18 +2,30 @@ package cloud.model.services;
 
 import cloud.configuration.Config;
 
+/**
+ * Network service creator
+ */
 public class NetworkServiceCreator implements ServiceCreator {
 
     private String name;
-    private String type;
+    private String networkType;
     private int requests;
     private int data;
     private int dataOut;
     private int zones;
 
-    public NetworkServiceCreator(String name, String type, int requests, int data, int dataOut, int zones) {
+    /**
+     * Constructor
+     * @param name name of service
+     * @param networkType network type
+     * @param requests number of requests
+     * @param data number of data
+     * @param dataOut number of outgoing data
+     * @param zones number of zones
+     */
+    public NetworkServiceCreator(String name, String networkType, int requests, int data, int dataOut, int zones) {
         this.name = name;
-        this.type = type;
+        this.networkType = networkType;
         this.requests = requests;
         this.data = data;
         this.dataOut = dataOut;
@@ -26,21 +38,28 @@ public class NetworkServiceCreator implements ServiceCreator {
 
         NetworkService networkService;
 
-        if (type.equals(types[0])) {
-            networkService = new NetworkService(name, type, requests, data, dataOut, zones);
-        } else if (type.equals(types[1])) {
-            networkService = new NetworkService(name, type, requests, data, dataOut, 0);
-        } else if (type.equals(types[2])) {
-            networkService = new NetworkService(name, type, requests, data, 0, 0);
-        } else if (type.equals(types[3])) {
-            networkService = new NetworkService(name, type, requests, data, dataOut, 0);
-        } else if (type.equals(types[4])) {
-            networkService = new NetworkService(name, type, requests, 0, 0, zones);
+        if (networkType.equals(types[0])) {
+            // VPC
+            networkService = new NetworkService(name, networkType, requests, data, dataOut, zones);
+        } else if (networkType.equals(types[1])) {
+            // VPN
+            networkService = new NetworkService(name, networkType, requests, data, dataOut, 0);
+        } else if (networkType.equals(types[2])) {
+            // API
+            networkService = new NetworkService(name, networkType, requests, data, 0, 0);
+        } else if (networkType.equals(types[3])) {
+            // CDN
+            networkService = new NetworkService(name, networkType, requests, data, dataOut, 0);
+        } else if (networkType.equals(types[4])) {
+            // DNS
+            networkService = new NetworkService(name, networkType, requests, 0, 0, zones);
         } else {
             return null;
         }
+        /* set category of service */
         networkService.setCategory(Config.getInstance().getConfigValuesAsArray("service-categories")[4]);
-        networkService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(networkService.getCategory(), type));
+        /* set identifier of service */
+        networkService.setIdentifier(ServiceChecker.getInstance().getServiceIdentifier(networkService.getCategory(), networkType));
         return networkService;
     }
 }

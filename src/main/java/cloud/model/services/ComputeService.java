@@ -1,5 +1,8 @@
 package cloud.model.services;
 
+/**
+ * Compute service class
+ */
 public class ComputeService extends Service {
 
     private String computeType;

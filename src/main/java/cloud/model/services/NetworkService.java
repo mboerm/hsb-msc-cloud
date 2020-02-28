@@ -1,5 +1,8 @@
 package cloud.model.services;
 
+/**
+ * Network service class
+ */
 public class NetworkService extends Service {
 
     private String networkType;

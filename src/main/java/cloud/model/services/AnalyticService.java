@@ -2,6 +2,9 @@ package cloud.model.services;
 
 import javafx.util.Pair;
 
+/**
+ * Analytic service class
+ */
 public class AnalyticService extends Service {
 
     private String analyticType;
