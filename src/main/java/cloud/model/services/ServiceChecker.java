@@ -136,6 +136,9 @@ public class ServiceChecker {
                         Config.getInstance().getConfigValuesAsArray("compute-app-labels"),
                         new String[] {
                                 compService.getSystem(),
+                                String.valueOf(compService.getCPU()),
+                                String.valueOf(compService.getNumOne()),
+                                String.valueOf(compService.getStorage()),
                                 compService.getComputeInstance(),
                                 compService.getStorageInstance()
                         }
