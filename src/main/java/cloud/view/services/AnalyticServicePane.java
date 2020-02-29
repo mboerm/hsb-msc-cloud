@@ -1,6 +1,7 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -29,11 +30,11 @@ public class AnalyticServicePane extends ServicePropertiesPane {
         analyticTypeLbl = new Label("Type:");
         analyticTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("analytic-type"));
         instanceTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("analytic-instance-type"));
-        dataSpinner = new Spinner<>(1, 1000000, 1);
-        dataOutSpinner = new Spinner<>(1, 1000000, 1);
-        numOneSpinner = new Spinner<>(1, 1000000, 1);
-        numTwoSpinner = new Spinner<>(1, 1000000, 1);
-        unitsSpinner = new Spinner<>(1, 1000000, 1);
+        dataSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataOutSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numOneSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numTwoSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        unitsSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
 
         dataSpinner.setEditable(true);
         dataOutSpinner.setEditable(true);

@@ -1,6 +1,7 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -32,11 +33,11 @@ public class StorageServicePane extends ServicePropertiesPane {
         storageModeLbl = new Label("Mode:");
         storageModeBox = new ComboBox<>();
 
-        capacitySpinner = new Spinner<>(1, 1000000, 1);
-        requestsReadSpinner = new Spinner<>(1, 1000000, 1);
-        requestsWriteSpinner = new Spinner<>(1, 1000000, 1);
-        dataSpinner = new Spinner<>(1, 1000000, 1);
-        rateSpinner = new Spinner<>(1, 1000000, 1);
+        capacitySpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        requestsReadSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        requestsWriteSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        rateSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
 
         capacitySpinner.setEditable(true);
         requestsReadSpinner.setEditable(true);

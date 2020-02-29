@@ -1,6 +1,7 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -37,12 +38,12 @@ public class DatabaseServicePane extends ServicePropertiesPane {
         String[] instanceTypes = Config.getInstance().getConfigValuesAsArray("service-instance-type");
         instanceTypeBox = new ComboBox<>(FXCollections.observableArrayList(Arrays.copyOfRange(instanceTypes, 0, instanceTypes.length-2)));
 
-        durationSpinner = new Spinner<>(1, 1000000, 1);
-        storageSpinner = new Spinner<>(1, 1000000, 1);
-        backupSpinner = new Spinner<>(1, 1000000, 1);
-        dataSpinner = new Spinner<>(1, 1000000, 1);
-        numOneSpinner = new Spinner<>(1, 1000000, 1);
-        numTwoSpinner = new Spinner<>(1, 1000000, 1);
+        durationSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        storageSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        backupSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numOneSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numTwoSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
 
         durationSpinner.setEditable(true);
         storageSpinner.setEditable(true);

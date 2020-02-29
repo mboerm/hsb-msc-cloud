@@ -1,6 +1,7 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -26,11 +27,11 @@ public class NetworkServicePane extends ServicePropertiesPane {
         networkTypeLbl = new Label("Type:");
         networkTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("network-type"));
 
-        requestsSpinner = new Spinner<>(1, 1000000, 1);
-        dataSpinner = new Spinner<>(1, 1000000, 1);
-        dataOutSpinner = new Spinner<>(1, 1000000, 1);
-        numOneSpinner = new Spinner<>(1, 1000000, 1);
-        numTwoSpinner = new Spinner<>(1, 1000000, 1);
+        requestsSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataOutSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numOneSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numTwoSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
 
         requestsSpinner.setEditable(true);
         dataSpinner.setEditable(true);

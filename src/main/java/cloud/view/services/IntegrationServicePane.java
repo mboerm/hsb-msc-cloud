@@ -1,6 +1,7 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -26,12 +27,12 @@ public class IntegrationServicePane extends ServicePropertiesPane {
         integrationTypeLbl = new Label("Type:");
         integrationTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("integration-type"));
         integrationModeBox = new ComboBox<>(Config.getInstance().getConfigValues("integration-communication-mode"));
-        dataSpinner = new Spinner<>(1, 10000, 1);
-        requestsSpinner = new Spinner<>(1, 10000000, 1);
-        pushSpinner = new Spinner<>(1, 10000000, 1);
-        httpSpinner = new Spinner<>(1, 10000000, 1);
-        mailSpinner = new Spinner<>(1, 10000000, 1);
-        smsSpinner = new Spinner<>(1, 10000000, 1);
+        dataSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        requestsSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        pushSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        httpSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        mailSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        smsSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
 
         dataSpinner.setEditable(true);
         requestsSpinner.setEditable(true);

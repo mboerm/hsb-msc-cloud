@@ -20,6 +20,11 @@ public final class Constants {
     public static final int DIALOG_MIN_WIDTH = 400;
     public static final int DIALOG_MIN_HEIGHT = 200;
 
+    /* Spinner values */
+    public static final int SPINNER_MIN = 0;
+    public static final int SPINNER_MAX = 1000000;
+    public static final int SPINNER_INIT = 1;
+
     /* Path to config file and separator */
     public static final String CONFIG_FILE = "xml/config.xml";
     public static final String CONFIG_SEPARATOR = ";";

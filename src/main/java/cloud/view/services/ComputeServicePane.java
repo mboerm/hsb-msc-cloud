@@ -1,6 +1,7 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -39,11 +40,11 @@ public class ComputeServicePane extends ServicePropertiesPane {
         computeInstanceField = new TextField();
         storageInstanceField = new TextField();
 
-        cpuSpinner = new Spinner<>(1, 1000000, 1);
-        storageSpinner = new Spinner<>(1, 1000000, 1);
-        dataSpinner = new Spinner<>(1, 1000000, 1);
-        numOneSpinner = new Spinner<>(1, 1000000, 1);
-        numTwoSpinner = new Spinner<>(1, 1000000, 1);
+        cpuSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        storageSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numOneSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        numTwoSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
 
         cpuSpinner.setEditable(true);
         storageSpinner.setEditable(true);

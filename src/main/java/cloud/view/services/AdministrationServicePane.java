@@ -1,6 +1,7 @@
 package cloud.view.services;
 
 import cloud.configuration.Config;
+import cloud.configuration.Constants;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -27,11 +28,11 @@ public class AdministrationServicePane extends ServicePropertiesPane {
     public AdministrationServicePane() {
         administrationTypeLbl = new Label("Type:");
         administrationTypeBox = new ComboBox<>(Config.getInstance().getConfigValues("administration-type"));
-        metricsSpinner = new Spinner<>(1, 1000000, 1);
-        requestsSpinner = new Spinner<>(1, 1000000, 1);
-        dataCollectSpinner = new Spinner<>(1, 1000000, 1);
-        dataSaveSpinner = new Spinner<>(1, 1000000, 1);
-        eventsSpinner = new Spinner<>(1, 1000000, 1);
+        metricsSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        requestsSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataCollectSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        dataSaveSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
+        eventsSpinner = new Spinner<>(Constants.SPINNER_MIN, Constants.SPINNER_MAX, Constants.SPINNER_INIT);
         isLoggingBox = new CheckBox();
 
         metricsSpinner.setEditable(true);
