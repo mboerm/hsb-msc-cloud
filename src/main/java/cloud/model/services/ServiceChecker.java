@@ -223,7 +223,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("storage-object-labels"),
                         new String[] {
-                                storageService.getStorageMode(),
                                 String.valueOf(storageService.getCapacity()),
                                 storageService.getRequests().getKey().toString(),
                                 storageService.getRequests().getKey().toString(),
@@ -234,7 +233,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("storage-block-labels"),
                         new String[] {
-                                storageService.getStorageMode(),
                                 String.valueOf(storageService.getCapacity()),
                                 String.valueOf(storageService.getData())
                         }
@@ -243,7 +241,6 @@ public class ServiceChecker {
                 return new Pair<>(
                         Config.getInstance().getConfigValuesAsArray("storage-file-labels"),
                         new String[] {
-                                storageService.getStorageMode(),
                                 String.valueOf(storageService.getCapacity()),
                                 String.valueOf(storageService.getRate()),
                                 String.valueOf(storageService.getData())
