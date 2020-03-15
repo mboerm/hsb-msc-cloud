@@ -190,8 +190,8 @@ class Windows extends Provider implements Pricing {
             for (int i = 0; i < hourElements.getLength(); i++) {
                 Node hourNode = hourElements.item(i);
                 NamedNodeMap subNodeAttributes = hourNode.getAttributes();
-                if (service.getData() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
-                        && service.getData() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
+                if (service.getNumOne() >= Double.parseDouble(subNodeAttributes.getNamedItem("min").getTextContent())
+                        && service.getNumOne() <= Double.parseDouble(subNodeAttributes.getNamedItem("max").getTextContent())) {
                     hourPrice = Double.parseDouble(hourNode.getTextContent());
                 }
             }
