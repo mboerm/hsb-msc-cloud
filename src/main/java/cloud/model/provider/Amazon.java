@@ -502,6 +502,7 @@ class Amazon extends Provider implements Pricing {
         if (service.getAdministrationType().equalsIgnoreCase(types[0]) && !(service.getLoggingState())) {
             /* administration type "Monitoring (System Monitor)" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());
+            double requestsFactor = Double.parseDouble(element.getElementsByTagName("requests").item(0).getAttributes().getNamedItem("factor").getTextContent());
             double eventsPrice = Double.parseDouble(element.getElementsByTagName("events").item(0).getTextContent());
             double metricsPrice = 0;
             double dataCollectPrice = 0;
@@ -534,15 +535,15 @@ class Amazon extends Provider implements Pricing {
                 }
             }
             double metricsCosts = service.getMetrics() * metricsPrice;
-            double requestsCosts = service.getRequests() * requestsPrice;
+            double requestsCosts = service.getRequests() / requestsFactor * requestsPrice;
             double eventsCosts = service.getEvents() * eventsPrice;
-            double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice * Constants.MONTH_DAYS;
+            double dataCosts = service.getData().getKey() * dataCollectPrice + service.getData().getValue() * dataSavePrice;
             serviceCosts.setPrice(metricsCosts + requestsCosts + eventsCosts + dataCosts);
             serviceCosts.setFormula(service.getMetrics()+" * "+metricsPrice+" USD"+" + "
                     + service.getRequests()+" * "+requestsPrice+" USD"+" + "
                     + service.getEvents()+" * "+eventsPrice+" USD"+" + "
-                    + service.getData().getKey()+" * "+Constants.MONTH_DAYS+" * "+dataCollectPrice+" USD"+" + "
-                    + service.getData().getValue()+" * "+Constants.MONTH_DAYS+" * "+dataSavePrice+" USD");
+                    + service.getData().getKey()+" * "+dataCollectPrice+" USD"+" + "
+                    + service.getData().getValue()+" * "+dataSavePrice+" USD");
         }
         return serviceCosts;
     }
