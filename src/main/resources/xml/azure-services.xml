@@ -284,9 +284,6 @@
 
 	<!--Administration services-->
 	<service id="Monitoring (System)" name="Azure Monitor">
-		<metrics min="150" max="100000">0.258</metrics>
-		<metrics min="100000" max="250000">0.151</metrics>
-		<metrics min="250000" max="1000000">0.061</metrics>
 		<events>0.60</events>
 		<requests>0.01</requests>
 		<location name="EU-Frankfurt">

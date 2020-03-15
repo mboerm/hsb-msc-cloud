@@ -436,17 +436,8 @@ class Windows extends Provider implements Pricing {
             /* administration type "Monitoring (System)" */
             double requestsPrice = Double.parseDouble(element.getElementsByTagName("requests").item(0).getTextContent());
             double eventsPrice = Double.parseDouble(element.getElementsByTagName("events").item(0).getTextContent());
-            double metricsPrice = 0;
             double dataCollectPrice = 0;
             double dataSavePrice = 0;
-            NodeList metricsElements = element.getElementsByTagName("metrics");
-            for (int i = 0; i < metricsElements.getLength(); i++) {
-                Node metricsNode = metricsElements.item(i);
-                if (service.getMetrics() >= Double.parseDouble(metricsNode.getAttributes().getNamedItem("min").getTextContent())
-                        && service.getMetrics() <= Double.parseDouble(metricsNode.getAttributes().getNamedItem("max").getTextContent())) {
-                    metricsPrice = Double.parseDouble(metricsNode.getTextContent());
-                }
-            }
             NodeList locationElements = element.getElementsByTagName("location");
             for (int i = 0; i < locationElements.getLength(); i++) {
                 Node locationNode = locationElements.item(i);
@@ -466,16 +457,14 @@ class Windows extends Provider implements Pricing {
                     }
                 }
             }
-            double metricsCosts = service.getMetrics() * metricsPrice;
             double requestsCosts = service.getRequests() * requestsPrice;
             double eventsCosts = service.getEvents() * eventsPrice;
-            double dataCosts = service.getData().getKey() * Constants.MONTH_DAYS * dataCollectPrice + service.getData().getValue() * dataSavePrice * Constants.MONTH_DAYS;
-            serviceCosts.setPrice(metricsCosts + requestsCosts + eventsCosts + dataCosts);
-            serviceCosts.setFormula(service.getMetrics()+" * "+metricsPrice+" USD"+" + "
-                    + service.getRequests()+" * "+requestsPrice+" USD"+" + "
+            double dataCosts = service.getData().getKey() * dataCollectPrice + service.getData().getValue() * dataSavePrice;
+            serviceCosts.setPrice(requestsCosts + eventsCosts + dataCosts);
+            serviceCosts.setFormula(service.getRequests()+" * "+requestsPrice+" USD"+" + "
                     + service.getEvents()+" * "+eventsPrice+" USD"+" + "
-                    + service.getData().getKey()+" * "+Constants.MONTH_DAYS+" * "+dataCollectPrice+" USD"+" + "
-                    + service.getData().getValue()+" * "+Constants.MONTH_DAYS+" * "+dataSavePrice+" USD");
+                    + service.getData().getKey()+" * "+dataCollectPrice+" USD"+" + "
+                    + service.getData().getValue()+" * "+dataSavePrice+" USD");
         }
         return serviceCosts;
     }
