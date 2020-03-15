@@ -17,7 +17,7 @@ public class ProviderFactory {
         if (provider.equals(providerNames[0])) {
             return new Amazon();
         } else if (provider.equals(providerNames[1])) {
-            return new Windows();
+            return new Microsoft();
         } else if (provider.equals(providerNames[2])) {
             return new Google();
         } else {

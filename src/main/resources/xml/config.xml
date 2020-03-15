@@ -73,7 +73,7 @@
     <entry key="administration-monitoring-labels">Metrics:;Requests:;Data to collect in GB:;Data to save in GB:;Events in Mio.:;Logging:</entry>
     <entry key="integration-messaging-labels">Mode:;Data in GB:;Requests:;Push messages:;Http messages:;Mail messages:;Sms messages:</entry>
 
-    <entry key="provider-services">Amazon Web Services;Windows Azure;Google Cloud Platform</entry>
+    <entry key="provider-services">Amazon Web Services;Microsoft Azure;Google Cloud Platform</entry>
     <entry key="aws-services">xml/aws-services.xml</entry>
     <entry key="azure-services">xml/azure-services.xml</entry>
     <entry key="gcp-services">xml/gcp-services.xml</entry>

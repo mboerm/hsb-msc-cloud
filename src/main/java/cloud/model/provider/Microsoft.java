@@ -13,15 +13,15 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * Protected Windows provider class
+ * Protected Microsoft provider class
  */
-class Windows extends Provider implements Pricing {
+class Microsoft extends Provider implements Pricing {
 
     /**
      * Protected constructor
      */
-    Windows() {
-        setServiceName("Windows Azure");
+    Microsoft() {
+        setServiceName("Microsoft Azure");
         setServiceFile(Config.getInstance().getConfigValue("azure-services"));
     }
 
