@@ -10,7 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>13</jdk.version>
-        <javafx.version>13.0.1</javafx.version>
+        <javafx.version>13.0.2</javafx.version>
         <itext7.version>7.1.10</itext7.version>
     </properties>
 
@@ -61,6 +61,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
             <version>${javafx.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->

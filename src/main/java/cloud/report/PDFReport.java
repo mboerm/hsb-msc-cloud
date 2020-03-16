@@ -1,17 +1,19 @@
 package cloud.report;
 
 import cloud.configuration.*;
-import cloud.model.design.Design;
 import cloud.model.design.DesignManager;
 import cloud.model.pricing.Costs;
 import cloud.model.services.Service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Calendar;
 import java.util.Date;
 
 import cloud.model.services.ServiceChecker;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import javafx.util.Pair;
@@ -34,6 +36,7 @@ public class PDFReport implements Report {
     private Document document;
     private Date date;
     private PdfFont bf12Bold;
+    private DataChart dataChart;
 
     /**
      * Constructor
@@ -56,7 +59,9 @@ public class PDFReport implements Report {
 
         writeChapterSummary();
         writeChapterServices();
+        document.add(new AreaBreak());
         writeChapterCostCalc();
+        document.add(new AreaBreak());
         writeChapterCostScale();
         writeChapterCostOptimize();
         writeChapterCostCompare();
@@ -150,7 +155,6 @@ public class PDFReport implements Report {
      * Write cost calculation chapter
      */
     private void writeChapterCostCalc() {
-        document.add(new AreaBreak());
         document.add(new Paragraph("Cost Calculation").setFont(bf12Bold).setFontSize(14));
 
         /* Single service costs */
@@ -177,6 +181,22 @@ public class PDFReport implements Report {
         insertCell(totalCostsTable, "Per Month:", TextAlignment.LEFT, true);
         insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCosts()) + " USD", TextAlignment.RIGHT, true);
         document.add(totalCostsTable);
+
+        dataChart = new DataPieChart();
+        dataChart.createChart();
+        dataChart.saveAsPng();
+        // Creating an ImageData object
+        String imageFile = "charts/pieChart.jpg";
+        try {
+            ImageData data = ImageDataFactory.create(imageFile);
+            // Creating an Image object
+            Image image = new Image(data);
+            // Adding image to the document
+            document.add(addEmptyLine(new Paragraph(), 1));
+            document.add(image);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
