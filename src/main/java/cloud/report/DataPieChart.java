@@ -7,10 +7,13 @@ import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Bounds;
 import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.PieChart;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -66,37 +69,11 @@ public class DataPieChart implements DataChart {
     @Override
     public void saveAsPng(){
         try {
-            WritableImage image = this.scene.snapshot(null);
-            WritableImage scaledImage = createScaledView(image, 4);
-            File file = new File("charts/pieChart.jpg");
-            ImageIO.write(SwingFXUtils.fromFXImage(scaledImage, null), "jpg", file);
+            WritableImage image = pieChart.snapshot(new SnapshotParameters(), null);
+            File file = new File("charts/chart.png");
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-
-    private static WritableImage createScaledView(WritableImage node, int scale) {
-        return new WritableImage((int) Math.round(node.getWidth() * scale),
-                (int) Math.round(node.getHeight() * scale));
-
-//        final WritableImage image = new WritableImage(
-//                (int) Math.round(bounds.getWidth() * scale),
-//                (int) Math.round(bounds.getHeight() * scale));
-//
-//        final SnapshotParameters spa = new SnapshotParameters();
-//        spa.setTransform(javafx.scene.transform.Transform.scale(scale, scale));
-//
-//        final WritableImage view = new WritableImage(node.snapshot(spa, image));
-//        view.setFitWidth(bounds.getWidth());
-//        view.setFitHeight(bounds.getHeight());
-//
-//        return view;
-    }
-
-//    public static WritableImage pixelScaleAwareCanvasSnapshot(Canvas canvas, double pixelScale) {
-//        WritableImage writableImage = new WritableImage((int)Math.rint(pixelScale*canvas.getWidth()), (int)Math.rint(pixelScale*canvas.getHeight()));
-//        SnapshotParameters spa = new SnapshotParameters();
-//        spa.setTransform(Transform.scale(pixelScale, pixelScale));
-//        return scene.snapshot(spa, writableImage);
-//    }
 }

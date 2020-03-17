@@ -186,7 +186,7 @@ public class PDFReport implements Report {
         dataChart.createChart();
         dataChart.saveAsPng();
         // Creating an ImageData object
-        String imageFile = "charts/pieChart.jpg";
+        String imageFile = "charts/chart.png";
         try {
             ImageData data = ImageDataFactory.create(imageFile);
             // Creating an Image object
@@ -195,7 +195,7 @@ public class PDFReport implements Report {
             document.add(addEmptyLine(new Paragraph(), 1));
             document.add(image);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            System.out.println("Error in creating Image! " + e);
         }
     }
 
