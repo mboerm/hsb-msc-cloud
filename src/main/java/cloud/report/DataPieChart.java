@@ -7,33 +7,34 @@ import cloud.model.services.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.geometry.Bounds;
 import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.PieChart;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Pie chart class
+ */
 public class DataPieChart implements DataChart {
-    private Scene scene;
-    private ObservableList<PieChart.Data> pieChartData;
     private PieChart pieChart;
 
+    /**
+     * Interface method to create chart
+     */
     @Override
     public void createChart() {
         Stage stage = new Stage();
-        stage.setWidth(1000);
-        stage.setHeight(1000);
-        scene = new Scene(new Group());
-        pieChartData = FXCollections.observableArrayList();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        Scene scene = new Scene(new Group());
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
         //Creating a Pie chart
         pieChart = new PieChart(pieChartData);
@@ -56,16 +57,9 @@ public class DataPieChart implements DataChart {
         stage.setScene(scene);
     }
 
-    public void setPieChartData() {
-        double percentageCosts;
-        for (Pair<Service, Costs> servicePair : DesignManager.getInstance().getDesign().getServicesCosts()) {
-            percentageCosts = (servicePair.getValue().getPrice() / DesignManager.getInstance().getDesign().getTotalCosts()) * 100;
-            this.pieChart.getData().add(new PieChart.Data(
-                    servicePair.getKey().getName() + " - " + Constants.DOUBLE_FORMAT_2.format(percentageCosts) + "%",
-                    percentageCosts));
-        }
-    }
-
+    /**
+     * Interface method to save chart as png
+     */
     @Override
     public void saveAsPng(){
         try {
@@ -74,6 +68,19 @@ public class DataPieChart implements DataChart {
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Method to set pie chart data
+     */
+    public void setPieChartData() {
+        double percentageCosts;
+        for (Pair<Service, Costs> servicePair : DesignManager.getInstance().getDesign().getServicesCosts()) {
+            percentageCosts = (servicePair.getValue().getPrice() / DesignManager.getInstance().getDesign().getTotalCosts()) * 100;
+            this.pieChart.getData().add(new PieChart.Data(
+                    servicePair.getKey().getName() + " - " + Constants.DOUBLE_FORMAT_2.format(percentageCosts) + "%",
+                    percentageCosts));
         }
     }
 }
