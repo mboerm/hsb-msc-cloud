@@ -225,7 +225,7 @@ public class ServiceChecker {
                         new String[] {
                                 String.valueOf(storageService.getCapacity()),
                                 storageService.getRequests().getKey().toString(),
-                                storageService.getRequests().getKey().toString(),
+                                storageService.getRequests().getValue().toString(),
                                 String.valueOf(storageService.getData())
                         }
                 );
