@@ -36,7 +36,6 @@ public class PDFReport implements Report {
     private Document document;
     private Date date;
     private PdfFont bf12Bold;
-    private DataChart dataChart;
 
     /**
      * Constructor
@@ -182,7 +181,7 @@ public class PDFReport implements Report {
         insertCell(totalCostsTable, Constants.DOUBLE_FORMAT_2.format(DesignManager.getInstance().getDesign().getTotalCosts()) + " USD", TextAlignment.RIGHT, true);
         document.add(totalCostsTable);
 
-        dataChart = new DataPieChart();
+        DataChart dataChart = new DataPieChart();
         dataChart.createChart();
         dataChart.saveAsPng();
         // Creating an ImageData object

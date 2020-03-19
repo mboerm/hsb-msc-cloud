@@ -47,6 +47,7 @@ public class DataPieChart implements DataChart {
         pieChart.setLabelsVisible(true);
 
         //Set legends to the left
+        pieChart.setLegendVisible(true);
         pieChart.setLegendSide(Side.BOTTOM);
 
         //Setting the start angle of the pie chart
