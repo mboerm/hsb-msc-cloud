@@ -65,7 +65,7 @@ public class DataPieChart implements DataChart {
     public void saveAsPng(){
         try {
             WritableImage image = pieChart.snapshot(new SnapshotParameters(), null);
-            File file = new File("charts/chart.png");
+            File file = new File("chart.png");
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         } catch (IOException ex) {
             ex.printStackTrace();

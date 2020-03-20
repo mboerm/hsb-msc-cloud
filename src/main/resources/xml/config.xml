@@ -7,7 +7,7 @@
     <entry key="dialog-service-header">Select service category and define properties</entry>
     <entry key="dialog-costs-title">Cost Calculation Report</entry>
     <entry key="report-title">Cloud Architecture Report</entry>
-    <entry key="report-filename">reports/report_</entry>
+    <entry key="report-filename">report_</entry>
 
     <entry key="service-categories">Compute;Database;Storage;Analytic;Network;Integration;Administration</entry>
     <entry key="service-instance-type">General;Compute-optimized;RAM-optimized;Storage-optimized;Burst;GPU</entry>

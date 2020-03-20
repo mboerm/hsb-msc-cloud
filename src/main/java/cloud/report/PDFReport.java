@@ -185,7 +185,7 @@ public class PDFReport implements Report {
         dataChart.createChart();
         dataChart.saveAsPng();
         // Creating an ImageData object
-        String imageFile = "charts/chart.png";
+        String imageFile = "chart.png";
         try {
             ImageData data = ImageDataFactory.create(imageFile);
             // Creating an Image object
